@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot IA - Empresas</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; }
+        .header { background-color: #25D366; color: white; text-align: center; padding: 15px; font-size: 1.5em; font-weight: bold; }
+        .chat-container { max-width: 500px; margin: 20px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .message { padding: 10px; margin: 10px; border-radius: 8px; }
+        .user-message { background-color: #DCF8C6; text-align: right; }
+        .bot-message { background-color: #E8F5E9; text-align: left; }
+        .input-container { display: flex; padding: 10px; background: #f0f0f0; border-top: 1px solid #ddd; }
+        .input-container input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .input-container button { padding: 8px 15px; margin-left: 5px; border: none; background-color: #25D366; color: #fff; border-radius: 4px; cursor: pointer; }
+        .footer { background-color: #333; color: white; text-align: center; padding: 10px; font-size: 0.9em; }
+        .typing { color: #888; font-style: italic; }
+        .video-section { text-align: center; padding: 20px; background-color: #fafafa; }
+        .video-section h3 { font-size: 1.2em; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="header">Chatbot IA - Empresas</div>
+    <div class="chat-container" id="chat-container">
+        <div class="bot-message message">Olá! Eu sou a NIA, sua assistente virtual para IA e Negócios. Como posso ajudar?</div>
+    </div>
+    
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Digite sua mensagem aqui...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+    
+    <div class="video-section">
+        <h3>Vídeo Demonstrativo</h3>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ou5OB2roFRk?si=bN4ocqqVlCTEqOWR" 
+                title="Vídeo Demonstrativo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+    </div>
+
+    <div class="footer">© 2024 IA Designer. Todos os direitos reservados.</div>
+    
+    <script>
+        const chatContainer = document.getElementById("chat-container");
+        let autoResponsesCompleted = false;
+
+        function appendMessage(text, className) {
+            const messageElement = document.createElement("div");
+            messageElement.className = `message ${className}`;
+            messageElement.innerHTML = text;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        
+        function simulateTyping(callback) {
+            const typingIndicator = document.createElement("div");
+            typingIndicator.className = "typing bot-message message";
+            typingIndicator.innerText = "NIA está digitando...";
+            chatContainer.appendChild(typingIndicator);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            setTimeout(() => {
+                typingIndicator.remove();
+                callback();
+            }, 4000); // Intervalo de 4 segundos entre mensagens automáticas
+        }
+        
+        function sendMessage() {
+            const userInput = document.getElementById("user-input").value.trim();
+            if (userInput) {
+                appendMessage(userInput, "user-message");
+                document.getElementById("user-input").value = "";
+                
+                if (!autoResponsesCompleted) {
+                    initiateAutoResponses();
+                } else {
+                    generateResponse(userInput);
+                }
+            }
+        }
+        
+        function initiateAutoResponses() {
+            const autoMessages = [
+                "Matrículas Abertas!",
+                "• Curso de Inteligência Artificial\n🔗",
+                "• Catálogo\n🔗",
+                "• Instagram - Plínio Fabrício\n🔗",
+                "• Instagram - Ia Designer Oficial\n🔗",
+                "• YouTube - Plínio Fabrício\n🔗",
+                "• Suporte - WhatsApp\n🔗",
+                "Bem-vindo ao curso de IA para empresas! Vamos explorar novas ferramentas e tendências.",
+                "O curso aborda temas como IA na Saúde, Educação, Finanças e Negócios.",
+                "Conheça nosso catálogo de cursos e ferramentas para impulsionar sua empresa.",
+                "Precisa de suporte? Entre em contato conosco para mais informações!"
+            ];
+            
+            let index = 0;
+            function sendNextMessage() {
+                if (index < autoMessages.length) {
+                    simulateTyping(() => {
+                        appendMessage(autoMessages[index], "bot-message");
+                        index++;
+                        sendNextMessage();
+                    });
+                } else {
+                    autoResponsesCompleted = true;
+                }
+            }
+            sendNextMessage();
+        }
+
+        function generateResponse(input) {
+            let response = "No momento, não sou autorizada a dar informações específicas relacionadas a essa consulta. Entre em contato com o suporte 📳 para receber detalhes do Curso de Inteligência Artificial e outras ferramentas.";
+
+            const keywords = [
+                "Plinio Fabricio", "Curso Plinio Fabricio", "Inteligência Artificial", "IA na Saúde", "IA na Educação", 
+                "Futuro da IA", "Curso de IA", "Aprendizado de Máquina", "IA para Negócios", "Chatbots", "Ferramentas de IA", 
+                "Curso EAD", "Marketing Digital", "SEO para IA", "Data Science", "Carreiras em IA", "Aplicativos de IA", 
+                "Automação", "Desenvolvimento de Sites", "Servidores Locais", "Criação de Conteúdo", "Educação a Distância", 
+                "Design de IA", "Gestão de Projetos", "Liderança em IA", "Produção de Videoaulas", "Programação para IA", 
+                "Inovação", "Tecnologia", "Big Data", "Algoritmos", "Finanças e IA", "Cultura Digital", "Transformação Digital", 
+                "Edição de Imagem com IA", "Machine Learning", "Ferramentas Digitais", "IA no Trabalho", "Carreira Tech", 
+                "Desenvolvimento Pessoal", "Automação Digital", "Cursos Online", "Formação Profissional", "Educação Tecnológica", 
+                "Futuro do Trabalho", "Impacto da IA", "Tecnologias Emergentes", "Empreendedorismo", "Análise de Dados", 
+                "Inteligência Computacional", "Treinamento Profissional", "Sucesso Profissional", "Empregabilidade", 
+                "Bom dia", "Boa tarde", "Saudações", "Bem-vindo ao curso", "Olá seguidores", "Seja bem-vindo", 
+                "Obrigado pela visita"
+            ];
+
+            const match = keywords.some(keyword => input.toLowerCase().includes(keyword.toLowerCase()));
+            if (match) {
+                response = "Eu encontrei informações relevantes sobre esse assunto em nossas redes sociais. Consulte nosso suporte e detalhes sobre esse tema.";
+            }
+
+            simulateTyping(() => appendMessage(response, "bot-message"));
+        }
+    </script>
+</body>
+</html>
