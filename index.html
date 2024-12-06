@@ -12,57 +12,61 @@
     <form id="login-form">
       <h2>Login</h2>
       <label for="username">ID:</label>
-      <input type="text" id="username" required>
+      <input type="text" id="username" placeholder="Digite seu ID" required>
       <label for="password">Senha:</label>
-      <input type="password" id="password" required>
-      <button type="submit" id="login-btn">Entrar</button>
+      <input type="password" id="password" placeholder="Digite sua senha" required>
+      <button type="submit">Entrar</button>
     </form>
   </div>
 
-  <!-- Menu -->
+  <!-- Menu Principal -->
   <div class="menu-container" id="menu-container" style="display: none;">
     <header>
       <h1>Melhores IA</h1>
     </header>
-    <div class="menu">
-      <div class="menu-item" onclick="showPopup('Isa', 'Agenciada - Isa Marcelino', 'https://www.instagram.com/juamodelos/', 'ícones/atriz1.png')">
-        <img src="ícones/atriz1.png" alt="Isa">
-        <span>Atriz 1</span>
+    <div class="grid-container">
+      <div class="grid-item" onclick="showPopup('Isa Marcelino', 'Atriz e Modelo', 'https://www.instagram.com/juamodelos/', 'ícones/atriz1.png')">
+        <img src="ícones/atriz1.png" alt="Isa Marcelino">
+        <h3>Isa Marcelino</h3>
+        <p>Atriz e Modelo</p>
       </div>
-      <div class="menu-item" onclick="showPopup('Modelo', 'Descrição da IA 2', '#', 'ícones/ia2.png')">
-        <img src="ícones/ia2.png" alt="Modelo">
-        <span>Modelo</span>
+      <div class="grid-item" onclick="showPopup('IA 2', 'Inteligência Artificial Avançada', '#', 'ícones/ia2.png')">
+        <img src="ícones/ia2.png" alt="IA 2">
+        <h3>IA 2</h3>
+        <p>Descrição detalhada</p>
       </div>
-      <div class="menu-item" onclick="showPopup('Atriz', 'Descrição da Atriz', '#', 'ícones/ia3.png')">
+      <div class="grid-item" onclick="showPopup('Atriz Famosa', 'Detalhes sobre Atriz', '#', 'ícones/ia3.png')">
         <img src="ícones/ia3.png" alt="Atriz">
-        <span>Atriz</span>
+        <h3>Atriz Famosa</h3>
+        <p>Descrição breve</p>
       </div>
-      <div class="menu-item" onclick="showPopup('Ator', 'Descrição do Ator', '#', 'ícones/ia4.png')">
+      <div class="grid-item" onclick="showPopup('Ator de Sucesso', 'História do Ator', '#', 'ícones/ia4.png')">
         <img src="ícones/ia4.png" alt="Ator">
-        <span>Ator</span>
+        <h3>Ator de Sucesso</h3>
+        <p>Biografia</p>
       </div>
-      <div class="menu-item" onclick="showPopup('Modelo', 'Descrição da Modelo', '#', 'ícones/ia5.png')">
+      <div class="grid-item" onclick="showPopup('Victória', 'Top Model', '#', 'ícones/ia5.png')">
         <img src="ícones/ia5.png" alt="Victória">
-        <span>Victória</span>
+        <h3>Victória</h3>
+        <p>Top Model</p>
       </div>
     </div>
     <footer>
-      <p>@Copyright 2024 - IaDesigner - Feito com 😍</p>
+      <p>&copy; 2024 IaDesigner</p>
     </footer>
   </div>
 
   <!-- Pop-up -->
-  <div class="popup" id="popup">
+  <div class="popup" id="popup" style="display: none;">
     <div class="popup-content">
       <span class="close-btn" onclick="closePopup()">&times;</span>
       <h2 id="popup-title"></h2>
       <p id="popup-description"></p>
-      <a id="popup-link" href="#" target="_blank">Visitar</a>
+      <a id="popup-link" href="#" target="_blank">Saiba mais</a>
       <img id="popup-image" src="" alt="">
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
