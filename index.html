@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Formulário de Login -->
   <div class="login-container" id="login-container">
     <form id="login-form">
       <h2>Login</h2>
@@ -14,10 +15,11 @@
       <input type="text" id="username" required>
       <label for="password">Senha:</label>
       <input type="password" id="password" required>
-      <button type="submit">Entrar</button>
+      <button type="submit" id="login-btn">Entrar</button>
     </form>
   </div>
 
+  <!-- Menu -->
   <div class="menu-container" id="menu-container" style="display: none;">
     <header>
       <h1>Melhores IA</h1>
@@ -27,7 +29,7 @@
         <img src="ícones/atriz1.png" alt="Isa">
         <span>Atriz 1</span>
       </div>
-      <div class="menu-item" onclick="showPopup('Modelo, 'Descrição da IA 2', '#', 'ícones/ia2.png')">
+      <div class="menu-item" onclick="showPopup('Modelo', 'Descrição da IA 2', '#', 'ícones/ia2.png')">
         <img src="ícones/ia2.png" alt="Modelo">
         <span>Modelo</span>
       </div>
@@ -39,7 +41,7 @@
         <img src="ícones/ia4.png" alt="Ator">
         <span>Ator</span>
       </div>
-      <div class="menu-item" onclick="showPopup('Modelo', 'Descrição da Modelo, '#', 'ícones/ia5.png')">
+      <div class="menu-item" onclick="showPopup('Modelo', 'Descrição da Modelo', '#', 'ícones/ia5.png')">
         <img src="ícones/ia5.png" alt="Victória">
         <span>Victória</span>
       </div>
@@ -49,6 +51,7 @@
     </footer>
   </div>
 
+  <!-- Pop-up -->
   <div class="popup" id="popup">
     <div class="popup-content">
       <span class="close-btn" onclick="closePopup()">&times;</span>
@@ -58,6 +61,8 @@
       <img id="popup-image" src="" alt="">
     </div>
   </div>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
