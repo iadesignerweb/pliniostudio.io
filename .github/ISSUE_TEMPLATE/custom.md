@@ -1,9 +1,9 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
+name: Juá Modelos 
+about: Agência de Marketing purpose here.
+title: 'Juá Modelos' 
+labels: 'Juá Talentos' 
+assignees: 'Ju á
 
 ---
 
