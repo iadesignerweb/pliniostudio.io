@@ -1,70 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juá Modelos</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.6.2/swiper-bundle.min.css">
-</head>
-<body>
-  <!-- Tela de Login -->
-  <div class="login-container" id="login-container">
-    <form id="login-form">
-      <h2>Login</h2>
-      <label for="username">ID:</label>
-      <input type="text" id="username" placeholder="Digite seu ID" required>
-      <label for="password">Senha:</label>
-      <input type="password" id="password" placeholder="Digite sua senha" required>
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
+// Script de login e menu
 
-  <!-- Menu Principal -->
-  <div class="menu-container" id="menu-container" style="display: none;">
-    <header>
-      <h1>Juá Modelos</h1>
-    </header>
-    <!-- Banner de Patrocinadores em Slides -->
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="patrocinador1.jpg" alt="Patrocinador 1"></div>
-        <div class="swiper-slide"><img src="patrocinador2.jpg" alt="Patrocinador 2"></div>
-        <div class="swiper-slide"><img src="patrocinador3.jpg" alt="Patrocinador 3"></div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
+document.getElementById("login-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Previne o comportamento padrão de envio de formulário
 
-    <!-- Grid de Modelos -->
-    <div class="grid-container">
-      <div class="grid-item" onclick="showPopup('Isa Marcelino', 'Modelo e Atriz', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=xxxxxxx')">
-        <iframe width="150" height="150" src="https://www.youtube.com/embed/xxxxxxx?controls=1&showinfo=0&rel=0&autoplay=0&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>Isa Marcelino</h3>
-      </div>
-      <div class="grid-item" onclick="showPopup('Modelo 2', 'Descrição da Modelo 2', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=yyyyyyy')">
-        <iframe width="150" height="150" src="https://www.youtube.com/embed/yyyyyyy?controls=1&showinfo=0&rel=0&autoplay=0&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>Modelo 2</h3>
-      </div>
-      <!-- Adicionar mais modelos aqui -->
-    </div>
-    <footer>
-      <p>@Copyright 2024 - Juá Modelos • site desenvolvido por Plínio Fabrício</p>
-    </footer>
-  </div>
+  // Obtendo valores de ID e senha
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-  <!-- Pop-up -->
-  <div class="popup" id="popup" style="display: none;">
-    <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()">&times;</span>
-      <h2 id="popup-title"></h2>
-      <p id="popup-description"></p>
-      <div id="popup-timer"></div>
-      <a id="popup-link" href="#" target="_blank" style="display:none;">Ir para o site da modelo</a>
-      <iframe id="popup-video" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:315px;"></iframe>
-    </div>
-  </div>
+  // Verificando se o ID e a senha estão corretos
+  if (username === "juamodas" && password === "juatalentos") {
+    // Se estiver correto, esconde a tela de login e exibe o menu
+    document.getElementById("login-container").style.display = "none";
+    document.getElementById("menu-container").style.display = "block";
+  } else {
+    // Caso contrário, exibe uma mensagem de erro
+    alert("ID ou senha incorretos!");
+  }
+});
 
-  <script src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.6.2/swiper-bundle.min.js"></script>
-</body>
-</html>
+// Função para abrir o pop-up com a descrição da modelo
+function showPopup(title, description, link, videoUrl) {
+  document.getElementById("popup-title").textContent = title;
+  document.getElementById("popup-description").textContent = description;
+  document.getElementById("popup-link").href = link;
+  document.getElementById("popup-video").src = videoUrl;
+  document.getElementById("popup").style.display = "flex";
+
+  // Inicia o temporizador de 20 segundos para fechar o popup automaticamente
+  setTimeout(function() {
+    closePopup();
+  }, 20000); // 20 segundos
+}
+
+// Função para fechar o pop-up
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
