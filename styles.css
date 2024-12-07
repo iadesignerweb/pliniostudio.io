@@ -1,4 +1,4 @@
-/* Estilo global */
+/* Estilos gerais */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -30,7 +30,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 
@@ -58,10 +58,6 @@ body {
   margin: 10px 0;
 }
 
-.grid-item p {
-  color: #555;
-}
-
 /* Pop-up */
 .popup {
   position: fixed;
@@ -80,14 +76,12 @@ body {
   padding: 20px;
   border-radius: 8px;
   width: 90%;
-  max-width: 500px;
+  max-width: 700px;
   text-align: center;
 }
 
-.popup img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+.popup-content iframe {
+  margin-top: 20px;
 }
 
 .close-btn {
@@ -96,4 +90,14 @@ body {
   right: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
