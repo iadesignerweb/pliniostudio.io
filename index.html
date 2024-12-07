@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Melhores IA</title>
+  <title>Juá Modelos</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Formulário de Login -->
+  <!-- Página de Login -->
   <div class="login-container" id="login-container">
     <form id="login-form">
       <h2>Login</h2>
@@ -22,37 +22,22 @@
   <!-- Menu Principal -->
   <div class="menu-container" id="menu-container" style="display: none;">
     <header>
-      <h1>Melhores IA</h1>
+      <h1>Juá Modelos</h1>
     </header>
     <div class="grid-container">
-      <div class="grid-item" onclick="showPopup('Isa Marcelino', 'Atriz e Modelo', 'https://www.instagram.com/juamodelos/', 'ícones/atriz1.png')">
+      <!-- Vídeos de modelos -->
+      <div class="grid-item" onclick="showPopup('Isa Marcelino', 'Modelo e Atriz', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=xxxxxxx')">
         <img src="ícones/atriz1.png" alt="Isa Marcelino">
         <h3>Isa Marcelino</h3>
-        <p>Atriz e Modelo</p>
       </div>
-      <div class="grid-item" onclick="showPopup('IA 2', 'Inteligência Artificial Avançada', '#', 'ícones/ia2.png')">
-        <img src="ícones/ia2.png" alt="IA 2">
-        <h3>IA 2</h3>
-        <p>Descrição detalhada</p>
+      <div class="grid-item" onclick="showPopup('Modelo 2', 'Descrição da Modelo 2', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=yyyyyyy')">
+        <img src="ícones/ia2.png" alt="Modelo 2">
+        <h3>Modelo 2</h3>
       </div>
-      <div class="grid-item" onclick="showPopup('Atriz Famosa', 'Detalhes sobre Atriz', '#', 'ícones/ia3.png')">
-        <img src="ícones/ia3.png" alt="Atriz">
-        <h3>Atriz Famosa</h3>
-        <p>Descrição breve</p>
-      </div>
-      <div class="grid-item" onclick="showPopup('Ator de Sucesso', 'História do Ator', '#', 'ícones/ia4.png')">
-        <img src="ícones/ia4.png" alt="Ator">
-        <h3>Ator de Sucesso</h3>
-        <p>Biografia</p>
-      </div>
-      <div class="grid-item" onclick="showPopup('Victória', 'Top Model', '#', 'ícones/ia5.png')">
-        <img src="ícones/ia5.png" alt="Victória">
-        <h3>Victória</h3>
-        <p>Top Model</p>
-      </div>
+      <!-- Adicionar mais modelos aqui -->
     </div>
     <footer>
-      <p>&copy; 2024 IaDesigner</p>
+      <p>@Copyright 2024 - Juá Modelos • site desenvolvido por Plínio Fabrício</p>
     </footer>
   </div>
 
@@ -62,8 +47,9 @@
       <span class="close-btn" onclick="closePopup()">&times;</span>
       <h2 id="popup-title"></h2>
       <p id="popup-description"></p>
-      <a id="popup-link" href="#" target="_blank">Saiba mais</a>
-      <img id="popup-image" src="" alt="">
+      <div id="popup-timer"></div>
+      <a id="popup-link" href="#" target="_blank" style="display:none;">Ir para o site da modelo</a>
+      <iframe id="popup-video" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:315px;"></iframe>
     </div>
   </div>
 
