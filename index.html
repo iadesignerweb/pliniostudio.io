@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juá Modelos</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.6.2/swiper-bundle.min.css">
 </head>
 <body>
-  <!-- Página de Login -->
+  <!-- Tela de Login -->
   <div class="login-container" id="login-container">
     <form id="login-form">
       <h2>Login</h2>
@@ -24,14 +25,25 @@
     <header>
       <h1>Juá Modelos</h1>
     </header>
+    
+    <!-- Banner de Patrocinadores em Slides -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="patrocinador1.jpg" alt="Patrocinador 1"></div>
+        <div class="swiper-slide"><img src="patrocinador2.jpg" alt="Patrocinador 2"></div>
+        <div class="swiper-slide"><img src="patrocinador3.jpg" alt="Patrocinador 3"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Grid de Modelos -->
     <div class="grid-container">
-      <!-- Vídeos de modelos -->
       <div class="grid-item" onclick="showPopup('Isa Marcelino', 'Modelo e Atriz', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=xxxxxxx')">
-        <img src="ícones/atriz1.png" alt="Isa Marcelino">
+        <iframe width="150" height="150" src="https://www.youtube.com/embed/xxxxxxx?controls=1&showinfo=0&rel=0&autoplay=0&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h3>Isa Marcelino</h3>
       </div>
       <div class="grid-item" onclick="showPopup('Modelo 2', 'Descrição da Modelo 2', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=yyyyyyy')">
-        <img src="ícones/ia2.png" alt="Modelo 2">
+        <iframe width="150" height="150" src="https://www.youtube.com/embed/yyyyyyy?controls=1&showinfo=0&rel=0&autoplay=0&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h3>Modelo 2</h3>
       </div>
       <!-- Adicionar mais modelos aqui -->
@@ -54,5 +66,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.6.2/swiper-bundle.min.js"></script>
 </body>
 </html>
