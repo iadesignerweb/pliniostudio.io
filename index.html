@@ -26,21 +26,15 @@
 
   <!-- Menu Principal -->
   <div class="menu-container" id="menu-container" style="display: none;">
-    <header>
-      <h1>Juá Modelos</h1>
-    </header>
-
-    <!-- Grid de Modelos -->
     <div class="grid-container">
-      <div class="grid-item" onclick="showPopup('Isa Marcelino', 'Modelo e Atriz', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=xxxxxxx')">
-        <iframe width="150" height="150" src="https://www.youtube.com/embed/xxxxxxx?controls=1&showinfo=0&rel=0&autoplay=0&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h3>Isa Marcelino</h3>
+      <div class="grid-item" onclick="showPopup('Modelo 1', 'Descrição do Modelo 1', 'https://www.youtube.com/embed/video1')">
+        <iframe src="https://www.youtube.com/embed/video1" allowfullscreen></iframe>
+        <h3>Modelo 1</h3>
       </div>
-      <div class="grid-item" onclick="showPopup('Modelo 2', 'Descrição da Modelo 2', 'https://www.instagram.com/juamodelos/', 'https://www.youtube.com/watch?v=yyyyyyy')">
-        <iframe width="150" height="150" src="https://www.youtube.com/embed/yyyyyyy?controls=1&showinfo=0&rel=0&autoplay=0&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="grid-item" onclick="showPopup('Modelo 2', 'Descrição do Modelo 2', 'https://www.youtube.com/embed/video2')">
+        <iframe src="https://www.youtube.com/embed/video2" allowfullscreen></iframe>
         <h3>Modelo 2</h3>
       </div>
-      <!-- Adicionar mais modelos aqui -->
     </div>
   </div>
 
@@ -50,9 +44,7 @@
       <span class="close-btn" onclick="closePopup()">&times;</span>
       <h2 id="popup-title"></h2>
       <p id="popup-description"></p>
-      <div id="popup-timer"></div>
-      <a id="popup-link" href="#" target="_blank" style="display:none;">Ir para o site da modelo</a>
-      <iframe id="popup-video" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:315px;"></iframe>
+      <iframe id="popup-video" src="" allowfullscreen></iframe>
     </div>
   </div>
 
