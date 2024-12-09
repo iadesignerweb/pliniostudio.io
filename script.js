@@ -8,7 +8,7 @@ document.getElementById("login-form").addEventListener("submit", function (event
   const password = document.getElementById("password").value;
 
   // Verificando se o ID e a senha estão corretos
-  if (username === "admin" && password === "12345") {
+  if (username === "jp" && password === "1416") {
     // Se estiver correto, esconde a tela de login e exibe o menu
     document.getElementById("login-container").style.display = "none";
     document.getElementById("menu-container").style.display = "block";
