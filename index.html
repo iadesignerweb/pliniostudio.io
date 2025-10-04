@@ -1,535 +1,651 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt Studio - Design Corrigido</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --dark-bg: #000000;
-            --card-bg: #1A1A1A;
-            --text-primary: #FFFFFF;
-            --text-secondary: #B0B0B0;
-            --accent-purple: #9B51E0;
-            --accent-orange: #FF8C00;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --gradient-hot: linear-gradient(90deg, #ff4800, #ff7900);
-            --gradient-button: linear-gradient(90deg, #667eea, #764ba2);
-            --active-tab-bg: #333333;
-            --modal-bg: rgba(0, 0, 0, 0.8);
-            --modal-content-bg: #1A1A1A;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--dark-bg); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
-
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--dark-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
-            opacity: 1;
-        }
-        #splash-screen img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-        }
-
-        #app-container { max-width: 450px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; background-color: var(--dark-bg); box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); position: relative; overflow-x: hidden; }
-        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 10; background-color: var(--dark-bg); }
-        .header-top .left-icons, .header-top .right-info { display: flex; align-items: center; gap: 15px; }
-        .header-top .logo { height: 28px; width: auto; }
-        .header-top .icon { font-size: 24px; color: var(--text-secondary); }
-        .header-top .right-info .basic-tag { 
-            background-color: #333; 
-            color: var(--text-primary); 
-            padding: 5px 12px; 
-            border-radius: 20px; 
-            font-size: 0.8em; 
-            font-weight: 500; 
-            display: flex; 
-            align-items: center; 
-            gap: 5px; 
-            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
-            text-decoration: none;
-        }
-        .header-top .right-info .coin-icon { font-size: 1.1em; color: gold; }
-        .top-tabs { display: flex; overflow-x: auto; padding: 10px 15px; gap: 10px; border-bottom: 1px solid var(--border-color); -webkit-overflow-scrolling: touch; scrollbar-width: none; position: sticky; top: 61px; z-index: 9; background-color: var(--dark-bg); }
-        .top-tabs::-webkit-scrollbar { display: none; }
-        .top-tabs .tab-item { background-color: var(--card-bg); color: var(--text-secondary); padding: 8px 15px; border-radius: 20px; font-size: 0.9em; white-space: nowrap; cursor: pointer; transition: background-color 0.2s, color 0.2s; position: relative; }
-        .top-tabs .tab-item.active { background-color: var(--active-tab-bg); color: var(--text-primary); font-weight: 500; }
-        .top-tabs .tab-item .new-badge { position: absolute; top: -5px; right: -5px; background-color: #FF0077; color: white; font-size: 0.6em; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
-        
-        #main-content { flex-grow: 1; overflow-y: auto; padding-bottom: 160px; }
-        .style-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
-        .style-card { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); position: relative; cursor: pointer; aspect-ratio: 3 / 4.5; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .style-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
-        .style-card img { width: 100%; height: 70%; object-fit: cover; object-position: center; }
-        .card-content { flex-grow: 1; padding: 10px; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-content h3 { font-size: 0.95em; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; }
-        .card-stats { display: flex; align-items: center; gap: 8px; font-size: 0.75em; color: var(--text-secondary); margin-bottom: 10px; }
-        .card-stats .star-icon { color: #FFD700; font-size: 0.9em; }
-        .card-button { background: var(--gradient-button); color: white; padding: 8px 0; border-radius: 8px; text-align: center; font-size: 0.9em; font-weight: 500; border: none; cursor: pointer; transition: opacity 0.2s; }
-        .card-button:hover { opacity: 0.9; }
-        .card-tag-hot { position: absolute; top: 8px; left: 8px; background: var(--gradient-hot); color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.7em; font-weight: 600; }
-        .model-image-card { border-radius: 8px; overflow: hidden; background-color: var(--card-bg); }
-        .model-image-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: var(--modal-bg); justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background-color: var(--modal-content-bg); margin: auto; padding: 25px; border-radius: 15px; max-width: 90%; width: 400px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); animation: fadeInModal 0.3s ease-out; border: 1px solid var(--border-color); }
-        @keyframes fadeInModal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        .modal-content h2 { font-size: 1.4em; color: var(--text-primary); margin-bottom: 20px; text-align: center; }
-        .modal-form .form-group { margin-bottom: 20px; }
-        .modal-form label { display: block; margin-bottom: 8px; font-size: 0.9em; color: var(--text-secondary); }
-        .modal-form input[type="password"], .modal-form textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; background-color: #333; color: var(--text-primary); font-size: 0.95em; resize: vertical; min-height: 50px; transition: border-color 0.2s, box-shadow 0.2s; }
-        .modal-form input[type="password"]:focus, .modal-form textarea:focus { outline: none; border-color: var(--accent-purple); box-shadow: 0 0 0 3px rgba(155, 81, 224, 0.2); }
-        .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px; }
-        .modal-buttons button { padding: 10px 20px; border-radius: 10px; font-weight: 500; cursor: pointer; transition: background-color 0.2s, opacity 0.2s; border: none; }
-        .modal-buttons .cancel-btn { background-color: #444; color: var(--text-primary); }
-        .modal-buttons .cancel-btn:hover { background-color: #555; }
-        .modal-buttons .generate-btn { background: var(--gradient-button); color: white; }
-        .modal-buttons .generate-btn:hover { opacity: 0.9; }
-        .modal-buttons .generate-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
-
-        .footer-wrapper {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            max-width: 450px;
-            z-index: 10;
-            background-color: var(--dark-bg);
-        }
-        
-        .footer-nav { 
-            display: flex; 
-            justify-content: space-around; 
-            align-items: center; 
-            padding: 10px 0; 
-            background-color: var(--dark-bg); 
-            width: 100%;
-            border-top: 1px solid var(--border-color);
-        }
-        .footer-nav .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 0.7em; color: var(--text-secondary); cursor: pointer; transition: color 0.2s; position: relative; }
-        .footer-nav .nav-item.active { color: var(--text-primary); }
-        .footer-nav .nav-item .icon { font-size: 24px; margin-bottom: 3px; }
-        .footer-nav .center-button { 
-            background: var(--accent-purple); 
-            border-radius: 50%; 
-            width: 50px; 
-            height: 50px; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            font-size: 30px; 
-            color: white; 
-            transform: translateY(-20%); 
-            box-shadow: 0 5px 15px rgba(155, 81, 224, 0.4); 
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .content-section { display: none; padding: 20px 15px; flex-direction: column; gap: 15px; text-align: center; }
-        #descobrir-section { display: flex; }
-        .content-section h2 { font-size: 1.5em; margin-bottom: 20px; }
-        #suporte-section p { font-size: 1.1em; color: var(--text-secondary); }
-        #suporte-section a { color: var(--accent-purple); text-decoration: none; font-weight: 600; }
-        #suporte-section a:hover { text-decoration: underline; }
-        .loading-animation { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.9em; color: var(--text-secondary); margin-top: 20px; }
-        .loading-spinner { border: 3px solid rgba(255, 255, 255, 0.3); border-top: 3px solid var(--accent-purple); border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .error-message { background-color: #610000; color: white; padding: 15px; border-radius: 10px; font-size: 0.9em; margin-top: 20px; border: 1px solid #FF0000; }
-
-        .icon-carousel-container {
-            width: 100%;
-            overflow: hidden;
-            background-color: var(--dark-bg);
-            padding: 10px 0;
-            border-top: 1px solid var(--border-color);
-            box-sizing: border-box;
-        }
-        .icon-carousel {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            animation: slideIcons 30s linear infinite; 
-        }
-        .icon-carousel img {
-            height: 30px; 
-            width: auto;
-            margin: 0 20px; 
-            filter: brightness(0) invert(1) opacity(70%);
-            transition: filter 0.3s ease;
-        }
-        .icon-carousel img:hover {
-            filter: brightness(0) invert(1) opacity(100%);
-        }
-
-        @keyframes slideIcons {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .copyright-footer {
-            background-color: var(--dark-bg);
-            color: var(--text-secondary);
-            font-size: 0.7em;
-            text-align: center;
-            padding: 5px 10px;
-            border-top: 1px solid var(--border-color);
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
-            box-sizing: border-box; 
-        }
-
-        #quem-somos-section .section-content {
-            max-width: 380px;
-            margin: 0 auto;
-        }
-        #quem-somos-section .description-text {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.9em;
-            text-align: left;
-        }
-        #quem-somos-section .contact-heading {
-            text-align: center; 
-            font-weight: 500; 
-            color: var(--text-primary);
-            margin-top: 25px;
-        }
-        #quem-somos-section .contact-info {
-            text-align: center;
-            font-weight: 600;
-            color: var(--accent-purple);
-            font-size: 1em;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Studio - Standalone Melhorado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-bg: #000000;
+      --card-bg: #1A1A1A;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0B0B0;
+      --accent-purple: #9B51E0;
+      --accent-orange: #FF8C00;
+      --border-color: rgba(255,255,255,0.1);
+      --gradient-hot: linear-gradient(90deg, #ff4800, #ff7900);
+      --gradient-button: linear-gradient(90deg, #667eea, #764ba2);
+      --active-tab-bg: #333333;
+      --modal-bg: rgba(0,0,0,0.8);
+      --modal-content-bg: #1A1A1A;
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+    #splash-screen {
+      position: fixed;
+      inset: 0;
+      background-color: var(--dark-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+    #splash-screen img {
+      max-width: 80vw;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    #app-container {
+      max-width: 450px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--dark-bg);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--dark-bg);
+    }
+    header .logo {
+      height: 28px;
+      width: auto;
+    }
+    .left-icons, .right-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .right-info .basic-tag {
+      background: #333;
+      color: var(--text-primary);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: inset 0 0 5px rgba(255,255,255,0.1);
+      text-decoration: none;
+    }
+    .right-info .coin-icon { color: gold; font-size: 1.1em; }
+    nav.top-tabs {
+      display: flex;
+      overflow-x: auto;
+      padding: 10px 15px;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 61px;
+      z-index: 9;
+      background: var(--dark-bg);
+    }
+    nav.top-tabs::-webkit-scrollbar { display: none; }
+    .tab-item {
+      background: var(--card-bg);
+      color: var(--text-secondary);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+    }
+    .tab-item.active {
+      background: var(--active-tab-bg);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .tab-item .new-badge {
+      position: absolute;
+      top: -5px; right: -5px;
+      background: #FF0077;
+      color: white;
+      font-size: 0.6em;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    #main-content {
+      flex: 1 1 0;
+      overflow-y: auto;
+      padding-bottom: 160px;
+    }
+    .content-section { display: none; padding: 20px 15px; flex-direction: column; gap: 15px; text-align: center; }
+    #descobrir-section { display: flex; }
+    .style-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+      gap: 15px;
+    }
+    .style-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      aspect-ratio: 3/4.5;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .style-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.5);}
+    .style-card img { width: 100%; height: 70%; object-fit: cover; }
+    .card-content { flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;}
+    .card-content h3 { font-size: .95em; font-weight: 600; color: var(--text-primary); margin-bottom: 5px;}
+    .card-stats { display: flex; align-items: center; gap: 8px; font-size: 0.75em; color: var(--text-secondary);}
+    .star-icon { color: #FFD700; font-size: 0.9em;}
+    .card-button {
+      background: var(--gradient-button);
+      color: white;
+      padding: 8px 0;
+      border-radius: 8px;
+      border: none; cursor: pointer;
+      font-weight: 500;
+      font-size: .9em;
+      transition: opacity 0.2s;
+    }
+    .card-button:hover { opacity: 0.9; }
+    .card-tag-hot {
+      position: absolute;
+      top: 8px; left: 8px;
+      background: var(--gradient-hot);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.7em;
+      font-weight: 600;
+    }
+    .model-image-card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+    .model-image-card img { width: 100%; height: 100%; object-fit: cover; display: block;}
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: var(--modal-bg);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-content {
+      background: var(--modal-content-bg);
+      margin: auto;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 90vw; width: 400px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      animation: fadeInModal 0.3s ease-out;
+      border: 1px solid var(--border-color);
+    }
+    @keyframes fadeInModal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-content h2 { font-size: 1.3em; color: var(--text-primary); margin-bottom: 20px; text-align: center;}
+    .modal-form .form-group { margin-bottom: 20px;}
+    .modal-form label { display:block; margin-bottom:8px; font-size:0.9em; color:var(--text-secondary); }
+    .modal-form input[type="password"], .modal-form textarea {
+      width: 100%;
+      padding: 12px; border: 1px solid var(--border-color);
+      border-radius: 8px; background: #333;
+      color: var(--text-primary);
+      font-size: 0.95em;
+      resize: vertical; min-height: 50px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .modal-form input[type="password"]:focus, .modal-form textarea:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 3px rgba(155,81,224,0.2);
+    }
+    .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px;}
+    .modal-buttons button {
+      padding: 10px 20px; border-radius: 10px;
+      font-weight: 500; cursor: pointer;
+      transition: background 0.2s, opacity 0.2s; border: none;
+    }
+    .modal-buttons .cancel-btn { background: #444; color: var(--text-primary); }
+    .modal-buttons .cancel-btn:hover { background: #555; }
+    .modal-buttons .generate-btn { background: var(--gradient-button); color: #fff;}
+    .modal-buttons .generate-btn:hover { opacity: 0.9; }
+    .modal-buttons .generate-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
+    /* Footer */
+    .footer-wrapper {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 450px;
+      z-index: 10;
+      background: var(--dark-bg);
+    }
+    .icon-carousel-container {
+      width: 100%;
+      overflow: hidden;
+      background: var(--dark-bg);
+      padding: 10px 0;
+      border-top: 1px solid var(--border-color);
+      box-sizing: border-box;
+    }
+    .icon-carousel {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: slideIcons 30s linear infinite;
+    }
+    .icon-carousel img {
+      height: 30px;
+      width: auto;
+      margin: 0 20px;
+      filter: brightness(0) invert(1) opacity(70%);
+      transition: filter 0.3s;
+    }
+    .icon-carousel img:hover {
+      filter: brightness(0) invert(1) opacity(100%);
+    }
+    @keyframes slideIcons {
+      0% { transform: translateX(0);}
+      100% { transform: translateX(-50%);}
+    }
+    .footer-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      width: 100%;
+      border-top: 1px solid var(--border-color);
+      background: var(--dark-bg);
+    }
+    .footer-nav .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.7em;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .footer-nav .nav-item.active { color: var(--text-primary);}
+    .footer-nav .nav-item .icon { font-size: 24px; margin-bottom: 3px;}
+    .footer-nav .center-button {
+      background: var(--accent-purple);
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 30px;
+      color: #fff;
+      transform: translateY(-20%);
+      box-shadow: 0 5px 15px rgba(155,81,224,0.4);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .copyright-footer {
+      background: var(--dark-bg);
+      color: var(--text-secondary);
+      font-size: 0.7em;
+      text-align: center;
+      padding: 5px 10px;
+      border-top: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 450px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    /* General Utility */
+    .loading-animation { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: .9em; color: var(--text-secondary);}
+    .loading-spinner {
+      border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid var(--accent-purple);
+      border-radius: 50%; width: 20px; height: 20px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 0% {transform:rotate(0);} 100% {transform:rotate(360deg);} }
+    .error-message {
+      background: #610000;
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      margin-top: 20px;
+      border: 1px solid #FF0000;
+    }
+    /* Responsivo */
+    @media (max-width: 500px) {
+      #app-container, .copyright-footer, .footer-wrapper { max-width: 100vw;}
+    }
+  </style>
 </head>
 <body>
-    <div id="splash-screen">
-        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Picsart_25-09-30_22-04-18-823.png" alt="Carregando AI Prompt Studio">
+  <div id="splash-screen" aria-label="Carregando AI Prompt Studio">
+    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Carregando AI Prompt Studio">
+  </div>
+  <div id="app-container">
+    <header>
+      <div class="left-icons">
+        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
+      </div>
+      <div class="right-info">
+        <span class="icon" title="Presente">🎁</span>
+        <a href="https://iadesignerweb.github.io/crm" target="_blank" class="basic-tag" rel="noopener">CRM <span class="coin-icon">💰</span> 60</a>
+      </div>
+    </header>
+    <nav class="top-tabs" aria-label="Navegação de abas">
+      <div class="tab-item active" data-tab-name="Em alta" data-target="descobrir-section">Em alta</div>
+      <div class="tab-item" data-tab-name="Agência" data-url="https://iadesignerweb.github.io/site">Agência <span class="new-badge">New</span></div>
+      <div class="tab-item" data-tab-name="Design de Sites" data-url="https://iadesignerweb.github.io/free">Design de Sites</div>
+      <div class="tab-item" data-tab-name="Contratar" data-target="suporte-section">Contratar</div>
+    </nav>
+    <main id="main-content">
+      <!-- Descobrir -->
+      <section id="descobrir-section" class="content-section" aria-label="Estilos em alta">
+        <div class="style-grid">
+          <div class="style-card" data-style-name="Ghostface Terror">
+            <span class="card-tag-hot">HOT</span>
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Terror.jpg" alt="Ghostface Terror">
+            <div class="card-content">
+              <h3>Ghostface Terror</h3>
+              <div class="card-stats"><span class="star-icon">★</span> 758.9K</div>
+              <button class="card-button use-card-button">Usar</button>
+            </div>
+          </div>
+          <div class="style-card" data-style-name="Kiss Kiss">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Quadrinhos.jpg" alt="Kiss Kiss">
+            <div class="card-content">
+              <h3>Kiss Kiss</h3>
+              <div class="card-stats"><span class="star-icon">★</span> 13.5M</div>
+              <button class="card-button use-card-button">Usar</button>
+            </div>
+          </div>
+          <div class="style-card" data-style-name="Dragon Evoker">
+            <span class="card-tag-hot">HOT</span>
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Fantasia.jpg" alt="Dragon Evoker">
+            <div class="card-content">
+              <h3>Dragon Evoker</h3>
+              <div class="card-stats"><span class="star-icon">★</span> 5.4M</div>
+              <button class="card-button use-card-button">Usar</button>
+            </div>
+          </div>
+          <div class="style-card" data-style-name="Muscle Surge">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/A%C3%A7%C3%A3o%20Grafith.jpg" alt="Muscle Surge">
+            <div class="card-content">
+              <h3>Muscle Surge</h3>
+              <div class="card-stats"><span class="star-icon">★</span> 9.1M</div>
+              <button class="card-button use-card-button">Usar</button>
+            </div>
+          </div>
+          <div class="style-card" data-style-name="Cyberpunk City">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Cyberpunk%20.jpg" alt="Cyberpunk City">
+            <div class="card-content">
+              <h3>Cyberpunk City</h3>
+              <div class="card-stats"><span class="star-icon">★</span> 2.1M</div>
+              <button class="card-button use-card-button">Usar</button>
+            </div>
+          </div>
+          <div class="style-card" data-style-name="Fantasy Forest">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Floresta%20Encantada.jpg" alt="Fantasy Forest">
+            <div class="card-content">
+              <h3>Fantasy Forest</h3>
+              <div class="card-stats"><span class="star-icon">★</span> 6.8M</div>
+              <button class="card-button use-card-button">Usar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Modelos -->
+      <section id="modelo-section" class="content-section" aria-label="Modelos Básicos">
+        <h2>Modelos Básicos</h2>
+        <div class="style-grid">
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153619_0000.png" alt="Modelo 1"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153747_0000.png" alt="Modelo 2"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153919_0000.png" alt="Modelo 3"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_154103_0000.png" alt="Modelo 4"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_154142_0000.png" alt="Modelo 5"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Modelo 6"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites3.jpg" alt="Modelo 7"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites5.jpg" alt="Modelo 8"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites4.jpg" alt="Modelo 9"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Studio%2C%20Criando%20APK%2C%20Design.png" alt="Modelo 10"></div>
+        </div>
+      </section>
+      <!-- Suporte -->
+      <section id="suporte-section" class="content-section" aria-label="Suporte e Contato">
+        <h2>Adquira Nossos Serviços</h2>
+        <p>Entre em contato pelo WhatsApp:<br>
+          <a href="https://wa.me/5587999786261" target="_blank" rel="noopener">(87) 99978-6261</a>
+        </p>
+      </section>
+      <!-- Quem Somos -->
+      <section id="quem-somos-section" class="content-section" aria-label="Sobre a Empresa">
+        <div class="section-content">
+          <h2>Quem Somos</h2>
+          <p class="description-text">
+            Plinio Studio é uma empresa Pernambucana especializada em SEO, design, criatividade, inovação, audiovisual e mais. Nossa missão é transformar ideias em realidade digital, utilizando as mais recentes tecnologias de inteligência artificial para impulsionar a presença online dos clientes.
+          </p>
+          <p class="description-text">
+            Criamos soluções personalizadas, desde o design de sites/aplicativos até a produção de conteúdo audiovisual que engaja e converte.
+          </p>
+          <p class="contact-heading">Acompanhe nossos projetos e tutoriais:</p>
+          <p class="contact-info">youtube.com/@pliniostudio_</p>
+          <p class="contact-heading">Seja parceiro ou adquira serviços:</p>
+          <p class="contact-info">(87) 99978-6261</p>
+        </div>
+      </section>
+    </main>
+    <!-- Modal de Prompt -->
+    <div id="prompt-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <h2 id="modal-title">Gerar Prompt Detalhado</h2>
+        <form id="modal-form" class="modal-form" autocomplete="off">
+          <div class="form-group">
+            <label for="modal-api-key">Chave da API Gemini:</label>
+            <input type="password" id="modal-api-key" placeholder="Cole sua chave da API Gemini aqui" required>
+          </div>
+          <div class="form-group">
+            <label for="modal-theme">Descreva seu tema:</label>
+            <textarea id="modal-theme" placeholder="Ex: Um rei leão com coroa de fogo" required rows="3"></textarea>
+          </div>
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn">Cancelar</button>
+            <button type="submit" class="generate-btn">Gerar</button>
+          </div>
+        </form>
+        <div id="modal-loading" class="loading-animation" style="display:none;"><div class="loading-spinner"></div><span>Gerando seu prompt...</span></div>
+        <div id="modal-error" class="error-message" style="display:none;"></div>
+      </div>
     </div>
-    <div id="app-container">
-        
-        <div class="header-top">
-            <div class="left-icons">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
-            </div>
-            <div class="right-info">
-                <span class="icon">🎁</span>
-                <a href="https://iadesignerweb.github.io/crm" target="_blank" class="basic-tag">CRM <span class="coin-icon">💰</span> 60</a>
-            </div>
+    <!-- Footer -->
+    <footer class="footer-wrapper">
+      <div class="icon-carousel-container">
+        <div class="icon-carousel" aria-label="Redes Sociais">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/google.svg" alt="Google">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/youtube.svg" alt="YouTube">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/instagram.svg" alt="Instagram">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/facebook.svg" alt="Facebook">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/whatsapp.svg" alt="WhatsApp">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/meta.svg" alt="Meta">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/openai.svg" alt="ChatGPT">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google_Gemini_logo.svg" alt="Gemini">
         </div>
-
-        <div class="top-tabs">
-            <div class="tab-item active" data-tab-name="Em alta" data-target="descobrir-section">Em alta</div>
-            <div class="tab-item" data-tab-name="Agência" data-url="https://iadesignerweb.github.io/site">Agência <span class="new-badge">New</span></div>
-            <div class="tab-item" data-tab-name="Design de Sites" data-url="https://iadesignerweb.github.io/free">Design de Sites</div>
-            <div class="tab-item" data-tab-name="Contratar" data-target="suporte-section">Contratar</div>
-        </div>
-
-        <div id="main-content">
-            <div id="descobrir-section" class="content-section">
-                <div class="style-grid">
-                    <div class="style-card" data-style-name="Ghostface Terror"><span class="card-tag-hot">HOT</span><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Terror.jpg" alt="Ghostface Terror"><div class="card-content"><h3>Ghostface Terror</h3><div class="card-stats"><span class="star-icon">★</span> 758.9K</div><button class="card-button use-card-button">Usar</button></div></div>
-                    <div class="style-card" data-style-name="Kiss Kiss"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Quadrinhos.jpg" alt="Kiss Kiss"><div class="card-content"><h3>Kiss Kiss</h3><div class="card-stats"><span class="star-icon">★</span> 13.5M</div><button class="card-button use-card-button">Usar</button></div></div>
-                    <div class="style-card" data-style-name="Dragon Evoker"><span class="card-tag-hot">HOT</span><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Fantasia.jpg" alt="Dragon Evoker"><div class="card-content"><h3>Dragon Evoker</h3><div class="card-stats"><span class="star-icon">★</span> 5.4M</div><button class="card-button use-card-button">Usar</button></div></div>
-                    <div class="style-card" data-style-name="Muscle Surge"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/A%C3%A7%C3%A3o%20Grafith.jpg" alt="Muscle Surge"><div class="card-content"><h3>Muscle Surge</h3><div class="card-stats"><span class="star-icon">★</span> 9.1M</div><button class="card-button use-card-button">Usar</button></div></div>
-                    <div class="style-card" data-style-name="Cyberpunk City"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Cyberpunk%20.jpg" alt="Cyberpunk City"><div class="card-content"><h3>Cyberpunk City</h3><div class="card-stats"><span class="star-icon">★</span> 2.1M</div><button class="card-button use-card-button">Usar</button></div></div>
-                    <div class="style-card" data-style-name="Fantasy Forest"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Floresta%20Encantada.jpg" alt="Fantasy Forest"><div class="card-content"><h3>Fantasy Forest</h3><div class="card-stats"><span class="star-icon">★</span> 6.8M</div><button class="card-button use-card-button">Usar</button></div></div>
-                </div>
-            </div>
-
-            <div id="modelo-section" class="content-section">
-                <h2>Modelos Basicos</h2>
-                <div class="style-grid">
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153619_0000.png" alt="Modelo 1"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153747_0000.png" alt="Modelo 2"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153919_0000.png" alt="Modelo 3"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_154103_0000.png" alt="Modelo 4"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_154142_0000.png" alt="Modelo 5"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Modelo 6"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites3.jpg" alt="Modelo 7"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites5.jpg" alt="Modelo 8"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites4.jpg" alt="Modelo 9"></div>
-                    <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Studio%2C%20Criando%20APK%2C%20Design.png" alt="Modelo 10"></div>
-                </div>
-            </div>
-
-            <div id="suporte-section" class="content-section">
-                <div>
-                    <h2>Adquira Nossos Serviços</h2>
-                    <p>Entre em contato pelo WhatsApp:<br><a href="https://wa.me/5587999786261" target="_blank">(87) 99978-6261</a></p>
-                </div>
-            </div>
-
-            <div id="quem-somos-section" class="content-section">
-                <div class="section-content">
-                    <h2>Quem Somos</h2>
-                    <p class="description-text">
-                        Plinio Studio é uma Empresa Pernambucana que vem criando conteúdos para otimização de Seo de Negócios, Design, Criatividade com Inovação, Audiovisual e outros... Nossa missão é transformar ideias em realidade digital, utilizando as mais recentes tecnologias de inteligência artificial para impulsionar a presença online de nossos clientes.
-                    </p>
-                    <br>
-                    <p class="description-text">
-                        Criamos soluções sob medida, desde a concepção de sites e aplicativos até a produção de conteúdo audiovisual que engaja e converte.
-                    </p>
-                    <div>
-                         <p class="contact-heading">Acompanhe nossos projetos e tutoriais:</p>
-                         <p class="contact-info">youtube.com/@pliniostudio_</p>
-                    </div>
-                     <div>
-                         <p class="contact-heading">Seja um parceiro ou adquira nossos serviços:</p>
-                         <p class="contact-info">(87) 99978-6261</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="prompt-modal" class="modal">
-            <div class="modal-content">
-                <h2 id="modal-title">Gerar Prompt Detalhado</h2>
-                <form id="modal-form" class="modal-form">
-                    <div class="form-group"><label for="modal-api-key">Chave da API Gemini:</label><input type="password" id="modal-api-key" placeholder="Cole sua chave da API Gemini aqui" required></div>
-                    <div class="form-group"><label for="modal-theme">Descreva seu tema:</label><textarea id="modal-theme" placeholder="Ex: Um rei leão com coroa de fogo" required rows="3"></textarea></div>
-                    <div class="modal-buttons">
-                        <button type="button" class="cancel-btn">Cancelar</button>
-                        <button type="submit" class="generate-btn">Gerar</button>
-                    </div>
-                </form>
-                <div id="modal-loading" class="loading-animation" style="display: none;"><div class="loading-spinner"></div><span>Gerando seu prompt...</span></div>
-                <div id="modal-error" class="error-message" style="display: none;"></div>
-            </div>
-        </div>
-
-        <div class="footer-wrapper">
-            <div class="icon-carousel-container">
-                <div class="icon-carousel">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/google.svg" alt="Google">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/youtube.svg" alt="YouTube">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/instagram.svg" alt="Instagram">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/facebook.svg" alt="Facebook">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/whatsapp.svg" alt="WhatsApp">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/meta.svg" alt="Meta">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/openai.svg" alt="ChatGPT">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google_Gemini_logo.svg" alt="Gemini">
-
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/google.svg" alt="Google">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/youtube.svg" alt="YouTube">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/instagram.svg" alt="Instagram">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/facebook.svg" alt="Facebook">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/whatsapp.svg" alt="WhatsApp">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/meta.svg" alt="Meta">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/openai.svg" alt="ChatGPT">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google_Gemini_logo.svg" alt="Gemini">
-                </div>
-            </div>
-
-            <div class="footer-nav">
-                <div class="nav-item active" data-target="descobrir-section"><span class="icon">📦</span><span>Descobrir</span></div>
-                <div class="nav-item" data-target="modelo-section"><span class="icon">👤</span><span>Modelo</span></div>
-                <a href="https://iadesignerweb.github.io/GeradorPrompts/" target="_blank" class="center-button"><span>+</span></a>
-                <div class="nav-item" data-target="suporte-section"><span class="icon">✉️</span><span>Suporte</span></div>
-                <div class="nav-item" data-target="quem-somos-section"><span class="icon">⚙</span><span>Quem Somos</span></div>
-            </div>
-            <div class="copyright-footer">
-                @Copyright 2025 - Plinio Studio
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const CONFIG = {
-            GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
-        };
-
-        const elements = {
-            appContainer: document.getElementById('app-container'),
-            mainContent: document.getElementById('main-content'),
-            topTabs: document.querySelector('.top-tabs'),
-            styleGrid: document.querySelector('.style-grid'),
-            footerNav: document.querySelector('.footer-nav'),
-            promptModal: document.getElementById('prompt-modal'),
-            modalTitle: document.getElementById('modal-title'),
-            modalForm: document.getElementById('modal-form'),
-            modalApiKey: document.getElementById('modal-api-key'),
-            modalTheme: document.getElementById('modal-theme'),
-            modalCancelBtn: document.querySelector('#prompt-modal .cancel-btn'),
-            modalGenerateBtn: document.querySelector('#prompt-modal .generate-btn'),
-            modalLoading: document.getElementById('modal-loading'),
-            modalError: document.getElementById('modal-error'),
-        };
-
-        let currentSelectedStyle = null;
-
-        function init() {
-            bindEvents();
-            loadSavedApiKey();
-            showContentSection('descobrir-section');
+      </div>
+      <nav class="footer-nav" aria-label="Rodapé">
+        <div class="nav-item active" data-target="descobrir-section"><span class="icon">📦</span><span>Descobrir</span></div>
+        <div class="nav-item" data-target="modelo-section"><span class="icon">👤</span><span>Modelo</span></div>
+        <a href="https://iadesignerweb.github.io/GeradorPrompts/" target="_blank" class="center-button" rel="noopener"><span>+</span></a>
+        <div class="nav-item" data-target="suporte-section"><span class="icon">✉️</span><span>Suporte</span></div>
+        <div class="nav-item" data-target="quem-somos-section"><span class="icon">⚙</span><span>Quem Somos</span></div>
+      </nav>
+      <div class="copyright-footer">
+        &copy; 2025 - Plinio Studio
+      </div>
+    </footer>
+  </div>
+  <script>
+    const CONFIG = {
+      GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
+    };
+    const elements = {
+      appContainer: document.getElementById('app-container'),
+      mainContent: document.getElementById('main-content'),
+      topTabs: document.querySelector('.top-tabs'),
+      styleGrid: document.querySelector('.style-grid'),
+      footerNav: document.querySelector('.footer-nav'),
+      promptModal: document.getElementById('prompt-modal'),
+      modalTitle: document.getElementById('modal-title'),
+      modalForm: document.getElementById('modal-form'),
+      modalApiKey: document.getElementById('modal-api-key'),
+      modalTheme: document.getElementById('modal-theme'),
+      modalCancelBtn: document.querySelector('#prompt-modal .cancel-btn'),
+      modalGenerateBtn: document.querySelector('#prompt-modal .generate-btn'),
+      modalLoading: document.getElementById('modal-loading'),
+      modalError: document.getElementById('modal-error'),
+    };
+    let currentSelectedStyle = null;
+    function init() {
+      bindEvents();
+      loadSavedApiKey();
+      showContentSection('descobrir-section');
+    }
+    function bindEvents() {
+      elements.topTabs.addEventListener('click', (e) => {
+        const tabItem = e.target.closest('.tab-item');
+        if (!tabItem) return;
+        const url = tabItem.dataset.url;
+        if (url) {
+          window.open(url, '_blank');
+          return;
         }
-
-        function bindEvents() {
-            elements.topTabs.addEventListener('click', (e) => {
-                const tabItem = e.target.closest('.tab-item');
-                if (!tabItem) return;
-
-                const url = tabItem.dataset.url;
-                if (url) {
-                    window.open(url, '_blank');
-                    return; 
-                }
-                
-                elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
-                tabItem.classList.add('active');
-
-                const target = tabItem.dataset.target;
-                if (target) {
-                    showContentSection(target);
-                }
-            });
-
-            elements.styleGrid.addEventListener('click', (e) => {
-                const useButton = e.target.closest('.use-card-button');
-                if (useButton) {
-                    const card = useButton.closest('.style-card');
-                    currentSelectedStyle = card.dataset.styleName;
-                    elements.modalTitle.textContent = `Gerar Prompt: ${currentSelectedStyle}`;
-                    elements.promptModal.style.display = 'flex';
-                }
-            });
-            
-            elements.modalCancelBtn.addEventListener('click', closeModal);
-            elements.modalForm.addEventListener('submit', handleModalFormSubmit);
-
-            elements.footerNav.addEventListener('click', (e) => {
-                const navItem = e.target.closest('.nav-item');
-                if (navItem && navItem.dataset.target) {
-                    showContentSection(navItem.dataset.target);
-                }
-            });
+        elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
+        tabItem.classList.add('active');
+        const target = tabItem.dataset.target;
+        if (target) showContentSection(target);
+      });
+      elements.styleGrid.addEventListener('click', (e) => {
+        const useButton = e.target.closest('.use-card-button');
+        if (useButton) {
+          const card = useButton.closest('.style-card');
+          currentSelectedStyle = card.dataset.styleName;
+          elements.modalTitle.textContent = `Gerar Prompt: ${currentSelectedStyle}`;
+          elements.promptModal.style.display = 'flex';
         }
-
-        function closeModal() {
-            elements.promptModal.style.display = 'none';
-            elements.modalError.style.display = 'none';
-        }
-
-        async function handleModalFormSubmit(e) {
-            e.preventDefault();
-            const apiKey = elements.modalApiKey.value.trim();
-            const theme = elements.modalTheme.value.trim();
-
-            if (!apiKey || !theme || apiKey.length < 30) {
-                showModalError('Por favor, preencha todos os campos com uma chave de API válida.');
-                return;
-            }
-
-            hideModalError();
-            elements.modalLoading.style.display = 'flex';
-            elements.modalGenerateBtn.disabled = true;
-
-            try {
-                const prompt = createVideoPrompt(theme, currentSelectedStyle);
-                const generatedPrompt = await callGeminiAPI(apiKey, prompt);
-                alert('Prompt gerado com sucesso! (Funcionalidade de "Caixa" removida)');
-                saveApiKey(apiKey);
-                closeModal();
-                showContentSection('descobrir-section'); 
-            } catch (error) {
-                showModalError(error.message);
-            } finally {
-                elements.modalLoading.style.display = 'none';
-                elements.modalGenerateBtn.disabled = false;
-            }
-        }
-
-        function showModalError(message) {
-            elements.modalError.textContent = message;
-            elements.modalError.style.display = 'block';
-        }
-
-        function hideModalError() {
-            elements.modalError.style.display = 'none';
-        }
-        
-        async function callGeminiAPI(apiKey, prompt) {
-            const response = await fetch(CONFIG.GEMINI_API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: { temperature: 0.7, topP: 0.8, topK: 40, maxOutputTokens: 2048 }
-                }),
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => null);
-                throw new Error(getErrorMessage(response.status, errorData));
-            }
-
-            const data = await response.json();
-            if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
-                return data.candidates[0].content.parts[0].text;
-            } else {
-                if (data.candidates?.[0]?.finishReason === 'SAFETY') {
-                    throw new Error('A resposta foi bloqueada por segurança. Tente outro tema.');
-                }
-                throw new Error('Resposta inesperada da API. Tente novamente.');
-            }
-        }
-
-        function createVideoPrompt(theme, style) {
-            return `Você é um especialista em criar prompts para IAs de geração de vídeo. Crie um prompt EXTREMAMENTE DETALHADO e técnico para gerar um vídeo sobre: "${theme}" no estilo "${style}". O prompt deve incluir: DESCRIÇÃO VISUAL, ESTILO E ESTÉTICA, ASPECTOS TÉCNICOS, ÁUDIO E AMBIENTE. Termine com um PROMPT FINAL conciso e direto. IMPORTANTE: Responda INTEIRAMENTE EM INGLÊS.`;
-        }
-
-        function getErrorMessage(status, errorData) {
-            const messages = { 400: 'Solicitação inválida. Verifique o nome do modelo.', 403: 'Acesso negado. Verifique a chave da API.', 429: 'Limite de solicitações excedido.' };
-            return messages[status] || `Erro de API: ${status} - ${errorData?.error?.message || 'Erro desconhecido'}`;
-        }
-
-        function saveApiKey(key) { localStorage.setItem('geminiApiKey', key); }
-        function loadSavedApiKey() { elements.modalApiKey.value = localStorage.getItem('geminiApiKey') || ''; }
-
-        function showContentSection(sectionId) {
-            elements.mainContent.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
-            const activeSection = document.getElementById(sectionId);
-            if (activeSection) {
-                activeSection.style.display = 'flex';
-                elements.footerNav.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.toggle('active', item.dataset.target === sectionId);
-                });
-                elements.topTabs.querySelectorAll('.tab-item').forEach(item => {
-                    item.classList.toggle('active', item.dataset.target === sectionId);
-                });
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const splashScreen = document.getElementById('splash-screen');
-            if (splashScreen) {
-                setTimeout(() => {
-                    splashScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        splashScreen.style.display = 'none';
-                    }, 500);
-                }, 5000);
-            }
-            
-            init();
-        });
-    </script>
+      });
+      elements.modalCancelBtn.addEventListener('click', closeModal);
+      elements.modalForm.addEventListener('submit', handleModalFormSubmit);
+      elements.footerNav.addEventListener('click', (e) => {
+        const navItem = e.target.closest('.nav-item');
+        if (navItem && navItem.dataset.target) showContentSection(navItem.dataset.target);
+      });
+    }
+    function closeModal() {
+      elements.promptModal.style.display = 'none';
+      elements.modalError.style.display = 'none';
+    }
+    async function handleModalFormSubmit(e) {
+      e.preventDefault();
+      const apiKey = elements.modalApiKey.value.trim();
+      const theme = elements.modalTheme.value.trim();
+      if (!apiKey || !theme || apiKey.length < 30) {
+        showModalError('Por favor, preencha todos os campos com uma chave de API válida.');
+        return;
+      }
+      hideModalError();
+      elements.modalLoading.style.display = 'flex';
+      elements.modalGenerateBtn.disabled = true;
+      try {
+        const prompt = createVideoPrompt(theme, currentSelectedStyle);
+        const generatedPrompt = await callGeminiAPI(apiKey, prompt);
+        alert('Prompt gerado com sucesso! (Funcionalidade de "Caixa" removida)');
+        saveApiKey(apiKey);
+        closeModal();
+        showContentSection('descobrir-section');
+      } catch (error) {
+        showModalError(error.message);
+      } finally {
+        elements.modalLoading.style.display = 'none';
+        elements.modalGenerateBtn.disabled = false;
+      }
+    }
+    function showModalError(message) {
+      elements.modalError.textContent = message;
+      elements.modalError.style.display = 'block';
+    }
+    function hideModalError() {
+      elements.modalError.style.display = 'none';
+    }
+    async function callGeminiAPI(apiKey, prompt) {
+      const response = await fetch(CONFIG.GEMINI_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.7, topP: 0.8, topK: 40, maxOutputTokens: 2048 }
+        }),
+      });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(getErrorMessage(response.status, errorData));
+      }
+      const data = await response.json();
+      if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+        return data.candidates[0].content.parts[0].text;
+      } else {
+        if (data.candidates?.[0]?.finishReason === 'SAFETY') throw new Error('A resposta foi bloqueada por segurança. Tente outro tema.');
+        throw new Error('Resposta inesperada da API. Tente novamente.');
+      }
+    }
+    function createVideoPrompt(theme, style) {
+      return `Você é um especialista em criar prompts para IAs de geração de vídeo. Crie um prompt EXTREMAMENTE DETALHADO e técnico para gerar um vídeo sobre: "${theme}" no estilo "${style}". O prompt deve incluir: DESCRIÇÃO VISUAL, ESTILO E ESTÉTICA, ASPECTOS TÉCNICOS, ÁUDIO E AMBIENTE. Termine com um PROMPT FINAL conciso e direto. IMPORTANTE: Responda INTEIRAMENTE EM INGLÊS.`;
+    }
+    function getErrorMessage(status, errorData) {
+      const messages = {
+        400: 'Solicitação inválida. Verifique o nome do modelo.',
+        403: 'Acesso negado. Verifique a chave da API.',
+        429: 'Limite de solicitações excedido.',
+      };
+      return messages[status] || `Erro de API: ${status} - ${errorData?.error?.message || 'Erro desconhecido'}`;
+    }
+    function saveApiKey(key) { localStorage.setItem('geminiApiKey', key); }
+    function loadSavedApiKey() { elements.modalApiKey.value = localStorage.getItem('geminiApiKey') || ''; }
+    function showContentSection(sectionId) {
+      elements.mainContent.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.style.display = 'flex';
+        elements.footerNav.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
+        elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const splashScreen = document.getElementById('splash-screen');
+      if (splashScreen) {
+        setTimeout(() => {
+          splashScreen.style.opacity = '0';
+          setTimeout(() => { splashScreen.style.display = 'none'; }, 500);
+        }, 2500);
+      }
+      init();
+    });
+  </script>
 </body>
 </html>
-
