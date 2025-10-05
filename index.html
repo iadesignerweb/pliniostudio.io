@@ -45,7 +45,8 @@
       object-fit: contain;
     }
     #app-container {
-      max-width: 450px;
+      /* Ajuste para Desktop */
+      max-width: 1140px; 
       margin: 0 auto;
       min-height: 100vh;
       display: flex;
@@ -232,12 +233,67 @@
     .modal-buttons .generate-btn { background: var(--gradient-button); color: #fff;}
     .modal-buttons .generate-btn:hover { opacity: 0.9; }
     .modal-buttons .generate-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
+
+    /* --- ESTILOS DO POP-UP --- */
+    .ad-popup {
+        display: none; /* Inicia oculto */
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        animation: fadeInPopup 0.5s;
+    }
+    @keyframes fadeInPopup { from { opacity: 0; } to { opacity: 1; } }
+
+    .popup-content {
+        position: relative;
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+    }
+    .popup-content h2 {
+        color: var(--text-primary);
+        margin-bottom: 15px;
+    }
+    .popup-content a img {
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 10px;
+        transition: transform 0.2s;
+    }
+     .popup-content a img:hover {
+        transform: scale(1.03);
+    }
+    .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #fff;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 1;
+    }
+    /* --- FIM DOS ESTILOS DO POP-UP --- */
+
     /* Footer */
     .footer-wrapper {
       position: fixed;
       bottom: 0;
+      left: 50%; /* Centraliza o wrapper */
+      transform: translateX(-50%); /* Ajuste fino da centralização */
       width: 100%;
-      max-width: 450px;
+      /* Ajuste para Desktop */
+      max-width: 1140px; 
       z-index: 10;
       background: var(--dark-bg);
     }
@@ -310,7 +366,8 @@
       padding: 5px 10px;
       border-top: 1px solid var(--border-color);
       width: 100%;
-      max-width: 450px;
+      /* Ajuste para Desktop */
+      max-width: 1140px; 
       margin: 0 auto;
       box-sizing: border-box;
     }
@@ -331,9 +388,14 @@
       margin-top: 20px;
       border: 1px solid #FF0000;
     }
-    /* Responsivo */
-    @media (max-width: 500px) {
-      #app-container, .copyright-footer, .footer-wrapper { max-width: 100vw;}
+    /* Responsivo para Celular */
+    @media (max-width: 1140px) {
+      /* Garante que em telas menores o layout ocupe 100% da largura */
+      #app-container, .copyright-footer, .footer-wrapper { 
+        max-width: 100vw;
+        left: 0;
+        transform: none;
+      }
     }
   </style>
 </head>
@@ -341,6 +403,7 @@
   <div id="splash-screen" aria-label="Carregando AI Prompt Studio">
     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Carregando AI Prompt Studio">
   </div>
+
   <div id="app-container">
     <header>
       <div class="left-icons">
@@ -351,14 +414,15 @@
         <a href="https://iadesignerweb.github.io/crm" target="_blank" class="basic-tag" rel="noopener">CRM <span class="coin-icon">💰</span> 60</a>
       </div>
     </header>
+
     <nav class="top-tabs" aria-label="Navegação de abas">
       <div class="tab-item active" data-tab-name="Em alta" data-target="descobrir-section">Em alta</div>
       <div class="tab-item" data-tab-name="Agência" data-url="https://iadesignerweb.github.io/site">Agência <span class="new-badge">New</span></div>
       <div class="tab-item" data-tab-name="Design de Sites" data-url="https://iadesignerweb.github.io/free">Design de Sites</div>
       <div class="tab-item" data-tab-name="Contratar" data-target="suporte-section">Contratar</div>
     </nav>
+
     <main id="main-content">
-      <!-- Descobrir -->
       <section id="descobrir-section" class="content-section" aria-label="Estilos em alta">
         <div class="style-grid">
           <div class="style-card" data-style-name="Ghostface Terror">
@@ -413,7 +477,6 @@
           </div>
         </div>
       </section>
-      <!-- Modelos -->
       <section id="modelo-section" class="content-section" aria-label="Modelos Básicos">
         <h2>Modelos Básicos</h2>
         <div class="style-grid">
@@ -429,14 +492,12 @@
           <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Studio%2C%20Criando%20APK%2C%20Design.png" alt="Modelo 10"></div>
         </div>
       </section>
-      <!-- Suporte -->
       <section id="suporte-section" class="content-section" aria-label="Suporte e Contato">
         <h2>Adquira Nossos Serviços</h2>
         <p>Entre em contato pelo WhatsApp:<br>
           <a href="https://wa.me/5587999786261" target="_blank" rel="noopener">(87) 99978-6261</a>
         </p>
       </section>
-      <!-- Quem Somos -->
       <section id="quem-somos-section" class="content-section" aria-label="Sobre a Empresa">
         <div class="section-content">
           <h2>Quem Somos</h2>
@@ -453,7 +514,7 @@
         </div>
       </section>
     </main>
-    <!-- Modal de Prompt -->
+
     <div id="prompt-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-content">
         <h2 id="modal-title">Gerar Prompt Detalhado</h2>
@@ -475,11 +536,19 @@
         <div id="modal-error" class="error-message" style="display:none;"></div>
       </div>
     </div>
-    <!-- Footer -->
+
     <footer class="footer-wrapper">
       <div class="icon-carousel-container">
         <div class="icon-carousel" aria-label="Redes Sociais">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/google.svg" alt="Google">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/youtube.svg" alt="YouTube">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/instagram.svg" alt="Instagram">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/facebook.svg" alt="Facebook">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/whatsapp.svg" alt="WhatsApp">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/meta.svg" alt="Meta">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/openai.svg" alt="ChatGPT">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google_Gemini_logo.svg" alt="Gemini">
+           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/google.svg" alt="Google">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/youtube.svg" alt="YouTube">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/instagram.svg" alt="Instagram">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/facebook.svg" alt="Facebook">
@@ -501,10 +570,23 @@
       </div>
     </footer>
   </div>
+
+  <div id="ad-popup" class="ad-popup">
+    <div class="popup-content">
+        <span class="close-popup" title="Fechar">&times;</span>
+        <h2>ADQUIRA SUA LANDPAGE</h2>
+        <a href="https://iadesignerweb.github.io/musicoterapia" target="_blank" rel="noopener">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Clique para adquirir sua Landing Page">
+        </a>
+    </div>
+  </div>
+
+
   <script>
     const CONFIG = {
       GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
     };
+
     const elements = {
       appContainer: document.getElementById('app-container'),
       mainContent: document.getElementById('main-content'),
@@ -520,27 +602,36 @@
       modalGenerateBtn: document.querySelector('#prompt-modal .generate-btn'),
       modalLoading: document.getElementById('modal-loading'),
       modalError: document.getElementById('modal-error'),
+      // Elementos do Pop-up
+      adPopup: document.getElementById('ad-popup'),
+      closePopupButton: document.querySelector('.close-popup')
     };
+
     let currentSelectedStyle = null;
+
     function init() {
       bindEvents();
       loadSavedApiKey();
       showContentSection('descobrir-section');
     }
+
     function bindEvents() {
       elements.topTabs.addEventListener('click', (e) => {
         const tabItem = e.target.closest('.tab-item');
         if (!tabItem) return;
+
         const url = tabItem.dataset.url;
         if (url) {
           window.open(url, '_blank');
           return;
         }
+
         elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
         tabItem.classList.add('active');
         const target = tabItem.dataset.target;
         if (target) showContentSection(target);
       });
+
       elements.styleGrid.addEventListener('click', (e) => {
         const useButton = e.target.closest('.use-card-button');
         if (useButton) {
@@ -550,28 +641,57 @@
           elements.promptModal.style.display = 'flex';
         }
       });
+
       elements.modalCancelBtn.addEventListener('click', closeModal);
       elements.modalForm.addEventListener('submit', handleModalFormSubmit);
+
       elements.footerNav.addEventListener('click', (e) => {
         const navItem = e.target.closest('.nav-item');
         if (navItem && navItem.dataset.target) showContentSection(navItem.dataset.target);
       });
+
+      // Eventos do Pop-up
+      elements.closePopupButton.addEventListener('click', closeAdPopup);
+      elements.adPopup.addEventListener('click', (e) => {
+          // Fecha se clicar fora do conteúdo
+          if (e.target === elements.adPopup) {
+              closeAdPopup();
+          }
+      });
     }
+    
+    // Funções do Pop-up
+    function showAdPopup() {
+        if (elements.adPopup) {
+            elements.adPopup.style.display = 'flex';
+        }
+    }
+    function closeAdPopup() {
+        if (elements.adPopup) {
+            elements.adPopup.style.display = 'none';
+        }
+    }
+
+
     function closeModal() {
       elements.promptModal.style.display = 'none';
       elements.modalError.style.display = 'none';
     }
+
     async function handleModalFormSubmit(e) {
       e.preventDefault();
       const apiKey = elements.modalApiKey.value.trim();
       const theme = elements.modalTheme.value.trim();
+
       if (!apiKey || !theme || apiKey.length < 30) {
         showModalError('Por favor, preencha todos os campos com uma chave de API válida.');
         return;
       }
+      
       hideModalError();
       elements.modalLoading.style.display = 'flex';
       elements.modalGenerateBtn.disabled = true;
+
       try {
         const prompt = createVideoPrompt(theme, currentSelectedStyle);
         const generatedPrompt = await callGeminiAPI(apiKey, prompt);
@@ -586,13 +706,16 @@
         elements.modalGenerateBtn.disabled = false;
       }
     }
+
     function showModalError(message) {
       elements.modalError.textContent = message;
       elements.modalError.style.display = 'block';
     }
+
     function hideModalError() {
       elements.modalError.style.display = 'none';
     }
+
     async function callGeminiAPI(apiKey, prompt) {
       const response = await fetch(CONFIG.GEMINI_API_URL, {
         method: 'POST',
@@ -602,10 +725,12 @@
           generationConfig: { temperature: 0.7, topP: 0.8, topK: 40, maxOutputTokens: 2048 }
         }),
       });
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => null);
         throw new Error(getErrorMessage(response.status, errorData));
       }
+
       const data = await response.json();
       if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
         return data.candidates[0].content.parts[0].text;
@@ -614,9 +739,11 @@
         throw new Error('Resposta inesperada da API. Tente novamente.');
       }
     }
+
     function createVideoPrompt(theme, style) {
       return `Você é um especialista em criar prompts para IAs de geração de vídeo. Crie um prompt EXTREMAMENTE DETALHADO e técnico para gerar um vídeo sobre: "${theme}" no estilo "${style}". O prompt deve incluir: DESCRIÇÃO VISUAL, ESTILO E ESTÉTICA, ASPECTOS TÉCNICOS, ÁUDIO E AMBIENTE. Termine com um PROMPT FINAL conciso e direto. IMPORTANTE: Responda INTEIRAMENTE EM INGLÊS.`;
     }
+
     function getErrorMessage(status, errorData) {
       const messages = {
         400: 'Solicitação inválida. Verifique o nome do modelo.',
@@ -625,8 +752,10 @@
       };
       return messages[status] || `Erro de API: ${status} - ${errorData?.error?.message || 'Erro desconhecido'}`;
     }
+
     function saveApiKey(key) { localStorage.setItem('geminiApiKey', key); }
     function loadSavedApiKey() { elements.modalApiKey.value = localStorage.getItem('geminiApiKey') || ''; }
+
     function showContentSection(sectionId) {
       elements.mainContent.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
       const activeSection = document.getElementById(sectionId);
@@ -636,6 +765,7 @@
         elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
       }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       const splashScreen = document.getElementById('splash-screen');
       if (splashScreen) {
@@ -644,7 +774,11 @@
           setTimeout(() => { splashScreen.style.display = 'none'; }, 500);
         }, 2500);
       }
+
       init();
+
+      // Inicia o timer de 10 segundos para o Pop-up
+      setTimeout(showAdPopup, 10000); 
     });
   </script>
 </body>
