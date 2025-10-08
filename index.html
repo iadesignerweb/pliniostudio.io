@@ -89,6 +89,28 @@
       text-decoration: none;
     }
     .right-info .coin-icon { color: gold; font-size: 1.1em; }
+
+    /* --- NOVOS ESTILOS PARA LINK DE PROMPT E SETA --- */
+    .prompt-link-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .prompt-link {
+        cursor: pointer;
+    }
+    .pointing-arrow {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        animation: point-right 1.5s ease-in-out infinite;
+    }
+    @keyframes point-right {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
+    }
+    /* --- FIM DOS NOVOS ESTILOS --- */
+
     nav.top-tabs {
       display: flex;
       overflow-x: auto;
@@ -132,7 +154,7 @@
       overflow-y: auto;
       padding-bottom: 160px;
     }
-    .content-section { display: none; padding: 20px 15px; flex-direction: column; gap: 15px; text-align: center; }
+    .content-section { display: none; padding: 20px 15px; flex-direction: column; gap: 20px; text-align: center; }
     #descobrir-section { display: flex; }
     .style-grid {
       display: grid;
@@ -183,6 +205,22 @@
       background: var(--card-bg);
     }
     .model-image-card img { width: 100%; height: 100%; object-fit: cover; display: block;}
+    
+    /* --- ESTILO PARA OS CARDS DE IMAGEM DA PÁGINA DE PROMPTS --- */
+    .prompt-image-card {
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        aspect-ratio: 2 / 3; /* Proporção 2:3 */
+    }
+    .prompt-image-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Garante que a imagem cubra o card sem distorcer */
+        display: block;
+    }
+    /* --- FIM DO ESTILO DOS CARDS DE PROMPTS --- */
+
     .modal {
       display: none;
       position: fixed;
@@ -233,145 +271,83 @@
     .modal-buttons .generate-btn { background: var(--gradient-button); color: #fff;}
     .modal-buttons .generate-btn:hover { opacity: 0.9; }
     .modal-buttons .generate-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
-
-    /* --- ESTILOS DO POP-UP --- */
     .ad-popup {
-        display: none; /* Inicia oculto */
-        position: fixed;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
+        display: none; position: fixed;
+        z-index: 10000; left: 0; top: 0;
+        width: 100%; height: 100%;
         background-color: rgba(0, 0, 0, 0.7);
-        justify-content: center;
-        align-items: center;
+        justify-content: center; align-items: center;
         animation: fadeInPopup 0.5s;
     }
     @keyframes fadeInPopup { from { opacity: 0; } to { opacity: 1; } }
-
     .popup-content {
-        position: relative;
-        background: var(--card-bg);
-        padding: 25px;
-        border-radius: 15px;
-        width: 90%;
-        max-width: 500px;
-        text-align: center;
-        border: 1px solid var(--border-color);
+        position: relative; background: var(--card-bg);
+        padding: 25px; border-radius: 15px;
+        width: 90%; max-width: 500px;
+        text-align: center; border: 1px solid var(--border-color);
     }
-    .popup-content h2 {
-        color: var(--text-primary);
-        margin-bottom: 15px;
-    }
+    .popup-content h2 { color: var(--text-primary); margin-bottom: 15px; }
     .popup-content a img {
-        width: 100%;
-        border-radius: 10px;
-        margin-top: 10px;
+        width: 100%; border-radius: 10px; margin-top: 10px;
         transition: transform 0.2s;
     }
-     .popup-content a img:hover {
-        transform: scale(1.03);
-    }
+     .popup-content a img:hover { transform: scale(1.03); }
     .close-popup {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        color: #fff;
-        font-size: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        line-height: 1;
+        position: absolute; top: 10px; right: 15px;
+        color: #fff; font-size: 30px; font-weight: bold;
+        cursor: pointer; line-height: 1;
     }
-    /* --- FIM DOS ESTILOS DO POP-UP --- */
-
-    /* Footer */
     .footer-wrapper {
-      position: fixed;
-      bottom: 0;
-      left: 50%; /* Centraliza o wrapper */
-      transform: translateX(-50%); /* Ajuste fino da centralização */
-      width: 100%;
-      /* Ajuste para Desktop */
-      max-width: 1140px; 
-      z-index: 10;
+      position: fixed; bottom: 0; left: 50%;
+      transform: translateX(-50%); width: 100%;
+      max-width: 1140px; z-index: 10;
       background: var(--dark-bg);
     }
     .icon-carousel-container {
-      width: 100%;
-      overflow: hidden;
-      background: var(--dark-bg);
-      padding: 10px 0;
-      border-top: 1px solid var(--border-color);
+      width: 100%; overflow: hidden; background: var(--dark-bg);
+      padding: 10px 0; border-top: 1px solid var(--border-color);
       box-sizing: border-box;
     }
     .icon-carousel {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
+      display: flex; align-items: center; white-space: nowrap;
       animation: slideIcons 30s linear infinite;
     }
     .icon-carousel img {
-      height: 30px;
-      width: auto;
-      margin: 0 20px;
+      height: 30px; width: auto; margin: 0 20px;
       filter: brightness(0) invert(1) opacity(70%);
       transition: filter 0.3s;
     }
-    .icon-carousel img:hover {
-      filter: brightness(0) invert(1) opacity(100%);
-    }
+    .icon-carousel img:hover { filter: brightness(0) invert(1) opacity(100%); }
     @keyframes slideIcons {
       0% { transform: translateX(0);}
       100% { transform: translateX(-50%);}
     }
     .footer-nav {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 10px 0;
-      width: 100%;
-      border-top: 1px solid var(--border-color);
+      display: flex; justify-content: space-around; align-items: center;
+      padding: 10px 0; width: 100%; border-top: 1px solid var(--border-color);
       background: var(--dark-bg);
     }
     .footer-nav .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.7em;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: color 0.2s;
-      position: relative;
+      display: flex; flex-direction: column; align-items: center;
+      font-size: 0.7em; color: var(--text-secondary); cursor: pointer;
+      transition: color 0.2s; position: relative;
     }
     .footer-nav .nav-item.active { color: var(--text-primary);}
     .footer-nav .nav-item .icon { font-size: 24px; margin-bottom: 3px;}
     .footer-nav .center-button {
-      background: var(--accent-purple);
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      display: flex; justify-content: center; align-items: center;
-      font-size: 30px;
-      color: #fff;
-      transform: translateY(-20%);
+      background: var(--accent-purple); border-radius: 50%;
+      width: 50px; height: 50px; display: flex;
+      justify-content: center; align-items: center;
+      font-size: 30px; color: #fff; transform: translateY(-20%);
       box-shadow: 0 5px 15px rgba(155,81,224,0.4);
-      cursor: pointer;
-      text-decoration: none;
+      cursor: pointer; text-decoration: none;
     }
     .copyright-footer {
-      background: var(--dark-bg);
-      color: var(--text-secondary);
-      font-size: 0.7em;
-      text-align: center;
-      padding: 5px 10px;
-      border-top: 1px solid var(--border-color);
-      width: 100%;
-      /* Ajuste para Desktop */
-      max-width: 1140px; 
-      margin: 0 auto;
-      box-sizing: border-box;
+      background: var(--dark-bg); color: var(--text-secondary);
+      font-size: 0.7em; text-align: center; padding: 5px 10px;
+      border-top: 1px solid var(--border-color); width: 100%;
+      max-width: 1140px; margin: 0 auto; box-sizing: border-box;
     }
-    /* General Utility */
     .loading-animation { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: .9em; color: var(--text-secondary);}
     .loading-spinner {
       border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid var(--accent-purple);
@@ -380,21 +356,12 @@
     }
     @keyframes spin { 0% {transform:rotate(0);} 100% {transform:rotate(360deg);} }
     .error-message {
-      background: #610000;
-      color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 0.9em;
-      margin-top: 20px;
-      border: 1px solid #FF0000;
+      background: #610000; color: #fff; padding: 15px; border-radius: 10px;
+      font-size: 0.9em; margin-top: 20px; border: 1px solid #FF0000;
     }
-    /* Responsivo para Celular */
     @media (max-width: 1140px) {
-      /* Garante que em telas menores o layout ocupe 100% da largura */
       #app-container, .copyright-footer, .footer-wrapper { 
-        max-width: 100vw;
-        left: 0;
-        transform: none;
+        max-width: 100vw; left: 0; transform: none;
       }
     }
   </style>
@@ -410,7 +377,10 @@
         <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
       </div>
       <div class="right-info">
-        <span class="icon" title="Presente">🎁</span>
+        <div class="prompt-link-container">
+            <a href="#" class="basic-tag prompt-link" data-target="prompts-free-section" title="Prompts Grátis">PROMPT</a>
+            <span class="pointing-arrow">→</span>
+        </div>
         <a href="https://iadesignerweb.github.io/crm" target="_blank" class="basic-tag" rel="noopener">CRM <span class="coin-icon">💰</span> 60</a>
       </div>
     </header>
@@ -475,6 +445,20 @@
               <button class="card-button use-card-button">Usar</button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="prompts-free-section" class="content-section" aria-label="Prompts Gratuitos - Estilo Caricatura">
+        <h2>Estilo Caricatura</h2>
+        <div class="style-grid">
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115711.jpg" alt="Caricatura 1"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115617.jpg" alt="Caricatura 2"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115512.jpg" alt="Caricatura 3"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115812.jpg" alt="Caricatura 4"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115856.jpg" alt="Caricatura 5"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_120003.jpg" alt="Caricatura 6"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_120031.jpg" alt="Caricatura 7"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_120104.jpg" alt="Caricatura 8"></div>
         </div>
       </section>
       <section id="modelo-section" class="content-section" aria-label="Modelos Básicos">
@@ -590,6 +574,7 @@
     const elements = {
       appContainer: document.getElementById('app-container'),
       mainContent: document.getElementById('main-content'),
+      header: document.querySelector('header'),
       topTabs: document.querySelector('.top-tabs'),
       styleGrid: document.querySelector('.style-grid'),
       footerNav: document.querySelector('.footer-nav'),
@@ -602,7 +587,6 @@
       modalGenerateBtn: document.querySelector('#prompt-modal .generate-btn'),
       modalLoading: document.getElementById('modal-loading'),
       modalError: document.getElementById('modal-error'),
-      // Elementos do Pop-up
       adPopup: document.getElementById('ad-popup'),
       closePopupButton: document.querySelector('.close-popup')
     };
@@ -626,10 +610,8 @@
           return;
         }
 
-        elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
-        tabItem.classList.add('active');
         const target = tabItem.dataset.target;
-        if (target) showContentSection(target);
+        if (target) showContentSection(target, 'topTabs');
       });
 
       elements.styleGrid.addEventListener('click', (e) => {
@@ -647,31 +629,31 @@
 
       elements.footerNav.addEventListener('click', (e) => {
         const navItem = e.target.closest('.nav-item');
-        if (navItem && navItem.dataset.target) showContentSection(navItem.dataset.target);
+        if (navItem && navItem.dataset.target) showContentSection(navItem.dataset.target, 'footerNav');
       });
 
-      // Eventos do Pop-up
+      // NOVO EVENTO PARA O LINK "PROMPT" NO CABEÇALHO
+      elements.header.addEventListener('click', (e) => {
+        const promptLink = e.target.closest('.prompt-link');
+        if (promptLink) {
+            e.preventDefault();
+            const target = promptLink.dataset.target;
+            if (target) showContentSection(target, 'header');
+        }
+      });
+
       elements.closePopupButton.addEventListener('click', closeAdPopup);
       elements.adPopup.addEventListener('click', (e) => {
-          // Fecha se clicar fora do conteúdo
-          if (e.target === elements.adPopup) {
-              closeAdPopup();
-          }
+          if (e.target === elements.adPopup) closeAdPopup();
       });
     }
     
-    // Funções do Pop-up
     function showAdPopup() {
-        if (elements.adPopup) {
-            elements.adPopup.style.display = 'flex';
-        }
+        if (elements.adPopup) elements.adPopup.style.display = 'flex';
     }
     function closeAdPopup() {
-        if (elements.adPopup) {
-            elements.adPopup.style.display = 'none';
-        }
+        if (elements.adPopup) elements.adPopup.style.display = 'none';
     }
-
 
     function closeModal() {
       elements.promptModal.style.display = 'none';
@@ -756,13 +738,21 @@
     function saveApiKey(key) { localStorage.setItem('geminiApiKey', key); }
     function loadSavedApiKey() { elements.modalApiKey.value = localStorage.getItem('geminiApiKey') || ''; }
 
-    function showContentSection(sectionId) {
+    function showContentSection(sectionId, source = null) {
       elements.mainContent.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
       const activeSection = document.getElementById(sectionId);
       if (activeSection) {
         activeSection.style.display = 'flex';
-        elements.footerNav.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
-        elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
+
+        // Desativa todos os itens de navegação primeiro
+        elements.footerNav.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
+
+        // Se a chamada não veio do cabeçalho, ativa a aba correspondente
+        if (source !== 'header') {
+          elements.footerNav.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
+          elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
+        }
       }
     }
 
@@ -777,7 +767,6 @@
 
       init();
 
-      // Inicia o timer de 10 segundos para o Pop-up
       setTimeout(showAdPopup, 10000); 
     });
   </script>
