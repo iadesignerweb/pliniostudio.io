@@ -19,6 +19,8 @@
       --active-tab-bg: #333333;
       --modal-bg: rgba(0,0,0,0.8);
       --modal-content-bg: #1A1A1A;
+      --red-error: #e74c3c;
+      --green-success: #2ecc71;
     }
     * {
       margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;
@@ -89,6 +91,28 @@
       text-decoration: none;
     }
     .right-info .coin-icon { color: gold; font-size: 1.1em; }
+
+    /* --- ESTILOS NOVOS PARA O EBOOK --- */
+    .ebook-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Espaçamento entre os botões */
+    }
+    .ebook-button {
+        background: var(--accent-orange);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition: background 0.2s;
+    }
+    .ebook-button:hover {
+        background: #e07b00;
+    }
 
     /* --- NOVOS ESTILOS PARA LINK DE PROMPT E SETA --- */
     .prompt-link-container {
@@ -241,12 +265,17 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
       animation: fadeInModal 0.3s ease-out;
       border: 1px solid var(--border-color);
+      position: relative; /* Para o botão de fechar */
     }
     @keyframes fadeInModal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     .modal-content h2 { font-size: 1.3em; color: var(--text-primary); margin-bottom: 20px; text-align: center;}
+    .modal-content p { font-size: 0.9em; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px;}
+    .modal-content ul { text-align: left; margin: 15px 0 20px 20px; color: var(--text-secondary);}
+    .modal-content ul li { margin-bottom: 8px;}
+    .modal-content strong { color: var(--text-primary);}
     .modal-form .form-group { margin-bottom: 20px;}
     .modal-form label { display:block; margin-bottom:8px; font-size:0.9em; color:var(--text-secondary); }
-    .modal-form input[type="password"], .modal-form textarea {
+    .modal-form input[type="password"], .modal-form textarea, .modal-form input[type="text"] {
       width: 100%;
       padding: 12px; border: 1px solid var(--border-color);
       border-radius: 8px; background: #333;
@@ -255,22 +284,46 @@
       resize: vertical; min-height: 50px;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .modal-form input[type="password"]:focus, .modal-form textarea:focus {
+    .modal-form input[type="password"]:focus, .modal-form textarea:focus, .modal-form input[type="text"]:focus {
       outline: none;
       border-color: var(--accent-purple);
       box-shadow: 0 0 0 3px rgba(155,81,224,0.2);
     }
-    .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px;}
-    .modal-buttons button {
+    .modal-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 25px;} /* Centralizado */
+    .modal-buttons button, .modal-buttons a {
       padding: 10px 20px; border-radius: 10px;
       font-weight: 500; cursor: pointer;
       transition: background 0.2s, opacity 0.2s; border: none;
+      text-decoration: none; display: flex; align-items: center; justify-content: center;
+      gap: 5px;
     }
     .modal-buttons .cancel-btn { background: #444; color: var(--text-primary); }
     .modal-buttons .cancel-btn:hover { background: #555; }
     .modal-buttons .generate-btn { background: var(--gradient-button); color: #fff;}
     .modal-buttons .generate-btn:hover { opacity: 0.9; }
     .modal-buttons .generate-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
+    .modal-buttons .whatsapp-btn { background: #25D366; color: white;} /* Botão WhatsApp */
+    .modal-buttons .whatsapp-btn:hover { background: #1da851;}
+    .modal-buttons .ebook-action-btn { background: var(--accent-orange); color: white;}
+    .modal-buttons .ebook-action-btn:hover { background: #e07b00;}
+
+
+    /* Close button for modals */
+    .modal .close-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--text-secondary);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal .close-button:hover {
+      color: var(--text-primary);
+    }
+
     .ad-popup {
         display: none; position: fixed;
         z-index: 10000; left: 0; top: 0;
@@ -356,8 +409,14 @@
     }
     @keyframes spin { 0% {transform:rotate(0);} 100% {transform:rotate(360deg);} }
     .error-message {
-      background: #610000; color: #fff; padding: 15px; border-radius: 10px;
-      font-size: 0.9em; margin-top: 20px; border: 1px solid #FF0000;
+      background: #610000; color: #fff; padding: 10px; border-radius: 8px;
+      font-size: 0.85em; margin-top: 15px; border: 1px solid #FF0000;
+      text-align: center;
+    }
+    .success-message {
+      background: #0a4f2b; color: #fff; padding: 10px; border-radius: 8px;
+      font-size: 0.85em; margin-top: 15px; border: 1px solid #2ecc71;
+      text-align: center;
     }
     @media (max-width: 1140px) {
       #app-container, .copyright-footer, .footer-wrapper { 
@@ -377,9 +436,9 @@
         <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
       </div>
       <div class="right-info">
-        <div class="prompt-link-container">
+        <div class="ebook-actions">
             <a href="#" class="basic-tag prompt-link" data-target="prompts-free-section" title="Prompts Grátis">E-EBBOK - FOTOS PRPFISSIONAIS</a>
-            <span class="pointing-arrow">→</span>
+            <button class="ebook-button" id="open-ebook-tutorial">BAIXAR E-BOOK</button>
         </div>
         <a href="https://iadesignerweb.github.io/crm" target="_blank" class="basic-tag" rel="noopener">EAD <span class="coin-icon">💰</span> 0</a>
       </div>
@@ -468,7 +527,7 @@
           <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153747_0000.png" alt="Modelo 2"></div>
           <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153919_0000.png" alt="Modelo 3"></div>
           <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_154103_0000.png" alt="Modelo 4"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_154142_0000.png" alt="Modelo 5"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com//pliniostudio.io/refs/heads/main/20250901_154142_0000.png" alt="Modelo 5"></div>
           <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Modelo 6"></div>
           <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites3.jpg" alt="Modelo 7"></div>
           <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites5.jpg" alt="Modelo 8"></div>
@@ -499,8 +558,10 @@
       </section>
     </main>
 
+    <!-- Modal de Geração de Prompt -->
     <div id="prompt-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-content">
+        <span class="close-button" id="close-prompt-modal">&times;</span>
         <h2 id="modal-title">Gerar Prompt Detalhado</h2>
         <form id="modal-form" class="modal-form" autocomplete="off">
           <div class="form-group">
@@ -512,12 +573,62 @@
             <textarea id="modal-theme" placeholder="Ex: Um rei leão com coroa de fogo" required rows="3"></textarea>
           </div>
           <div class="modal-buttons">
-            <button type="button" class="cancel-btn">Cancelar</button>
+            <button type="button" class="cancel-btn" id="cancel-prompt-modal">Cancelar</button>
             <button type="submit" class="generate-btn">Gerar</button>
           </div>
         </form>
         <div id="modal-loading" class="loading-animation" style="display:none;"><div class="loading-spinner"></div><span>Gerando seu prompt...</span></div>
         <div id="modal-error" class="error-message" style="display:none;"></div>
+      </div>
+    </div>
+
+    <!-- Novo Modal para o Tutorial do E-book -->
+    <div id="ebook-tutorial-popup" class="modal" role="dialog" aria-modal="true" aria-labelledby="ebook-tutorial-title">
+      <div class="modal-content">
+        <span class="close-button" id="close-ebook-tutorial">&times;</span>
+        <h2 id="ebook-tutorial-title">E-BOOK: Prompts para Fotos Profissionais</h2>
+        <p>Desenvolvido por <strong>Plinio Studio</strong>, este E-book exclusivo revela os segredos dos prompts do Gemini para criar imagens de nível profissional.</p>
+        <p>Com ele, você terá acesso a:</p>
+        <ul>
+          <li><strong>Prompts Exclusivos:</strong> Criados para gerar fotos de alta qualidade em diversos estilos.</li>
+          <li><strong>Tutoriais Detalhados:</strong> Aprenda a usar o Gemini de forma eficaz para resultados incríveis.</li>
+          <li><strong>Atualizações Semanais:</strong> Conteúdo novo e prompts atualizados para você estar sempre à frente!</li>
+          <li><strong>Acesso Vitalício:</strong> Pague uma única vez e tenha o E-book para sempre.</li>
+        </ul>
+        <p>Seja profissional e adquira o seu! Invista no seu talento por apenas <strong>R$ 19,90</strong> (pagamento único).</p>
+        <div class="modal-buttons">
+          <a href="https://wa.me/5587996029765?text=Olá! Tenho interesse em adquirir o E-book de Prompts para Fotos Profissionais." target="_blank" rel="noopener" class="whatsapp-btn ebook-action-btn">EU QUERO O E-BOOK</a>
+          <button type="button" class="ebook-action-btn" id="open-ebook-download">JÁ TENHO MEU ID</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Novo Modal para Download do E-book (com ID) -->
+    <div id="ebook-download-popup" class="modal" role="dialog" aria-modal="true" aria-labelledby="ebook-download-title">
+      <div class="modal-content">
+        <span class="close-button" id="close-ebook-download">&times;</span>
+        <h2 id="ebook-download-title">Baixar E-book Prompts Profissionais</h2>
+        <p>Para liberar o download do seu E-book, insira o <strong>ID Secreto</strong> que você recebeu após a confirmação do pagamento.</p>
+        <div class="form-group">
+          <label for="ebook-id-input">ID Secreto:</label>
+          <input type="text" id="ebook-id-input" placeholder="Digite seu ID Secreto" required>
+        </div>
+        <div id="ebook-id-message" class="error-message" style="display:none;"></div>
+        <div class="modal-buttons">
+          <button type="button" class="generate-btn" id="verify-ebook-id">Verificar ID e Baixar</button>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8em;">Não tem um ID? <a href="https://wa.me/5587996029765?text=Olá! Preciso do ID secreto para o E-book de Prompts. Já realizei o pagamento." target="_blank" rel="noopener" style="color: var(--accent-orange); text-decoration: none;">Entre em contato conosco pelo WhatsApp.</a></p>
+      </div>
+    </div>
+
+    <!-- Pop-up de Anúncio -->
+    <div id="ad-popup" class="ad-popup">
+      <div class="popup-content">
+          <span class="close-popup" title="Fechar">&times;</span>
+          <h2>ADQUIRA SUA LANDPAGE</h2>
+          <a href="https://iadesignerweb.github.io/musicoterapia" target="_blank" rel="noopener">
+              <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Clique para adquirir sua Landing Page">
+          </a>
       </div>
     </div>
 
@@ -555,20 +666,13 @@
     </footer>
   </div>
 
-  <div id="ad-popup" class="ad-popup">
-    <div class="popup-content">
-        <span class="close-popup" title="Fechar">&times;</span>
-        <h2>ADQUIRA SUA LANDPAGE</h2>
-        <a href="https://iadesignerweb.github.io/musicoterapia" target="_blank" rel="noopener">
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Clique para adquirir sua Landing Page">
-        </a>
-    </div>
-  </div>
-
 
   <script>
     const CONFIG = {
       GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
+      EBOOK_DOWNLOAD_LINK: 'https://www.mediafire.com/folder/ahlilwov3un8s/Prompts+Para+Fotos+Profissionais',
+      WHATSAPP_EBOOK_CONTACT: 'https://wa.me/5587996029765',
+      SECRET_EBOOK_ID: 'prompts2025' // ID secreto para download
     };
 
     const elements = {
@@ -578,15 +682,33 @@
       topTabs: document.querySelector('.top-tabs'),
       styleGrid: document.querySelector('.style-grid'),
       footerNav: document.querySelector('.footer-nav'),
+      
+      // Prompt Modal elements
       promptModal: document.getElementById('prompt-modal'),
       modalTitle: document.getElementById('modal-title'),
       modalForm: document.getElementById('modal-form'),
       modalApiKey: document.getElementById('modal-api-key'),
       modalTheme: document.getElementById('modal-theme'),
-      modalCancelBtn: document.querySelector('#prompt-modal .cancel-btn'),
+      modalCancelBtn: document.getElementById('cancel-prompt-modal'), // Alterado para ID
       modalGenerateBtn: document.querySelector('#prompt-modal .generate-btn'),
       modalLoading: document.getElementById('modal-loading'),
       modalError: document.getElementById('modal-error'),
+      closePromptModalButton: document.getElementById('close-prompt-modal'), // Novo botão fechar
+
+      // Ebook Tutorial Modal elements
+      openEbookTutorialButton: document.getElementById('open-ebook-tutorial'),
+      ebookTutorialPopup: document.getElementById('ebook-tutorial-popup'),
+      closeEbookTutorialButton: document.getElementById('close-ebook-tutorial'),
+      openEbookDownloadButton: document.getElementById('open-ebook-download'),
+
+      // Ebook Download Modal elements
+      ebookDownloadPopup: document.getElementById('ebook-download-popup'),
+      closeEbookDownloadButton: document.getElementById('close-ebook-download'),
+      ebookIdInput: document.getElementById('ebook-id-input'),
+      ebookIdMessage: document.getElementById('ebook-id-message'),
+      verifyEbookIdButton: document.getElementById('verify-ebook-id'),
+
+      // Ad Popup elements
       adPopup: document.getElementById('ad-popup'),
       closePopupButton: document.querySelector('.close-popup')
     };
@@ -624,15 +746,17 @@
         }
       });
 
-      elements.modalCancelBtn.addEventListener('click', closeModal);
-      elements.modalForm.addEventListener('submit', handleModalFormSubmit);
+      // Prompt Modal events
+      elements.modalCancelBtn.addEventListener('click', closePromptModal);
+      elements.closePromptModalButton.addEventListener('click', closePromptModal);
+      elements.modalForm.addEventListener('submit', handlePromptModalFormSubmit);
 
       elements.footerNav.addEventListener('click', (e) => {
         const navItem = e.target.closest('.nav-item');
         if (navItem && navItem.dataset.target) showContentSection(navItem.dataset.target, 'footerNav');
       });
 
-      // NOVO EVENTO PARA O LINK "PROMPT" NO CABEÇALHO
+      // NOVO EVENTO PARA O LINK "E-EBBOK" NO CABEÇALHO (para manter a funcionalidade original de mostrar a seção)
       elements.header.addEventListener('click', (e) => {
         const promptLink = e.target.closest('.prompt-link');
         if (promptLink) {
@@ -642,12 +766,31 @@
         }
       });
 
+      // Ebook Tutorial & Download events
+      elements.openEbookTutorialButton.addEventListener('click', openEbookTutorialPopup);
+      elements.closeEbookTutorialButton.addEventListener('click', closeEbookTutorialPopup);
+      elements.openEbookDownloadButton.addEventListener('click', () => {
+        closeEbookTutorialPopup();
+        openEbookDownloadPopup();
+      });
+      elements.closeEbookDownloadButton.addEventListener('click', closeEbookDownloadPopup);
+      elements.verifyEbookIdButton.addEventListener('click', verifyEbookId);
+
+      // Ad Popup events
       elements.closePopupButton.addEventListener('click', closeAdPopup);
       elements.adPopup.addEventListener('click', (e) => {
           if (e.target === elements.adPopup) closeAdPopup();
       });
+
+      // Fechar modais ao clicar fora
+      window.addEventListener('click', (e) => {
+        if (e.target === elements.promptModal) closePromptModal();
+        if (e.target === elements.ebookTutorialPopup) closeEbookTutorialPopup();
+        if (e.target === elements.ebookDownloadPopup) closeEbookDownloadPopup();
+      });
     }
     
+    // --- Funções para o Pop-up de Anúncio ---
     function showAdPopup() {
         if (elements.adPopup) elements.adPopup.style.display = 'flex';
     }
@@ -655,22 +798,24 @@
         if (elements.adPopup) elements.adPopup.style.display = 'none';
     }
 
-    function closeModal() {
+    // --- Funções para o Modal de Geração de Prompt (existente) ---
+    function closePromptModal() {
       elements.promptModal.style.display = 'none';
       elements.modalError.style.display = 'none';
+      elements.modalTheme.value = ''; // Limpa o campo do tema
     }
 
-    async function handleModalFormSubmit(e) {
+    async function handlePromptModalFormSubmit(e) {
       e.preventDefault();
       const apiKey = elements.modalApiKey.value.trim();
       const theme = elements.modalTheme.value.trim();
 
       if (!apiKey || !theme || apiKey.length < 30) {
-        showModalError('Por favor, preencha todos os campos com uma chave de API válida.');
+        showModalError(elements.modalError, 'Por favor, preencha todos os campos com uma chave de API válida.');
         return;
       }
       
-      hideModalError();
+      hideModalError(elements.modalError);
       elements.modalLoading.style.display = 'flex';
       elements.modalGenerateBtn.disabled = true;
 
@@ -678,24 +823,25 @@
         const prompt = createVideoPrompt(theme, currentSelectedStyle);
         const generatedPrompt = await callGeminiAPI(apiKey, prompt);
         alert('Prompt gerado com sucesso! (Funcionalidade de "Caixa" removida)');
+        console.log("Prompt Gerado:", generatedPrompt); // Para debug, se precisar ver o prompt
         saveApiKey(apiKey);
-        closeModal();
+        closePromptModal();
         showContentSection('descobrir-section');
       } catch (error) {
-        showModalError(error.message);
+        showModalError(elements.modalError, error.message);
       } finally {
         elements.modalLoading.style.display = 'none';
         elements.modalGenerateBtn.disabled = false;
       }
     }
 
-    function showModalError(message) {
-      elements.modalError.textContent = message;
-      elements.modalError.style.display = 'block';
+    function showModalError(element, message) {
+      element.textContent = message;
+      element.style.display = 'block';
     }
 
-    function hideModalError() {
-      elements.modalError.style.display = 'none';
+    function hideModalError(element) {
+      element.style.display = 'none';
     }
 
     async function callGeminiAPI(apiKey, prompt) {
@@ -756,6 +902,44 @@
       }
     }
 
+    // --- Funções para os Novos Modais de E-book ---
+
+    function openEbookTutorialPopup() {
+      elements.ebookTutorialPopup.style.display = 'flex';
+    }
+
+    function closeEbookTutorialPopup() {
+      elements.ebookTutorialPopup.style.display = 'none';
+    }
+
+    function openEbookDownloadPopup() {
+      elements.ebookDownloadPopup.style.display = 'flex';
+      elements.ebookIdInput.value = ''; // Limpa o campo do ID
+      hideModalError(elements.ebookIdMessage); // Esconde qualquer mensagem de erro anterior
+    }
+
+    function closeEbookDownloadPopup() {
+      elements.ebookDownloadPopup.style.display = 'none';
+      hideModalError(elements.ebookIdMessage);
+    }
+
+    function verifyEbookId() {
+      const enteredId = elements.ebookIdInput.value.trim();
+      if (enteredId === CONFIG.SECRET_EBOOK_ID) {
+        elements.ebookIdMessage.classList.remove('error-message');
+        elements.ebookIdMessage.classList.add('success-message');
+        showModalError(elements.ebookIdMessage, 'ID correto! Redirecionando para o download...');
+        setTimeout(() => {
+          window.open(CONFIG.EBOOK_DOWNLOAD_LINK, '_blank');
+          closeEbookDownloadPopup();
+        }, 1500); // Redireciona após 1.5 segundos
+      } else {
+        elements.ebookIdMessage.classList.remove('success-message');
+        elements.ebookIdMessage.classList.add('error-message');
+        showModalError(elements.ebookIdMessage, 'ID incorreto. Verifique e tente novamente.');
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const splashScreen = document.getElementById('splash-screen');
       if (splashScreen) {
@@ -772,3 +956,4 @@
   </script>
 </body>
 </html>
+                                          
