@@ -438,6 +438,7 @@
       <div class="right-info">
         <div class="ebook-actions">
             <a href="#" class="basic-tag prompt-link" data-target="prompts-free-section" title="Prompts Grátis">E-EBBOK - FOTOS PRPFISSIONAIS</a>
+            <a href="https://iadesignerweb.github.io/geradorprompts" target="_blank" class="basic-tag" rel="noopener">Gerador de Prompt</a>
             <button class="ebook-button" id="open-ebook-tutorial">BAIXAR E-BOOK</button>
         </div>
         <a href="https://iadesignerweb.github.io/crm" target="_blank" class="basic-tag" rel="noopener">EAD <span class="coin-icon">💰</span> 0</a>
@@ -460,7 +461,7 @@
             <div class="card-content">
               <h3>Ghostface Terror</h3>
               <div class="card-stats"><span class="star-icon">★</span> 758.9K</div>
-              <button class="card-button use-card-button">Usar</button>
+              <button class="card-button use-card-button" data-url="https://iadesignerweb.github.io/geradorprompts">Usar</button>
             </div>
           </div>
           <div class="style-card" data-style-name="Kiss Kiss">
@@ -468,7 +469,7 @@
             <div class="card-content">
               <h3>Kiss Kiss</h3>
               <div class="card-stats"><span class="star-icon">★</span> 13.5M</div>
-              <button class="card-button use-card-button">Usar</button>
+              <button class="card-button use-card-button" data-url="https://iadesignerweb.github.io/geradorprompts">Usar</button>
             </div>
           </div>
           <div class="style-card" data-style-name="Dragon Evoker">
@@ -477,7 +478,7 @@
             <div class="card-content">
               <h3>Dragon Evoker</h3>
               <div class="card-stats"><span class="star-icon">★</span> 5.4M</div>
-              <button class="card-button use-card-button">Usar</button>
+              <button class="card-button use-card-button" data-url="https://iadesignerweb.github.io/geradorprompts">Usar</button>
             </div>
           </div>
           <div class="style-card" data-style-name="Muscle Surge">
@@ -485,7 +486,7 @@
             <div class="card-content">
               <h3>Muscle Surge</h3>
               <div class="card-stats"><span class="star-icon">★</span> 9.1M</div>
-              <button class="card-button use-card-button">Usar</button>
+              <button class="card-button use-card-button" data-url="https://iadesignerweb.github.io/geradorprompts">Usar</button>
             </div>
           </div>
           <div class="style-card" data-style-name="Cyberpunk City">
@@ -493,7 +494,7 @@
             <div class="card-content">
               <h3>Cyberpunk City</h3>
               <div class="card-stats"><span class="star-icon">★</span> 2.1M</div>
-              <button class="card-button use-card-button">Usar</button>
+              <button class="card-button use-card-button" data-url="https://iadesignerweb.github.io/geradorprompts">Usar</button>
             </div>
           </div>
           <div class="style-card" data-style-name="Fantasy Forest">
@@ -501,7 +502,7 @@
             <div class="card-content">
               <h3>Fantasy Forest</h3>
               <div class="card-stats"><span class="star-icon">★</span> 6.8M</div>
-              <button class="card-button use-card-button">Usar</button>
+              <button class="card-button use-card-button" data-url="https://iadesignerweb.github.io/geradorprompts">Usar</button>
             </div>
           </div>
         </div>
@@ -736,17 +737,18 @@
         if (target) showContentSection(target, 'topTabs');
       });
 
+      // Alterado para abrir o Gerador de Prompt diretamente
       elements.styleGrid.addEventListener('click', (e) => {
         const useButton = e.target.closest('.use-card-button');
         if (useButton) {
-          const card = useButton.closest('.style-card');
-          currentSelectedStyle = card.dataset.styleName;
-          elements.modalTitle.textContent = `Gerar Prompt: ${currentSelectedStyle}`;
-          elements.promptModal.style.display = 'flex';
+          const url = useButton.dataset.url;
+          if (url) {
+            window.open(url, '_blank');
+          }
         }
       });
 
-      // Prompt Modal events
+      // Prompt Modal events (mantido caso a funcionalidade de "Gerar Prompt Detalhado" seja retomada)
       elements.modalCancelBtn.addEventListener('click', closePromptModal);
       elements.closePromptModalButton.addEventListener('click', closePromptModal);
       elements.modalForm.addEventListener('submit', handlePromptModalFormSubmit);
@@ -956,4 +958,3 @@
   </script>
 </body>
 </html>
-                                          
