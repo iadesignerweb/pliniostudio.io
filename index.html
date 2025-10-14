@@ -71,12 +71,12 @@
     header .logo {
       height: 28px;
       width: auto;
-      display: none; /* Hide logo on mobile for hamburger menu */
+      display: none; /* Escondido por padrão, será exibido no desktop por media query */
     }
 
     /* Hamburger menu styles */
     .hamburger-menu {
-      display: none; /* Hidden by default, shown on mobile */
+      display: none; /* Escondido por padrão no desktop, será exibido no mobile por media query */
       cursor: pointer;
       font-size: 28px;
       color: var(--text-primary);
@@ -484,8 +484,8 @@
 
     /* Mobile specific adjustments */
     @media (max-width: 768px) {
-      header .logo { display: none; } /* Ensure logo is hidden on smaller screens */
-      .hamburger-menu { display: block; }
+      header .logo { display: none; } /* Oculta o logo no cabeçalho em telas pequenas */
+      .hamburger-menu { display: block; } /* Exibe o hamburger menu em telas pequenas */
       .right-info { gap: 8px; } /* Reduce gap for smaller screens */
       .ebook-actions { flex-wrap: wrap; justify-content: center; } /* Wrap buttons if needed */
       .right-info .basic-tag, .ebook-button { font-size: 0.75em; padding: 4px 10px; } /* Smaller buttons */
@@ -496,6 +496,24 @@
       .card-content { padding: 8px; } /* Smaller padding */
       .card-content h3 { font-size: 0.9em; } /* Smaller heading */
       .card-button { padding: 6px 0; font-size: 0.8em; } /* Smaller button */
+      /* Oculta os itens do ebook-actions do header no mobile se eles forem movidos para o sidebar */
+      .ebook-actions { display: none; }
+    }
+
+    /* Desktop specific adjustments (min-width: 769px) */
+    @media (min-width: 769px) {
+      .hamburger-menu {
+        display: none; /* Garante que o hamburger não aparece no desktop */
+      }
+      header .logo {
+        display: block; /* Garante que o logo aparece no desktop */
+      }
+      .sidebar {
+        display: none; /* Esconde completamente a sidebar no desktop */
+      }
+      .ebook-actions {
+        display: flex; /* Garante que os botões do ebook apareçam no desktop */
+      }
     }
   </style>
 </head>
@@ -513,14 +531,11 @@
             <span class="bar"></span>
         </div>
         <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
-        <h1 class="main-title">STUDIO</h1>
+        <h1 class="main-title">ILHA DE EDIÇÃO</h1>
       </div>
       <div class="right-info">
         <div class="ebook-actions">
-            <!-- These items are moved to sidebar for mobile view -->
-            <!-- <a href="#" class="basic-tag prompt-link" data-target="prompts-free-section" title="Prompts Grátis">E-EBBOK - FOTOS PRPFISSIONAIS</a> -->
-            <!-- <a href="https://iadesignerweb.github.io/geradorprompts" target="_blank" class="basic-tag" rel="noopener">Gerador de Prompt</a> -->
-            <button class="ebook-button" id="open-ebook-tutorial">MODELOS</button>
+            <button class="ebook-button" id="open-ebook-tutorial">BAIXAR E-BOOK</button>
         </div>
         <a href="https://iadesignerweb.github.io/crm" target="_blank" class="basic-tag" rel="noopener">EAD <span class="coin-icon">💰</span> 0</a>
       </div>
@@ -529,9 +544,9 @@
     <!-- Sidebar / Hamburger Menu Content -->
     <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#" class="sidebar-item" data-target="prompts-free-section">FOTOS PRPFISSIONAIS</a>
+      <a href="#" class="sidebar-item" data-target="prompts-free-section">E-EBBOK - FOTOS PRPFISSIONAIS</a>
       <a href="https://iadesignerweb.github.io/geradorprompts" target="_blank" class="sidebar-item" rel="noopener">Gerador de Prompt</a>
-      <!-- Other potential sidebar items -->
+      <!-- Outros itens do sidebar que você queira adicionar -->
     </div>
 
     <nav class="top-tabs" aria-label="Navegação de abas">
@@ -873,7 +888,8 @@
         if (e.target === elements.ebookTutorialPopup) closeEbookTutorialPopup();
         if (e.target === elements.ebookDownloadPopup) closeEbookDownloadPopup();
         // Close sidebar if clicking outside
-        if (e.target === elements.appContainer && elements.sidebar.style.width === '250px') {
+        // Adicionada uma condição para não fechar se o clique for no próprio hamburger menu
+        if (e.target === elements.appContainer && elements.sidebar.style.width === '250px' && !elements.hamburgerMenu.contains(e.target)) {
             closeNav();
         }
       });
