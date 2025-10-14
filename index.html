@@ -277,7 +277,7 @@
     .modal-form label { display:block; margin-bottom:8px; font-size:0.9em; color:var(--text-secondary); }
     .modal-form input[type="password"], .modal-form textarea, .modal-form input[type="text"] {
       width: 100%;
-      padding: 12px; border: 1px solid var(--border-color);
+      padding: 12px; border: 19x solid var(--border-color); /* Correção aqui: 1px ao invés de 19x */
       border-radius: 8px; background: #333;
       color: var(--text-primary);
       font-size: 0.95em;
@@ -418,9 +418,105 @@
       font-size: 0.85em; margin-top: 15px; border: 1px solid #2ecc71;
       text-align: center;
     }
-    @media (max-width: 1140px) {
-      #app-container, .copyright-footer, .footer-wrapper { 
-        max-width: 100vw; left: 0; transform: none;
+
+    /* --- ESTILOS DO HAMBURGUER E SIDEBAR (APENAS MOBILE) --- */
+    .hamburger-menu {
+      display: none; /* Oculta por padrão em desktops */
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+      position: absolute; /* Ajustado para absolute para ficar dentro do header mas flutuar */
+      left: 10px; /* Alinhado à esquerda */
+      background-color: transparent;
+      border: none;
+    }
+
+    .hamburger-menu .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: var(--text-primary);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0; /* Inicialmente oculta */
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      background-color: var(--dark-bg);
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+      text-align: left; /* Alinha o texto na sidebar */
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .sidebar .sidebar-item {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 1.1em;
+      color: var(--text-secondary);
+      display: block;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .sidebar .sidebar-item:hover {
+      color: var(--accent-orange);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    /* --- FIM DOS ESTILOS HAMBURGUER E SIDEBAR --- */
+
+
+    @media (max-width: 768px) {
+      /* Estilos específicos para Mobile */
+      #app-container {
+        padding-bottom: 80px; /* Espaço para o footer mobile */
+      }
+      header {
+          padding-left: 60px; /* Dá espaço para o ícone do hambúrguer */
+      }
+
+      /* Mostra o menu hambúrguer em telas menores */
+      .hamburger-menu {
+        display: block;
+      }
+
+      /* Esconde a navegação normal do cabeçalho em telas menores */
+      .right-info, .top-tabs {
+          display: none;
+      }
+      .header .logo { /* Ajusta o logo para ficar mais centralizado se necessário */
+          margin-left: auto;
+          margin-right: auto;
+      }
+
+      /* Footer fixo no mobile */
+      .footer-wrapper {
+        bottom: 0;
+        left: 0;
+        transform: none;
+        max-width: 100%;
+      }
+      .copyright-footer {
+        max-width: 100%;
+      }
+      .footer-nav .center-button {
+        transform: translateY(-20%); /* Mantém a posição do botão central */
       }
     }
   </style>
@@ -431,11 +527,17 @@
   </div>
 
   <div id="app-container">
+    <!-- Hamburger Menu Icon (agora dentro do header, mas posicionado com absolute) -->
     <header>
+      <button id="hamburger-menu" class="hamburger-menu" aria-label="Abrir menu de navegação">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
       <div class="left-icons">
         <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
       </div>
-      <div class="right-info">
+      <div class="right-info"> <!-- Este será escondido em mobile -->
         <div class="ebook-actions">
             <a href="#" class="basic-tag prompt-link" data-target="prompts-free-section" title="Prompts Grátis">E-EBBOK - FOTOS PROFISSIONAIS</a>
             <a href="https://iadesignerweb.github.io/geradorprompts" target="_blank" class="basic-tag" rel="noopener">Gerador de Prompt</a>
@@ -445,12 +547,29 @@
       </div>
     </header>
 
-    <nav class="top-tabs" aria-label="Navegação de abas">
+    <nav class="top-tabs" aria-label="Navegação de abas"> <!-- Esta será escondida em mobile -->
       <div class="tab-item active" data-tab-name="Em alta" data-target="descobrir-section">Em alta</div>
       <div class="tab-item" data-tab-name="Agência" data-url="https://iadesignerweb.github.io/site">Agência <span class="new-badge">New</span></div>
       <div class="tab-item" data-tab-name="Design de Sites" data-url="https://iadesignerweb.github.io/free">Design de Sites</div>
       <div class="tab-item" data-tab-name="Contratar" data-target="suporte-section">Contratar</div>
     </nav>
+
+    <!-- Sidebar (fora do app-container para melhor posicionamento fixo, mas poderia estar dentro se ajustasse z-index) -->
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn">&times;</a> <!-- closebtn agora chama closeNav() via JS -->
+      <div class="sidebar-item" data-target="descobrir-section">Descobrir</div>
+      <div class="sidebar-item" data-target="prompts-free-section">Estilo Caricatura</div>
+      <div class="sidebar-item" data-target="modelo-section">Modelos Básicos</div>
+      <div class="sidebar-item" data-target="suporte-section">Suporte e Contato</div>
+      <div class="sidebar-item" data-target="quem-somos-section">Quem Somos</div>
+      <!-- Links adicionais para o sidebar -->
+      <a href="https://iadesignerweb.github.io/site" target="_blank" class="sidebar-item">Agência <span style="font-size:0.7em; vertical-align:top; margin-left:5px; background:#FF0077; padding:2px 6px; border-radius:10px;">New</span></a>
+      <a href="https://iadesignerweb.github.io/free" target="_blank" class="sidebar-item">Design de Sites</a>
+      <a href="https://iadesignerweb.github.io/geradorprompts" target="_blank" class="sidebar-item">Gerador de Prompt</a>
+      <div class="sidebar-item" id="open-ebook-tutorial-sidebar">E-book Prompts Profissionais</div>
+      <a href="https://iadesignerweb.github.io/crm" target="_blank" class="sidebar-item">EAD <span style="color:gold; margin-left:5px;">💰</span></a>
+
+    </div>
 
     <main id="main-content">
       <section id="descobrir-section" class="content-section" aria-label="Estilos em alta">
@@ -711,7 +830,12 @@
 
       // Ad Popup elements
       adPopup: document.getElementById('ad-popup'),
-      closePopupButton: document.querySelector('.close-popup')
+      closePopupButton: document.querySelector('.close-popup'),
+
+      // Hamburger Menu elements (adicionados)
+      hamburgerMenu: document.getElementById('hamburger-menu'),
+      sidebar: document.getElementById('mySidebar'),
+      openEbookTutorialSidebarButton: document.getElementById('open-ebook-tutorial-sidebar') // Adicionado
     };
 
     let currentSelectedStyle = null;
@@ -789,7 +913,71 @@
         if (e.target === elements.promptModal) closePromptModal();
         if (e.target === elements.ebookTutorialPopup) closeEbookTutorialPopup();
         if (e.target === elements.ebookDownloadPopup) closeEbookDownloadPopup();
+        // Fecha a sidebar se clicar fora dela (apenas em mobile)
+        if (window.innerWidth <= 768 && elements.sidebar.style.width === '250px' &&
+            !elements.sidebar.contains(e.target) && !elements.hamburgerMenu.contains(e.target)) {
+            closeNav();
+        }
       });
+
+      // --- Hamburger Menu events ---
+      elements.hamburgerMenu.addEventListener('click', toggleNav);
+      // Listener para fechar a sidebar ao clicar em um item de navegação
+      elements.sidebar.addEventListener('click', (e) => {
+        const sidebarItem = e.target.closest('.sidebar-item');
+        if (sidebarItem) {
+          const target = sidebarItem.dataset.target;
+          if (target) {
+            showContentSection(target);
+            closeNav(); // Fecha sidebar após clicar em item interno
+          } else if (sidebarItem.tagName === 'A' || sidebarItem.id === 'open-ebook-tutorial-sidebar') {
+            // Permite que links externos ou o botão do ebook abram e fechem a sidebar
+            closeNav();
+            if (sidebarItem.id === 'open-ebook-tutorial-sidebar') {
+                openEbookTutorialPopup();
+            }
+          }
+        }
+        // Se clicar no botão de fechar da sidebar
+        if (e.target.classList.contains('closebtn')) {
+            closeNav();
+        }
+      });
+
+      // Adicione um listener para o botão "E-book Prompts Profissionais" dentro da sidebar
+      if (elements.openEbookTutorialSidebarButton) {
+        elements.openEbookTutorialSidebarButton.addEventListener('click', () => {
+          closeNav(); // Fecha a sidebar
+          openEbookTutorialPopup(); // Abre o modal do ebook
+        });
+      }
+
+       // Fechar sidebar se a tela for redimensionada para desktop
+       window.addEventListener('resize', () => {
+          if (window.innerWidth > 768 && elements.sidebar.style.width === '250px') {
+              closeNav();
+          }
+      });
+    }
+
+    // --- Hamburger Menu Functions ---
+    function openNav() {
+      elements.sidebar.style.width = "250px";
+      // Opcional: Desabilitar scroll do body quando sidebar aberta
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeNav() {
+      elements.sidebar.style.width = "0";
+      document.body.style.overflow = ""; // Reativar scroll
+    }
+
+    function toggleNav() {
+      if (elements.sidebar.style.width === '250px') {
+        closeNav();
+      } else {
+        openNav();
+      }
     }
     
     // --- Funções para o Pop-up de Anúncio ---
@@ -899,8 +1087,12 @@
         // Se a chamada não veio do cabeçalho, ativa a aba correspondente
         if (source !== 'header') {
           elements.footerNav.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
-          elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
+          // Só ativa o topTabs se ele estiver visível (i.e., em desktop)
+          if (window.innerWidth > 768) {
+              elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
+          }
         }
+        // No caso do "E-EBBOK - FOTOS PROFISSIONAIS" no header, ele direciona para a seção "prompts-free-section", que não é uma "aba" no top-tabs. Não precisamos ativar nada no top-tabs para isso.
       }
     }
 
