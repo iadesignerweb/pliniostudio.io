@@ -3,37 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Prompt Studio - Standalone Melhorado</title>
+  <title>AI Prompt Studio - Agência IA</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --dark-bg: #000000;
-      --card-bg: #1A1A1A;
-      --text-primary: #FFFFFF;
-      --text-secondary: #B0B0B0;
+      /* --- NOVO TEMA CLARO (LIGHT MODE) --- */
+      --light-bg: #F8F9FA;        /* Fundo principal (cinza muito claro) */
+      --card-bg: #FFFFFF;         /* Fundo dos cards (branco) */
+      --text-primary: #1A1A1A;    /* Texto principal (escuro) */
+      --text-secondary: #555555;  /* Texto secundário (cinza) */
+      --border-color: rgba(0,0,0,0.1); /* Cor da borda (clara) */
+      --active-tab-bg: #E9ECEF;    /* Fundo da aba ativa (cinza claro) */
+      --modal-content-bg: #FFFFFF;/* Fundo do modal (branco) */
+      
+      /* Cores de acento mantidas */
       --accent-purple: #9B51E0;
       --accent-orange: #FF8C00;
-      --border-color: rgba(255,255,255,0.1);
       --gradient-hot: linear-gradient(90deg, #ff4800, #ff7900);
       --gradient-button: linear-gradient(90deg, #667eea, #764ba2);
-      --active-tab-bg: #333333;
-      --modal-bg: rgba(0,0,0,0.8);
-      --modal-content-bg: #1A1A1A;
+      
+      --modal-bg: rgba(0,0,0,0.7); /* Sombra do modal (escura) */
       --red-error: #e74c3c;
       --green-success: #2ecc71;
     }
     * {
       margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;
     }
+    
+    /* --- SCROLLBAR CUSTOMIZADA (TEMA CLARO) --- */
+    body::-webkit-scrollbar,
+    .modal-content::-webkit-scrollbar,
+    .popup-content::-webkit-scrollbar,
+    .modal-scrollable-content::-webkit-scrollbar {
+        width: 6px;
+    }
+    body::-webkit-scrollbar-track,
+    .modal-content::-webkit-scrollbar-track,
+    .popup-content::-webkit-scrollbar-track,
+    .modal-scrollable-content::-webkit-scrollbar-track {
+        background: var(--active-tab-bg);
+        border-radius: 10px;
+    }
+    body::-webkit-scrollbar-thumb,
+    .modal-content::-webkit-scrollbar-thumb,
+    .popup-content::-webkit-scrollbar-thumb,
+    .modal-scrollable-content::-webkit-scrollbar-thumb {
+        background-color: var(--accent-purple);
+        border-radius: 10px;
+    }
+
     body {
-      background-color: var(--dark-bg);
+      background-color: var(--light-bg);
       color: var(--text-primary);
       min-height: 100vh;
     }
     #splash-screen {
       position: fixed;
       inset: 0;
-      background-color: var(--dark-bg);
+      background-color: var(--light-bg);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -47,14 +74,13 @@
       object-fit: contain;
     }
     #app-container {
-      /* Ajuste para Desktop */
-      max-width: 1140px; 
+      max-width: 1140px;  
       margin: 0 auto;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background-color: var(--dark-bg);
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      background-color: var(--light-bg);
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
       overflow-x: hidden;
     }
     header {
@@ -66,7 +92,8 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: var(--dark-bg);
+      background: var(--card-bg); /* Cabeçalho branco para flutuar */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     header .logo {
       height: 28px;
@@ -78,8 +105,8 @@
       gap: 15px;
     }
     .right-info .basic-tag {
-      background: #333;
-      color: var(--text-primary);
+      background: var(--active-tab-bg);
+      color: var(--text-secondary);
       padding: 5px 12px;
       border-radius: 20px;
       font-size: 0.8em;
@@ -87,16 +114,20 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      box-shadow: inset 0 0 5px rgba(255,255,255,0.1);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
       text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .right-info .basic-tag:hover {
+        background: var(--accent-purple);
+        color: white;
     }
     .right-info .coin-icon { color: gold; font-size: 1.1em; }
 
-    /* --- ESTILOS NOVOS PARA O EBOOK --- */
     .ebook-actions {
         display: flex;
         align-items: center;
-        gap: 10px; /* Espaçamento entre os botões */
+        gap: 10px; 
     }
     .ebook-button {
         background: var(--accent-orange);
@@ -113,8 +144,6 @@
     .ebook-button:hover {
         background: #e07b00;
     }
-
-    /* --- NOVOS ESTILOS PARA LINK DE PROMPT E SETA --- */
     .prompt-link-container {
         display: flex;
         align-items: center;
@@ -124,7 +153,7 @@
         cursor: pointer;
     }
     .pointing-arrow {
-        color: white;
+        color: var(--text-primary);
         font-size: 20px;
         font-weight: bold;
         animation: point-right 1.5s ease-in-out infinite;
@@ -133,7 +162,6 @@
         0%, 100% { transform: translateX(0); }
         50% { transform: translateX(5px); }
     }
-    /* --- FIM DOS NOVOS ESTILOS --- */
 
     nav.top-tabs {
       display: flex;
@@ -144,24 +172,27 @@
       position: sticky;
       top: 61px;
       z-index: 9;
-      background: var(--dark-bg);
+      background: var(--light-bg);
     }
     nav.top-tabs::-webkit-scrollbar { display: none; }
     .tab-item {
       background: var(--card-bg);
+      border: 1px solid var(--border-color);
       color: var(--text-secondary);
       padding: 8px 15px;
       border-radius: 20px;
       font-size: 0.9em;
       white-space: nowrap;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
       position: relative;
     }
     .tab-item.active {
-      background: var(--active-tab-bg);
-      color: var(--text-primary);
-      font-weight: 500;
+      background: var(--card-bg);
+      color: var(--accent-purple);
+      font-weight: 600;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 10px rgba(155, 81, 224, 0.3);
     }
     .tab-item .new-badge {
       position: absolute;
@@ -185,18 +216,35 @@
       grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
       gap: 15px;
     }
+    
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .style-card, .prompt-image-card, .model-image-card {
+        opacity: 0; 
+    }
+    
     .style-card {
       background: var(--card-bg);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
+      border: 1px solid var(--border-color);
       cursor: pointer;
-      aspect-ratio: 3/4.5;
+      aspect-ratio: 3/4.5; 
       display: flex;
       flex-direction: column;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .style-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.5);}
+    .style-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
     .style-card img { width: 100%; height: 70%; object-fit: cover; }
     .card-content { flex: 1; padding: 10px; display: flex; flex-direction: column; justify-content: space-between;}
     .card-content h3 { font-size: .95em; font-weight: 600; color: var(--text-primary); margin-bottom: 5px;}
@@ -223,27 +271,27 @@
       font-size: 0.7em;
       font-weight: 600;
     }
-    .model-image-card {
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--card-bg);
-    }
-    .model-image-card img { width: 100%; height: 100%; object-fit: cover; display: block;}
     
-    /* --- ESTILO PARA OS CARDS DE IMAGEM DA PÁGINA DE PROMPTS --- */
-    .prompt-image-card {
+    .prompt-image-card, .model-image-card {
         border-radius: 8px;
         overflow: hidden;
         background-color: var(--card-bg);
-        aspect-ratio: 2 / 3; /* Proporção 2:3 */
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
-    .prompt-image-card img {
+    .prompt-image-card {
+        aspect-ratio: 2 / 3; 
+    }
+    .model-image-card {
+        aspect-ratio: 1 / 1; 
+    }
+    
+    .prompt-image-card img, .model-image-card img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Garante que a imagem cubra o card sem distorcer */
+        object-fit: cover; 
         display: block;
     }
-    /* --- FIM DO ESTILO DOS CARDS DE PROMPTS --- */
 
     .modal {
       display: none;
@@ -256,29 +304,40 @@
       align-items: center;
       padding: 20px;
     }
+    
+    /* --- CORREÇÃO POP-UP COMPRIDO --- */
     .modal-content {
       background: var(--modal-content-bg);
       margin: auto;
       padding: 25px;
       border-radius: 15px;
       max-width: 90vw; width: 400px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       animation: fadeInModal 0.3s ease-out;
       border: 1px solid var(--border-color);
-      position: relative; /* Para o botão de fechar */
+      position: relative;
+      
+      /* Limita a altura e adiciona scroll interno */
+      max-height: 85vh;
+      overflow-y: auto;
+      
+      /* Ajuste para padding não interferir no scroll */
+      padding-right: 15px; 
     }
+    /* --- FIM DA CORREÇÃO --- */
+
     @keyframes fadeInModal { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    .modal-content h2 { font-size: 1.3em; color: var(--text-primary); margin-bottom: 20px; text-align: center;}
-    .modal-content p { font-size: 0.9em; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px;}
-    .modal-content ul { text-align: left; margin: 15px 0 20px 20px; color: var(--text-secondary);}
+    .modal-content h2 { font-size: 1.3em; color: var(--text-primary); margin-bottom: 20px; text-align: center; padding-right: 10px;}
+    .modal-content p { font-size: 0.9em; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px; padding-right: 10px;}
+    .modal-content ul { text-align: left; margin: 15px 0 20px 20px; color: var(--text-secondary); padding-right: 10px;}
     .modal-content ul li { margin-bottom: 8px;}
     .modal-content strong { color: var(--text-primary);}
-    .modal-form .form-group { margin-bottom: 20px;}
+    .modal-form .form-group { margin-bottom: 20px; padding-right: 10px;}
     .modal-form label { display:block; margin-bottom:8px; font-size:0.9em; color:var(--text-secondary); }
     .modal-form input[type="password"], .modal-form textarea, .modal-form input[type="text"] {
       width: 100%;
-      padding: 12px; border: 19x solid var(--border-color); /* Correção aqui: 1px ao invés de 19x */
-      border-radius: 8px; background: #333;
+      padding: 12px; border: 1px solid var(--border-color);
+      border-radius: 8px; background: var(--light-bg);
       color: var(--text-primary);
       font-size: 0.95em;
       resize: vertical; min-height: 50px;
@@ -289,7 +348,7 @@
       border-color: var(--accent-purple);
       box-shadow: 0 0 0 3px rgba(155,81,224,0.2);
     }
-    .modal-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 25px;} /* Centralizado */
+    .modal-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 25px; padding-right: 10px;}
     .modal-buttons button, .modal-buttons a {
       padding: 10px 20px; border-radius: 10px;
       font-weight: 500; cursor: pointer;
@@ -297,18 +356,16 @@
       text-decoration: none; display: flex; align-items: center; justify-content: center;
       gap: 5px;
     }
-    .modal-buttons .cancel-btn { background: #444; color: var(--text-primary); }
-    .modal-buttons .cancel-btn:hover { background: #555; }
+    .modal-buttons .cancel-btn { background: #E9ECEF; color: var(--text-secondary); }
+    .modal-buttons .cancel-btn:hover { background: #dee2e6; }
     .modal-buttons .generate-btn { background: var(--gradient-button); color: #fff;}
     .modal-buttons .generate-btn:hover { opacity: 0.9; }
-    .modal-buttons .generate-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
-    .modal-buttons .whatsapp-btn { background: #25D366; color: white;} /* Botão WhatsApp */
+    .modal-buttons .generate-btn:disabled { background: #E9ECEF; cursor: not-allowed; opacity: 0.7; }
+    .modal-buttons .whatsapp-btn { background: #25D366; color: white;}
     .modal-buttons .whatsapp-btn:hover { background: #1da851;}
     .modal-buttons .ebook-action-btn { background: var(--accent-orange); color: white;}
     .modal-buttons .ebook-action-btn:hover { background: #e07b00;}
 
-
-    /* Close button for modals */
     .modal .close-button {
       position: absolute;
       top: 10px;
@@ -331,33 +388,49 @@
         background-color: rgba(0, 0, 0, 0.7);
         justify-content: center; align-items: center;
         animation: fadeInPopup 0.5s;
+        padding: 20px;
     }
     @keyframes fadeInPopup { from { opacity: 0; } to { opacity: 1; } }
+    
+    /* --- CORREÇÃO POP-UP ANÚNCIO COMPRIDO --- */
     .popup-content {
         position: relative; background: var(--card-bg);
         padding: 25px; border-radius: 15px;
         width: 90%; max-width: 500px;
         text-align: center; border: 1px solid var(--border-color);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        
+        /* Limita altura e adiciona scroll */
+        max-height: 80vh;
+        overflow-y: auto;
     }
     .popup-content h2 { color: var(--text-primary); margin-bottom: 15px; }
     .popup-content a img {
         width: 100%; border-radius: 10px; margin-top: 10px;
         transition: transform 0.2s;
+        
+        /* Limita altura da imagem e ajusta */
+        max-height: 60vh;
+        object-fit: contain;
     }
+    /* --- FIM DA CORREÇÃO --- */
+    
      .popup-content a img:hover { transform: scale(1.03); }
     .close-popup {
         position: absolute; top: 10px; right: 15px;
-        color: #fff; font-size: 30px; font-weight: bold;
+        color: var(--text-primary); font-size: 30px; font-weight: bold;
         cursor: pointer; line-height: 1;
     }
     .footer-wrapper {
       position: fixed; bottom: 0; left: 50%;
       transform: translateX(-50%); width: 100%;
       max-width: 1140px; z-index: 10;
-      background: var(--dark-bg);
+      background: var(--card-bg); /* Fundo branco para o rodapé */
+      border-top: 1px solid var(--border-color);
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
     }
     .icon-carousel-container {
-      width: 100%; overflow: hidden; background: var(--dark-bg);
+      width: 100%; overflow: hidden; background: var(--light-bg); /* Fundo cinza claro */
       padding: 10px 0; border-top: 1px solid var(--border-color);
       box-sizing: border-box;
     }
@@ -367,25 +440,30 @@
     }
     .icon-carousel img {
       height: 30px; width: auto; margin: 0 20px;
-      filter: brightness(0) invert(1) opacity(70%);
+      /* --- MUDANÇA DE FILTRO (para escuro) --- */
+      filter: brightness(0) opacity(60%);
       transition: filter 0.3s;
     }
-    .icon-carousel img:hover { filter: brightness(0) invert(1) opacity(100%); }
+    .icon-carousel img:hover { filter: brightness(0) opacity(100%); }
     @keyframes slideIcons {
       0% { transform: translateX(0);}
       100% { transform: translateX(-50%);}
     }
     .footer-nav {
       display: flex; justify-content: space-around; align-items: center;
-      padding: 10px 0; width: 100%; border-top: 1px solid var(--border-color);
-      background: var(--dark-bg);
+      padding: 10px 0; width: 100%; 
+      background: var(--card-bg);
     }
     .footer-nav .nav-item {
       display: flex; flex-direction: column; align-items: center;
       font-size: 0.7em; color: var(--text-secondary); cursor: pointer;
-      transition: color 0.2s; position: relative;
+      transition: color 0.2s; 
+      position: relative;
     }
-    .footer-nav .nav-item.active { color: var(--text-primary);}
+    .footer-nav .nav-item.active { 
+        color: var(--accent-purple); /* Cor de acento roxa */
+        font-weight: 600;
+    }
     .footer-nav .nav-item .icon { font-size: 24px; margin-bottom: 3px;}
     .footer-nav .center-button {
       background: var(--accent-purple); border-radius: 50%;
@@ -396,37 +474,38 @@
       cursor: pointer; text-decoration: none;
     }
     .copyright-footer {
-      background: var(--dark-bg); color: var(--text-secondary);
+      background: var(--light-bg); color: var(--text-secondary);
       font-size: 0.7em; text-align: center; padding: 5px 10px;
       border-top: 1px solid var(--border-color); width: 100%;
       max-width: 1140px; margin: 0 auto; box-sizing: border-box;
     }
     .loading-animation { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: .9em; color: var(--text-secondary);}
     .loading-spinner {
-      border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid var(--accent-purple);
+      border: 3px solid rgba(0,0,0,0.1); border-top: 3px solid var(--accent-purple);
       border-radius: 50%; width: 20px; height: 20px;
       animation: spin 1s linear infinite;
     }
     @keyframes spin { 0% {transform:rotate(0);} 100% {transform:rotate(360deg);} }
     .error-message {
-      background: #610000; color: #fff; padding: 10px; border-radius: 8px;
-      font-size: 0.85em; margin-top: 15px; border: 1px solid #FF0000;
+      background: #fff0f0; color: #a00; padding: 10px; border-radius: 8px;
+      font-size: 0.85em; margin-top: 15px; border: 1px solid #e74c3c;
       text-align: center;
     }
     .success-message {
-      background: #0a4f2b; color: #fff; padding: 10px; border-radius: 8px;
+      background: #f0fff4; color: #0a4f2b; padding: 10px; border-radius: 8px;
       font-size: 0.85em; margin-top: 15px; border: 1px solid #2ecc71;
       text-align: center;
     }
 
-    /* --- ESTILOS DO HAMBURGUER E SIDEBAR (APENAS MOBILE) --- */
     .hamburger-menu {
-      display: none; /* Oculta por padrão em desktops */
+      display: none; 
       cursor: pointer;
       padding: 10px;
       z-index: 1001;
-      position: absolute; /* Ajustado para absolute para ficar dentro do header mas flutuar */
-      left: 10px; /* Alinhado à esquerda */
+      position: absolute; 
+      left: 10px; 
+      top: 50%; 
+      transform: translateY(-50%); 
       background-color: transparent;
       border: none;
     }
@@ -436,23 +515,23 @@
       width: 25px;
       height: 3px;
       margin: 5px auto;
-      background-color: var(--text-primary);
+      background-color: var(--text-primary); /* Barras escuras */
       transition: all 0.3s ease-in-out;
     }
 
     .sidebar {
       height: 100%;
-      width: 0; /* Inicialmente oculta */
+      width: 0; 
       position: fixed;
       z-index: 1000;
       top: 0;
       left: 0;
-      background-color: var(--dark-bg);
+      background-color: var(--card-bg); /* Sidebar branca */
       overflow-x: hidden;
       transition: 0.5s;
       padding-top: 60px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-      text-align: left; /* Alinha o texto na sidebar */
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      text-align: left; 
     }
 
     .sidebar .closebtn {
@@ -477,35 +556,35 @@
 
     .sidebar .sidebar-item:hover {
       color: var(--accent-orange);
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--light-bg);
     }
-    /* --- FIM DOS ESTILOS HAMBURGUER E SIDEBAR --- */
-
 
     @media (max-width: 768px) {
-      /* Estilos específicos para Mobile */
       #app-container {
-        padding-bottom: 80px; /* Espaço para o footer mobile */
+        padding-bottom: 150px; 
       }
       header {
-          padding-left: 60px; /* Dá espaço para o ícone do hambúrguer */
+          justify-content: center;
+          padding-left: 20px;
+          padding-right: 20px;
+          position: relative; 
       }
-
-      /* Mostra o menu hambúrguer em telas menores */
       .hamburger-menu {
         display: block;
       }
-
-      /* Esconde a navegação normal do cabeçalho em telas menores */
       .right-info, .top-tabs {
           display: none;
       }
-      .header .logo { /* Ajusta o logo para ficar mais centralizado se necessário */
-          margin-left: auto;
-          margin-right: auto;
+      .header .logo { 
+          margin: 0; 
       }
-
-      /* Footer fixo no mobile */
+      .style-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+      }
+      .style-card, .prompt-image-card {
+          aspect-ratio: 3 / 4;
+      }
       .footer-wrapper {
         bottom: 0;
         left: 0;
@@ -516,18 +595,17 @@
         max-width: 100%;
       }
       .footer-nav .center-button {
-        transform: translateY(-20%); /* Mantém a posição do botão central */
+        transform: translateY(-20%); 
       }
     }
   </style>
 </head>
 <body>
   <div id="splash-screen" aria-label="Carregando AI Prompt Studio">
-    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Carregando AI Prompt Studio">
+    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/file_000000006f3861f88e745af94277ef55.png" alt="Carregando AI Prompt Studio">
   </div>
 
   <div id="app-container">
-    <!-- Hamburger Menu Icon (agora dentro do header, mas posicionado com absolute) -->
     <header>
       <button id="hamburger-menu" class="hamburger-menu" aria-label="Abrir menu de navegação">
         <span class="bar"></span>
@@ -535,9 +613,9 @@
         <span class="bar"></span>
       </button>
       <div class="left-icons">
-        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
+        <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/file_000000006f3861f88e745af94277ef55.png" alt="Logo AI Prompt Studio" class="logo">
       </div>
-      <div class="right-info"> <!-- Este será escondido em mobile -->
+      <div class="right-info"> 
         <div class="ebook-actions">
             <a href="#" class="basic-tag prompt-link" data-target="prompts-free-section" title="Prompts Grátis">E-EBBOK - FOTOS PROFISSIONAIS</a>
             <a href="https://iadesignerweb.github.io/geradorprompts" target="_blank" class="basic-tag" rel="noopener">Gerador de Prompt</a>
@@ -547,22 +625,20 @@
       </div>
     </header>
 
-    <nav class="top-tabs" aria-label="Navegação de abas"> <!-- Esta será escondida em mobile -->
+    <nav class="top-tabs" aria-label="Navegação de abas"> 
       <div class="tab-item active" data-tab-name="Em alta" data-target="descobrir-section">Em alta</div>
       <div class="tab-item" data-tab-name="Agência" data-url="https://iadesignerweb.github.io/mt">Musicoterapia <span class="new-badge">New</span></div>
       <div class="tab-item" data-tab-name="Design de Sites" data-url="https://iadesignerweb.github.io/free">Design de Sites</div>
       <div class="tab-item" data-tab-name="Contratar" data-target="suporte-section">Contratar</div>
     </nav>
 
-    <!-- Sidebar (fora do app-container para melhor posicionamento fixo, mas poderia estar dentro se ajustasse z-index) -->
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn">&times;</a> <!-- closebtn agora chama closeNav() via JS -->
+      <a href="javascript:void(0)" class="closebtn">&times;</a> 
       <div class="sidebar-item" data-target="descobrir-section">Descobrir</div>
       <div class="sidebar-item" data-target="prompts-free-section">Estilo Caricatura</div>
       <div class="sidebar-item" data-target="modelo-section">Modelos Básicos</div>
       <div class="sidebar-item" data-target="suporte-section">Suporte e Contato</div>
       <div class="sidebar-item" data-target="quem-somos-section">Quem Somos</div>
-      <!-- Links adicionais para o sidebar -->
       <a href="https://iadesignerweb.github.io/site" target="_blank" class="sidebar-item">Agência <span style="font-size:0.7em; vertical-align:top; margin-left:5px; background:#FF0077; padding:2px 6px; border-radius:10px;">New</span></a>
       <a href="https://iadesignerweb.github.io/free" target="_blank" class="sidebar-item">Design de Sites</a>
       <a href="https://iadesignerweb.github.io/geradorprompts" target="_blank" class="sidebar-item">Gerador de Prompt</a>
@@ -576,7 +652,7 @@
         <div class="style-grid">
           <div class="style-card" data-style-name="Ghostface Terror">
             <span class="card-tag-hot">HOT</span>
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Terror.jpg" alt="Ghostface Terror">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Terror.jpg" alt="Ghostface Terror">
             <div class="card-content">
               <h3>Ghostface Terror</h3>
               <div class="card-stats"><span class="star-icon">★</span> 758.9K</div>
@@ -584,7 +660,7 @@
             </div>
           </div>
           <div class="style-card" data-style-name="Kiss Kiss">
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Quadrinhos.jpg" alt="Kiss Kiss">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Quadrinhos.jpg" alt="Kiss Kiss">
             <div class="card-content">
               <h3>Kiss Kiss</h3>
               <div class="card-stats"><span class="star-icon">★</span> 13.5M</div>
@@ -593,7 +669,7 @@
           </div>
           <div class="style-card" data-style-name="Dragon Evoker">
             <span class="card-tag-hot">HOT</span>
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Fantasia.jpg" alt="Dragon Evoker">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Fantasia.jpg" alt="Dragon Evoker">
             <div class="card-content">
               <h3>Dragon Evoker</h3>
               <div class="card-stats"><span class="star-icon">★</span> 5.4M</div>
@@ -601,7 +677,7 @@
             </div>
           </div>
           <div class="style-card" data-style-name="Muscle Surge">
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/A%C3%A7%C3%A3o%20Grafith.jpg" alt="Muscle Surge">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/A%C3%A7%C3%A3o%20Grafith.jpg" alt="Muscle Surge">
             <div class="card-content">
               <h3>Muscle Surge</h3>
               <div class="card-stats"><span class="star-icon">★</span> 9.1M</div>
@@ -609,7 +685,7 @@
             </div>
           </div>
           <div class="style-card" data-style-name="Cyberpunk City">
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Cyberpunk%20.jpg" alt="Cyberpunk City">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Cyberpunk%20.jpg" alt="Cyberpunk City">
             <div class="card-content">
               <h3>Cyberpunk City</h3>
               <div class="card-stats"><span class="star-icon">★</span> 2.1M</div>
@@ -617,7 +693,7 @@
             </div>
           </div>
           <div class="style-card" data-style-name="Fantasy Forest">
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Floresta%20Encantada.jpg" alt="Fantasy Forest">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Floresta%20Encantada.jpg" alt="Fantasy Forest">
             <div class="card-content">
               <h3>Fantasy Forest</h3>
               <div class="card-stats"><span class="star-icon">★</span> 6.8M</div>
@@ -630,29 +706,29 @@
       <section id="prompts-free-section" class="content-section" aria-label="Prompts Gratuitos - Estilo Caricatura">
         <h2>Estilo Caricatura</h2>
         <div class="style-grid">
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Fotos%20Profissionais.jpg" alt="Caricatura 1"></div>
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115711.jpg" alt="Caricatura 2"></div>
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115512.jpg" alt="Caricatura 3"></div>
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115812.jpg" alt="Caricatura 4"></div>
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_115856.jpg" alt="Caricatura 5"></div>
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_120003.jpg" alt="Caricatura 6"></div>
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_120031.jpg" alt="Caricatura 7"></div>
-            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/IMG_20251008_120104.jpg" alt="Caricatura 8"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Fotos%20Profissionais.jpg" alt="Caricatura 1"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/IMG_20251008_115711.jpg" alt="Caricatura 2"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/IMG_20251008_115512.jpg" alt="Caricatura 3"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/IMG_20251008_115812.jpg" alt="Caricatura 4"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/IMG_20251008_115856.jpg" alt="Caricatura 5"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/IMG_20251008_120003.jpg" alt="Caricatura 6"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/IMG_20251008_120031.jpg" alt="Caricatura 7"></div>
+            <div class="prompt-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/IMG_20251008_120104.jpg" alt="Caricatura 8"></div>
         </div>
       </section>
       <section id="modelo-section" class="content-section" aria-label="Modelos Básicos">
         <h2>Modelos Básicos</h2>
         <div class="style-grid">
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153619_0000.png" alt="Modelo 1"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153747_0000.png" alt="Modelo 2"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_153919_0000.png" alt="Modelo 3"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/20250901_154103_0000.png" alt="Modelo 4"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites3.jpg" alt="Modelo 5"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Modelo 6"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites3.jpg" alt="Modelo 7"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites5.jpg" alt="Modelo 8"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites4.jpg" alt="Modelo 9"></div>
-          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Studio%2C%20Criando%20APK%2C%20Design.png" alt="Modelo 10"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/20250901_153619_0000.png" alt="Modelo 1"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/20250901_153747_0000.png" alt="Modelo 2"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/20250901_153919_0000.png" alt="Modelo 3"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/20250901_154103_0000.png" alt="Modelo 4"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Plinio%20Fabr%C3%ADcio%2C%20Sites3.jpg" alt="Modelo 5"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Modelo 6"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Plinio%20Fabr%C3%ADcio%2C%20Sites3.jpg" alt="Modelo 7"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Plinio%20Fabr%C3%ADcio%2C%20Sites5.jpg" alt="Modelo 8"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Plinio%20Fabr%C3%ADcio%2C%20Sites4.jpg" alt="Modelo 9"></div>
+          <div class="model-image-card"><img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Plinio%20Studio%2C%20Criando%20APK%2C%20Design.png" alt="Modelo 10"></div>
         </div>
       </section>
       <section id="suporte-section" class="content-section" aria-label="Suporte e Contato">
@@ -678,7 +754,6 @@
       </section>
     </main>
 
-    <!-- Modal de Geração de Prompt -->
     <div id="prompt-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal-content">
         <span class="close-button" id="close-prompt-modal">&times;</span>
@@ -702,7 +777,6 @@
       </div>
     </div>
 
-    <!-- Novo Modal para o Tutorial do E-book -->
     <div id="ebook-tutorial-popup" class="modal" role="dialog" aria-modal="true" aria-labelledby="ebook-tutorial-title">
       <div class="modal-content">
         <span class="close-button" id="close-ebook-tutorial">&times;</span>
@@ -723,7 +797,6 @@
       </div>
     </div>
 
-    <!-- Novo Modal para Download do E-book (com ID) -->
     <div id="ebook-download-popup" class="modal" role="dialog" aria-modal="true" aria-labelledby="ebook-download-title">
       <div class="modal-content">
         <span class="close-button" id="close-ebook-download">&times;</span>
@@ -741,13 +814,12 @@
       </div>
     </div>
 
-    <!-- Pop-up de Anúncio -->
     <div id="ad-popup" class="ad-popup">
       <div class="popup-content">
           <span class="close-popup" title="Fechar">&times;</span>
           <h2>ADQUIRA SUA LANDPAGE</h2>
           <a href="https://iadesignerweb.github.io/musicoterapia" target="_blank" rel="noopener">
-              <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Clique para adquirir sua Landing Page">
+              <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/main/Plinio%20Fabr%C3%ADcio%2C%20Sites.jpg" alt="Clique para adquirir sua Landing Page">
           </a>
       </div>
     </div>
@@ -761,14 +833,14 @@
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/facebook.svg" alt="Facebook">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/whatsapp.svg" alt="WhatsApp">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/meta.svg" alt="Meta">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/openai.svg" alt="ChatGPT">
+          <img src="httpss://cdn.jsdelivr.net/npm/simple-icons@12/icons/openai.svg" alt="ChatGPT">
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google_Gemini_logo.svg" alt="Gemini">
            <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/google.svg" alt="Google">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/youtube.svg" alt="YouTube">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/instagram.svg" alt="Instagram">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/facebook.svg" alt="Facebook">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/whatsapp.svg" alt="WhatsApp">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/meta.svg" alt="Meta">
+          <img src="httpsD://cdn.jsdelivr.net/npm/simple-icons@12/icons/meta.svg" alt="Meta">
           <img src="https://cdn.jsdelivr.net/npm/simple-icons@12/icons/openai.svg" alt="ChatGPT">
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Google_Gemini_logo.svg" alt="Gemini">
         </div>
@@ -792,7 +864,7 @@
       GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent',
       EBOOK_DOWNLOAD_LINK: 'https://www.mediafire.com/folder/ahlilwov3un8s/Prompts+Para+Fotos+Profissionais',
       WHATSAPP_EBOOK_CONTACT: 'https://wa.me/5587996029765',
-      SECRET_EBOOK_ID: 'prompts2025' // ID secreto para download
+      SECRET_EBOOK_ID: 'prompts2025' 
     };
 
     const elements = {
@@ -803,39 +875,34 @@
       styleGrid: document.querySelector('.style-grid'),
       footerNav: document.querySelector('.footer-nav'),
       
-      // Prompt Modal elements
       promptModal: document.getElementById('prompt-modal'),
       modalTitle: document.getElementById('modal-title'),
       modalForm: document.getElementById('modal-form'),
       modalApiKey: document.getElementById('modal-api-key'),
       modalTheme: document.getElementById('modal-theme'),
-      modalCancelBtn: document.getElementById('cancel-prompt-modal'), // Alterado para ID
+      modalCancelBtn: document.getElementById('cancel-prompt-modal'), 
       modalGenerateBtn: document.querySelector('#prompt-modal .generate-btn'),
       modalLoading: document.getElementById('modal-loading'),
       modalError: document.getElementById('modal-error'),
-      closePromptModalButton: document.getElementById('close-prompt-modal'), // Novo botão fechar
+      closePromptModalButton: document.getElementById('close-prompt-modal'), 
 
-      // Ebook Tutorial Modal elements
       openEbookTutorialButton: document.getElementById('open-ebook-tutorial'),
       ebookTutorialPopup: document.getElementById('ebook-tutorial-popup'),
       closeEbookTutorialButton: document.getElementById('close-ebook-tutorial'),
       openEbookDownloadButton: document.getElementById('open-ebook-download'),
 
-      // Ebook Download Modal elements
       ebookDownloadPopup: document.getElementById('ebook-download-popup'),
       closeEbookDownloadButton: document.getElementById('close-ebook-download'),
       ebookIdInput: document.getElementById('ebook-id-input'),
       ebookIdMessage: document.getElementById('ebook-id-message'),
       verifyEbookIdButton: document.getElementById('verify-ebook-id'),
 
-      // Ad Popup elements
       adPopup: document.getElementById('ad-popup'),
       closePopupButton: document.querySelector('.close-popup'),
 
-      // Hamburger Menu elements (adicionados)
       hamburgerMenu: document.getElementById('hamburger-menu'),
       sidebar: document.getElementById('mySidebar'),
-      openEbookTutorialSidebarButton: document.getElementById('open-ebook-tutorial-sidebar') // Adicionado
+      openEbookTutorialSidebarButton: document.getElementById('open-ebook-tutorial-sidebar') 
     };
 
     let currentSelectedStyle = null;
@@ -861,7 +928,6 @@
         if (target) showContentSection(target, 'topTabs');
       });
 
-      // Alterado para abrir o Gerador de Prompt diretamente
       elements.styleGrid.addEventListener('click', (e) => {
         const useButton = e.target.closest('.use-card-button');
         if (useButton) {
@@ -872,7 +938,6 @@
         }
       });
 
-      // Prompt Modal events (mantido caso a funcionalidade de "Gerar Prompt Detalhado" seja retomada)
       elements.modalCancelBtn.addEventListener('click', closePromptModal);
       elements.closePromptModalButton.addEventListener('click', closePromptModal);
       elements.modalForm.addEventListener('submit', handlePromptModalFormSubmit);
@@ -882,7 +947,6 @@
         if (navItem && navItem.dataset.target) showContentSection(navItem.dataset.target, 'footerNav');
       });
 
-      // NOVO EVENTO PARA O LINK "E-EBBOK" NO CABEÇALHO (para manter a funcionalidade original de mostrar a seção)
       elements.header.addEventListener('click', (e) => {
         const promptLink = e.target.closest('.prompt-link');
         if (promptLink) {
@@ -892,7 +956,6 @@
         }
       });
 
-      // Ebook Tutorial & Download events
       elements.openEbookTutorialButton.addEventListener('click', openEbookTutorialPopup);
       elements.closeEbookTutorialButton.addEventListener('click', closeEbookTutorialPopup);
       elements.openEbookDownloadButton.addEventListener('click', () => {
@@ -902,74 +965,63 @@
       elements.closeEbookDownloadButton.addEventListener('click', closeEbookDownloadPopup);
       elements.verifyEbookIdButton.addEventListener('click', verifyEbookId);
 
-      // Ad Popup events
       elements.closePopupButton.addEventListener('click', closeAdPopup);
       elements.adPopup.addEventListener('click', (e) => {
           if (e.target === elements.adPopup) closeAdPopup();
       });
 
-      // Fechar modais ao clicar fora
       window.addEventListener('click', (e) => {
         if (e.target === elements.promptModal) closePromptModal();
         if (e.target === elements.ebookTutorialPopup) closeEbookTutorialPopup();
         if (e.target === elements.ebookDownloadPopup) closeEbookDownloadPopup();
-        // Fecha a sidebar se clicar fora dela (apenas em mobile)
         if (window.innerWidth <= 768 && elements.sidebar.style.width === '250px' &&
             !elements.sidebar.contains(e.target) && !elements.hamburgerMenu.contains(e.target)) {
             closeNav();
         }
       });
 
-      // --- Hamburger Menu events ---
       elements.hamburgerMenu.addEventListener('click', toggleNav);
-      // Listener para fechar a sidebar ao clicar em um item de navegação
       elements.sidebar.addEventListener('click', (e) => {
         const sidebarItem = e.target.closest('.sidebar-item');
         if (sidebarItem) {
           const target = sidebarItem.dataset.target;
           if (target) {
             showContentSection(target);
-            closeNav(); // Fecha sidebar após clicar em item interno
+            closeNav(); 
           } else if (sidebarItem.tagName === 'A' || sidebarItem.id === 'open-ebook-tutorial-sidebar') {
-            // Permite que links externos ou o botão do ebook abram e fechem a sidebar
             closeNav();
             if (sidebarItem.id === 'open-ebook-tutorial-sidebar') {
                 openEbookTutorialPopup();
             }
           }
         }
-        // Se clicar no botão de fechar da sidebar
         if (e.target.classList.contains('closebtn')) {
             closeNav();
         }
       });
 
-      // Adicione um listener para o botão "E-book Prompts Profissionais" dentro da sidebar
       if (elements.openEbookTutorialSidebarButton) {
         elements.openEbookTutorialSidebarButton.addEventListener('click', () => {
-          closeNav(); // Fecha a sidebar
-          openEbookTutorialPopup(); // Abre o modal do ebook
+          closeNav(); 
+          openEbookTutorialPopup(); 
         });
       }
 
-       // Fechar sidebar se a tela for redimensionada para desktop
        window.addEventListener('resize', () => {
-          if (window.innerWidth > 768 && elements.sidebar.style.width === '250px') {
-              closeNav();
-          }
+           if (window.innerWidth > 768 && elements.sidebar.style.width === '250px') {
+               closeNav();
+           }
       });
     }
 
-    // --- Hamburger Menu Functions ---
     function openNav() {
       elements.sidebar.style.width = "250px";
-      // Opcional: Desabilitar scroll do body quando sidebar aberta
       document.body.style.overflow = "hidden";
     }
 
     function closeNav() {
       elements.sidebar.style.width = "0";
-      document.body.style.overflow = ""; // Reativar scroll
+      document.body.style.overflow = ""; 
     }
 
     function toggleNav() {
@@ -980,7 +1032,6 @@
       }
     }
     
-    // --- Funções para o Pop-up de Anúncio ---
     function showAdPopup() {
         if (elements.adPopup) elements.adPopup.style.display = 'flex';
     }
@@ -988,11 +1039,10 @@
         if (elements.adPopup) elements.adPopup.style.display = 'none';
     }
 
-    // --- Funções para o Modal de Geração de Prompt (existente) ---
     function closePromptModal() {
       elements.promptModal.style.display = 'none';
       elements.modalError.style.display = 'none';
-      elements.modalTheme.value = ''; // Limpa o campo do tema
+      elements.modalTheme.value = ''; 
     }
 
     async function handlePromptModalFormSubmit(e) {
@@ -1013,7 +1063,7 @@
         const prompt = createVideoPrompt(theme, currentSelectedStyle);
         const generatedPrompt = await callGeminiAPI(apiKey, prompt);
         alert('Prompt gerado com sucesso! (Funcionalidade de "Caixa" removida)');
-        console.log("Prompt Gerado:", generatedPrompt); // Para debug, se precisar ver o prompt
+        console.log("Prompt Gerado:", generatedPrompt); 
         saveApiKey(apiKey);
         closePromptModal();
         showContentSection('descobrir-section');
@@ -1080,23 +1130,25 @@
       if (activeSection) {
         activeSection.style.display = 'flex';
 
-        // Desativa todos os itens de navegação primeiro
         elements.footerNav.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
 
-        // Se a chamada não veio do cabeçalho, ativa a aba correspondente
         if (source !== 'header') {
           elements.footerNav.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
-          // Só ativa o topTabs se ele estiver visível (i.e., em desktop)
           if (window.innerWidth > 768) {
               elements.topTabs.querySelectorAll('.tab-item').forEach(item => item.classList.toggle('active', item.dataset.target === sectionId));
           }
         }
-        // No caso do "E-EBBOK - FOTOS PROFISSIONAIS" no header, ele direciona para a seção "prompts-free-section", que não é uma "aba" no top-tabs. Não precisamos ativar nada no top-tabs para isso.
+        
+        const cards = activeSection.querySelectorAll('.style-card, .prompt-image-card, .model-image-card');
+        cards.forEach((card, index) => {
+            card.style.animation = 'none';
+            card.offsetHeight; 
+            card.style.animation = `slideInUp 0.5s ease-out ${index * 0.08}s forwards`;
+        });
+        
       }
     }
-
-    // --- Funções para os Novos Modais de E-book ---
 
     function openEbookTutorialPopup() {
       elements.ebookTutorialPopup.style.display = 'flex';
@@ -1108,8 +1160,8 @@
 
     function openEbookDownloadPopup() {
       elements.ebookDownloadPopup.style.display = 'flex';
-      elements.ebookIdInput.value = ''; // Limpa o campo do ID
-      hideModalError(elements.ebookIdMessage); // Esconde qualquer mensagem de erro anterior
+      elements.ebookIdInput.value = ''; 
+      hideModalError(elements.ebookIdMessage); 
     }
 
     function closeEbookDownloadPopup() {
@@ -1126,7 +1178,7 @@
         setTimeout(() => {
           window.open(CONFIG.EBOOK_DOWNLOAD_LINK, '_blank');
           closeEbookDownloadPopup();
-        }, 1500); // Redireciona após 1.5 segundos
+        }, 1500); 
       } else {
         elements.ebookIdMessage.classList.remove('success-message');
         elements.ebookIdMessage.classList.add('error-message');
@@ -1145,7 +1197,8 @@
 
       init();
 
-      setTimeout(showAdPopup, 10000); 
+      /* --- MELHORIA: Anúncio menos intrusivo --- */
+      setTimeout(showAdPopup, 20000); /* Alterado para 20 segundos */
     });
   </script>
 </body>
