@@ -61,7 +61,7 @@
 
     <div class="top-hud">
         <div class="badge">MÓDULO ANATÔMICO 3D</div>
-        <div class="title" id="info-title">SISTEMA NERVOSO</div>
+        <div class="title" id="info-title">CÉREBRO HUMANO</div>
         <div class="desc" id="info-desc">Arraste a tela para girar o modelo 3D em 360 graus e aproxime para ver os detalhes.</div>
     </div>
 
@@ -72,27 +72,23 @@
     </div>
 
     <script>
-        // Banco de Dados: Aqui você coloca os links dos modelos 3D que você escolher!
         const anatomyData = {
             cerebro: { 
                 title: "CÉREBRO HUMANO", 
                 color: "#0096ff", 
                 desc: "Arraste a tela para girar o modelo 3D. A central de processamento do nosso corpo.", 
-                // Link do modelo do cérebro 
                 url3d: "https://sketchfab.com/models/0d75a13be4f54e6097e3350af0bc3fa7/embed?autostart=1&ui_infos=0&ui_controls=0&ui_stop=0&ui_watermark=0&transparent=1" 
             },
             olho: { 
                 title: "ANATOMIA OCULAR", 
                 color: "#ffc800", 
                 desc: "Arraste a tela para girar. O globo ocular e suas estruturas complexas de captação de luz.", 
-                // Link do modelo do olho
                 url3d: "https://sketchfab.com/models/8fc5bc5cce924bf2bdabf945cf45a191/embed?autostart=1&ui_infos=0&ui_controls=0&ui_stop=0&ui_watermark=0&transparent=1" 
             },
             coracao: { 
                 title: "CORAÇÃO (BOMBEAMENTO)", 
                 color: "#ff3232", 
                 desc: "Gire para ver as válvulas e ventrículos. O motor incansável do sistema circulatório.", 
-                // Link do modelo do coração
                 url3d: "https://sketchfab.com/models/97b2046554dc4cd4a383815e1cb2f57b/embed?autostart=1&ui_infos=0&ui_controls=0&ui_stop=0&ui_watermark=0&transparent=1" 
             }
         };
@@ -114,7 +110,6 @@
             document.getElementById('info-title').style.color = d.color;
             document.getElementById('info-desc').innerText = d.desc;
 
-            // Esta é a mágica: troca o link do iframe para carregar o novo modelo 3D!
             document.getElementById('modelo-3d').src = d.url3d;
         }
     </script>
