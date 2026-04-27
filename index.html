@@ -30,56 +30,37 @@
 
         /* --- MENU HAMBÚRGUER --- */
         .menu-icon {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            cursor: pointer;
-            background: #0f0f0f;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #1f1f1f;
+            position: fixed; top: 20px; right: 20px; z-index: 1001; cursor: pointer;
+            background: #0f0f0f; padding: 10px; border-radius: 8px; border: 1px solid #1f1f1f;
         }
-
-        .menu-icon div {
-            width: 25px;
-            height: 3px;
-            background-color: #00ffb3;
-            margin: 5px 0;
-            transition: 0.4s;
-        }
+        .menu-icon div { width: 25px; height: 3px; background-color: #00ffb3; margin: 5px 0; transition: 0.4s; }
 
         .nav-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 250px;
-            height: 100%;
-            background: #0f0f0f;
-            z-index: 1000;
-            transition: 0.5s;
-            padding-top: 80px;
-            border-left: 1px solid #1f1f1f;
+            position: fixed; top: 0; right: -100%; width: 250px; height: 100%;
+            background: #0f0f0f; z-index: 1000; transition: 0.5s; padding-top: 80px; border-left: 1px solid #1f1f1f;
         }
-
         .nav-menu.active { right: 0; }
-
         .nav-menu a {
-            display: block;
-            padding: 15px 25px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px solid #1f1f1f;
-            transition: 0.3s;
+            display: block; padding: 15px 25px; color: #fff; text-decoration: none;
+            font-weight: 600; border-bottom: 1px solid #1f1f1f; transition: 0.3s;
         }
-
         .nav-menu a:hover { background: #1f1f1f; color: #00ffb3; }
 
-        /* --- HEADER --- */
+        /* --- HEADER & NOVO BOTÃO --- */
         header { margin-bottom: 40px; text-align: center; }
         h1 { font-size: 2.2rem; font-weight: 800; text-transform: uppercase; color: #fff; margin-bottom: 8px; }
         .subtitle { color: #00ffb3; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;}
+        
+        .btn-impacto {
+            background: transparent; border: 2px solid #00ffb3; color: #00ffb3;
+            padding: 14px 28px; font-size: 0.9rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; border-radius: 8px; cursor: pointer; margin-top: 25px;
+            transition: 0.3s; box-shadow: 0 0 10px rgba(0, 255, 179, 0.1);
+        }
+        .btn-impacto:hover {
+            background: #00ffb3; color: #050505; box-shadow: 0 0 20px rgba(0, 255, 179, 0.4);
+            transform: translateY(-2px);
+        }
 
         /* --- VÍDEO --- */
         .video-wrapper {
@@ -107,7 +88,7 @@
         }
         .card:hover .btn-action { background-color: #00ffb3; color: #050505; }
 
-        /* --- MODAL --- */
+        /* --- MODAL DE SENHA ORIGINAL --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000;
@@ -126,6 +107,39 @@
         .modal-btn { background: #00ffb3; color: #050505; padding: 15px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; width: 100%; text-transform: uppercase; }
         .error-msg { color: #ff3333; font-size: 0.85rem; margin-top: 10px; display: none; }
 
+        /* --- NOVO POP-UP (MODAL) DO SISTEMA SOLAR --- */
+        .modal-solar {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 3000;
+            justify-content: center; align-items: center; opacity: 0; transition: 0.4s ease;
+        }
+        .modal-solar.active { display: flex; opacity: 1; }
+        .modal-solar-container {
+            width: 95%; max-width: 1200px; height: 90vh; background: #050505;
+            border: 1px solid #1f1f1f; border-radius: 16px; position: relative;
+            display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 0 40px rgba(0, 255, 179, 0.1);
+        }
+        .btn-fechar-solar {
+            position: absolute; top: 10px; right: 15px; background: none; border: none;
+            color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.5; transition: 0.3s; z-index: 3010; line-height: 1;
+        }
+        .btn-fechar-solar:hover { opacity: 1; color: #ff3333; }
+        
+        .solar-header {
+            text-align: center; padding: 15px; font-size: 0.85rem; color: #888;
+            text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #1f1f1f;
+        }
+        .solar-iframe-wrapper {
+            flex-grow: 1; position: relative; background: #000; overflow: hidden;
+        }
+        .solar-iframe-wrapper iframe {
+            width: 100%; height: 100%; border: none; display: block;
+        }
+        .solar-footer {
+            text-align: center; padding: 15px; font-size: 0.85rem; color: #00ffb3;
+            text-transform: uppercase; font-weight: 700; border-top: 1px solid #1f1f1f; letter-spacing: 1px;
+        }
+
         @media (max-width: 768px) { .card { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -134,7 +148,6 @@
     <div class="menu-icon" onclick="toggleMenu()">
         <div></div><div></div><div></div>
     </div>
-
     <nav class="nav-menu" id="navMenu">
         <a href="#">Início</a>
         <a href="#" onclick="abrirPeloMenu('curso', 'Agenda de IA')">Agenda de IA</a>
@@ -147,6 +160,7 @@
         <header>
             <h1>Plínio Studio</h1>
             <p class="subtitle">Inovação Audiovisual e Mentorias</p>
+            <button class="btn-impacto" onclick="abrirModalSolar()">Veja do que somos capazes de fazer</button>
         </header>
 
         <div class="video-wrapper">
@@ -158,24 +172,17 @@
                 <div class="card-img"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"></div>
                 <div class="card-content"><h2>Agenda de IA</h2><p>Acesso às salas individuais.</p><span class="btn-action">Acessar</span></div>
             </div>
-
             <div class="card js-link" data-tipo="mentoria" data-titulo="Área de Mentoria">
                 <div class="card-img"><img src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_1280.jpg"></div>
                 <div class="card-content"><h2>Mentoria</h2><p>Acompanhamento individual.</p><span class="btn-action">Acessar</span></div>
             </div>
-
             <div class="card js-link" data-tipo="gerador" data-titulo="Gerador de Imagens IA">
                 <div class="card-img"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"></div>
                 <div class="card-content"><h2>Gerador de Imagens</h2><p>Criação via IA.</p><span class="btn-action">Abrir</span></div>
             </div>
-
             <div class="card js-link" data-tipo="ebook" data-titulo="Baixar E-books">
                 <div class="card-img"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"></div>
-                <div class="card-content">
-                    <h2>Baixar E-books</h2>
-                    <p>Esteja com a matrícula em dias. Vencimentos de 10 a 12 de cada mês.</p>
-                    <span class="btn-action">Download</span>
-                </div>
+                <div class="card-content"><h2>Baixar E-books</h2><p>Esteja com a matrícula em dias. Vencimentos de 10 a 12 de cada mês.</p><span class="btn-action">Download</span></div>
             </div>
         </div>
     </div>
@@ -191,7 +198,22 @@
         </div>
     </div>
 
+    <div class="modal-solar" id="modalSolar">
+        <div class="modal-solar-container">
+            <button class="btn-fechar-solar" onclick="fecharModalSolar()">&times;</button>
+            
+            <div class="solar-header">Nova metodologia de ensino</div>
+            
+            <div class="solar-iframe-wrapper">
+                <iframe src="sistema.html"></iframe>
+            </div>
+
+            <div class="solar-footer">Exemplo de sistema solar</div>
+        </div>
+    </div>
+
     <script>
+        // --- LÓGICA DO MENU E SENHAS ORIGINAIS ---
         function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
 
         const modal = document.getElementById('customModal');
@@ -204,7 +226,7 @@
             document.getElementById('modalTitle').textContent = titulo;
             modalInput.value = ''; modalError.style.display = 'none';
             modal.classList.add('active');
-            toggleMenu(); // Fecha menu se estiver aberto
+            toggleMenu(); 
         }
 
         function closeModalFunc() { modal.classList.remove('active'); }
@@ -224,10 +246,21 @@
                 window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank');
                 closeModalFunc();
             } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === '2031') {
-                alert('Acessando plataforma...'); // Aqui você chama sua função abrirPlataforma()
+                alert('Acessando plataforma...'); 
                 closeModalFunc();
             } else { modalError.style.display = 'block'; }
         });
+
+        // --- NOVA LÓGICA DO POP-UP DO SISTEMA SOLAR ---
+        function abrirModalSolar() {
+            document.getElementById('modalSolar').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Trava a rolagem da página principal
+        }
+
+        function fecharModalSolar() {
+            document.getElementById('modalSolar').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Libera a rolagem
+        }
     </script>
 </body>
 </html>
