@@ -80,7 +80,7 @@
         }
         .card:hover .btn-action { background-color: #00ffb3; color: #050505; }
 
-        /* --- MODAL DE SENHA --- */
+        /* --- MODAL DE SENHA PROFISSIONAL --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000;
@@ -209,25 +209,79 @@
 
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
+        // --- FUNÇÃO PARA GERAR A TELA DOS ALUNOS LIMPA E ORGANIZADA ---
+        function abrirPlataforma(titulo) {
+            const janela = window.open('', '_blank');
+            
+            // 👇 LISTA DE ALUNOS UNIFICADA E LIMPA. COLOQUE OS LINKS AQUI:
+            const listaDeAlunos = [
+                { nome: "Alexandre", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Deo Garcez", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Eli mãe de Gael", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Izabel e Sophia", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Maria Eduarda", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Marta", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Maurina e Anikelly", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Scheila e Samantha", linkMeet: "COLOQUE_O_LINK_AQUI" },
+                { nome: "Wilma Duarte", linkMeet: "COLOQUE_O_LINK_AQUI" }
+            ];
+
+            let corpoHtml = '<div class="dias-grid">';
+            
+            listaDeAlunos.forEach(aluno => {
+                corpoHtml += `
+                <div class="dia-card">
+                    <div class="info-row" style="font-size:1.2rem; color:#fff; text-align: center; margin-bottom: 5px;">
+                        <strong>${aluno.nome}</strong>
+                    </div>
+                    <a href="${aluno.linkMeet}" target="_blank" class="btn-meet">Entrar na Sala do Meet</a>
+                </div>`;
+            });
+            
+            corpoHtml += '</div>';
+
+            const htmlFinal = `
+                <!DOCTYPE html>
+                <html lang="pt-BR">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+                    <title>${titulo}</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+                    <style>
+                        body { background-color: #050505; color: #f0f0f0; font-family: 'Inter', sans-serif; padding: 15px; margin: 0; display: flex; flex-direction: column; align-items: center; }
+                        .ead-container { width: 100%; max-width: 500px; }
+                        h1 { color: #00ffb3; font-size: 1.4rem; text-align: center; margin: 20px 0 30px 0; text-transform: uppercase; letter-spacing: 1px; }
+                        .dias-grid { display: flex; flex-direction: column; gap: 16px; }
+                        .dia-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 25px; display: flex; flex-direction: column; gap: 10px; border-left: 4px solid #00ffb3; }
+                        .btn-meet { background-color: #00ffb3; color: #050505; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: 800; text-align: center; font-size: 1rem; text-transform: uppercase; transition: 0.3s; }
+                        .btn-meet:hover { background-color: #fff; color: #000; }
+                        footer { margin-top: 50px; padding: 20px; color: #444; font-size: 0.75rem; text-align: center; border-top: 1px solid #222; width: 100%; }
+                    </style>
+                </head>
+                <body>
+                    <div class="ead-container">
+                        <h1>${titulo}</h1>
+                        ${corpoHtml}
+                        <footer>Copyright Plínio Studio</footer>
+                    </div>
+                </body>
+                </html>`;
+
+            janela.document.write(htmlFinal);
+            janela.document.close();
+        }
+
         btnSubmit.addEventListener('click', () => {
             const pw = modalInput.value.trim().toLowerCase(); 
 
-            function sucesso(url) {
-                modalInput.style.borderColor = '#00ffb3';
-                btnSubmit.style.background = '#00ffb3';
-                btnSubmit.style.color = '#050505';
-                btnSubmit.textContent = 'ACESSO LIBERADO ✓';
-                setTimeout(() => {
-                    if (url) window.open(url, '_blank');
-                    closeModalFunc();
-                }, 1200);
-            }
-
+            // EFEITO DE ERRO
             function erro() {
                 modalInput.style.borderColor = '#ff3333';
                 btnSubmit.style.background = '#ff3333';
                 btnSubmit.style.color = '#fff';
                 btnSubmit.textContent = 'SENHA INCORRETA ✗';
+                
                 setTimeout(() => {
                     btnSubmit.style.background = '#00ffb3';
                     btnSubmit.style.color = '#050505';
@@ -236,13 +290,32 @@
                 }, 2000);
             }
 
+            // CHECAGEM DAS SENHAS E ABERTURA DAS TELAS
             if (currentType === 'ebook' && pw === 'ia2031') {
-                sucesso('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA_Versao_Final_UNIFICADA.pdf_20260426_124121_0000+(2).pdf/file');
+                modalInput.style.borderColor = '#00ffb3';
+                btnSubmit.style.background = '#00ffb3';
+                btnSubmit.style.color = '#050505';
+                btnSubmit.textContent = 'ACESSO LIBERADO ✓';
+                setTimeout(() => { window.open('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA_Versao_Final_UNIFICADA.pdf_20260426_124121_0000+(2).pdf/file', '_blank'); closeModalFunc(); }, 1200);
+            
             } else if (currentType === 'gerador' && pw === 'matrix') {
-                sucesso('https://iadesignerweb.github.io/imagem-gerador/');
+                modalInput.style.borderColor = '#00ffb3';
+                btnSubmit.style.background = '#00ffb3';
+                btnSubmit.style.color = '#050505';
+                btnSubmit.textContent = 'ACESSO LIBERADO ✓';
+                setTimeout(() => { window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank'); closeModalFunc(); }, 1200);
+            
             } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === '2031') {
-                // 👇 COLOQUE SEU LINK DE AULAS AQUI
-                sucesso('https://SEU_LINK_DE_AULAS.com');
+                modalInput.style.borderColor = '#00ffb3';
+                btnSubmit.style.background = '#00ffb3';
+                btnSubmit.style.color = '#050505';
+                btnSubmit.textContent = 'ACESSO LIBERADO ✓';
+                
+                setTimeout(() => { 
+                    abrirPlataforma(currentTitle);
+                    closeModalFunc(); 
+                }, 1200);
+            
             } else {
                 erro();
             }
