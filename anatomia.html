@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PLINIO STUDIO | Anatomia Holográfica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; overflow: hidden; background: #02050a; font-family: 'Inter', sans-serif; color: #fff; touch-action: none; }
+        
+        #neural-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        
+        .glass-panel {
+            background: rgba(10, 15, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 255, 179, 0.2);
+            border-radius: 16px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 800px; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        .title-glow { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #00ffb3; margin: 0; }
+        .status-dot { display: inline-block; width: 10px; height: 10px; background: #00ffb3; border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite; }
+
+        .controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 900px; display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; z-index: 20; }
+        .btn-system { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; padding: 12px 20px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; min-width: 120px; }
+        
+        .btn-system.active { background: rgba(0, 255, 179, 0.15); border-color: #00ffb3; color: #00ffb3; transform: translateY(-3px); }
+        .btn-system.color-blue.active { border-color: #0096ff; color: #0096ff; }
+        .btn-system.color-yellow.active { border-color: #ffc800; color: #ffc800; }
+        .btn-system.color-red.active { border-color: #ff3232; color: #ff3232; }
+
+        .info-panel { position: fixed; top: 100px; right: 20px; width: 320px; padding: 25px; display: none; animation: slideIn 0.4s ease-out forwards; }
+        .data-row { display: flex; justify-content: space-between; font-size: 0.85rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px; margin-top: 8px; }
+
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media(max-width: 768px) { .info-panel { top: 90px; left: 50%; transform: translateX(-50%); right: auto; width: 90%; max-height: 40vh; overflow-y: auto; } }
+    </style>
+</head>
+<body>
+    <canvas id="neural-canvas"></canvas>
+    <div class="glass-panel header">
+        <div><h1 class="title-glow">MÓDULO ANATÔMICO 3D</h1><div style="font-size: 11px; color: #888; margin-top: 4px; letter-spacing: 1px;">METODOLOGIA PLÍNIO STUDIO</div></div>
+        <div style="font-size: 12px; color: #aaa; display: flex; align-items: center;"><span class="status-dot" id="status-indicator"></span> <span id="status-text">Escaneamento Ativo</span></div>
+    </div>
+    <div class="glass-panel info-panel" id="info-box">
+        <h2 id="info-title" style="color: #00ffb3;">Visão Geral</h2>
+        <p id="info-desc">Selecione um sistema abaixo para isolar as funções e iniciar a simulação holográfica.</p>
+        <div id="info-stats"></div>
+    </div>
+    <div class="controls">
+        <div class="btn-system active color-blue" onclick="changeSystem('nervous', this)"><span style="font-size: 20px;">🧠</span> Sist. Nervoso</div>
+        <div class="btn-system color-yellow" onclick="changeSystem('frontal', this)"><span style="font-size: 20px;">⚡</span> Lobo Frontal</div>
+        <div class="btn-system color-red" onclick="changeSystem('occipital', this)"><span style="font-size: 20px;">👁️</span> Lobo Occipital</div>
+        <div class="btn-system" style="border-color: #00ffb3; color: #00ffb3;" onclick="changeSystem('parietal', this)"><span style="font-size: 20px;">✋</span> Lobo Parietal</div>
+    </div>
+    <script>
+        const anatomyData = {
+            nervous: { title: "Sistema Nervoso (Neon)", color: "#0096ff", desc: "A rede de comunicação do corpo. Processa bilhões de sinais por segundo.", stats: { "Velocidade": "430 km/h", "Neurônios": "86 Bilhões" }, particleMode: 'spread' },
+            frontal: { title: "Lobo Frontal", color: "#ffc800", desc: "Responsável pelo planejamento complexo e tomada de decisões.", stats: { "Função": "Raciocínio", "Localização": "Frente" }, particleMode: 'focus_top' },
+            occipital: { title: "Lobo Occipital", color: "#ff3232", desc: "O centro de processamento visual do cérebro.", stats: { "Função": "Visão", "Localização": "Traseira" }, particleMode: 'focus_back' },
+            parietal: { title: "Lobo Parietal", color: "#00ffb3", desc: "O centro de percepção espacial e sensorial.", stats: { "Função": "Sensores", "Localização": "Topo" }, particleMode: 'focus_middle' }
+        };
+
+        const canvas = document.getElementById('neural-canvas'), ctx = canvas.getContext('2d');
+        let width, height, particles = [], currentColor = '#0096ff', currentTargetMode = 'spread';
+
+        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() { this.x = Math.random()*width; this.y = Math.random()*height; this.vx = (Math.random()-0.5); this.vy = (Math.random()-0.5); this.size = Math.random()*2+1; }
+            update(mode) {
+                this.x += this.vx; this.y += this.vy;
+                let tx = width/2, ty = height/2, p = 0;
+                if(mode==='focus_top'){ty=height*0.3;p=0.05;} else if(mode==='focus_back'){tx=width*0.7;ty=height*0.6;p=0.05;} else if(mode==='focus_middle'){tx=width/2;ty=height*0.4;p=0.03;}
+                if(mode!=='spread'){ this.vx += (tx-this.x)*p*0.01; this.vy += (ty-this.y)*p*0.01; this.vx *= 0.95; this.vy *= 0.95; }
+                else { if(this.x<0||this.x>width)this.vx*=-1; if(this.y<0||this.y>height)this.vy*=-1; }
+            }
+            draw() { ctx.fillStyle=currentColor; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=15; ctx.shadowColor=currentColor; }
+        }
+
+        for(let i=0;i<100;i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.fillStyle = 'rgba(2,5,10,0.2)'; ctx.fillRect(0,0,width,height);
+            for(let i=0;i<particles.length;i++){
+                particles[i].update(currentTargetMode); particles[i].draw();
+                for(let j=i;j<particles.length;j++){
+                    let dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, d=Math.sqrt(dx*dx+dy*dy);
+                    if(d<100){ ctx.beginPath(); ctx.strokeStyle=currentColor; ctx.globalAlpha=1-(d/100); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke(); ctx.globalAlpha=1; }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        function changeSystem(k, btn) {
+            document.querySelectorAll('.btn-system').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+            const d = anatomyData[k]; currentColor=d.color; currentTargetMode=d.particleMode;
+            document.getElementById('status-indicator').style.background=d.color;
+            const box = document.getElementById('info-box'); box.style.display='block';
+            document.getElementById('info-title').innerText=d.title; document.getElementById('info-title').style.color=d.color;
+            document.getElementById('info-desc').innerText=d.desc;
+            let s=''; for(const [key,val] of Object.entries(d.stats)) s+=`<div class="data-row"><span>${key}</span><strong>${val}</strong></div>`;
+            document.getElementById('info-stats').innerHTML=s;
+        }
+
+        animate(); changeSystem('nervous', document.querySelector('.btn-system'));
+    </script>
+</body>
+</html>
