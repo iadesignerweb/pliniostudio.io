@@ -10,6 +10,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_ID_DO_PIXEL_AQUI'); /* <-- COLOQUE SEU ID AQUI */
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU_ID_DO_PIXEL_AQUI&ev=PageView&noscript=1"
+    /></noscript>
     <style>
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,6 +56,7 @@
             font-weight: 600; border-bottom: 1px solid #1f1f1f; transition: 0.3s;
         }
         .nav-menu a:hover { background: #1f1f1f; color: #00ffb3; }
+        .nav-menu a.highlight-menu-btn { color: #25d366; } /* Destaque para o link do zap no menu */
 
         /* --- HEADER --- */
         header { margin-bottom: 40px; text-align: center; }
@@ -131,34 +147,45 @@
         .modal-body iframe { width: 100%; height: 100%; border: none; }
         .modal-footer { text-align: center; padding: 15px; font-size: 0.85rem; color: #00ffb3; text-transform: uppercase; font-weight: 700; border-top: 1px solid #1f1f1f; }
 
-        /* --- BOTÃO WHATSAPP --- */
+        /* --- BOTÃO WHATSAPP REDESENHADO (MAIS INFORMAÇÃO) --- */
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             background-color: #25d366;
             color: #FFF;
-            border-radius: 50%;
+            border-radius: 50px;
+            padding: 12px 24px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
             z-index: 1000;
             text-decoration: none;
-            transition: transform 0.3s ease;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: translateY(-5px);
+            background-color: #1ebe57;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
         .whatsapp-float svg {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             fill: currentColor;
         }
 
-        @media (max-width: 768px) { .card { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .card { grid-template-columns: 1fr; } 
+            .whatsapp-float {
+                bottom: 15px; right: 15px; padding: 10px 18px; font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -170,6 +197,7 @@
         <a href="#" onclick="abrirPeloMenu('mentoria', 'Área de Mentoria')">Mentoria</a>
         <a href="#" onclick="abrirPeloMenu('gerador', 'Gerador de Imagens IA')">Gerador de Imagens</a>
         <a href="#" onclick="abrirPeloMenu('ebook', 'Baixar E-books')">Baixar E-books</a>
+        <a href="https://wa.me/5587996029765" target="_blank" rel="noopener noreferrer" class="highlight-menu-btn">Atendimento WhatsApp</a>
     </nav>
 
     <div class="container">
@@ -230,8 +258,9 @@
         </div>
     </div>
 
-    <a href="https://wa.me/5587996029765" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/5587996029765" class="whatsapp-float" target="_blank" rel="noopener noreferrer" onclick="fbq('track', 'Contact');">
         <svg viewBox="0 0 24 24"><path d="M12.031 21.033c-1.785 0-3.528-.465-5.074-1.347l-.364-.207-3.774.989 1.01-3.68-.227-.361c-.966-1.536-1.477-3.32-1.477-5.166 0-5.38 4.38-9.76 9.76-9.76 5.378 0 9.758 4.38 9.758 9.76 0 5.38-4.38 9.76-9.76 9.76zm0-17.863c-4.467 0-8.106 3.64-8.106 8.107 0 1.428.373 2.825 1.082 4.057l.115.198-.598 2.18 2.232-.585.19.112c1.196.702 2.56 1.071 3.974 1.071 4.466 0 8.105-3.64 8.105-8.107 0-4.467-3.64-8.107-8.107-8.107zm4.444 11.666c-.244-.122-1.444-.713-1.667-.795-.222-.082-.385-.122-.547.122-.162.244-.63.795-.773.957-.143.162-.288.183-.532.061-.244-.122-1.03-.38-1.96-1.213-.724-.648-1.213-1.45-1.356-1.694-.143-.244-.015-.376.107-.498.11-.11.244-.285.366-.427.122-.143.162-.244.244-.407.082-.162.04-.305-.02-.427-.061-.122-.547-1.318-.75-1.805-.198-.474-.398-.41-.547-.417-.143-.007-.307-.007-.47-.007-.162 0-.427.061-.65.305-.222.244-.853.834-.853 2.034s.874 2.36 1.017 2.543c.143.183 1.734 2.648 4.198 3.711.587.254 1.045.406 1.403.52.59.187 1.127.16 1.55.097.472-.07 1.444-.59 1.646-1.16.202-.57.202-1.057.143-1.16-.06-.102-.222-.163-.466-.285z"/></svg>
+        <span>Atendimento ao Cliente</span>
     </a>
 
     <div class="modal-overlay" id="customModal">
