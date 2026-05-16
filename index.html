@@ -159,6 +159,7 @@
             width: 100%;
             display: block;
             border-radius: 12px;
+            object-fit: cover;
         }
         
         /* Nova sobreposição de marca d'água visual no site */
@@ -174,9 +175,9 @@
             color: rgba(255, 255, 255, 0.15); /* Texto muito sutil */
             font-family: 'Inter', sans-serif;
             font-weight: 700;
-            font-size: 2rem; /* Ajustável */
+            font-size: 1.8rem; /* Ajustável */
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             transform: rotate(-15deg);
             pointer-events: none; /* Deixa cliques passarem */
             z-index: 5;
@@ -379,7 +380,21 @@
                 <div class="watermark-overlay">PLÍNIO STUDIO</div>
                 
                 <button class="btn-baixar-galeria" 
-                        onclick="abrirModalWatermark('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png')">
+                        onclick="abrirModalWatermark('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png', 'PLÍNIO STUDIO')">
+                    Baixar Pôster
+                </button>
+            </div>
+
+            <div class="galeria-item">
+                <img src="1001991091.png" 
+                     alt="Plínio Fabrício - Especial Raul" 
+                     oncontextmenu="return false;" 
+                     draggable="false">
+                
+                <div class="watermark-overlay">PLÍNIO FABRÍCIO</div>
+                
+                <button class="btn-baixar-galeria" 
+                        onclick="abrirModalWatermark('1001991091.png', 'Plínio Fabrício')">
                     Baixar Pôster
                 </button>
             </div>
@@ -539,13 +554,17 @@
         function abrirModalSolar() { document.getElementById('modalSolar').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function fecharModalSolar() { document.getElementById('modalSolar').classList.remove('active'); document.body.style.overflow = 'auto'; }
         
-        // --- LÓGICA DA GALERIA E MARCA D'ÁGUA ---
+        // --- LÓGICA DA GALERIA E MARCA D'ÁGUA DINÂMICA ---
         let imagemAtualParaDownload = '';
+        let textoMarcaDaguaAtual = ''; // Variável para guardar o texto específico da foto
 
-        function abrirModalWatermark(imgSrc) { 
+        // Agora a função recebe qual é a foto e qual é o texto
+        function abrirModalWatermark(imgSrc, watermarkText) { 
             imagemAtualParaDownload = imgSrc;
+            textoMarcaDaguaAtual = watermarkText; // Guarda o texto ("PLÍNIO STUDIO" ou "Plínio Fabrício")
             document.getElementById('modalWatermark').classList.add('active'); 
         }
+        
         function fecharModalWatermark() { 
             document.getElementById('modalWatermark').classList.remove('active'); 
         }
@@ -572,28 +591,26 @@
                 ctx.globalAlpha = 0.5; 
                 ctx.fillStyle = "#FFFFFF"; 
                 
-                // --- AJUSTES DE TAMANHO E POSIÇÃO SOLICITADOS ---
-                // Diminuir tamanho da fonte: Math.floor(img.width / 20)
+                // Tamanho da fonte proporcional (reduzido)
                 const fontSize = Math.floor(img.width / 20);
                 ctx.font = `bold ${fontSize}px Inter, sans-serif`;
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
                 
-                // Aplica uma leve sombra na marca d'água para destacar em fundos claros
+                // Sombra sutil
                 ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
                 ctx.shadowBlur = 10;
                 ctx.shadowOffsetX = 2;
                 ctx.shadowOffsetY = 2;
                 
-                // Posiciona centralizado na altura da mão e queixo
-                // canvas.width / 2: centralizado horizontalmente
-                // canvas.height * 0.65: centralizado verticalmente na área da mão/queixo
-                ctx.translate(canvas.width / 2, canvas.height * 0.65);
+                // Posiciona centralizado, na faixa do queixo/mãos (60% da altura)
+                ctx.translate(canvas.width / 2, canvas.height * 0.60);
                 
-                // Diminuir rotação: -Math.PI / 12 (cerca de -15 graus)
+                // Rotação suave de -15 graus
                 ctx.rotate(-Math.PI / 12); 
                 
-                ctx.fillText("PLÍNIO STUDIO", 0, 0);
+                // Aplica O TEXTO DINÂMICO exato que foi passado no botão da foto
+                ctx.fillText(textoMarcaDaguaAtual, 0, 0);
                 
                 // Converte para URL de dados e força o download
                 const dataURL = canvas.toDataURL('image/png');
