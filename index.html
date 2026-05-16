@@ -162,7 +162,6 @@
             object-fit: cover;
         }
         
-        /* Nova sobreposição de marca d'água visual no site */
         .watermark-overlay {
             position: absolute;
             top: 0;
@@ -172,14 +171,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.15); /* Texto muito sutil */
+            color: rgba(255, 255, 255, 0.15); 
             font-family: 'Inter', sans-serif;
             font-weight: 700;
-            font-size: 1.8rem; /* Ajustável */
+            font-size: 1.8rem; 
             text-transform: uppercase;
             letter-spacing: 3px;
             transform: rotate(-15deg);
-            pointer-events: none; /* Deixa cliques passarem */
+            pointer-events: none; 
             z-index: 5;
         }
 
@@ -247,7 +246,6 @@
         }
         .modal-btn:hover { background-color: #2563EB; }
 
-        /* Botões do Pop-up de Download */
         .btn-baixar-com-marca {
             background: transparent;
             color: var(--text-main);
@@ -507,29 +505,69 @@
 
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
+        // --- SISTEMA DE PLATAFORMA COM SENHA DUPLA PARA AULA ---
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
             const listaDeAlunos = [
-                { nome: "Alexandre", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Deo Garcez", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Eli mãe de Gael", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Izabel e Sophia", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Maria Eduarda", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Marta", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Maurina e Anikelly", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Scheila e Samantha", linkMeet: "COLOQUE_O_LINK_AQUI" },
-                { nome: "Wilma Duarte", linkMeet: "COLOQUE_O_LINK_AQUI" }
+                { nome: "Alexandre" },
+                { nome: "Deo Garcez" },
+                { nome: "Eli mãe de Gael" },
+                { nome: "Izabel e Sophia" },
+                { nome: "Maria Eduarda" },
+                { nome: "Marta" },
+                { nome: "Maurina e Anikelly" },
+                { nome: "Scheila e Samantha" },
+                { nome: "Wilma Duarte" }
             ];
+            
             let corpoHtml = '<div class="dias-grid">';
             listaDeAlunos.forEach(aluno => {
-                corpoHtml += `<div class="dia-card"><div class="info-row" style="font-size:1.2rem; color:#E2E8F0; text-align: center; margin-bottom: 8px;"><strong>${aluno.nome}</strong></div><a href="${aluno.linkMeet}" target="_blank" class="btn-meet">Entrar na Sala Virtual</a></div>`;
+                corpoHtml += `<div class="dia-card">
+                    <div class="info-row" style="font-size:1.2rem; color:#E2E8F0; text-align: center; margin-bottom: 8px;"><strong>${aluno.nome}</strong></div>
+                    <button onclick="abrirModalAluno()" class="btn-meet">Acessar Aula</button>
+                </div>`;
             });
             corpoHtml += '</div>';
-            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>${titulo} | EAD</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"><style>body { background-color: #0B0F19; color: #E2E8F0; font-family: 'Inter', sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }.ead-container { width: 100%; max-width: 540px; }h1 { color: #FFF; font-size: 1.6rem; text-align: center; margin: 30px 0 40px 0; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #00E5FF; padding-bottom: 15px; }.dias-grid { display: flex; flex-direction: column; gap: 20px; }.dia-card { background: #151C2C; border: 1px solid #2A3441; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; gap: 12px; border-left: 4px solid #00E5FF; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s; }.dia-card:hover { box-shadow: 0 10px 20px rgba(0,229,255,0.1); border-color:#00E5FF; }.btn-meet { background-color: #3B82F6; color: #ffffff; text-decoration: none; padding: 16px; border-radius: 8px; font-weight: 700; text-align: center; font-size: 0.95rem; text-transform: uppercase; transition: 0.3s; }.btn-meet:hover { background-color: #2563EB; }footer { margin-top: 60px; padding: 30px; color: #94A3B8; font-size: 0.8rem; text-align: center; border-top: 1px solid #2A3441; width: 100%; }</style></head><body><div class="ead-container"><h1>${titulo}</h1>${corpoHtml}<footer>Copyright 2026 Plínio Studio</footer></div></body></html>`;
+            
+            // Construção segura do HTML da nova janela, incluindo o modal de confirmação de senha
+            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>${titulo} | EAD</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"><style>body { background-color: #0B0F19; color: #E2E8F0; font-family: 'Inter', sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }.ead-container { width: 100%; max-width: 540px; }h1 { color: #FFF; font-size: 1.6rem; text-align: center; margin: 30px 0 40px 0; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #00E5FF; padding-bottom: 15px; }.dias-grid { display: flex; flex-direction: column; gap: 20px; }.dia-card { background: #151C2C; border: 1px solid #2A3441; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; gap: 12px; border-left: 4px solid #00E5FF; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s; }.dia-card:hover { box-shadow: 0 10px 20px rgba(0,229,255,0.1); border-color:#00E5FF; }.btn-meet { background-color: #3B82F6; color: #ffffff; text-decoration: none; padding: 16px; border-radius: 8px; font-weight: 700; text-align: center; font-size: 0.95rem; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer; width: 100%; }.btn-meet:hover { background-color: #2563EB; }footer { margin-top: 60px; padding: 30px; color: #94A3B8; font-size: 0.8rem; text-align: center; border-top: 1px solid #2A3441; width: 100%; }</style></head><body><div class="ead-container"><h1>${titulo}</h1>${corpoHtml}<footer>Copyright 2026 Plínio Studio</footer></div>` +
+            `<div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,15,25,0.85); justify-content:center; align-items:center; z-index:9999; backdrop-filter:blur(8px);">` +
+            `<div style="background:#151C2C; padding:40px; border-radius:16px; border:1px solid #2A3441; text-align:center; width:90%; max-width:400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">` +
+            `<h3 style="color:#FFF; margin-bottom:15px; font-family:'Inter', sans-serif;">Confirme a Senha</h3>` +
+            `<p style="color:#94A3B8; margin-bottom:20px; font-size:0.9rem;">Insira a senha novamente para acessar a aula exclusiva.</p>` +
+            `<input type="password" id="alunoSenha" placeholder="****" style="width:100%; padding:15px; margin-bottom:20px; background:rgba(0,0,0,0.3); border:1px solid #2A3441; color:#FFF; border-radius:8px; text-align:center; font-size:1.2rem; font-weight:bold; letter-spacing:2px;">` +
+            `<button onclick="verificarSenhaAluno()" style="width:100%; padding:15px; background:#3B82F6; color:#FFF; border:none; border-radius:8px; font-weight:bold; cursor:pointer; text-transform:uppercase; letter-spacing:1px; transition:0.3s;">Entrar na Aula</button>` +
+            `<button onclick="fecharModalAluno()" style="margin-top:20px; background:none; border:none; color:#94A3B8; cursor:pointer; font-size:0.9rem; text-decoration:underline;">Cancelar</button>` +
+            `</div></div>` +
+            `<script>
+                function abrirModalAluno() {
+                    document.getElementById('alunoModal').style.display = 'flex';
+                    const input = document.getElementById('alunoSenha');
+                    input.value = '';
+                    input.focus();
+                }
+                function fecharModalAluno() {
+                    document.getElementById('alunoModal').style.display = 'none';
+                }
+                function verificarSenhaAluno() {
+                    const senha = document.getElementById('alunoSenha').value.trim();
+                    if(senha === '2031') {
+                        // Redireciona para o link da aula (YouTube)
+                        window.location.href = 'https://youtu.be/wN0TUXDhj7c?si=f7Hb1uTiKVbNep9f';
+                    } else {
+                        const input = document.getElementById('alunoSenha');
+                        input.style.borderColor = '#EF4444';
+                        setTimeout(() => { input.style.borderColor = '#2A3441'; }, 2000);
+                        alert('Senha incorreta!');
+                    }
+                }
+            <\/script></body></html>`;
+
             janela.document.write(htmlFinal);
             janela.document.close();
         }
 
+        // --- VALIDAÇÃO DA PRIMEIRA SENHA NO SITE PRINCIPAL ---
         btnSubmit.addEventListener('click', () => {
             const pw = modalInput.value.trim().toLowerCase(); 
             function erro() {
@@ -556,12 +594,11 @@
         
         // --- LÓGICA DA GALERIA E MARCA D'ÁGUA DINÂMICA ---
         let imagemAtualParaDownload = '';
-        let textoMarcaDaguaAtual = ''; // Variável para guardar o texto específico da foto
+        let textoMarcaDaguaAtual = ''; 
 
-        // Agora a função recebe qual é a foto e qual é o texto
         function abrirModalWatermark(imgSrc, watermarkText) { 
             imagemAtualParaDownload = imgSrc;
-            textoMarcaDaguaAtual = watermarkText; // Guarda o texto ("PLÍNIO STUDIO" ou "Plínio Fabrício")
+            textoMarcaDaguaAtual = watermarkText; 
             document.getElementById('modalWatermark').classList.add('active'); 
         }
         
@@ -569,13 +606,12 @@
             document.getElementById('modalWatermark').classList.remove('active'); 
         }
 
-        // Função para gerar a imagem com marca d'água via Canvas e fazer o download
         function baixarComMarcaDagua() {
             const btn = document.getElementById('btnDownloadMarca');
             btn.textContent = "Gerando...";
             
             const img = new Image();
-            img.crossOrigin = "Anonymous"; // Essencial para evitar erros de CORS com links externos
+            img.crossOrigin = "Anonymous"; 
             img.src = imagemAtualParaDownload;
             
             img.onload = function() {
@@ -584,42 +620,32 @@
                 canvas.height = img.height;
                 const ctx = canvas.getContext('2d');
                 
-                // Desenha a imagem original
                 ctx.drawImage(img, 0, 0);
                 
-                // Configurações da Marca d'Água (50% de transparência)
                 ctx.globalAlpha = 0.5; 
                 ctx.fillStyle = "#FFFFFF"; 
                 
-                // Tamanho da fonte proporcional (reduzido)
                 const fontSize = Math.floor(img.width / 20);
                 ctx.font = `bold ${fontSize}px Inter, sans-serif`;
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
                 
-                // Sombra sutil
                 ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
                 ctx.shadowBlur = 10;
                 ctx.shadowOffsetX = 2;
                 ctx.shadowOffsetY = 2;
                 
-                // Posiciona centralizado, na faixa do queixo/mãos (60% da altura)
                 ctx.translate(canvas.width / 2, canvas.height * 0.60);
-                
-                // Rotação suave de -15 graus
                 ctx.rotate(-Math.PI / 12); 
                 
-                // Aplica O TEXTO DINÂMICO exato que foi passado no botão da foto
                 ctx.fillText(textoMarcaDaguaAtual, 0, 0);
                 
-                // Converte para URL de dados e força o download
                 const dataURL = canvas.toDataURL('image/png');
                 const link = document.createElement('a');
                 link.download = 'poster_com_marca_dagua.png';
                 link.href = dataURL;
                 link.click();
                 
-                // Restaura o botão e fecha o modal
                 btn.textContent = "Baixar com Marca d'Água";
                 fecharModalWatermark();
             };
