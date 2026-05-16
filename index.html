@@ -348,8 +348,8 @@
         
         <div class="galeria-grid">
             <div class="galeria-item">
-                <img src="1001990772.png" alt="Galeria Plínio Fabrício">
-                <button class="btn-baixar-galeria" onclick="abrirModalWatermark('1001990772.png')">Baixar Pôster</button>
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png" alt="Galeria Plínio Fabrício">
+                <button class="btn-baixar-galeria" onclick="abrirModalWatermark('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png')">Baixar Pôster</button>
             </div>
         </div>
 
@@ -524,8 +524,7 @@
             btn.textContent = "Gerando...";
             
             const img = new Image();
-            // Evita bloqueio de CORS se a imagem estiver na mesma pasta
-            img.crossOrigin = "Anonymous"; 
+            img.crossOrigin = "Anonymous"; // Essencial para evitar erros de CORS com links externos
             img.src = imagemAtualParaDownload;
             
             img.onload = function() {
@@ -570,7 +569,7 @@
             };
 
             img.onerror = function() {
-                alert("Erro ao processar a imagem. Certifique-se de que a imagem está na mesma pasta do arquivo HTML.");
+                alert("Erro ao processar a imagem. Certifique-se de que a imagem permite carregamento externo (CORS).");
                 btn.textContent = "Baixar com Marca d'Água";
             };
         }
