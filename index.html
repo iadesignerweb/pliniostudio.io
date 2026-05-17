@@ -128,11 +128,29 @@
             font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: none;
             padding: 12px 26px; border-radius: 8px; transition: 0.3s; width: fit-content;
             background-color: var(--accent-primary);
-            box-shadow: 0 0 15px rgba(0,229,255,0.2);
+            box-shadow: 0 0 15px rgba(0,229,255,0.2); cursor: pointer;
         }
         .card:hover .btn-action { background-color: #FFFFFF; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
 
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin-bottom: 70px; }
+
+        /* --- SESSÃO PROMPTS RETRÁTIL --- */
+        .prompt-wrapper {
+            display: flex; flex-wrap: wrap; background: var(--bg-card);
+            border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 70px;
+        }
+        .prompt-img-box { flex: 1 1 300px; min-height: 300px; background: #000; position: relative; }
+        .prompt-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .prompt-info-box { flex: 2 1 400px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .prompt-info-box h3 { color: #FFF; font-size: 1.5rem; margin-bottom: 15px; font-weight: 600; }
+        .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .prompt-box {
+            background: #0B0F19; border: 1px solid var(--border-color);
+            padding: 15px; border-radius: 8px; margin-bottom: 15px; margin-top: 15px;
+            color: #E2E8F0; font-size: 0.85rem; line-height: 1.5;
+            font-family: monospace; white-space: pre-wrap; text-align: left;
+        }
 
         /* --- GALERIA DE IMAGENS COM PROTEÇÃO --- */
         .galeria-grid {
@@ -321,6 +339,7 @@
             .card-img { height: 220px; }
             .card-img::after { background: linear-gradient(to bottom, rgba(21, 28, 44, 0.1), rgba(21, 28, 44, 0.95)); }
             .card-content { padding: 30px 25px; }
+            .prompt-info-box { padding: 30px 20px; }
             .whatsapp-float { bottom: 20px; right: 20px; padding: 12px 20px; gap: 8px; font-size: 0.8rem; }
             .nav-menu { width: 250px; }
             .site-footer { padding-bottom: 100px; }
@@ -365,6 +384,58 @@
         </div>
 
         <div class="divider"></div>
+
+        <!-- NOVA SESSÃO: GALERIA DE PROMPTS -->
+        <h2 class="section-title">Galeria de <span style="color: var(--accent-primary);">Prompts</span></h2>
+        
+        <div class="prompt-wrapper">
+            <div class="prompt-img-box">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png" 
+                     alt="Prompt Treino Studio Plenitude" 
+                     draggable="false">
+            </div>
+            <div class="prompt-info-box">
+                <span class="card-tag" style="color: var(--accent-primary);">Treino Studio • Plenitude</span>
+                <h3>Prompt Plínio Studio</h3>
+                <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;">
+                    Recrie o padrão de alto contraste e cor seletiva ("color splash") em seus projetos. Copie a engenharia exata deste retrato de estúdio clicando abaixo.
+                </p>
+                
+                <button onclick="togglePrompt('prompt1')" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
+                    Mostrar / Ocultar Prompt
+                </button>
+                
+                <div id="prompt1" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPrompt1">A high-contrast studio portrait using a selective color (“color splash”) technique. The subject is positioned front-facing toward the camera in a centered head-and-shoulders composition, with squared shoulders and a straight, balanced posture, creating a strong editorial portrait. The image is rendered primarily in monochrome, with only the lips remaining in vivid color.
+
+Identity & Face Match (Strict):
+Use the reference image as a strict identity reference. Preserve the exact facial structure, proportions, skin tone, eye shape, nose, lips, jawline, and overall likeness. Maintain natural skin texture with visible pores and realistic imperfections. No beautification, reshaping, or identity alteration.
+
+Expression & Pose:
+The subject faces directly forward with a calm, restrained expression and steady eye contact. The gaze feels introspective and emotionally quiet, with relaxed eyelids and neutral brows. Lips remain gently closed in a natural resting position, conveying confidence, composure, and subtle emotional depth. The pose remains still and centered, emphasizing calm intensity.
+
+Selective Color:
+The entire image is grayscale except for matte red lipstick, which remains the only colored element and serves as the primary focal point.
+
+Lighting & Composition:
+Soft directional studio lighting from slightly above camera level creates gentle shadows that define facial structure while maintaining smooth tonal transitions. High dynamic range grayscale with deep blacks and soft highlights. Shallow depth of field keeps the face sharp while the background fades softly.
+
+Styling & Background:
+Long dark wavy hair parted at the center, falling naturally over the shoulders. The subject wears a structured black blazer with a formal white shirt. Background is a neutral dark gray studio gradient, clean and distraction-free, creating a cinematic, sophisticated high-fashion editorial mood.
+
+Aspect Ratio & Quality:
+1:1 aspect ratio, 4K–8K resolution, ultra-high detail.</div>
+                    
+                    <button onclick="copiarPrompt('textoPrompt1', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">
+                        📋 Copiar Prompt
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- FIM NOVA SESSÃO: GALERIA DE PROMPTS -->
 
         <h2 class="section-title">Nossa <span style="color: var(--accent-primary);">Galeria</span></h2>
         
@@ -480,6 +551,36 @@
         // Lógica do Menu
         function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
 
+        // SCRIPT PARA ABRIR/FECHAR PROMPT E COPIAR TEXTO
+        function togglePrompt(id) {
+            const content = document.getElementById(id);
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                // Adiciona margem top de volta ao botão principal
+                content.previousElementSibling.style.marginBottom = '0';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.previousElementSibling.style.marginBottom = '15px';
+            }
+        }
+
+        function copiarPrompt(textId, btnElement) {
+            const textToCopy = document.getElementById(textId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = "✅ Copiado com sucesso!";
+                btnElement.style.background = "#25d366";
+                btnElement.style.color = "#fff";
+                setTimeout(() => {
+                    btnElement.innerHTML = originalText;
+                    btnElement.style.background = "var(--accent-secondary)";
+                }, 3000);
+            }).catch(err => {
+                console.error('Erro ao copiar texto: ', err);
+                alert("Erro ao copiar o texto. Tente novamente.");
+            });
+        }
+
         // Lógica do Modal de Senhas
         const modal = document.getElementById('customModal');
         const modalInput = document.getElementById('modalInput');
@@ -532,7 +633,6 @@
             });
             listaHtml += '</div>';
             
-            // Construção segura do HTML da nova janela, contendo o container da lista e o container do vídeo
             const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>${titulo} | EAD</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"><style>
             body { background-color: #0B0F19; color: #E2E8F0; font-family: 'Inter', sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
             .ead-container { width: 100%; max-width: 540px; }
