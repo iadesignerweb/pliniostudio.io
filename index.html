@@ -477,8 +477,8 @@
         
         <div class="prompt-grid">
             
-            <!-- NOVO CARD PREMIUM -->
-            <div class="prompt-card" style="border-color: #FFD700; box-shadow: 0 5px 25px rgba(255, 215, 0, 0.1);">
+            <!-- NOVO CARD PREMIUM (PALETA PADRÃO) -->
+            <div class="prompt-card">
                 <!-- A imagem não tem onClick para não abrir o Lightbox e tem bloqueio de botão direito -->
                 <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" 
@@ -487,13 +487,13 @@
                 </div>
                 <!-- user-select: none impede que copiem os textos ao redor -->
                 <div class="prompt-info-box" style="user-select: none;">
-                    <span class="card-tag" style="color: #FFD700;">💎 Premium • Sacred Cinematic</span>
+                    <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
                     <h3>Macrorealismo Bíblico</h3>
                     <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
                         Retrato bíblico ultra-macro, imersão em 50mm, iluminação IMAX. Arte de altíssima complexidade e detalhamento.
                     </p>
                     
-                    <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; color: #FFD700; margin-bottom: 0;">
+                    <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         💎 Desbloquear Prompt
                     </button>
                     <!-- NOTA: O texto do prompt não está no HTML por segurança extrema. -->
@@ -702,14 +702,14 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
 
     <!-- MODAL PREMIUM -->
     <div class="modal-overlay" id="modalPremium">
-        <div class="modal-content" style="padding-top: 40px; padding-bottom: 40px; border-top: 4px solid #FFD700;">
+        <div class="modal-content" style="padding-top: 40px; padding-bottom: 40px; border-top: 4px solid var(--accent-primary);">
             <span class="close-modal" onclick="fecharModalPremium()">&times;</span>
-            <h3 style="color: #FFD700; margin-bottom: 10px;">💎 Acesso Restrito</h3>
+            <h3 style="color: var(--text-main); margin-bottom: 10px;">💎 Acesso Restrito</h3>
             <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 0.95rem; line-height: 1.5;">
                 Este é um Prompt Premium de alta complexidade. Para desbloquear e baixar este conteúdo exclusivo, entre em contato com nosso setor de vendas.
             </p>
             
-            <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank" style="background: #FFD700; color: #000; box-shadow: 0 4px 15px rgba(255,215,0,0.3);">
+            <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank" style="background: var(--accent-secondary); color: #FFF; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
                 Adquirir Prompt Premium
             </a>
         </div>
