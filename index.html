@@ -473,19 +473,27 @@
 
         <div class="divider"></div>
 
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <h2 style="font-size: 1.6rem; color: #FFFFFF; margin-bottom: 15px;">A Arte do Color Grading</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; max-width: 600px;">
+                A técnica cinematográfica que eleva vídeos de IA. Ajustes de contraste, granulação e textura para um resultado profissional.
+            </p>
+            <div style="width: 100%; max-width: 320px; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 4px solid var(--border-color); margin-bottom: 25px;">
+                <iframe src="https://www.instagram.com/reel/DYksB4mOORK/embed/" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+            <a href="https://wa.me/5587996029765?text=Quero%20o%20Guia%20Premium%20de%20Color%20Grading" style="display: inline-block; background: #e5a93c; color: #000; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.9rem;">💎 QUERO O GUIA PREMIUM</a>
+        </div>
+
         <h2 class="section-title">Galeria de <span style="color: var(--accent-primary);">Prompts</span></h2>
         
         <div class="prompt-grid">
             
-            <!-- NOVO CARD PREMIUM (PALETA PADRÃO) -->
             <div class="prompt-card">
-                <!-- A imagem não tem onClick para não abrir o Lightbox e tem bloqueio de botão direito -->
                 <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" 
                          alt="Macrorealismo Bíblico 8K" 
                          draggable="false">
                 </div>
-                <!-- user-select: none impede que copiem os textos ao redor -->
                 <div class="prompt-info-box" style="user-select: none;">
                     <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
                     <h3>Macrorealismo Bíblico</h3>
@@ -496,11 +504,8 @@
                     <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         💎 Desbloquear Prompt
                     </button>
-                    <!-- NOTA: O texto do prompt não está no HTML por segurança extrema. -->
-                </div>
+                    </div>
             </div>
-            <!-- FIM DO NOVO CARD PREMIUM -->
-
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png')">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png" 
@@ -700,7 +705,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         <span>Atendimento</span>
     </a>
 
-    <!-- MODAL PREMIUM -->
     <div class="modal-overlay" id="modalPremium">
         <div class="modal-content" style="padding-top: 40px; padding-bottom: 40px; border-top: 4px solid var(--accent-primary);">
             <span class="close-modal" onclick="fecharModalPremium()">&times;</span>
@@ -938,7 +942,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                     const iframe = document.getElementById('aulaVideo');
                     iframe.src = 'https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1';
                 }
-            <\/script></body></html>`;
+            </script></body></html>`;
 
             janela.document.write(htmlFinal);
             janela.document.close();
