@@ -27,7 +27,6 @@
     /></noscript>
     
     <style>
-        /* --- VARIÁVEIS DE CORES (TEMA INTELIGÊNCIA ARTIFICIAL) --- */
         :root {
             --bg-main: #0B0F19;
             --bg-card: #151C2C;
@@ -38,7 +37,6 @@
             --border-color: #2A3441;
         }
 
-        /* --- RESET & BASE EDUCACIONAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -51,7 +49,6 @@
 
         .container { max-width: 960px; margin: 0 auto; padding: 60px 20px; }
 
-        /* --- MENU --- */
         .menu-icon {
             position: fixed; top: 25px; right: 25px; z-index: 1001; cursor: pointer;
             background: var(--bg-card); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);
@@ -72,16 +69,13 @@
             font-weight: 500; font-size: 1rem; border-bottom: 1px solid var(--border-color); transition: 0.3s;
         }
         .nav-menu a:hover { background: #1E293B; color: var(--accent-primary); padding-left: 35px; }
-        /* Botão preços no menu */
         .nav-menu a.whats-btn-menu { color: #25d366; font-weight: 600; }
         .nav-menu a.highlight-menu-btn { color: #25d366; font-weight: 700; margin-top: 20px; border-top: 1px solid var(--border-color); }
 
-        /* --- HEADER --- */
         header { margin-bottom: 60px; text-align: center; }
         h1 { font-size: 2.8rem; font-weight: 800; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -1px;}
         .subtitle { color: var(--accent-primary); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;}
 
-        /* --- VÍDEO --- */
         .video-wrapper {
             position: relative; padding-bottom: 56.25%; height: 0; background: #000;
             border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); margin-bottom: 70px;
@@ -89,13 +83,11 @@
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* --- TÍTULOS DE SEÇÃO --- */
         .section-title {
             font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; text-transform: uppercase; 
             text-align: center; letter-spacing: 3px; font-weight: 600;
         }
 
-        /* --- CARDS PROFISSIONAIS (EFEITO IA) --- */
         .card-grid { display: flex; flex-direction: column; gap: 30px; margin-bottom: 70px; }
         .card {
             display: grid; grid-template-columns: 300px 1fr; background: var(--bg-card);
@@ -136,7 +128,6 @@
 
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin-bottom: 70px; }
 
-        /* --- SESSÃO PROMPTS EM GRADE (DESIGN ATUALIZADO) --- */
         .prompt-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -158,10 +149,10 @@
 
         .card-img-prompt {
             position: relative;
-            aspect-ratio: 1 / 1; /* Mantém quadrada */
+            aspect-ratio: 1 / 1;
             overflow: hidden;
             background: #000;
-            cursor: pointer; /* Indica que é clicável para abrir */
+            cursor: pointer;
         }
         .card-img-prompt::after {
             content: '🔎'; position: absolute; top: 15px; right: 15px;
@@ -209,7 +200,6 @@
             text-align: left;
         }
 
-        /* --- LIGHTBOX (VISUALIZAÇÃO DE IMAGEM) --- */
         .lightbox-overlay {
             display: none;
             position: fixed;
@@ -235,7 +225,6 @@
             cursor: default;
         }
 
-        /* --- GALERIA DE IMAGENS COM PROTEÇÃO --- */
         .galeria-grid {
             display: flex;
             flex-wrap: wrap;
@@ -305,7 +294,6 @@
             color: #000;
         }
 
-        /* --- RODAPÉ (FOOTER) PROFISSIONAL --- */
         .site-footer {
             background-color: var(--bg-card);
             border-top: 1px solid var(--border-color);
@@ -316,7 +304,6 @@
         .footer-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
         .footer-bottom { color: #5A6A80; font-size: 0.8rem; border-top: 1px solid var(--border-color); padding-top: 20px; max-width: 600px; margin: 0 auto; }
 
-        /* --- MODAIS EDUCACIONAIS (TEMA DARK) --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(8px); z-index: 2000;
@@ -403,7 +390,6 @@
         .modal-body iframe { width: 100%; height: 100%; border: none; }
         .modal-footer { text-align: center; padding: 20px; font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; font-weight: 600; border-top: 1px solid var(--border-color); }
 
-        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #ffffff;
             border-radius: 50px; padding: 14px 28px; display: flex; align-items: center; gap: 12px;
@@ -414,7 +400,6 @@
         .whatsapp-float:hover { transform: translateY(-5px); background-color: #1ebe57; box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
         .whatsapp-float svg { width: 24px; height: 24px; fill: currentColor; }
 
-        /* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
         @media (max-width: 768px) { 
             .container { padding: 40px 15px; }
             h1 { font-size: 2.2rem; }
@@ -422,7 +407,6 @@
             .card-img { height: 220px; }
             .card-img::after { background: linear-gradient(to bottom, rgba(21, 28, 44, 0.1), rgba(21, 28, 44, 0.95)); }
             .card-content { padding: 30px 25px; }
-            /* Ajuste da grade de prompts no mobile */
             .prompt-grid { grid-template-columns: 1fr; }
             .prompt-info-box { padding: 25px; }
             .prompt-info-box h3 { font-size: 1.25rem; }
@@ -478,10 +462,12 @@
             <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; max-width: 600px;">
                 A técnica cinematográfica que eleva vídeos de IA. Ajustes de contraste, granulação e textura para um resultado profissional.
             </p>
+            
             <div style="width: 100%; max-width: 320px; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 4px solid var(--border-color); margin-bottom: 25px;">
                 <iframe src="https://www.instagram.com/reel/DYksB4mOORK/embed/" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
-            <a href="https://wa.me/5587996029765?text=Quero%20o%20Guia%20Premium%20de%20Color%20Grading" style="display: inline-block; background: #e5a93c; color: #000; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.9rem;">💎 QUERO O GUIA PREMIUM</a>
+            
+            <a href="https://wa.me/5587996029765?text=Quero%20o%20Guia%20Premium%20de%20Color%20Grading" style="display: inline-block; background: var(--accent-primary); color: #000; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.9rem;">💎 QUERO O GUIA PREMIUM</a>
         </div>
 
         <h2 class="section-title">Galeria de <span style="color: var(--accent-primary);">Prompts</span></h2>
@@ -763,10 +749,8 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
     </div>
 
     <script>
-        // Lógica do Menu
         function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
 
-        // SCRIPT PARA ABRIR/FECHAR PROMPT E COPIAR TEXTO (AJUSTADO PARA GRADE)
         function togglePrompt(id, btnElement) {
             const content = document.getElementById(id);
             if (content.style.maxHeight && content.style.maxHeight !== '0px') {
@@ -795,23 +779,21 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             });
         }
 
-        // LÓGICA DO LIGHTBOX (VISUALIZAÇÃO FULLSCREEN)
         const lightbox = document.getElementById('lightboxOverlay');
         const lightboxImg = document.getElementById('lightboxImg');
 
         function abrirLightbox(imgSrc) {
             lightboxImg.src = imgSrc;
             lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Impede scroll do fundo
+            document.body.style.overflow = 'hidden';
         }
 
         function fecharLightbox() {
             lightbox.classList.remove('active');
-            document.body.style.overflow = ''; // Restaura scroll
-            setTimeout(() => { lightboxImg.src = ''; }, 300); // Limpa imagem após fechar
+            document.body.style.overflow = '';
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
         }
 
-        // Lógica do Modal de Senhas
         const modal = document.getElementById('customModal');
         const modalInput = document.getElementById('modalInput');
         const btnSubmit = document.getElementById('modalSubmit');
@@ -836,7 +818,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
 
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
-        // --- SISTEMA DE PLATAFORMA COM SENHA DUPLA PARA AULA ---
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
             const listaDeAlunos = [
@@ -917,12 +898,9 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                 function verificarSenhaAluno() {
                     const senha = document.getElementById('alunoSenha').value.trim();
                     if(senha === '2031') {
-                        // Esconde a lista e exibe a área do vídeo em vez de redirecionar para fora
                         document.getElementById('alunoModal').style.display = 'none';
                         document.getElementById('listaArea').style.display = 'none';
                         document.getElementById('videoArea').style.display = 'flex';
-                        
-                        // Ativa o autoplay automaticamente ao entrar na sala
                         const iframe = document.getElementById('aulaVideo');
                         if (!iframe.src.includes('autoplay=1')) {
                             iframe.src += '&autoplay=1';
@@ -935,10 +913,8 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                     }
                 }
                 function voltarParaSala() {
-                    // Retorna para a visualização da lista e para o vídeo
                     document.getElementById('videoArea').style.display = 'none';
                     document.getElementById('listaArea').style.display = 'block';
-                    
                     const iframe = document.getElementById('aulaVideo');
                     iframe.src = 'https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1';
                 }
@@ -948,7 +924,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             janela.document.close();
         }
 
-        // --- VALIDAÇÃO DA PRIMEIRA SENHA NO SITE PRINCIPAL ---
         btnSubmit.addEventListener('click', () => {
             const pw = modalInput.value.trim().toLowerCase(); 
             function erro() {
@@ -973,7 +948,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         function abrirModalSolar() { document.getElementById('modalSolar').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function fecharModalSolar() { document.getElementById('modalSolar').classList.remove('active'); document.body.style.overflow = 'auto'; }
         
-        // --- LÓGICA DA GALERIA E MARCA D'ÁGUA DINÂMICA ---
         let imagemAtualParaDownload = '';
         let textoMarcaDaguaAtual = ''; 
 
@@ -990,54 +964,42 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         function baixarComMarcaDagua() {
             const btn = document.getElementById('btnDownloadMarca');
             btn.textContent = "Gerando...";
-            
             const img = new Image();
             img.crossOrigin = "Anonymous"; 
             img.src = imagemAtualParaDownload;
-            
             img.onload = function() {
                 const canvas = document.createElement('canvas');
                 canvas.width = img.width;
                 canvas.height = img.height;
                 const ctx = canvas.getContext('2d');
-                
                 ctx.drawImage(img, 0, 0);
-                
                 ctx.globalAlpha = 0.5; 
                 ctx.fillStyle = "#FFFFFF"; 
-                
                 const fontSize = Math.floor(img.width / 20);
                 ctx.font = `bold ${fontSize}px Inter, sans-serif`;
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
-                
                 ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
                 ctx.shadowBlur = 10;
                 ctx.shadowOffsetX = 2;
                 ctx.shadowOffsetY = 2;
-                
                 ctx.translate(canvas.width / 2, canvas.height * 0.60);
                 ctx.rotate(-Math.PI / 12); 
-                
                 ctx.fillText(textoMarcaDaguaAtual, 0, 0);
-                
                 const dataURL = canvas.toDataURL('image/png');
                 const link = document.createElement('a');
                 link.download = 'poster_com_marca_dagua.png';
                 link.href = dataURL;
                 link.click();
-                
                 btn.textContent = "Baixar com Marca d'Água";
                 fecharModalWatermark();
             };
-
             img.onerror = function() {
-                alert("Erro ao processar a imagem. Certifique-se de que a imagem permite carregamento externo (CORS).");
+                alert("Erro ao processar a imagem.");
                 btn.textContent = "Baixar com Marca d'Água";
             };
         }
 
-        // --- LÓGICA DO MODAL PREMIUM ---
         function abrirModalPremium() { 
             document.getElementById('modalPremium').classList.add('active'); 
         }
