@@ -457,17 +457,50 @@
 
         <div class="divider"></div>
 
-        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <h2 style="font-size: 1.6rem; color: #FFFFFF; margin-bottom: 15px;">A Arte do Color Grading</h2>
-            <p style="color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; max-width: 600px;">
-                A técnica cinematográfica que eleva vídeos de IA. Ajustes de contraste, granulação e textura para um resultado profissional.
-            </p>
-            
-            <div style="width: 100%; max-width: 320px; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 4px solid var(--border-color); margin-bottom: 25px;">
-                <iframe src="https://www.instagram.com/reel/DYksB4mOORK/embed/" style="width: 100%; height: 100%; border: none;"></iframe>
+        <!-- VITRINE TÉCNICA DE COR (ACORDEON) -->
+        <div class="prompt-card" style="margin-bottom: 70px;">
+            <div class="prompt-info-box">
+                <span class="card-tag" style="color: var(--accent-primary);">Masterclass • Color Grading Cinematográfico</span>
+                <h3>Técnicas de Realismo IA</h3>
+                <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.6;">
+                    Aprenda a aplicar o "Look Analógico" em seus vídeos de IA. Ajustes precisos que transformam o digital em obra cinematográfica.
+                </p>
+                
+                <button onclick="togglePrompt('colorGrading', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main);">
+                    Ler Parâmetros Técnicos
+                </button>
+                
+                <div id="colorGrading" class="prompt-collapse">
+                    <div class="prompt-box" style="text-align: left; padding: 25px; margin-top: 20px;">
+                        <h4 style="color: var(--accent-primary); margin-bottom: 15px;">Parâmetros de Ajuste Manual</h4>
+                        <p>• <strong>Saturação (-10 a -15):</strong> O realismo cinematográfico foge de cores estouradas. Reduzir a saturação deixa a tempestade mais densa e retira o aspecto "videogame".</p><br>
+                        <p>• <strong>Contraste (+8 a +12):</strong> Cria volume e tridimensionalidade na cena de perseguição.</p><br>
+                        <p>• <strong>Temperatura (+5 a +8):</strong> Reforça o clima de deserto árido, contrastando com a tempestade.</p><br>
+                        <p>• <strong>Sombra (-10 a -15):</strong> Escurecer as sombras torna o ambiente dramático. O perigo mora nas sombras.</p><br>
+                        <p>• <strong>Desbotar/Fade (+15 a +20):</strong> O segredo do cinema. Levanta os pretos simulando película analógica dos anos 70.</p><br>
+                        <p>• <strong>Nitidez (+12 a +15):</strong> Realça texturas de dentes e poeira com realismo macro.</p><br>
+                        <div style="background: rgba(0,0,0,0.5); padding: 15px; border-left: 3px solid var(--accent-secondary); margin: 20px 0;">
+                            <p>• <strong>Grão (+25 a +30):</strong> Unifica a textura e sela o visual de rolo de filme clássico.</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px; padding: 20px; border-top: 1px solid var(--border-color);">
+                        <p style="color: #FFF; font-weight: bold; margin-bottom: 15px;">Deseja o Guia Completo com todos os termos técnicos?</p>
+                        <a href="https://wa.me/5587996029765?text=Quero%20o%20Guia%20Premium%20de%20Color%20Grading" class="btn-whats-modal">
+                            💎 ACESSAR ÁREA PREMIUM (WHATSAPP)
+                        </a>
+                    </div>
+                </div>
             </div>
-            
-            <a href="https://wa.me/5587996029765?text=Quero%20o%20Guia%20Premium%20de%20Color%20Grading" style="display: inline-block; background: var(--accent-primary); color: #000; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.9rem;">💎 QUERO O GUIA PREMIUM</a>
+        </div>
+
+        <!-- VITRINE DE VÍDEO (REELS) -->
+        <h2 class="section-title">Resultado Final</h2>
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 70px;">
+            <div style="width: 100%; max-width: 320px; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 4px solid var(--border-color); margin-bottom: 20px;">
+                <iframe src="https://www.instagram.com/reel/DYksB4mOORK/embed/" style="width: 100%; height: 100%; border: none;" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+            </div>
+            <a href="https://www.instagram.com/reel/DYksB4mOORK/" target="_blank" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: underline;">Assistir no Instagram</a>
         </div>
 
         <h2 class="section-title">Galeria de <span style="color: var(--accent-primary);">Prompts</span></h2>
@@ -755,10 +788,10 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             const content = document.getElementById(id);
             if (content.style.maxHeight && content.style.maxHeight !== '0px') {
                 content.style.maxHeight = '0px';
-                btnElement.textContent = "Mostrar Prompt";
+                btnElement.textContent = "Ler Parâmetros Técnicos";
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
-                btnElement.textContent = "Ocultar Prompt";
+                btnElement.textContent = "Fechar";
             }
         }
 
