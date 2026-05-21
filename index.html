@@ -453,6 +453,46 @@
             <p class="subtitle">Escola Audiovisual & Inteligência Artificial</p>
         </header>
 
+        <!-- === INÍCIO DA NOVA SESSÃO DE COLORIMETRIA === -->
+        <h2 class="section-title">Análise de <span style="color: var(--accent-primary);">Colorimetria</span> e Espectro de Contraste</h2>
+        
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 70px;">
+            <!-- Player Vertical 9:16 -->
+            <div style="position: relative; width: 100%; max-width: 315px; margin: 0 auto 30px auto; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,229,255,0.05);">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/S9tlmEw4cFU?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <!-- Acordeão Técnico -->
+            <div style="width: 100%; max-width: 800px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                <button onclick="const content = document.getElementById('colorimetria-collapse'); if(content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; } else { content.style.maxHeight = content.scrollHeight + 'px'; }" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0; padding: 16px;">
+                    Especificações de Renderização e Calibração de Imagem
+                </button>
+                
+                <div id="colorimetria-collapse" class="prompt-collapse">
+                    <div class="prompt-box" style="margin-top: 20px; font-family: 'Inter', sans-serif; white-space: normal; text-align: left; background: transparent; border: none; padding: 0;">
+                        <p style="margin-bottom: 15px; color: var(--text-main); line-height: 1.6;">Para atingir o padrão visual e o impacto psicológico adequado a esta integração de ambiente, a engenharia da imagem seguiu os seguintes protocolos em espaço logarítmico:</p>
+                        
+                        <ul style="margin-left: 20px; margin-bottom: 25px; color: var(--text-muted); line-height: 1.7;">
+                            <li style="margin-bottom: 10px;"><strong>Curva de Luma e Contraste Vetorial:</strong> Ajuste de Gamma ancorado, com compressão de realces (Highlight Rolloff) para suavização de picos de luz sob exposição solar direta. Nível de preto estabilizado para evitar esmagamento de sombras.</li>
+                            <li style="margin-bottom: 10px;"><strong>Matriz de Saturação (Chroma):</strong> Separação de canais RGB via matriz de luminância isolada. Ganho de saturação aplicado especificamente nas faixas de média frequência do Vetorscópio.</li>
+                            <li style="margin-bottom: 10px;"><strong>Colorimetria e Emulação Analógica:</strong> Desvio de compensação térmica no eixo Verde/Magenta. Aplicação de densidade de cor baseada em substratos de película fotocitoquímica (simulação de granulação halóide para textura orgânica).</li>
+                            <li style="margin-bottom: 10px;"><strong>Balanço de Faixa Dinâmica (HDR Mapping):</strong> Espaço de cor manipulado em quantização avançada para evitar banding em transições de luzes suaves na atmosfera árida.</li>
+                        </ul>
+                        
+                        <blockquote style="border-left: 3px solid var(--accent-primary); padding-left: 15px; font-style: italic; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6;">
+                            Nota Técnica: A aplicação correta desses parâmetros exige o mapeamento de nós (nodes) de processamento. Para descobrir quais softwares foram utilizados e ter acesso ao detalhamento de cada ferramenta aplicada neste fluxo de trabalho, é necessário ser aluno ativo da escola.
+                        </blockquote>
+                        
+                        <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" style="display: block; text-align: center; width: 100%; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+                            Desvende a Técnica: Fale com o Suporte Premium
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <!-- === FIM DA NOVA SESSÃO DE COLORIMETRIA === -->
+
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/VHMTkDUReKY" allowfullscreen></iframe>
         </div>
