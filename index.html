@@ -519,13 +519,11 @@
             
             <!-- NOVO CARD PREMIUM (PALETA PADRÃO) -->
             <div class="prompt-card">
-                <!-- A imagem não tem onClick para não abrir o Lightbox e tem bloqueio de botão direito -->
                 <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" 
                          alt="Macrorealismo Bíblico 8K" 
                          draggable="false">
                 </div>
-                <!-- user-select: none impede que copiem os textos ao redor -->
                 <div class="prompt-info-box" style="user-select: none;">
                     <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
                     <h3>Macrorealismo Bíblico</h3>
@@ -536,10 +534,8 @@
                     <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         💎 Desbloquear Prompt
                     </button>
-                    <!-- NOTA: O texto do prompt não está no HTML por segurança extrema. -->
                 </div>
             </div>
-            <!-- FIM DO NOVO CARD PREMIUM -->
 
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png')">
@@ -802,7 +798,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         // Lógica do Menu
         function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
 
-        // SCRIPT PARA ABRIR/FECHAR PROMPT E COPIAR TEXTO (AJUSTADO PARA GRADE)
+        // SCRIPT PARA ABRIR/FECHAR PROMPT E COPIAR TEXTO
         function togglePrompt(id, btnElement) {
             const content = document.getElementById(id);
             if (content.style.maxHeight && content.style.maxHeight !== '0px') {
@@ -831,20 +827,20 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             });
         }
 
-        // LÓGICA DO LIGHTBOX (VISUALIZAÇÃO FULLSCREEN)
+        // LÓGICA DO LIGHTBOX
         const lightbox = document.getElementById('lightboxOverlay');
         const lightboxImg = document.getElementById('lightboxImg');
 
         function abrirLightbox(imgSrc) {
             lightboxImg.src = imgSrc;
             lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Impede scroll do fundo
+            document.body.style.overflow = 'hidden'; 
         }
 
         function fecharLightbox() {
             lightbox.classList.remove('active');
-            document.body.style.overflow = ''; // Restaura scroll
-            setTimeout(() => { lightboxImg.src = ''; }, 300); // Limpa imagem após fechar
+            document.body.style.overflow = ''; 
+            setTimeout(() => { lightboxImg.src = ''; }, 300); 
         }
 
         // Lógica do Modal de Senhas
@@ -875,26 +871,28 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         // --- SISTEMA DE PLATAFORMA COM SENHA DUPLA PARA AULA ---
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
+            // LISTA DE ALUNOS COM SENHAS INDIVIDUAIS (2ª Trava)
             const listaDeAlunos = [
-                { nome: "Alexandra" },
-                { nome: "Alexandre" },
-                { nome: "Deo Garcez" },
-                { nome: "Eli mãe de Gael" },
-                { nome: "Henrique Seixas" },
-                { nome: "Izabel e Sophia" },
-                { nome: "Maria Eduarda" },
-                { nome: "Marta" },
-                { nome: "Martha Produtora" },
-                { nome: "Maurina e Anikelly" },
-                { nome: "Scheila e Samantha" },
-                { nome: "Wilma Duarte" }
+                { nome: "Alexandra", senha: "1045" },
+                { nome: "Alexandre", senha: "2901" },
+                { nome: "Deo Garcez", senha: "3378" },
+                { nome: "Eli mãe de Gael", senha: "4192" },
+                { nome: "Henrique Seixas", senha: "5820" },
+                { nome: "Izabel e Sophia", senha: "6451" },
+                { nome: "Maria Eduarda", senha: "7109" },
+                { nome: "Maria Mentora", senha: "8234" },
+                { nome: "Martha Produtora", senha: "9512" },
+                { nome: "Maurina e Anikelly", senha: "1765" },
+                { nome: "Scheila e Samantha", senha: "2489" },
+                { nome: "Wilma Duarte", senha: "3904" }
             ];
             
             let listaHtml = '<div class="dias-grid">';
             listaDeAlunos.forEach(aluno => {
+                // Passando a senha específica do aluno para o Modal
                 listaHtml += `<div class="dia-card">
                     <div class="info-row" style="font-size:1.2rem; color:#E2E8F0; text-align: center; margin-bottom: 8px;"><strong>${aluno.nome}</strong></div>
-                    <button onclick="abrirModalAluno()" class="btn-meet">Acessar Aula</button>
+                    <button onclick="abrirModalAluno('${aluno.senha}')" class="btn-meet">Acessar Aula</button>
                 </div>`;
             });
             listaHtml += '</div>';
@@ -928,6 +926,81 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                 <div class="iframe-wrapper">
                     <iframe id="aulaVideo" src="https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1" sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen></iframe>
                 </div>
+                
+                <!-- === INÍCIO DO MATERIAL DIDÁTICO E SLIDES === -->
+                <div style="width: 100%; text-align: left; margin-top: 40px; background: #151C2C; border: 1px solid #2A3441; border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-left: 4px solid #3B82F6;">
+                    
+                    <h2 style="color: #FFF; font-size: 1.5rem; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #2A3441; padding-bottom: 15px;">
+                        Abertura da Caixa Preta: O Predador do Sertão
+                    </h2>
+                    
+                    <p style="color: #94A3B8; font-size: 1rem; line-height: 1.6; margin-bottom: 30px;">
+                        Nesta aula, você viu os bastidores da texturização em ambiente árido. O que o público externo não sabe é que essa engenharia de cor avançada foi totalmente executada no aplicativo <strong>Video.Guru</strong>. O segredo não é o software, é a sua leitura do Vetorscópio mental. <br><br>
+                        <strong style="color: #00E5FF;">Aviso Operacional:</strong> Esta mesma técnica, parâmetros e calibração de contraste funcionam perfeitamente tanto para a edição de <strong>Vídeos</strong> quanto para o tratamento de <strong>Fotografias</strong>. Acompanhe os slides abaixo para replicar o processo.
+                    </p>
+
+                    <!-- SLIDES DA AULA (Formato Acordeão Didático) -->
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        
+                        <!-- SLIDE 01 -->
+                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
+                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 01: Setup e Proporção Cinematográfica</h3>
+                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
+                                <strong>Ação no Video.Guru:</strong> Vá em "Proporção" (Fundo).<br><br>
+                                O erro mais comum do amador é renderizar em formato quadrado. Para a imersão completa em dispositivos móveis e redes sociais, a regra é estrita: configure o projeto imediatamente para a proporção vertical <strong>9:16</strong>. Ajuste o enquadramento do elemento para que a linha dos olhos fique no terço superior da tela.
+                            </p>
+                        </div>
+
+                        <!-- SLIDE 02 -->
+                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
+                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 02: Curva de Luma (Contraste e Luz)</h3>
+                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
+                                <strong>Ação no Video.Guru:</strong> Menu "Ajustar".<br><br>
+                                1. <strong>Brilho:</strong> Reduza levemente (-5 a -10) para ancorar a imagem e evitar o estouro da luz solar.<br>
+                                2. <strong>Contraste:</strong> Aumente (+12 a +15) para dar peso e tridimensionalidade ao assunto contra o fundo.<br>
+                                3. <strong>Sombra:</strong> Levante um pouco (+5) para não "esmagar" os detalhes escuros da textura.
+                            </p>
+                        </div>
+
+                        <!-- SLIDE 03 -->
+                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
+                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 03: Matriz de Saturação e Calor</h3>
+                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
+                                <strong>Ação no Video.Guru:</strong> Menu "Ajustar".<br><br>
+                                Esta é a colorimetria que cria a atmosfera do ambiente:<br>
+                                1. <strong>Calor (Temperatura):</strong> Aumente (+15 a +20). Isso injeta o tom ocre/alaranjado na imagem, fundindo os elementos.<br>
+                                2. <strong>Matiz (Tint):</strong> Desloque levemente para o verde (-5) para neutralizar vermelhos artificiais.<br>
+                                3. <strong>Saturação:</strong> Diminua sutilmente (-8) para dar um aspecto cinematográfico (fator película fotográfica), tirando o visual amador.
+                            </p>
+                        </div>
+
+                        <!-- SLIDE 04 -->
+                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
+                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 04: Emulação Analógica e Textura</h3>
+                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
+                                <strong>Ação no Video.Guru:</strong> Menus "Filtro" e "Ajustar" > "Nitidez" / "Granulação".<br><br>
+                                1. Aplique um filtro da categoria <strong>"Filme"</strong> ou <strong>"Cinematográfico"</strong> em opacidade média (cerca de 40%).<br>
+                                2. <strong>Nitidez:</strong> Aumente (+15) para destacar as texturas principais.<br>
+                                3. <strong>Granulação (Grain):</strong> Adicione textura (+10) para simular a película de 35mm e unificar os elementos.
+                            </p>
+                        </div>
+                        
+                    </div>
+
+                    <!-- DIRETRIZ FINAL E MISSÃO PRÁTICA -->
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #00E5FF; border-radius: 8px;">
+                        <h4 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Missão Prática e Regra de Ouro</h4>
+                        <p style="color: #E2E8F0; font-size: 0.95rem; line-height: 1.6;">
+                            Tente usar essa exata técnica no próximo vídeo ou foto que você for criar e postar. Mas preste muita atenção a esta regra pericial sobre texturização:
+                            <br><br>
+                            🎬 <strong>Para VÍDEOS:</strong> Utilize a granulação (ensinada no Slide 04) para criar o aspecto de cinema e unir a movimentação dos frames.<br>
+                            📸 <strong>Para FOTOS:</strong> <strong>NÃO</strong> coloque granulação. Mantenha a imagem limpa, focando apenas na calibração de cor e nitidez, para preservar a qualidade fotográfica de alto padrão.
+                        </p>
+                    </div>
+
+                </div>
+                <!-- === FIM DO MATERIAL DIDÁTICO E SLIDES === -->
+
             </div>
 
             <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,15,25,0.85); justify-content:center; align-items:center; z-index:9999; backdrop-filter:blur(8px);">
@@ -941,7 +1014,10 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             </div>
 
             <script>
-                function abrirModalAluno() {
+                let senhaAtualEsperada = ''; // Variável para armazenar a senha do aluno clicado
+
+                function abrirModalAluno(senhaCorreta) {
+                    senhaAtualEsperada = senhaCorreta;
                     document.getElementById('alunoModal').style.display = 'flex';
                     const input = document.getElementById('alunoSenha');
                     input.value = '';
@@ -952,13 +1028,11 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                 }
                 function verificarSenhaAluno() {
                     const senha = document.getElementById('alunoSenha').value.trim();
-                    if(senha === '2031') {
-                        // Esconde a lista e exibe a área do vídeo em vez de redirecionar para fora
+                    if(senha === senhaAtualEsperada) { // Verifica a senha individual agora
                         document.getElementById('alunoModal').style.display = 'none';
                         document.getElementById('listaArea').style.display = 'none';
                         document.getElementById('videoArea').style.display = 'flex';
                         
-                        // Ativa o autoplay automaticamente ao entrar na sala
                         const iframe = document.getElementById('aulaVideo');
                         if (!iframe.src.includes('autoplay=1')) {
                             iframe.src += '&autoplay=1';
@@ -971,7 +1045,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                     }
                 }
                 function voltarParaSala() {
-                    // Retorna para a visualização da lista e para o vídeo
                     document.getElementById('videoArea').style.display = 'none';
                     document.getElementById('listaArea').style.display = 'block';
                     
@@ -1000,7 +1073,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             } else if (currentType === 'gerador' && pw === 'matrix') {
                 modalInput.style.borderColor = 'var(--accent-primary)'; btnSubmit.style.background = 'var(--accent-primary)'; btnSubmit.style.color = '#000'; btnSubmit.textContent = 'ACESSO LIBERADO ✓';
                 setTimeout(() => { window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank'); closeModalFunc(); }, 1200);
-            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === '2031') {
+            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === '2031') { // Primeira trava continua 2031
                 modalInput.style.borderColor = 'var(--accent-primary)'; btnSubmit.style.background = 'var(--accent-primary)'; btnSubmit.style.color = '#000'; btnSubmit.textContent = 'ACESSO LIBERADO ✓';
                 setTimeout(() => { abrirPlataforma(currentTitle); closeModalFunc(); }, 1200);
             } else { erro(); }
