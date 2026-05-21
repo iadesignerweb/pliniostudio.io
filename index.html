@@ -22,12 +22,9 @@
     fbq('init', '963317484266778'); 
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=963317484266778&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=963317484266778&ev=PageView&noscript=1"/></noscript>
     
     <style>
-        /* --- VARIÁVEIS DE CORES (TEMA INTELIGÊNCIA ARTIFICIAL) --- */
         :root {
             --bg-main: #0B0F19;
             --bg-card: #151C2C;
@@ -38,7 +35,6 @@
             --border-color: #2A3441;
         }
 
-        /* --- RESET & BASE EDUCACIONAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -51,7 +47,6 @@
 
         .container { max-width: 960px; margin: 0 auto; padding: 60px 20px; }
 
-        /* --- MENU --- */
         .menu-icon {
             position: fixed; top: 25px; right: 25px; z-index: 1001; cursor: pointer;
             background: var(--bg-card); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);
@@ -72,16 +67,13 @@
             font-weight: 500; font-size: 1rem; border-bottom: 1px solid var(--border-color); transition: 0.3s;
         }
         .nav-menu a:hover { background: #1E293B; color: var(--accent-primary); padding-left: 35px; }
-        /* Botão preços no menu */
         .nav-menu a.whats-btn-menu { color: #25d366; font-weight: 600; }
         .nav-menu a.highlight-menu-btn { color: #25d366; font-weight: 700; margin-top: 20px; border-top: 1px solid var(--border-color); }
 
-        /* --- HEADER --- */
         header { margin-bottom: 60px; text-align: center; }
         h1 { font-size: 2.8rem; font-weight: 800; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -1px;}
         .subtitle { color: var(--accent-primary); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;}
 
-        /* --- VÍDEO --- */
         .video-wrapper {
             position: relative; padding-bottom: 56.25%; height: 0; background: #000;
             border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); margin-bottom: 70px;
@@ -89,13 +81,11 @@
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* --- TÍTULOS DE SEÇÃO --- */
         .section-title {
             font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; text-transform: uppercase; 
             text-align: center; letter-spacing: 3px; font-weight: 600;
         }
 
-        /* --- CARDS PROFISSIONAIS (EFEITO IA) --- */
         .card-grid { display: flex; flex-direction: column; gap: 30px; margin-bottom: 70px; }
         .card {
             display: grid; grid-template-columns: 300px 1fr; background: var(--bg-card);
@@ -136,7 +126,6 @@
 
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin-bottom: 70px; }
 
-        /* --- SESSÃO PROMPTS EM GRADE (DESIGN ATUALIZADO) --- */
         .prompt-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -209,7 +198,6 @@
             text-align: left;
         }
 
-        /* --- LIGHTBOX (VISUALIZAÇÃO DE IMAGEM) --- */
         .lightbox-overlay {
             display: none;
             position: fixed;
@@ -235,7 +223,6 @@
             cursor: default;
         }
 
-        /* --- GALERIA DE IMAGENS COM PROTEÇÃO --- */
         .galeria-grid {
             display: flex;
             flex-wrap: wrap;
@@ -305,7 +292,6 @@
             color: #000;
         }
 
-        /* --- RODAPÉ (FOOTER) PROFISSIONAL --- */
         .site-footer {
             background-color: var(--bg-card);
             border-top: 1px solid var(--border-color);
@@ -316,7 +302,6 @@
         .footer-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
         .footer-bottom { color: #5A6A80; font-size: 0.8rem; border-top: 1px solid var(--border-color); padding-top: 20px; max-width: 600px; margin: 0 auto; }
 
-        /* --- MODAIS EDUCACIONAIS (TEMA DARK) --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(8px); z-index: 2000;
@@ -403,7 +388,6 @@
         .modal-body iframe { width: 100%; height: 100%; border: none; }
         .modal-footer { text-align: center; padding: 20px; font-size: 0.9rem; color: var(--accent-primary); text-transform: uppercase; font-weight: 600; border-top: 1px solid var(--border-color); }
 
-        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #ffffff;
             border-radius: 50px; padding: 14px 28px; display: flex; align-items: center; gap: 12px;
@@ -414,7 +398,6 @@
         .whatsapp-float:hover { transform: translateY(-5px); background-color: #1ebe57; box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
         .whatsapp-float svg { width: 24px; height: 24px; fill: currentColor; }
 
-        /* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
         @media (max-width: 768px) { 
             .container { padding: 40px 15px; }
             h1 { font-size: 2.2rem; }
@@ -454,12 +437,12 @@
 
         <h2 class="section-title">Análise de <span style="color: var(--accent-primary);">Colorimetria</span> e Espectro de Contraste</h2>
         
-        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 70px;">
-            <div style="position: relative; width: 100%; max-width: 315px; margin: 0 auto 30px auto; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,229,255,0.05);">
+        <div class="prompt-card" style="margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; max-width: 800px; margin-left: auto; margin-right: auto; padding: 30px;">
+            <div style="position: relative; width: 100%; max-width: 315px; margin: 0 auto 30px auto; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 2px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,229,255,0.05);">
                 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/S9tlmEw4cFU?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <div style="width: 100%; max-width: 800px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <div style="width: 100%; text-align: center;">
                 <button onclick="const content = document.getElementById('colorimetria-collapse'); if(content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; } else { content.style.maxHeight = content.scrollHeight + 'px'; }" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0; padding: 16px;">
                     Especificações de Renderização e Calibração de Imagem
                 </button>
@@ -486,6 +469,7 @@
                 </div>
             </div>
         </div>
+
         <div class="divider"></div>
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/VHMTkDUReKY" allowfullscreen></iframe>
@@ -823,10 +807,8 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
 
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
-        // --- SISTEMA DE PLATAFORMA COM SENHA DUPLA PARA AULA ---
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
-            // LISTA DE ALUNOS COM LÚCIENE PINTO INCLUÍDA
             const listaDeAlunos = [
                 { nome: "Alexandra", senha: "1045" },
                 { nome: "Alexandre", senha: "2901" },
@@ -864,21 +846,15 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             .btn-meet:hover { background-color: #2563EB; }
             .btn-voltar { background-color: transparent; color: #00E5FF; border: 1px solid #00E5FF; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-bottom: 30px; align-self: flex-start; }
             .btn-voltar:hover { background-color: #00E5FF; color: #0B0F19; }
-            
-            /* Ajuste de Proporção Fina e Proteção para Vídeo Vertical */
             .iframe-wrapper { position: relative; width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto 10px auto; border-radius: 12px; overflow: hidden; border: 1px solid #2A3441; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
             .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-            
-            /* Estilos do Acordeon Didático */
             .accordion-section { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
             .accordion-item { background: #151C2C; border: 1px solid #2A3441; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; }
             .accordion-item:hover { border-color: #00E5FF; }
             .accordion-header { background: #1E293B; padding: 18px 25px; cursor: pointer; font-weight: 600; font-size: 1rem; color: #FFF; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2A3441; user-select: none; }
             .accordion-content { padding: 25px; display: none; background: #111827; border-top: 1px solid #2A3441; text-align: left; }
-            
             .btn-audio { display: inline-flex; align-items: center; justify-content: center; background: #00E5FF; color: #000; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,229,255,0.2); transition: 0.3s; }
             .btn-audio:hover { background: #FFF; }
-            
             footer { margin-top: 60px; padding: 30px; color: #94A3B8; font-size: 0.8rem; text-align: center; border-top: 1px solid #2A3441; width: 100%; }
             </style></head><body>
             
@@ -959,7 +935,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                             <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: center;">
                                 <h4 style="color: #FFF; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Player Integrado da Aula</h4>
                                 <div class="iframe-wrapper">
-                                    <iframe id="aulaVideo" src="https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1" sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen></iframe>
+                                    <iframe id="aulaVideo" src="https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                                 <p style="color: #94A3B8; font-size: 0.8rem; margin-top: 5px;">Análise Cinematográfica em Formato Vertical</p>
                             </div>
@@ -987,6 +963,32 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                                         <strong style="color: #00E5FF; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Aula 04: Laboratório Prático de Amostragem (Color Splash)</strong>
                                         <span style="font-size: 0.85rem; color: #E2E8F0;">Isolamento e amostragem de canais cromáticos RGB com realce de foco seletivo e aplicação de filtros de 35mm em opacidade equilibrada de 40%.</span>
                                     </div>
+                                </div>
+
+                                <div style="background: #151C2C; border: 1px solid #00E5FF; border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+                                    <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase;">🛠️ Arsenal de Aplicativos</h3>
+                                    <p style="color: #94A3B8; font-size: 0.85rem; line-height: 1.6; margin-bottom: 15px;">A técnica ensinada foi demonstrada no Video.Guru. No entanto, sabemos que ele pode apresentar incompatibilidade ou não abrir em algumas versões de Android e iOS. Como o conhecimento que entregamos é universal, você pode aplicar a mesma engenharia de cor nos seguintes aplicativos:</p>
+                                    
+                                    <strong style="color: #FFF; font-size: 0.9rem; margin-bottom: 8px; display: block;">📸 Para Tratamento de FOTOS (iOS e Android):</strong>
+                                    <ul style="color: #E2E8F0; font-size: 0.85rem; line-height: 1.6; margin-left: 20px; margin-bottom: 15px;">
+                                        <li><strong>Lightroom Mobile:</strong> O melhor para controle de Curvas e Colorimetria avançada.</li>
+                                        <li><strong>Snapseed:</strong> Ferramenta "Curvas" e "Estrutura" excelentes.</li>
+                                        <li><strong>VSCO:</strong> As melhores emulações de película analógica e filtros de cinema.</li>
+                                    </ul>
+
+                                    <strong style="color: #FFF; font-size: 0.9rem; margin-bottom: 8px; display: block;">🎬 Para Edição de VÍDEOS (10 Alternativas para iOS e Android):</strong>
+                                    <ul style="color: #E2E8F0; font-size: 0.85rem; line-height: 1.6; margin-left: 20px;">
+                                        <li><strong>CapCut:</strong> Universal e com ótimo ajuste fino de cor.</li>
+                                        <li><strong>VN Video Editor:</strong> Interface profissional e suporte a LUTs.</li>
+                                        <li><strong>InShot:</strong> Do mesmo desenvolvedor do Video.Guru, muito estável.</li>
+                                        <li><strong>LumaFusion:</strong> O mais robusto, padrão profissional.</li>
+                                        <li><strong>KineMaster:</strong> Excelente controle de camadas e ajustes.</li>
+                                        <li><strong>Premiere Rush:</strong> Motor de cor da Adobe.</li>
+                                        <li><strong>Node Video:</strong> Para quem busca ajustes de cor em nível de engenharia.</li>
+                                        <li><strong>Splice:</strong> Ótimo controle de contraste e sombras.</li>
+                                        <li><strong>PowerDirector:</strong> Curvas e calibração precisas.</li>
+                                        <li><strong>Alight Motion:</strong> Focado em composição e correção profunda.</li>
+                                    </ul>
                                 </div>
 
                                 <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3B82F6; padding: 15px; border-radius: 0 8px 8px 0; font-size: 0.9rem; line-height: 1.5;">
@@ -1062,12 +1064,10 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                     iframe.src = 'https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1';
                 }
                 
-                // FUNÇÃO EXCLUSIVA DE ACORDEON COMPATÍVEL
                 function toggleAccordion(id) {
                     const content = document.getElementById(id);
                     const isVisible = content.style.display === 'block';
                     
-                    // Fecha todos antes de abrir o novo
                     document.querySelectorAll('.accordion-content').forEach(item => {
                         item.style.display = 'none';
                     });
@@ -1082,7 +1082,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             janela.document.close();
         }
 
-        // --- VALIDAÇÃO DA PRIMEIRA SENHA NO SITE PRINCIPAL ---
         btnSubmit.addEventListener('click', () => {
             const pw = modalInput.value.trim().toLowerCase(); 
             function erro() {
@@ -1107,7 +1106,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         function abrirModalSolar() { document.getElementById('modalSolar').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function fecharModalSolar() { document.getElementById('modalSolar').classList.remove('active'); document.body.style.overflow = 'auto'; }
         
-        // --- LÓGICA DA GALERIA E MARCA D'ÁGUA DINÂMICA ---
         let imagemAtualParaDownload = '';
         let textoMarcaDaguaAtual = ''; 
 
