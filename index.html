@@ -158,10 +158,10 @@
 
         .card-img-prompt {
             position: relative;
-            aspect-ratio: 1 / 1; /* Mantém quadrada */
+            aspect-ratio: 1 / 1; 
             overflow: hidden;
             background: #000;
-            cursor: pointer; /* Indica que é clicável para abrir */
+            cursor: pointer; 
         }
         .card-img-prompt::after {
             content: '🔎'; position: absolute; top: 15px; right: 15px;
@@ -422,7 +422,6 @@
             .card-img { height: 220px; }
             .card-img::after { background: linear-gradient(to bottom, rgba(21, 28, 44, 0.1), rgba(21, 28, 44, 0.95)); }
             .card-content { padding: 30px 25px; }
-            /* Ajuste da grade de prompts no mobile */
             .prompt-grid { grid-template-columns: 1fr; }
             .prompt-info-box { padding: 25px; }
             .prompt-info-box h3 { font-size: 1.25rem; }
@@ -453,16 +452,13 @@
             <p class="subtitle">Escola Audiovisual & Inteligência Artificial</p>
         </header>
 
-        <!-- === INÍCIO DA NOVA SESSÃO DE COLORIMETRIA === -->
         <h2 class="section-title">Análise de <span style="color: var(--accent-primary);">Colorimetria</span> e Espectro de Contraste</h2>
         
         <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 70px;">
-            <!-- Player Vertical 9:16 -->
             <div style="position: relative; width: 100%; max-width: 315px; margin: 0 auto 30px auto; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,229,255,0.05);">
                 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/S9tlmEw4cFU?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <!-- Acordeão Técnico -->
             <div style="width: 100%; max-width: 800px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                 <button onclick="const content = document.getElementById('colorimetria-collapse'); if(content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; } else { content.style.maxHeight = content.scrollHeight + 'px'; }" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0; padding: 16px;">
                     Especificações de Renderização e Calibração de Imagem
@@ -491,8 +487,6 @@
             </div>
         </div>
         <div class="divider"></div>
-        <!-- === FIM DA NOVA SESSÃO DE COLORIMETRIA === -->
-
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/VHMTkDUReKY" allowfullscreen></iframe>
         </div>
@@ -517,12 +511,9 @@
         
         <div class="prompt-grid">
             
-            <!-- NOVO CARD PREMIUM (PALETA PADRÃO) -->
             <div class="prompt-card">
                 <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
-                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" 
-                         alt="Macrorealismo Bíblico 8K" 
-                         draggable="false">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" alt="Macrorealismo Bíblico 8K" draggable="false">
                 </div>
                 <div class="prompt-info-box" style="user-select: none;">
                     <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
@@ -530,7 +521,6 @@
                     <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
                         Retrato bíblico ultra-macro, imersão em 50mm, iluminação IMAX. Arte de altíssima complexidade e detalhamento.
                     </p>
-                    
                     <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         💎 Desbloquear Prompt
                     </button>
@@ -539,9 +529,7 @@
 
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png')">
-                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png" 
-                         alt="Prompt Treino Studio Plenitude" 
-                         draggable="false">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png" alt="Prompt Treino Studio Plenitude" draggable="false">
                 </div>
                 <div class="prompt-info-box">
                     <span class="card-tag" style="color: var(--accent-primary);">Treino Studio • Fotorrealismo</span>
@@ -549,11 +537,9 @@
                     <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
                         Recrie o alto contraste e a técnica de cor seletiva (preto e branco com lábios vermelhos).
                     </p>
-                    
                     <button onclick="togglePrompt('prompt1', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         Mostrar Prompt
                     </button>
-                    
                     <div id="prompt1" class="prompt-collapse">
                         <div class="prompt-box" id="textoPrompt1">A high-contrast studio portrait using a selective color (“color splash”) technique. The subject is positioned front-facing toward the camera in a centered head-and-shoulders composition, with squared shoulders and a straight, balanced posture, creating a strong editorial portrait. The image is rendered primarily in monochrome, with only the lips remaining in vivid color.
 
@@ -574,7 +560,6 @@ Long dark wavy hair parted at the center, falling naturally over the shoulders. 
 
 Aspect Ratio & Quality:
 1:1 aspect ratio, 4K–8K resolution, ultra-high detail.</div>
-                        
                         <button onclick="copiarPrompt('textoPrompt1', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">
                             📋 Copiar
                         </button>
@@ -584,9 +569,7 @@ Aspect Ratio & Quality:
 
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompts%20Plinio%20Studio.png')">
-                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompts%20Plinio%20Studio.png" 
-                         alt="Prompt Treino Studio Ilustração 2D" 
-                         draggable="false">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompts%20Plinio%20Studio.png" alt="Prompt Treino Studio Ilustração 2D" draggable="false">
                 </div>
                 <div class="prompt-info-box">
                     <span class="card-tag" style="color: var(--accent-primary);">Treino Studio • Ilustração Hyper-realista</span>
@@ -594,11 +577,9 @@ Aspect Ratio & Quality:
                     <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
                         Fusão de fotorrealismo e estética ilustrativa para pôsteres modernos de alta qualidade.
                     </p>
-                    
                     <button onclick="togglePrompt('prompt2', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         Mostrar Prompt
                     </button>
-                    
                     <div id="prompt2" class="prompt-collapse">
                         <div class="prompt-box" id="textoPrompt2">Create a hyper-realistic, high-detail portrait illustration using the uploaded image as the absolute facial reference. The subject’s face must remain 100% identical to the reference photo — no changes to facial structure, proportions, skin tone, beard shape, jawline, nose, lips, eyes, or expression.
 
@@ -623,7 +604,6 @@ Style & Quality:
 Blend semi-photorealistic and semi-illustrative aesthetics, characteristic of modern high-end poster art. Emphasize clarity, sharp edges, rich color saturation, and dynamic energy. Ultra-high resolution, crisp details, smooth gradients, professional illustration finish.
 
 Do not alter the subject. Use the uploaded image strictly as reference.</div>
-                        
                         <button onclick="copiarPrompt('textoPrompt2', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">
                             📋 Copiar
                         </button>
@@ -633,9 +613,7 @@ Do not alter the subject. Use the uploaded image strictly as reference.</div>
 
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000a20c71f5a1fd297030114df7.png')">
-                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000a20c71f5a1fd297030114df7.png" 
-                         alt="Prompt Treino Studio Post Comandante" 
-                         draggable="false">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000a20c71f5a1fd297030114df7.png" alt="Prompt Treino Studio Post Comandante" draggable="false">
                 </div>
                 <div class="prompt-info-box">
                     <span class="card-tag" style="color: var(--accent-primary);">Treino Studio • Realismo vs Arte</span>
@@ -643,17 +621,14 @@ Do not alter the subject. Use the uploaded image strictly as reference.</div>
                     <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
                         Fusão criativa entre pôster de tinta a óleo e fotorrealismo urbano.
                     </p>
-                    
                     <button onclick="togglePrompt('prompt3', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         Mostrar Prompt
                     </button>
-                    
                     <div id="prompt3" class="prompt-collapse">
                         <div class="prompt-box" id="textoPrompt3">Use the attached image while preserving the exact facial features with 100% accuracy, without any modification. The scene takes place in an outdoor urban street setting with a clean concrete wall. There is a large printed poster on the wall displaying an image of me rendered in a thick oil-paint style with visible texture and clear brush strokes.
 The poster is torn in the middle, and I am emerging from the tear in my fully realistic, true form. I am holding the edge of the torn paper as if it were a curtain, with one foot stepping onto the ground, wearing a cheerful and joyful expression.
 There is a clear contrast between the printed poster texture and my real-life appearance outside of it.
 Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspect ratio 4:5, natural lighting, and soft shadows</div>
-                        
                         <button onclick="copiarPrompt('textoPrompt3', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">
                             📋 Copiar
                         </button>
@@ -669,29 +644,17 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         
         <div class="galeria-grid">
             <div class="galeria-item">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png" 
-                     alt="Galeria Plínio Fabrício" 
-                     oncontextmenu="return false;" 
-                     draggable="false">
-                
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png" alt="Galeria Plínio Fabrício" oncontextmenu="return false;" draggable="false">
                 <div class="watermark-overlay">PLÍNIO STUDIO</div>
-                
-                <button class="btn-baixar-galeria" 
-                        onclick="abrirModalWatermark('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png', 'PLÍNIO STUDIO')">
+                <button class="btn-baixar-galeria" onclick="abrirModalWatermark('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000167c720eb902cb447582f125.png', 'PLÍNIO STUDIO')">
                     Baixar Pôster
                 </button>
             </div>
 
             <div class="galeria-item">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000001d08720e9bed4960cde3193e.png" 
-                     alt="Plínio Fabrício - Especial Raul" 
-                     oncontextmenu="return false;" 
-                     draggable="false">
-                
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000001d08720e9bed4960cde3193e.png" alt="Plínio Fabrício - Especial Raul" oncontextmenu="return false;" draggable="false">
                 <div class="watermark-overlay">PLÍNIO FABRÍCIO</div>
-                
-                <button class="btn-baixar-galeria" 
-                        onclick="abrirModalWatermark('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000001d08720e9bed4960cde3193e.png', 'Plínio Fabrício')">
+                <button class="btn-baixar-galeria" onclick="abrirModalWatermark('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_000000001d08720e9bed4960cde3193e.png', 'Plínio Fabrício')">
                     Baixar Pôster
                 </button>
             </div>
@@ -736,7 +699,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         <span>Atendimento</span>
     </a>
 
-    <!-- MODAL PREMIUM -->
     <div class="modal-overlay" id="modalPremium">
         <div class="modal-content" style="padding-top: 40px; padding-bottom: 40px; border-top: 4px solid var(--accent-primary);">
             <span class="close-modal" onclick="fecharModalPremium()">&times;</span>
@@ -744,7 +706,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 0.95rem; line-height: 1.5;">
                 Este é um Prompt Premium de alta complexidade. Para desbloquear e baixar este conteúdo exclusivo, entre em contato com nosso setor de vendas.
             </p>
-            
             <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank" style="background: var(--accent-secondary); color: #FFF; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
                 Adquirir Prompt Premium
             </a>
@@ -772,12 +733,10 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 0.95rem; line-height: 1.5;">
                 Como você deseja adquirir este pôster?
             </p>
-            
             <div style="display: flex; flex-direction: column;">
                 <button class="btn-baixar-com-marca" id="btnDownloadMarca" onclick="baixarComMarcaDagua()">
                     Baixar com Marca d'Água
                 </button>
-                
                 <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank">
                     Remover Marca d'Água (WhatsApp)
                 </a>
@@ -795,10 +754,8 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
     </div>
 
     <script>
-        // Lógica do Menu
         function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
 
-        // SCRIPT PARA ABRIR/FECHAR PROMPT E COPIAR TEXTO
         function togglePrompt(id, btnElement) {
             const content = document.getElementById(id);
             if (content.style.maxHeight && content.style.maxHeight !== '0px') {
@@ -827,7 +784,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             });
         }
 
-        // LÓGICA DO LIGHTBOX
         const lightbox = document.getElementById('lightboxOverlay');
         const lightboxImg = document.getElementById('lightboxImg');
 
@@ -843,7 +799,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             setTimeout(() => { lightboxImg.src = ''; }, 300); 
         }
 
-        // Lógica do Modal de Senhas
         const modal = document.getElementById('customModal');
         const modalInput = document.getElementById('modalInput');
         const btnSubmit = document.getElementById('modalSubmit');
@@ -871,7 +826,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         // --- SISTEMA DE PLATAFORMA COM SENHA DUPLA PARA AULA ---
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
-            // LISTA DE ALUNOS COM SENHAS INDIVIDUAIS (2ª Trava)
+            // LISTA DE ALUNOS COM LÚCIENE PINTO INCLUÍDA
             const listaDeAlunos = [
                 { nome: "Alexandra", senha: "1045" },
                 { nome: "Alexandre", senha: "2901" },
@@ -879,6 +834,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                 { nome: "Eli mãe de Gael", senha: "4192" },
                 { nome: "Henrique Seixas", senha: "5820" },
                 { nome: "Izabel e Sophia", senha: "6451" },
+                { nome: "Luciene Pinto", senha: "4756" },
                 { nome: "Maria Eduarda", senha: "7109" },
                 { nome: "Maria Mentora", senha: "8234" },
                 { nome: "Martha Produtora", senha: "9512" },
@@ -889,7 +845,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             
             let listaHtml = '<div class="dias-grid">';
             listaDeAlunos.forEach(aluno => {
-                // Passando a senha específica do aluno para o Modal
                 listaHtml += `<div class="dia-card">
                     <div class="info-row" style="font-size:1.2rem; color:#E2E8F0; text-align: center; margin-bottom: 8px;"><strong>${aluno.nome}</strong></div>
                     <button onclick="abrirModalAluno('${aluno.senha}')" class="btn-meet">Acessar Aula</button>
@@ -897,20 +852,33 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             });
             listaHtml += '</div>';
             
-            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>${titulo} | EAD</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"><style>
+            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>${titulo} | EAD</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
             body { background-color: #0B0F19; color: #E2E8F0; font-family: 'Inter', sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
             .ead-container { width: 100%; max-width: 540px; }
             .video-container { width: 100%; max-width: 900px; display: none; flex-direction: column; align-items: center; }
-            h1 { color: #FFF; font-size: 1.6rem; text-align: center; margin: 30px 0 40px 0; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #00E5FF; padding-bottom: 15px; }
+            h1 { color: #FFF; font-size: 1.6rem; text-align: center; margin: 30px 0 20px 0; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #00E5FF; padding-bottom: 15px; }
             .dias-grid { display: flex; flex-direction: column; gap: 20px; }
             .dia-card { background: #151C2C; border: 1px solid #2A3441; border-radius: 12px; padding: 30px; display: flex; flex-direction: column; gap: 12px; border-left: 4px solid #00E5FF; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s; }
             .dia-card:hover { box-shadow: 0 10px 20px rgba(0,229,255,0.1); border-color:#00E5FF; }
             .btn-meet { background-color: #3B82F6; color: #ffffff; text-decoration: none; padding: 16px; border-radius: 8px; font-weight: 700; text-align: center; font-size: 0.95rem; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer; width: 100%; }
             .btn-meet:hover { background-color: #2563EB; }
-            .btn-voltar { background-color: transparent; color: #00E5FF; border: 1px solid #00E5FF; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-bottom: 20px; align-self: flex-start; }
+            .btn-voltar { background-color: transparent; color: #00E5FF; border: 1px solid #00E5FF; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-bottom: 30px; align-self: flex-start; }
             .btn-voltar:hover { background-color: #00E5FF; color: #0B0F19; }
-            .iframe-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; border: 1px solid #2A3441; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+            
+            /* Ajuste de Proporção Fina e Proteção para Vídeo Vertical */
+            .iframe-wrapper { position: relative; width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto 10px auto; border-radius: 12px; overflow: hidden; border: 1px solid #2A3441; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
             .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+            
+            /* Estilos do Acordeon Didático */
+            .accordion-section { width: 100%; display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
+            .accordion-item { background: #151C2C; border: 1px solid #2A3441; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+            .accordion-item:hover { border-color: #00E5FF; }
+            .accordion-header { background: #1E293B; padding: 18px 25px; cursor: pointer; font-weight: 600; font-size: 1rem; color: #FFF; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2A3441; user-select: none; }
+            .accordion-content { padding: 25px; display: none; background: #111827; border-top: 1px solid #2A3441; text-align: left; }
+            
+            .btn-audio { display: inline-flex; align-items: center; justify-content: center; background: #00E5FF; color: #000; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,229,255,0.2); transition: 0.3s; }
+            .btn-audio:hover { background: #FFF; }
+            
             footer { margin-top: 60px; padding: 30px; color: #94A3B8; font-size: 0.8rem; text-align: center; border-top: 1px solid #2A3441; width: 100%; }
             </style></head><body>
             
@@ -922,84 +890,126 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
 
             <div class="video-container" id="videoArea">
                 <h1 style="width: 100%;">Sala de Aula</h1>
-                <button onclick="voltarParaSala()" class="btn-voltar">⬅ Voltar para a sala</button>
-                <div class="iframe-wrapper">
-                    <iframe id="aulaVideo" src="https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1" sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen></iframe>
-                </div>
+                <button onclick="voltarParaSala()" class="btn-voltar">⬅ Voltar para a Lista</button>
                 
-                <!-- === INÍCIO DO MATERIAL DIDÁTICO E SLIDES === -->
-                <div style="width: 100%; text-align: left; margin-top: 40px; background: #151C2C; border: 1px solid #2A3441; border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-left: 4px solid #3B82F6;">
-                    
-                    <h2 style="color: #FFF; font-size: 1.5rem; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #2A3441; padding-bottom: 15px;">
-                        Abertura da Caixa Preta: O Predador do Sertão
-                    </h2>
-                    
-                    <p style="color: #94A3B8; font-size: 1rem; line-height: 1.6; margin-bottom: 30px;">
-                        Nesta aula, você viu os bastidores da texturização em ambiente árido. O que o público externo não sabe é que essa engenharia de cor avançada foi totalmente executada no aplicativo <strong>Video.Guru</strong>. O segredo não é o software, é a sua leitura do Vetorscópio mental. <br><br>
-                        <strong style="color: #00E5FF;">Aviso Operacional:</strong> Esta mesma técnica, parâmetros e calibração de contraste funcionam perfeitamente tanto para a edição de <strong>Vídeos</strong> quanto para o tratamento de <strong>Fotografias</strong>. Acompanhe os slides abaixo para replicar o processo.
+                <div style="background: rgba(0, 229, 255, 0.04); border-left: 4px solid #00E5FF; padding: 25px; border-radius: 0 12px 12px 0; margin-bottom: 30px; text-align: left; width: 100%; box-sizing: border-box;">
+                    <h2 style="color: #FFF; font-size: 1.3rem; margin-bottom: 10px; font-weight: 700;">Boas-vindas à sua Área de Evolução!</h2>
+                    <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        Olá! Eu sou o <strong>Professor Plínio Fabrício</strong>, graduado em Inteligência Artificial desde 2019. Minha filosofia de ensino é baseada na simplicidade, na prática real e no respeito ao seu desenvolvimento. Aqui não há espaço para arrogância: o foco é te dar as coordenadas exatas para que você replique as metodologias do mercado audiovisual avançado com total autonomia. Seja muito bem-vindo.
                     </p>
+                </div>
 
-                    <!-- SLIDES DA AULA (Formato Acordeão Didático) -->
-                    <div style="display: flex; flex-direction: column; gap: 15px;">
-                        
-                        <!-- SLIDE 01 -->
-                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
-                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 01: Setup e Proporção Cinematográfica</h3>
-                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
-                                <strong>Ação no Video.Guru:</strong> Vá em "Proporção" (Fundo).<br><br>
-                                O erro mais comum do amador é renderizar em formato quadrado. Para a imersão completa em dispositivos móveis e redes sociais, a regra é estrita: configure o projeto imediatamente para a proporção vertical <strong>9:16</strong>. Ajuste o enquadramento do elemento para que a linha dos olhos fique no terço superior da tela.
-                            </p>
+                <div class="accordion-section">
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion('acc-fundamentos')">
+                            <span>📘 Módulo 1: Fundamentos de IA & Engenharia de Prompts</span>
+                            <span>▼</span>
                         </div>
-
-                        <!-- SLIDE 02 -->
-                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
-                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 02: Curva de Luma (Contraste e Luz)</h3>
-                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
-                                <strong>Ação no Video.Guru:</strong> Menu "Ajustar".<br><br>
-                                1. <strong>Brilho:</strong> Reduza levemente (-5 a -10) para ancorar a imagem e evitar o estouro da luz solar.<br>
-                                2. <strong>Contraste:</strong> Aumente (+12 a +15) para dar peso e tridimensionalidade ao assunto contra o fundo.<br>
-                                3. <strong>Sombra:</strong> Levante um pouco (+5) para não "esmagar" os detalhes escuros da textura.
-                            </p>
+                        <div id="acc-fundamentos" class="accordion-content">
+                            <p style="margin-bottom: 15px;">Para dominar o audiovisual de nova geração, você precisa compreender a lógica estrutural que orienta os modelos de difusão de dados. Um prompt não é uma simples descrição casual; é um arranjo complexo de calibração espacial, iluminação real e mapeamento estrito.</p>
+                            <h4 style="color: #00E5FF; font-size: 1rem; margin-bottom: 10px; text-transform: uppercase;">Diretrizes Fundamentais de Estilos:</h4>
+                            <ul style="margin-left: 20px; margin-bottom: 25px; color: #94A3B8; display: flex; flex-direction: column; gap: 8px; line-height: 1.5;">
+                                <li><strong>Fotorrealismo:</strong> Simulação técnica de sensores digitais, aberrações cromáticas e lentes físicas simuladas (como objetivas de 50mm e 85mm).</li>
+                                <li><strong>Macrorealismo Bíblico/Cinematográfico:</strong> Texturização profunda de poros, luz IMAX dramática e fidelidade histórica em produções cinematográficas sacras.</li>
+                                <li><strong>Ilustração 2D Avançada:</strong> Estética vetorial e pôsteres de alta saturação artística combinados a preenchimentos volumétricos modernos.</li>
+                                <li><strong>Modelagem e Espaço 3D:</strong> Estruturas poligonais tridimensionais otimizadas para interações imersivas e realidade aumentada.</li>
+                            </ul>
+                            <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 15px;">Clique no botão abaixo para fazer o download e escutar a explicação em áudio desta base teórica:</p>
+                            <a href="https://www.mediafire.com/file/7oqqprrx4tnlcuv/Inteligencia_Artificial.mp3/file" target="_blank" class="btn-audio">
+                                🎙️ Baixar Aula em Áudio (MediaFire)
+                            </a>
                         </div>
-
-                        <!-- SLIDE 03 -->
-                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
-                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 03: Matriz de Saturação e Calor</h3>
-                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
-                                <strong>Ação no Video.Guru:</strong> Menu "Ajustar".<br><br>
-                                Esta é a colorimetria que cria a atmosfera do ambiente:<br>
-                                1. <strong>Calor (Temperatura):</strong> Aumente (+15 a +20). Isso injeta o tom ocre/alaranjado na imagem, fundindo os elementos.<br>
-                                2. <strong>Matiz (Tint):</strong> Desloque levemente para o verde (-5) para neutralizar vermelhos artificiais.<br>
-                                3. <strong>Saturação:</strong> Diminua sutilmente (-8) para dar um aspecto cinematográfico (fator película fotográfica), tirando o visual amador.
-                            </p>
-                        </div>
-
-                        <!-- SLIDE 04 -->
-                        <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 8px; padding: 20px;">
-                            <h3 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Slide 04: Emulação Analógica e Textura</h3>
-                            <p style="color: #E2E8F0; font-size: 0.9rem; line-height: 1.5;">
-                                <strong>Ação no Video.Guru:</strong> Menus "Filtro" e "Ajustar" > "Nitidez" / "Granulação".<br><br>
-                                1. Aplique um filtro da categoria <strong>"Filme"</strong> ou <strong>"Cinematográfico"</strong> em opacidade média (cerca de 40%).<br>
-                                2. <strong>Nitidez:</strong> Aumente (+15) para destacar as texturas principais.<br>
-                                3. <strong>Granulação (Grain):</strong> Adicione textura (+10) para simular a película de 35mm e unificar os elementos.
-                            </p>
-                        </div>
-                        
                     </div>
 
-                    <!-- DIRETRIZ FINAL E MISSÃO PRÁTICA -->
-                    <div style="margin-top: 30px; padding: 20px; background: rgba(59, 130, 246, 0.1); border-left: 4px solid #00E5FF; border-radius: 8px;">
-                        <h4 style="color: #00E5FF; font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;">Missão Prática e Regra de Ouro</h4>
-                        <p style="color: #E2E8F0; font-size: 0.95rem; line-height: 1.6;">
-                            Tente usar essa exata técnica no próximo vídeo ou foto que você for criar e postar. Mas preste muita atenção a esta regra pericial sobre texturização:
-                            <br><br>
-                            🎬 <strong>Para VÍDEOS:</strong> Utilize a granulação (ensinada no Slide 04) para criar o aspecto de cinema e unir a movimentação dos frames.<br>
-                            📸 <strong>Para FOTOS:</strong> <strong>NÃO</strong> coloque granulação. Mantenha a imagem limpa, focando apenas na calibração de cor e nitidez, para preservar a qualidade fotográfica de alto padrão.
-                        </p>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion('acc-toolbox')">
+                            <span>🛠️ Módulo 2: Caixa de Ferramentas Multiplataforma (Toolbox)</span>
+                            <span>▼</span>
+                        </div>
+                        <div id="acc-toolbox" class="accordion-content">
+                            <p style="margin-bottom: 15px;">A autonomia do editor avançado depende de sua capacidade de operar em múltiplos sistemas. Preparamos uma seleção de ferramentas compatíveis com as suas necessidades operacionais cotidianas:</p>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 15px;">
+                                <div style="background: #0B0F19; border: 1px solid #2A3441; padding: 18px; border-radius: 8px;">
+                                    <h4 style="color: #00E5FF; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem;">Edição de Vídeo</h4>
+                                    <p style="font-size: 0.85rem; color: #94A3B8; line-height: 1.6;">
+                                        • <strong>CapCut:</strong> O editor universal mais flexível. Disponível com excelente performance em sistemas Android, iOS (iPhone) e em versão completa de alta performance para Desktop/Notebook.<br>
+                                        • <strong>Adobe Premiere Rush:</strong> Alternativa ágil para montagens e cortes dinâmicos no ambiente mobile.<br>
+                                        • <strong>DaVinci Resolve:</strong> A ferramenta definitiva de Desktop para quem busca tratamento profissional e colorização avançada.
+                                    </p>
+                                </div>
+                                <div style="background: #0B0F19; border: 1px solid #2A3441; padding: 18px; border-radius: 8px;">
+                                    <h4 style="color: #00E5FF; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem;">Design & Composição</h4>
+                                    <p style="font-size: 0.85rem; color: #94A3B8; line-height: 1.6;">
+                                        • <strong>Canva:</strong> O padrão prático para diagramação visual. Ideal para estruturar cartazes, peças de marketing e portfólios diretamente via navegador no Desktop ou pelo aplicativo de celular.<br>
+                                        • <strong>Pixlr:</strong> Excelente suíte de manipulação fotográfica baseada em nuvem, dispensando instalações pesadas no computador.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion('acc-pratica')">
+                            <span>🎬 Módulo 3: Prática Laboratorial — O Predador do Sertão</span>
+                            <span>▼</span>
+                        </div>
+                        <div id="acc-pratica" class="accordion-content" style="padding: 20px 15px;">
+                            
+                            <div style="background: #0B0F19; border: 1px solid #2A3441; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: center;">
+                                <h4 style="color: #FFF; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Player Integrado da Aula</h4>
+                                <div class="iframe-wrapper">
+                                    <iframe id="aulaVideo" src="https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1" sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen></iframe>
+                                </div>
+                                <p style="color: #94A3B8; font-size: 0.8rem; margin-top: 5px;">Análise Cinematográfica em Formato Vertical</p>
+                            </div>
+
+                            <div style="padding: 0 10px;">
+                                <h3 style="color: #FFF; font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase;">Abertura da Caixa Preta</h3>
+                                <p style="color: #94A3B8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                                    Nesta jornada prática, revelamos a engenharia por trás do projeto <strong>O Predador do Sertão</strong>. Todo o fluxo técnico foi executado diretamente no aplicativo <strong>Video.Guru</strong>, demonstrando que os parâmetros corretos superam qualquer limitação de software. Essa metodologia e calibração aplicam-se perfeitamente tanto a <strong>Vídeos</strong> quanto a <strong>Fotografias</strong>.
+                                </p>
+
+                                <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
+                                    <div style="background: #0B0F19; border: 1px solid #2A3441; padding: 15px; border-radius: 6px;">
+                                        <strong style="color: #00E5FF; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Aula 01: Setup e Proporção Cinematográfica (9:16)</strong>
+                                        <span style="font-size: 0.85rem; color: #E2E8F0;">Configuração essencial da tela em 9:16 vertical nas opções de fundo do Video.Guru, garantindo imersão completa em dispositivos móveis.</span>
+                                    </div>
+                                    <div style="background: #0B0F19; border: 1px solid #2A3441; padding: 15px; border-radius: 6px;">
+                                        <strong style="color: #00E5FF; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Aula 02: Curva de Luma e Engenharia de Contraste</strong>
+                                        <span style="font-size: 0.85rem; color: #E2E8F0;">Protocolo de luz: Redução suave de Brilho (-5 a -10) para controle de exposição solar, aumento de Contraste (+12 a +15) para tridimensionalidade e ajuste sutil de Sombras (+5).</span>
+                                    </div>
+                                    <div style="background: #0B0F19; border: 1px solid #2A3441; padding: 15px; border-radius: 6px;">
+                                        <strong style="color: #00E5FF; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Aula 03: Colorimetria e Filtros de Película</strong>
+                                        <span style="font-size: 0.85rem; color: #E2E8F0;">Configuração de atmosfera: Elevação de Temperatura quente (+15 a +20) para o tom ocre, Matiz em (-5) e redução de Saturação (-8) para aspecto de filme analógico.</span>
+                                    </div>
+                                    <div style="background: #0B0F19; border: 1px solid #2A3441; padding: 15px; border-radius: 6px;">
+                                        <strong style="color: #00E5FF; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Aula 04: Laboratório Prático de Amostragem (Color Splash)</strong>
+                                        <span style="font-size: 0.85rem; color: #E2E8F0;">Isolamento e amostragem de canais cromáticos RGB com realce de foco seletivo e aplicação de filtros de 35mm em opacidade equilibrada de 40%.</span>
+                                    </div>
+                                </div>
+
+                                <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3B82F6; padding: 15px; border-radius: 0 8px 8px 0; font-size: 0.9rem; line-height: 1.5;">
+                                    <strong style="color: #3B82F6; text-transform: uppercase; display: block; margin-bottom: 5px;">⚠️ Regra Pericial de Ouro (Texturização)</strong>
+                                    🎬 <strong>Para VÍDEOS:</strong> Utilize a granulação halóide (Grain +10) no app para unificar o movimento dos frames em textura orgânica de cinema.<br>
+                                    📸 <strong>Para FOTOS:</strong> <strong>NÃO</strong> aplique granulação. Mantenha a imagem limpa e use apenas nitidez (+15) para preservar o mais alto padrão e definição fotográfica.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion('acc-monetizacao')">
+                            <span>📈 Módulo 4: Roteiros de Crescimento & Monetização Meta</span>
+                            <span>▼</span>
+                        </div>
+                        <div id="acc-monetizacao" class="accordion-content">
+                            <p style="color: #94A3B8; font-style: italic; font-size: 0.95rem;">Este módulo estratégico está programado como a etapa final do seu treinamento avançado. As diretrizes de monetização de páginas, distribuição orgânica, algoritmos e os roteiros estruturados para escala no Facebook e Instagram serão liberados de forma individual conforme a entrega das missões práticas dos módulos anteriores.</p>
+                        </div>
                     </div>
 
                 </div>
-                <!-- === FIM DO MATERIAL DIDÁTICO E SLIDES === -->
 
             </div>
 
@@ -1014,7 +1024,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             </div>
 
             <script>
-                let senhaAtualEsperada = ''; // Variável para armazenar a senha do aluno clicado
+                let senhaAtualEsperada = ''; 
 
                 function abrirModalAluno(senhaCorreta) {
                     senhaAtualEsperada = senhaCorreta;
@@ -1028,7 +1038,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                 }
                 function verificarSenhaAluno() {
                     const senha = document.getElementById('alunoSenha').value.trim();
-                    if(senha === senhaAtualEsperada) { // Verifica a senha individual agora
+                    if(senha === senhaAtualEsperada) { 
                         document.getElementById('alunoModal').style.display = 'none';
                         document.getElementById('listaArea').style.display = 'none';
                         document.getElementById('videoArea').style.display = 'flex';
@@ -1050,6 +1060,21 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                     
                     const iframe = document.getElementById('aulaVideo');
                     iframe.src = 'https://www.youtube.com/embed/wN0TUXDhj7c?rel=0&modestbranding=1';
+                }
+                
+                // FUNÇÃO EXCLUSIVA DE ACORDEON COMPATÍVEL
+                function toggleAccordion(id) {
+                    const content = document.getElementById(id);
+                    const isVisible = content.style.display === 'block';
+                    
+                    // Fecha todos antes de abrir o novo
+                    document.querySelectorAll('.accordion-content').forEach(item => {
+                        item.style.display = 'none';
+                    });
+                    
+                    if (!isVisible) {
+                        content.style.display = 'block';
+                    }
                 }
             <\/script></body></html>`;
 
@@ -1073,7 +1098,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             } else if (currentType === 'gerador' && pw === 'matrix') {
                 modalInput.style.borderColor = 'var(--accent-primary)'; btnSubmit.style.background = 'var(--accent-primary)'; btnSubmit.style.color = '#000'; btnSubmit.textContent = 'ACESSO LIBERADO ✓';
                 setTimeout(() => { window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank'); closeModalFunc(); }, 1200);
-            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === '2031') { // Primeira trava continua 2031
+            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === '2031') { 
                 modalInput.style.borderColor = 'var(--accent-primary)'; btnSubmit.style.background = 'var(--accent-primary)'; btnSubmit.style.color = '#000'; btnSubmit.textContent = 'ACESSO LIBERADO ✓';
                 setTimeout(() => { abrirPlataforma(currentTitle); closeModalFunc(); }, 1200);
             } else { erro(); }
@@ -1146,7 +1171,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             };
         }
 
-        // --- LÓGICA DO MODAL PREMIUM ---
         function abrirModalPremium() { 
             document.getElementById('modalPremium').classList.add('active'); 
         }
