@@ -63,16 +63,20 @@
         .nav-menu a.whats-btn-menu { color: #25d366; font-weight: 600; }
         .nav-menu a.highlight-menu-btn { color: #25d366; font-weight: 700; margin-top: 20px; border-top: 1px solid var(--border-color); }
 
-        header { margin-bottom: 60px; text-align: center; }
+        header { margin-bottom: 30px; text-align: center; }
         h1 { font-size: 2.8rem; font-weight: 800; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -1px;}
         .subtitle { color: var(--accent-primary); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;}
 
-        .video-wrapper {
-            position: relative; padding-bottom: 56.25%; height: 0; background: #000;
-            border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); margin-bottom: 70px;
-            box-shadow: 0 10px 40px rgba(0,229,255,0.05);
+        .apresentacao { text-align: center; margin-bottom: 60px; padding: 0 10px; }
+        .apresentacao p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; max-width: 850px; margin: 0 auto; }
+
+        .tile-app {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px 10px;
+            text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; 
+            justify-content: center; color: var(--text-main); font-weight: 600; font-size: 0.9rem;
         }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .tile-app span { font-size: 2.2rem; margin-bottom: 12px; }
+        .tile-app:hover { border-color: var(--accent-primary); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,229,255,0.15); color: var(--accent-primary); }
 
         .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; }
 
@@ -166,6 +170,7 @@
             .nav-menu { width: 250px; }
             .site-footer { padding-bottom: 100px; }
             .watermark-overlay { font-size: 1.2rem; }
+            .tile-app { padding: 15px 5px; }
         }
     </style>
 </head>
@@ -188,40 +193,79 @@
             <p class="subtitle">Escola Audiovisual & Inteligência Artificial</p>
         </header>
 
-        <h2 class="section-title">Análise de <span style="color: var(--accent-primary);">Colorimetria</span> e Espectro de Contraste</h2>
-        
-        <div class="prompt-card" style="margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; max-width: 800px; margin-left: auto; margin-right: auto; padding: 30px;">
-            <div style="position: relative; width: 100%; max-width: 315px; margin: 0 auto 30px auto; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 2px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,229,255,0.05);">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/S9tlmEw4cFU?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-
-            <div style="width: 100%; text-align: center;">
-                <button onclick="const content = document.getElementById('colorimetria-collapse'); if(content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; } else { content.style.maxHeight = content.scrollHeight + 'px'; }" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0; padding: 16px;">
-                    Especificações de Renderização e Calibração de Imagem
-                </button>
-                
-                <div id="colorimetria-collapse" class="prompt-collapse">
-                    <div class="prompt-box" style="margin-top: 20px; font-family: 'Inter', sans-serif; white-space: normal; text-align: left; background: transparent; border: none; padding: 0;">
-                        <p style="margin-bottom: 15px; color: var(--text-main); line-height: 1.6;">Para atingir o padrão visual e o impacto psicológico adequado a esta integração de ambiente, a engenharia da imagem seguiu os seguintes protocolos em espaço logarítmico:</p>
-                        <ul style="margin-left: 20px; margin-bottom: 25px; color: var(--text-muted); line-height: 1.7;">
-                            <li style="margin-bottom: 10px;"><strong>Curva de Luma e Contraste Vetorial:</strong> Ajuste de Gamma ancorado, com compressão de realces (Highlight Rolloff) para suavização de picos de luz sob exposição solar direta.</li>
-                            <li style="margin-bottom: 10px;"><strong>Matriz de Saturação (Chroma):</strong> Separação de canais RGB via matriz de luminância isolada.</li>
-                            <li style="margin-bottom: 10px;"><strong>Colorimetria e Emulação Analógica:</strong> Desvio de compensação térmica no eixo Verde/Magenta.</li>
-                            <li style="margin-bottom: 10px;"><strong>Balanço de Faixa Dinâmica (HDR Mapping):</strong> Espaço de cor manipulado em quantização avançada.</li>
-                        </ul>
-                        <blockquote style="border-left: 3px solid var(--accent-primary); padding-left: 15px; font-style: italic; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6;">
-                            Nota Técnica: A aplicação correta desses parâmetros exige o mapeamento de nós (nodes) de processamento. Para descobrir quais softwares foram utilizados e ter acesso ao detalhamento, é necessário ser aluno ativo da escola.
-                        </blockquote>
-                        <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" style="display: block; text-align: center; width: 100%; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">Desvende a Técnica: Fale com o Suporte Premium</a>
-                    </div>
-                </div>
-            </div>
+        <div class="apresentacao">
+            <p>O <strong>Plínio Studio</strong> é um ecossistema focado em Educação Mediática e Inteligência Artificial. Nossa missão vai além de gerar imagens artificiais; nós capacitamos engenheiros audiovisuais. Compreenda a lógica estrutural da web, a comunicação algorítmica e aplique padrões cinematográficos reais para dominar verdadeiramente a tecnologia de ponta.</p>
         </div>
 
         <div class="divider"></div>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/VHMTkDUReKY" allowfullscreen></iframe>
+
+        <h2 class="section-title">Comece por aqui: <span style="color: var(--accent-primary);">Arsenal Indispensável</span></h2>
+        <p style="text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 40px; font-size: 0.95rem;">
+            O acesso aos parâmetros e links diretos é restrito. Selecione o aplicativo e insira a <strong>Segunda Senha</strong> (Token Individual do Aluno).
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 70px;">
+            <div class="tile-app" onclick="abrirModalArsenal('CapCut')"><span>🎬</span> CapCut</div>
+            <div class="tile-app" onclick="abrirModalArsenal('VN Video Editor')"><span>🎞️</span> VN Editor</div>
+            <div class="tile-app" onclick="abrirModalArsenal('Lightroom Mobile')"><span>📸</span> Lightroom</div>
+            <div class="tile-app" onclick="abrirModalArsenal('Snapseed')"><span>🎨</span> Snapseed</div>
+            <div class="tile-app" onclick="abrirModalArsenal('InShot')"><span>📽️</span> InShot</div>
+            <div class="tile-app" onclick="abrirModalArsenal('LumaFusion')"><span>🚀</span> LumaFusion</div>
+            <div class="tile-app" onclick="abrirModalArsenal('KineMaster')"><span>🎞️</span> KineMaster</div>
+            <div class="tile-app" onclick="abrirModalArsenal('Premiere Rush')"><span>🎥</span> Premiere Rush</div>
+            <div class="tile-app" onclick="abrirModalArsenal('Node Video')"><span>🌌</span> Node Video</div>
+            <div class="tile-app" onclick="abrirModalArsenal('Alight Motion')"><span>🖌️</span> Alight Motion</div>
         </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">Laboratório <span style="color: var(--accent-primary);">Prático</span></h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 70px;">
+            
+            <div class="prompt-card" style="padding: 30px; display: flex; flex-direction: column; align-items: center; margin-bottom: 0;">
+                <div style="position: relative; width: 100%; max-width: 315px; margin: 0 auto 20px auto; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 2px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,229,255,0.05);">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/S9tlmEw4cFU?rel=0&modestbranding=1" allowfullscreen></iframe>
+                </div>
+                <h3 style="color: #FFF; font-size: 1.25rem; margin-bottom: 10px; text-align: center;">O Predador do Sertão</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 20px;">Análise de colorimetria, engenharia de curva de luma e contraste vetorial em ambiente árido.</p>
+                <button onclick="togglePrompt('colorimetria-collapse', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-top: auto;">Especificações Técnicas</button>
+                
+                <div id="colorimetria-collapse" class="prompt-collapse" style="width: 100%;">
+                    <div class="prompt-box" style="margin-top: 15px; background: transparent; border: none; padding: 0;">
+                        <ul style="margin-left: 20px; margin-bottom: 20px; color: var(--text-muted); line-height: 1.7; font-size: 0.85rem;">
+                            <li><strong>Curva de Luma:</strong> Compressão de realces para suavização de picos de luz.</li>
+                            <li><strong>Chroma:</strong> Ganho de saturação nas faixas de média frequência.</li>
+                            <li><strong>Colorimetria:</strong> Desvio térmico e simulação de granulação halóide.</li>
+                        </ul>
+                        <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" style="display: block; text-align: center; width: 100%; padding: 10px; font-size: 0.8rem;">Suporte Premium</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card" style="padding: 30px; display: flex; flex-direction: column; align-items: center; margin-bottom: 0;">
+                <div style="position: relative; width: 100%; max-width: 315px; margin: 0 auto 20px auto; aspect-ratio: 9/16; background: #000; border-radius: 20px; overflow: hidden; border: 2px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,229,255,0.05);">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/VHMTkDUReKY?rel=0&modestbranding=1" allowfullscreen></iframe>
+                </div>
+                <h3 style="color: #FFF; font-size: 1.25rem; margin-bottom: 10px; text-align: center;">Musicoterapia com IA</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 20px;">Convergência entre IA, neurociência algorítmica e a aplicação de frequências sonoras regenerativas.</p>
+                <button onclick="togglePrompt('musico-collapse', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-top: auto;">Especificações Técnicas</button>
+                
+                <div id="musico-collapse" class="prompt-collapse" style="width: 100%;">
+                    <div class="prompt-box" style="margin-top: 15px; background: transparent; border: none; padding: 0;">
+                        <ul style="margin-left: 20px; margin-bottom: 20px; color: var(--text-muted); line-height: 1.7; font-size: 0.85rem;">
+                            <li><strong>Modelagem:</strong> Integração de Deep Learning e ondas sonoras.</li>
+                            <li><strong>Frequências:</strong> Mapeamento e aplicação de ondas Binaurais e Alfa.</li>
+                            <li><strong>Impacto Clínico:</strong> Otimização neural e tratamento estrutural do som.</li>
+                        </ul>
+                        <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" style="display: block; text-align: center; width: 100%; padding: 10px; font-size: 0.8rem;">Suporte Premium</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="divider"></div>
 
         <h2 class="section-title">Nossa <span style="color: var(--accent-primary);">Metodologia</span></h2>
         
@@ -240,18 +284,8 @@
         <div class="divider"></div>
 
         <h2 class="section-title">Galeria de <span style="color: var(--accent-primary);">Prompts</span></h2>
+        
         <div class="prompt-grid">
-            <div class="prompt-card">
-                <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
-                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" alt="Macrorealismo Bíblico 8K" draggable="false">
-                </div>
-                <div class="prompt-info-box" style="user-select: none;">
-                    <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
-                    <h3>Macrorealismo Bíblico</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">Retrato bíblico ultra-macro, imersão em 50mm, iluminação IMAX. Arte de altíssima complexidade.</p>
-                    <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">💎 Desbloquear Prompt</button>
-                </div>
-            </div>
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png')">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png" alt="Prompt Treino Studio Plenitude" draggable="false">
@@ -267,6 +301,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompts%20Plinio%20Studio.png')">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompts%20Plinio%20Studio.png" alt="Prompt Treino Studio Ilustração 2D" draggable="false">
@@ -282,6 +317,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000a20c71f5a1fd297030114df7.png')">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000a20c71f5a1fd297030114df7.png" alt="Prompt Treino Studio Post Comandante" draggable="false">
@@ -297,6 +333,19 @@
                     </div>
                 </div>
             </div>
+
+            <div class="prompt-card">
+                <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" alt="Macrorealismo Bíblico 8K" draggable="false">
+                </div>
+                <div class="prompt-info-box" style="user-select: none;">
+                    <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
+                    <h3>Macrorealismo Bíblico</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">Retrato bíblico ultra-macro, imersão em 50mm, iluminação IMAX. Arte de altíssima complexidade e detalhamento técnico para produções de alto nível.</p>
+                    <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">💎 Desbloquear Prompt</button>
+                </div>
+            </div>
+
         </div>
 
         <div class="divider"></div>
@@ -351,6 +400,16 @@
         <span>Atendimento</span>
     </a>
 
+    <div class="modal-overlay" id="modalArsenal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModalArsenal()">&times;</span>
+            <h3 style="color: var(--text-main); margin-bottom: 10px;">🛡️ Acesso Restrito</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a sua <strong>Segunda Senha</strong> (Token Individual) para desbloquear os parâmetros do aplicativo <strong id="appNameDisplay" style="color: var(--accent-primary);"></strong>.</p>
+            <input type="password" id="arsenalInput" class="modal-input" placeholder="****">
+            <button onclick="verificarArsenal()" class="modal-btn">AUTENTICAR E ACESSAR</button>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="modalPremium">
         <div class="modal-content" style="padding-top: 40px; padding-bottom: 40px; border-top: 4px solid var(--accent-primary);">
             <span class="close-modal" onclick="fecharModalPremium()">&times;</span>
@@ -359,7 +418,9 @@
             <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank" style="background: var(--accent-secondary); color: #FFF; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">Adquirir Prompt Premium</a>
         </div>
     </div>
+    
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização Fotorrealismo"></div>
+    
     <div class="modal-overlay" id="customModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModalFunc()">&times;</span>
@@ -369,6 +430,7 @@
             <button id="modalSubmit" class="modal-btn">ENTRAR</button>
         </div>
     </div>
+    
     <div class="modal-overlay" id="modalWatermark">
         <div class="modal-content" style="padding-top: 40px; padding-bottom: 40px;">
             <span class="close-modal" onclick="fecharModalWatermark()">&times;</span>
@@ -379,6 +441,7 @@
             </div>
         </div>
     </div>
+    
     <div class="modal-fullscreen" id="modalSolar">
         <div class="modal-container">
             <button class="btn-fechar" onclick="fecharModalSolar()">&times;</button>
@@ -389,6 +452,44 @@
     </div>
 
     <script>
+        // Array global dos alunos (Usado tanto no EAD quanto na trava do Arsenal Mobile)
+        const listaDeAlunosGlobais = [
+            { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
+            { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
+            { nome: "Luciene Pinto", senha: "4756" }, { nome: "Maria Eduarda", senha: "7109" }, { nome: "Maria Mentora", senha: "8234" },
+            { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, { nome: "Wilma Duarte", senha: "3904" }
+        ];
+
+        // Lógica do Modal do Arsenal
+        let appSelecionadoGlobal = '';
+        function abrirModalArsenal(app) {
+            appSelecionadoGlobal = app;
+            document.getElementById('appNameDisplay').innerText = app;
+            document.getElementById('arsenalInput').value = '';
+            document.getElementById('modalArsenal').classList.add('active');
+        }
+        function fecharModalArsenal() {
+            document.getElementById('modalArsenal').classList.remove('active');
+        }
+        function verificarArsenal() {
+            const pass = document.getElementById('arsenalInput').value.trim();
+            const alunoVerificado = listaDeAlunosGlobais.find(a => a.senha === pass);
+            
+            if (alunoVerificado) {
+                document.getElementById('arsenalInput').style.borderColor = 'var(--accent-primary)';
+                alert(`Acesso Liberado para o aluno(a) ${alunoVerificado.nome}!\n\nRedirecionando para as especificações do aplicativo ${appSelecionadoGlobal}...`);
+                fecharModalArsenal();
+                // Simulação de redirecionamento para o app (Play Store)
+                window.open('https://play.google.com/store/search?q=' + encodeURIComponent(appSelecionadoGlobal) + '&c=apps', '_blank');
+            } else {
+                const input = document.getElementById('arsenalInput');
+                input.style.borderColor = '#EF4444';
+                setTimeout(() => { input.style.borderColor = 'var(--border-color)'; }, 2000);
+                alert('Segunda Senha incorreta! O acesso ao Arsenal é restrito.');
+            }
+        }
+
+        // Lógica de Interface Geral
         function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
         function togglePrompt(id, btnElement) { const content = document.getElementById(id); if (content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; btnElement.textContent = "Mostrar Prompt"; } else { content.style.maxHeight = content.scrollHeight + "px"; btnElement.textContent = "Ocultar Prompt"; } }
         function copiarPrompt(textId, btnElement) { const textToCopy = document.getElementById(textId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = btnElement.innerHTML; btnElement.innerHTML = "✅ Copiado!"; btnElement.style.background = "#25d366"; btnElement.style.color = "#fff"; setTimeout(() => { btnElement.innerHTML = originalText; btnElement.style.background = "var(--accent-secondary)"; }, 3000); }).catch(err => { alert("Erro ao copiar o texto."); }); }
@@ -406,15 +507,9 @@
 
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
-            const listaDeAlunos = [
-                { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
-                { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
-                { nome: "Luciene Pinto", senha: "4756" }, { nome: "Maria Eduarda", senha: "7109" }, { nome: "Maria Mentora", senha: "8234" },
-                { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, { nome: "Wilma Duarte", senha: "3904" }
-            ];
             
             let listaHtml = '<div class="dias-grid">';
-            listaDeAlunos.forEach(aluno => {
+            listaDeAlunosGlobais.forEach(aluno => {
                 listaHtml += `<div class="dia-card"><div class="info-row" style="font-size:1.2rem; color:#E2E8F0; text-align: center; margin-bottom: 8px;"><strong>${aluno.nome}</strong></div><button onclick="abrirModalAluno('${aluno.senha}')" class="btn-meet">Acessar Aula</button></div>`;
             });
             listaHtml += '</div>';
@@ -572,7 +667,6 @@
                 function voltarParaSala() {
                     document.getElementById('videoArea').style.display = 'none';
                     document.getElementById('listaArea').style.display = 'block';
-                    // Parar todos os vídeos ao sair da sala
                     document.querySelectorAll('.video-iframe').forEach(ifr => {
                         let src = ifr.src; ifr.src = src; 
                     });
