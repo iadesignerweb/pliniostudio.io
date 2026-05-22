@@ -477,9 +477,10 @@
             
             if (alunoVerificado) {
                 document.getElementById('arsenalInput').style.borderColor = 'var(--accent-primary)';
-                alert(`Acesso Liberado para o aluno(a) ${alunoVerificado.nome}!\n\nRedirecionando para as especificações do aplicativo ${appSelecionadoGlobal}...`);
+                // Fechamos o modal primeiro
                 fecharModalArsenal();
-                // Simulação de redirecionamento para o app (Play Store)
+                
+                // Redirecionamento limpo e direto para evitar o bloqueio de pop-up do navegador
                 window.open('https://play.google.com/store/search?q=' + encodeURIComponent(appSelecionadoGlobal) + '&c=apps', '_blank');
             } else {
                 const input = document.getElementById('arsenalInput');
