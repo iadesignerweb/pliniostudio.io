@@ -25,6 +25,7 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=963317484266778&ev=PageView&noscript=1"/></noscript>
     
     <style>
+        /* --- VARIÁVEIS DE CORES (TEMA INTELIGÊNCIA ARTIFICIAL) --- */
         :root {
             --bg-main: #0B0F19; --bg-card: #151C2C; --text-main: #E2E8F0;
             --text-muted: #94A3B8; --accent-primary: #00E5FF; --accent-secondary: #3B82F6;
@@ -286,6 +287,39 @@
         <h2 class="section-title">Galeria de <span style="color: var(--accent-primary);">Prompts</span></h2>
         
         <div class="prompt-grid">
+            
+            <div class="prompt-card">
+                <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Plinio%20Studio-Plinio%20Fabr%C3%ADcio.png" alt="Avatar 3D Cinemático" draggable="false">
+                </div>
+                <div class="prompt-info-box" style="user-select: none;">
+                    <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • 3D Cinematic</span>
+                    <h3>Avatar 3D Cinemático</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                        Retrato vertical 4:5 mesclando fotorrealismo e animação 3D Pixar. Controle absoluto de proporção, iluminação suave e textura urbana.
+                    </p>
+                    <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
+                        💎 Desbloquear Prompt
+                    </button>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" alt="Macrorealismo Bíblico 8K" draggable="false">
+                </div>
+                <div class="prompt-info-box" style="user-select: none;">
+                    <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
+                    <h3>Macrorealismo Bíblico</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                        Retrato bíblico ultra-macro, imersão em 50mm, iluminação IMAX. Arte de altíssima complexidade e detalhamento técnico para produções de alto nível.
+                    </p>
+                    <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
+                        💎 Desbloquear Prompt
+                    </button>
+                </div>
+            </div>
+
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png')">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Pl%C3%ADnio%20St%C3%BAdio.png" alt="Prompt Treino Studio Plenitude" draggable="false">
@@ -293,15 +327,39 @@
                 <div class="prompt-info-box">
                     <span class="card-tag" style="color: var(--accent-primary);">Treino Studio • Fotorrealismo</span>
                     <h3>Color Splash</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">Recrie o alto contraste e a técnica de cor seletiva (preto e branco com lábios vermelhos).</p>
-                    <button onclick="togglePrompt('prompt1', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">Mostrar Prompt</button>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                        Recrie o alto contraste e a técnica de cor seletiva (preto e branco com lábios vermelhos).
+                    </p>
+                    <button onclick="togglePrompt('prompt1', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
+                        Mostrar Prompt
+                    </button>
                     <div id="prompt1" class="prompt-collapse">
-                        <div class="prompt-box" id="textoPrompt1">A high-contrast studio portrait using a selective color (“color splash”) technique...</div>
-                        <button onclick="copiarPrompt('textoPrompt1', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">📋 Copiar</button>
+                        <div class="prompt-box" id="textoPrompt1">A high-contrast studio portrait using a selective color (“color splash”) technique. The subject is positioned front-facing toward the camera in a centered head-and-shoulders composition, with squared shoulders and a straight, balanced posture, creating a strong editorial portrait. The image is rendered primarily in monochrome, with only the lips remaining in vivid color.
+
+Identity & Face Match (Strict):
+Use the reference image as a strict identity reference. Preserve the exact facial structure, proportions, skin tone, eye shape, nose, lips, jawline, and overall likeness. Maintain natural skin texture with visible pores and realistic imperfections. No beautification, reshaping, or identity alteration.
+
+Expression & Pose:
+The subject faces directly forward with a calm, restrained expression and steady eye contact. The gaze feels introspective and emotionally quiet, with relaxed eyelids and neutral brows. Lips remain gently closed in a natural resting position, conveying confidence, composure, and subtle emotional depth. The pose remains still and centered, emphasizing calm intensity.
+
+Selective Color:
+The entire image is grayscale except for matte red lipstick, which remains the only colored element and serves as the primary focal point.
+
+Lighting & Composition:
+Soft directional studio lighting from slightly above camera level creates gentle shadows that define facial structure while maintaining smooth tonal transitions. High dynamic range grayscale with deep blacks and soft highlights. Shallow depth of field keeps the face sharp while the background fades softly.
+
+Styling & Background:
+Long dark wavy hair parted at the center, falling naturally over the shoulders. The subject wears a structured black blazer with a formal white shirt. Background is a neutral dark gray studio gradient, clean and distraction-free, creating a cinematic, sophisticated high-fashion editorial mood.
+
+Aspect Ratio & Quality:
+1:1 aspect ratio, 4K–8K resolution, ultra-high detail.</div>
+                        <button onclick="copiarPrompt('textoPrompt1', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">
+                            📋 Copiar
+                        </button>
                     </div>
                 </div>
             </div>
-            
+
             <div class="prompt-card">
                 <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompts%20Plinio%20Studio.png')">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompts%20Plinio%20Studio.png" alt="Prompt Treino Studio Ilustração 2D" draggable="false">
@@ -309,11 +367,39 @@
                 <div class="prompt-info-box">
                     <span class="card-tag" style="color: var(--accent-primary);">Treino Studio • Ilustração</span>
                     <h3>Prompt 2D Studio</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">Fusão de fotorrealismo e estética ilustrativa para pôsteres modernos.</p>
-                    <button onclick="togglePrompt('prompt2', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">Mostrar Prompt</button>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                        Fusão de fotorrealismo e estética ilustrativa para pôsteres modernos.
+                    </p>
+                    <button onclick="togglePrompt('prompt2', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
+                        Mostrar Prompt
+                    </button>
                     <div id="prompt2" class="prompt-collapse">
-                        <div class="prompt-box" id="textoPrompt2">Create a hyper-realistic, high-detail portrait illustration...</div>
-                        <button onclick="copiarPrompt('textoPrompt2', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">📋 Copiar</button>
+                        <div class="prompt-box" id="textoPrompt2">Create a hyper-realistic, high-detail portrait illustration using the uploaded image as the absolute facial reference. The subject’s face must remain 100% identical to the reference photo — no changes to facial structure, proportions, skin tone, beard shape, jawline, nose, lips, eyes, or expression.
+
+The artwork features a half-body portrait of a young man with a rugged yet refined look, captured in a dramatic close-up framing with a slightly low-angle perspective. His expression is intense, thoughtful, and emotionally charged, with subtle tension in the brows and a focused gaze directed straight at the viewer.
+
+Hair & Grooming:
+His dark hair is windswept and dynamic, styled with natural volume and movement, individual strands sharply defined to convey motion. He has a well-groomed short beard and mustache, with realistic density and natural edges.
+
+Hands & Details:
+One hand is raised near the chin in a casual, contemplative pose. The hand features detailed black ink tattoos on the fingers and wrist, rendered with sharp line clarity and realistic skin interaction.
+
+Clothing:
+He is wearing an oversized black hoodie, matte fabric with soft folds and natural drape. The hoodie should feel realistic, slightly loose, and well-integrated into the portrait without distracting from the face.
+
+Lighting & Texture:
+Use bright, even studio lighting with soft highlights that enhance facial contours. Skin texture must be clearly visible, including fine pores, subtle freckles, natural blemishes, and gentle shadow transitions. Eyes should have vivid reflections and lifelike depth, adding intensity and realism.
+
+Background & Color:
+Set the subject against a solid, bold, vibrant grafite background, clean and seamless, creating strong contrast with the black hoodie and skin tones. The background should be flat and graphic, enhancing poster-style impact.
+
+Style & Quality:
+Blend semi-photorealistic and semi-illustrative aesthetics, characteristic of modern high-end poster art. Emphasize clarity, sharp edges, rich color saturation, and dynamic energy. Ultra-high resolution, crisp details, smooth gradients, professional illustration finish.
+
+Do not alter the subject. Use the uploaded image strictly as reference.</div>
+                        <button onclick="copiarPrompt('textoPrompt2', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">
+                            📋 Copiar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -325,24 +411,21 @@
                 <div class="prompt-info-box">
                     <span class="card-tag" style="color: var(--accent-primary);">Treino Studio • Realismo vs Arte</span>
                     <h3>Post Comandante</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">Fusão criativa entre pôster de tinta a óleo e fotorrealismo urbano.</p>
-                    <button onclick="togglePrompt('prompt3', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">Mostrar Prompt</button>
+                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
+                        Fusão criativa entre pôster de tinta a óleo e fotorrealismo urbano.
+                    </p>
+                    <button onclick="togglePrompt('prompt3', this)" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
+                        Mostrar Prompt
+                    </button>
                     <div id="prompt3" class="prompt-collapse">
-                        <div class="prompt-box" id="textoPrompt3">Use the attached image while preserving the exact facial features...</div>
-                        <button onclick="copiarPrompt('textoPrompt3', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">📋 Copiar</button>
+                        <div class="prompt-box" id="textoPrompt3">Use the attached image while preserving the exact facial features with 100% accuracy, without any modification. The scene takes place in an outdoor urban street setting with a clean concrete wall. There is a large printed poster on the wall displaying an image of me rendered in a thick oil-paint style with visible texture and clear brush strokes.
+The poster is torn in the middle, and I am emerging from the tear in my fully realistic, true form. I am holding the edge of the torn paper as if it were a curtain, with one foot stepping onto the ground, wearing a cheerful and joyful expression.
+There is a clear contrast between the printed poster texture and my real-life appearance outside of it.
+Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspect ratio 4:5, natural lighting, and soft shadows</div>
+                        <button onclick="copiarPrompt('textoPrompt3', this)" class="btn-action" style="width: 100%; background: var(--accent-secondary); color: #fff; margin-top: 5px;">
+                            📋 Copiar
+                        </button>
                     </div>
-                </div>
-            </div>
-
-            <div class="prompt-card">
-                <div class="card-img-prompt" style="pointer-events: none;" oncontextmenu="return false;">
-                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Prompt%20Sacro_%20Plinio%20Fabr%C3%ADcio.png" alt="Macrorealismo Bíblico 8K" draggable="false">
-                </div>
-                <div class="prompt-info-box" style="user-select: none;">
-                    <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Sacred Cinematic</span>
-                    <h3>Macrorealismo Bíblico</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">Retrato bíblico ultra-macro, imersão em 50mm, iluminação IMAX. Arte de altíssima complexidade e detalhamento técnico para produções de alto nível.</p>
-                    <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">💎 Desbloquear Prompt</button>
                 </div>
             </div>
 
@@ -641,7 +724,7 @@
 
             <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,15,25,0.85); justify-content:center; align-items:center; z-index:9999; backdrop-filter:blur(8px);">
                 <div style="background:#151C2C; padding:40px; border-radius:16px; border:1px solid #2A3441; text-align:center; width:90%; max-width:400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-                    <h3 style="color:#FFF; margin-bottom:15px;">Confirme a Senha</h3>
+                    <h3 style="color:#FFF; margin-bottom:15px; font-family:'Inter', sans-serif;">Confirme a Senha</h3>
                     <input type="password" id="alunoSenha" placeholder="****" style="width:100%; padding:15px; margin-bottom:20px; background:rgba(0,0,0,0.3); border:1px solid #2A3441; color:#FFF; border-radius:8px; text-align:center; font-size:1.2rem; font-weight:bold; letter-spacing:2px;">
                     <button onclick="verificarSenhaAluno()" style="width:100%; padding:15px; background:#3B82F6; color:#FFF; border:none; border-radius:8px; font-weight:bold; cursor:pointer; text-transform:uppercase;">Entrar na Aula</button>
                     <button onclick="fecharModalAluno()" style="margin-top:20px; background:none; border:none; color:#94A3B8; cursor:pointer; font-size:0.9rem; text-decoration:underline;">Cancelar</button>
