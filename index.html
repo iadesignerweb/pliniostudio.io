@@ -207,6 +207,7 @@
         <header>
             <h1>Plínio Studio</h1>
             <p class="subtitle">Escola Audiovisual & Inteligência Artificial</p>
+            <button onclick="abrirModalGeradorCompleto()" class="btn-action" style="margin-top: 20px; font-size: 0.95rem; padding: 15px 30px; box-shadow: 0 0 25px rgba(0,229,255,0.4); border: 1px solid var(--accent-primary);">🚀 Gerador Completo</button>
         </header>
 
         <div class="hero-slider">
@@ -588,6 +589,15 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
 
         <div class="divider"></div>
 
+        <h2 class="section-title">Comunidade <span style="color: var(--accent-primary);">Facebook</span></h2>
+        <div style="text-align: center; margin-bottom: 70px; background: var(--bg-card); padding: 40px 20px; border-radius: 16px; border: 1px solid var(--border-color);">
+            <h3 style="font-size: 1.5rem; color: #FFF; margin-bottom: 15px;">Grupo de IA no Facebook</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">Junte-se à nossa comunidade exclusiva para trocar experiências, compartilhar prompts e tirar dúvidas diretamente com profissionais e alunos da Plínio Studio.</p>
+            <a href="https://www.facebook.com/groups/1516480602584845/?ref=share&mibextid=NSMWBT" target="_blank" class="btn-action" style="background-color: #1877F2; color: #FFF; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3);">Participar do Grupo Oficial</a>
+        </div>
+
+        <div class="divider"></div>
+
         <h2 class="section-title">Área do <span style="color: var(--accent-primary);">Aluno</span></h2>
         <div class="card-grid">
             <div class="card js-link" data-tipo="curso" data-titulo="Agenda de IA">
@@ -637,6 +647,42 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         <div class="popup-auto-content">
             <button class="close-popup-auto" onclick="fecharPopupAuto()">&times;</button>
             <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Plinio%203D.png" alt="Aviso Especial Plínio Studio">
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalGeradorCompleto">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModalGeradorCompleto()">&times;</span>
+            <h3 style="color: var(--text-main); margin-bottom: 10px;">Gerador Completo</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso (Vídeos, Imagens e Prompts ilimitados):</p>
+            <input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="****">
+            <button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalPlanosGerador">
+        <div class="modal-content" style="border-top: 4px solid #EF4444;">
+            <span class="close-modal" onclick="fecharModalPlanos()">&times;</span>
+            <h3 style="color: #FFF; margin-bottom: 15px;">Acesso Restrito</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">A senha inserida está incorreta ou você ainda não possui um plano ativo.</p>
+            
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 25px; text-align: left;">
+                <div style="font-size: 1.1rem; color: #FFF; margin-bottom: 10px; text-align: center; font-weight: bold;">Planos Disponíveis</div>
+                <ul style="color: #E2E8F0; list-style: none; padding: 0; margin: 0; line-height: 2; font-size: 1rem;">
+                    <li>• <strong style="color: var(--accent-primary);">Mensal:</strong> R$ 99,00</li>
+                    <li>• <strong style="color: var(--accent-primary);">Anual:</strong> R$ 899,00</li>
+                </ul>
+            </div>
+            
+            <a href="https://wa.me/5587996029765?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20acesso%20ao%20Gerador%20Completo." target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a>
+        </div>
+    </div>
+
+    <div class="modal-fullscreen" id="modalVeoGerador">
+        <div class="modal-container">
+            <button class="btn-fechar" onclick="fecharModalVeoGerador()">&times;</button>
+            <div class="modal-header">Gerador de Vídeos, Imagens e Prompts Ilimitado</div>
+            <div class="modal-body"><iframe id="iframeVeoGerador" src="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe></div>
         </div>
     </div>
 
@@ -1001,6 +1047,36 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
 
         function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
         function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
+
+        // NOVA LÓGICA DO GERADOR COMPLETO
+        function abrirModalGeradorCompleto() {
+            document.getElementById('inputGeradorCompleto').value = '';
+            document.getElementById('inputGeradorCompleto').style.borderColor = 'var(--border-color)';
+            document.getElementById('modalGeradorCompleto').classList.add('active');
+        }
+        function fecharModalGeradorCompleto() {
+            document.getElementById('modalGeradorCompleto').classList.remove('active');
+        }
+        function verificarGeradorCompleto() {
+            const senha = document.getElementById('inputGeradorCompleto').value.trim();
+            if (senha === 'Nill') {
+                fecharModalGeradorCompleto();
+                document.getElementById('iframeVeoGerador').src = 'https://veoaifree.com/veo-video-generator/';
+                document.getElementById('modalVeoGerador').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                fecharModalGeradorCompleto();
+                document.getElementById('modalPlanosGerador').classList.add('active');
+            }
+        }
+        function fecharModalPlanos() {
+            document.getElementById('modalPlanosGerador').classList.remove('active');
+        }
+        function fecharModalVeoGerador() {
+            document.getElementById('modalVeoGerador').classList.remove('active');
+            document.getElementById('iframeVeoGerador').src = '';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
