@@ -207,6 +207,7 @@
         <header>
             <h1>Plínio Studio</h1>
             <p class="subtitle">Escola Audiovisual & Inteligência Artificial</p>
+            <!-- BOTÃO GERADOR COMPLETO -->
             <button onclick="abrirModalGeradorCompleto()" class="btn-action" style="margin-top: 20px; font-size: 0.95rem; padding: 15px 30px; box-shadow: 0 0 25px rgba(0,229,255,0.4); border: 1px solid var(--accent-primary);">🚀 Gerador Completo</button>
         </header>
 
@@ -650,6 +651,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         </div>
     </div>
 
+    <!-- Modal Gerador Completo Senha -->
     <div class="modal-overlay" id="modalGeradorCompleto">
         <div class="modal-content">
             <span class="close-modal" onclick="fecharModalGeradorCompleto()">&times;</span>
@@ -660,6 +662,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         </div>
     </div>
 
+    <!-- Modal Planos Gerador Completo -->
     <div class="modal-overlay" id="modalPlanosGerador">
         <div class="modal-content" style="border-top: 4px solid #EF4444;">
             <span class="close-modal" onclick="fecharModalPlanos()">&times;</span>
@@ -675,14 +678,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             </div>
             
             <a href="https://wa.me/5587996029765?text=Ol%C3%A1%2C%20gostaria%20de%20adquirir%20o%20acesso%20ao%20Gerador%20Completo." target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a>
-        </div>
-    </div>
-
-    <div class="modal-fullscreen" id="modalVeoGerador">
-        <div class="modal-container">
-            <button class="btn-fechar" onclick="fecharModalVeoGerador()">&times;</button>
-            <div class="modal-header">Gerador de Vídeos, Imagens e Prompts Ilimitado</div>
-            <div class="modal-body"><iframe id="iframeVeoGerador" src="" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe></div>
         </div>
     </div>
 
@@ -1048,7 +1043,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
         function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
 
-        // NOVA LÓGICA DO GERADOR COMPLETO
+        // NOVA LÓGICA DO GERADOR COMPLETO (SEM IFRAME)
         function abrirModalGeradorCompleto() {
             document.getElementById('inputGeradorCompleto').value = '';
             document.getElementById('inputGeradorCompleto').style.borderColor = 'var(--border-color)';
@@ -1061,9 +1056,8 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             const senha = document.getElementById('inputGeradorCompleto').value.trim();
             if (senha === 'Nill') {
                 fecharModalGeradorCompleto();
-                document.getElementById('iframeVeoGerador').src = 'https://veoaifree.com/veo-video-generator/';
-                document.getElementById('modalVeoGerador').classList.add('active');
-                document.body.style.overflow = 'hidden';
+                // O site Veofree bloqueia iframes. A solução é abrir em uma nova aba com o 'window.open'
+                window.open('https://veoaifree.com/veo-video-generator/', '_blank');
             } else {
                 fecharModalGeradorCompleto();
                 document.getElementById('modalPlanosGerador').classList.add('active');
@@ -1071,11 +1065,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         }
         function fecharModalPlanos() {
             document.getElementById('modalPlanosGerador').classList.remove('active');
-        }
-        function fecharModalVeoGerador() {
-            document.getElementById('modalVeoGerador').classList.remove('active');
-            document.getElementById('iframeVeoGerador').src = '';
-            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
