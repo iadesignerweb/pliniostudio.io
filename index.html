@@ -271,7 +271,7 @@
         <h2 class="section-title">Galeria de <span style="color: var(--accent-primary);">Prompts Infinitos</span></h2>
         <div style="text-align: center; margin-bottom: 70px;">
             <div style="max-width: 400px; margin: 0 auto 20px auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); cursor: pointer;" onclick="abrirModalGaleriaInfinita()">
-                <img src="LINK_DA_IMAGEM_ENGRAÇADA_AQUI" alt="Acessar Galeria Infinita" style="width: 100%; display: block;">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Ed_%20Plinio%20Studio.jpg" alt="Acessar Galeria Infinita" style="width: 100%; display: block;">
             </div>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Acesse a nossa galeria exclusiva e infinita de prompts.</p>
             <button onclick="abrirModalGaleriaInfinita()" class="btn-action">🎭 Acessar Galeria</button>
@@ -427,7 +427,7 @@
             </div>
 
             <div class="prompt-card">
-                <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_Pl%C3%ADnio%20Studio1.png')">
+                <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Stilo%20Plinio%20Studio.png')">
                     <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Stilo%20Plinio%20Studio.png" alt="Prompt Office" draggable="false">
                 </div>
                 <div class="prompt-info-box">
@@ -900,7 +900,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
                 <div id="agendaAulaHojeSection" style="display: ${titulo === 'Agenda de IA' ? 'block' : 'none'}; background: rgba(0, 229, 255, 0.1); border-left: 4px solid #00E5FF; padding: 25px; border-radius: 0 12px 12px 0; margin-bottom: 30px; text-align: left; width: 100%; box-sizing: border-box;">
                     <h2 style="color: #FFF; font-size: 1.3rem; margin-bottom: 10px; font-weight: 700;">📅 SUA AULA DE HOJE</h2>
                     <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">Este é o seu ponto de encontro diário. Aqui ficarão concentradas e sempre disponíveis as suas aulas e conteúdos atualizados para você acompanhar o cronograma sem perder nenhum detalhe.</p>
-                    <a href="#" target="_blank" style="background: #00E5FF; color: #000; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);">🔗 Acessar Transmissão ao Vivo</a>
+                    <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="background: #00E5FF; color: #000; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);">🔗 Acessar Transmissão ao Vivo</a>
                 </div>
 
                 <div style="background: rgba(0, 229, 255, 0.04); border-left: 4px solid #00E5FF; padding: 25px; border-radius: 0 12px 12px 0; margin-bottom: 30px; text-align: left; width: 100%; box-sizing: border-box;">
@@ -1118,7 +1118,7 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         }
         function verificarGeradorCompleto() {
             const senha = document.getElementById('inputGeradorCompleto').value.trim();
-            if (senha === 'Nill') {
+            if (senha === 'Nill' || senha.toLowerCase() === 'nill') {
                 fecharModalGeradorCompleto();
                 window.open('https://veoaifree.com/veo-video-generator/', '_blank');
             } else {
@@ -1143,8 +1143,8 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             const senha = document.getElementById('inputGaleriaInfinita').value.trim();
             if (senha.toLowerCase() === 'nill' || senha === 'Nill') {
                 fecharModalGaleriaInfinita();
-                // SUBSTITUA O LINK ABAIXO PELA URL DA SUA GALERIA
-                window.open('LINK_DA_GALERIA_AQUI', '_blank'); 
+                // Link corrigido com a variável informada no topo
+                window.open('https://aiedits.net/', '_blank'); 
             } else {
                 document.getElementById('inputGaleriaInfinita').style.borderColor = '#EF4444';
                 setTimeout(() => { document.getElementById('inputGaleriaInfinita').style.borderColor = 'var(--border-color)'; }, 2000);
