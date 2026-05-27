@@ -53,16 +53,17 @@
         .nav-menu {
             position: fixed; top: 0; right: -100%; width: 280px; height: 100%;
             background: var(--bg-card); z-index: 1000; transition: 0.5s ease-out; padding-top: 90px; 
-            border-left: 1px solid var(--border-color); box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+            border-left: 1px solid var(--border-color); box-shadow: -5px 0 30px rgba(0,0,0,0.5); overflow-y: auto;
         }
         .nav-menu.active { right: 0; }
         .nav-menu a {
-            display: block; padding: 18px 30px; color: var(--text-main); text-decoration: none;
-            font-weight: 500; font-size: 1rem; border-bottom: 1px solid var(--border-color); transition: 0.3s;
+            display: block; padding: 16px 30px; color: var(--text-main); text-decoration: none;
+            font-weight: 500; font-size: 0.95rem; border-bottom: 1px solid var(--border-color); transition: 0.3s;
         }
         .nav-menu a:hover { background: #1E293B; color: var(--accent-primary); padding-left: 35px; }
         .nav-menu a.whats-btn-menu { color: #25d366; font-weight: 600; }
-        .nav-menu a.highlight-menu-btn { color: #25d366; font-weight: 700; margin-top: 20px; border-top: 1px solid var(--border-color); }
+        .nav-menu a.highlight-menu-btn { color: #25d366; font-weight: 700; margin-top: 10px; border-top: 1px solid var(--border-color); }
+        .nav-menu a.gold-btn { color: #FBBF24; font-weight: 600; }
 
         header { margin-bottom: 30px; text-align: center; }
         h1 { font-size: 2.8rem; font-weight: 800; text-transform: uppercase; color: #FFFFFF; margin-bottom: 12px; letter-spacing: -1px;}
@@ -74,6 +75,17 @@
         .slide.active { opacity: 1; }
         .slider-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px 20px; background: linear-gradient(to top, rgba(11,15,25,1), transparent); color: #fff; z-index: 2; text-align: center; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
 
+        /* CSS do Banner Super Gerador */
+        .super-gerador-banner {
+            width: 100%; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer;
+            margin-bottom: 60px; border: 2px solid var(--border-color); transition: 0.4s; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        .super-gerador-banner:hover { border-color: var(--accent-primary); box-shadow: 0 0 35px rgba(0,229,255,0.3); transform: scale(1.02); }
+        .super-gerador-banner img { width: 100%; display: block; object-fit: cover; }
+        .super-gerador-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(11,15,25,0.95), transparent); padding: 25px; text-align: center; opacity: 0; transition: 0.4s; }
+        .super-gerador-banner:hover .super-gerador-overlay { opacity: 1; }
+        .super-gerador-overlay span { color: #FFF; font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 2px 15px rgba(0,229,255,0.9); }
+
         /* CSS do Pop-up Automático */
         .popup-auto-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 5000; justify-content: center; align-items: center; opacity: 0; transition: 0.5s; }
         .popup-auto-overlay.active { display: flex; opacity: 1; }
@@ -82,7 +94,7 @@
         .close-popup-auto { position: absolute; top: -15px; right: -15px; background: var(--bg-card); color: #FFF; width: 40px; height: 40px; border-radius: 50%; font-size: 1.5rem; font-weight: bold; border: 2px solid var(--accent-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; z-index: 5010; line-height: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
         .close-popup-auto:hover { background: var(--accent-primary); color: #000; transform: scale(1.1); }
 
-        .apresentacao { text-align: center; margin-bottom: 60px; padding: 0 10px; }
+        .apresentacao { text-align: center; margin-bottom: 40px; padding: 0 10px; }
         .apresentacao p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; max-width: 850px; margin: 0 auto; }
 
         .tile-app {
@@ -197,18 +209,19 @@
         <a href="#">Início</a>
         <a href="#" onclick="abrirPeloMenu('curso', 'Agenda de IA')">Agenda de IA</a>
         <a href="#" onclick="abrirPeloMenu('mentoria', 'Área de Mentoria')">Mentoria</a>
-        <a href="#" onclick="abrirPeloMenu('gerador', 'Gerador de Imagens IA')">Gerador de Imagens</a>
         <a href="#" onclick="abrirPeloMenu('ebook', 'Baixar E-books')">Baixar E-books</a>
-        <a href="https://wa.me/5587996029765" target="_blank" rel="noopener noreferrer" class="whats-btn-menu" onclick="fbq('track', 'Contact');">Preços</a>
+        
+        <a href="#" onclick="fecharMenuEAbrirPlanos()" class="gold-btn">Planos do Gerador</a>
+        <a href="https://linktr.ee/seu_link_aqui" target="_blank" rel="noopener noreferrer">Portal dos Franqueados</a>
+        <a href="https://wa.me/5587996029765?text=Ol%C3%A1%2C%20quero%20saber%20como%20me%20tornar%20um%20franqueado%20da%20Pl%C3%ADnio%20Studio." target="_blank" rel="noopener noreferrer" style="color: #00E5FF; font-weight: 600;">Seja Franqueado</a>
+        
         <a href="https://wa.me/5587996029765" target="_blank" rel="noopener noreferrer" class="highlight-menu-btn">Atendimento WhatsApp</a>
     </nav>
 
     <div class="container">
         <header>
             <h1>Plínio Studio</h1>
-            <p class="subtitle">Escola Audiovisual & Inteligência Artificial</p>
-            <!-- BOTÃO GERADOR COMPLETO -->
-            <button onclick="abrirModalGeradorCompleto()" class="btn-action" style="margin-top: 20px; font-size: 0.95rem; padding: 15px 30px; box-shadow: 0 0 25px rgba(0,229,255,0.4); border: 1px solid var(--accent-primary);">🚀 Gerador Completo</button>
+            <p class="subtitle">Agência de Marketing & Hub IA</p>
         </header>
 
         <div class="hero-slider">
@@ -219,7 +232,15 @@
         </div>
 
         <div class="apresentacao">
-            <p>O <strong>Plínio Studio</strong> é um ecossistema focado em Educação Mediática e Inteligência Artificial. Nossa missão vai além de gerar imagens artificiais; nós capacitamos engenheiros audiovisuais. Compreenda a lógica estrutural da web, a comunicação algorítmica e aplique padrões cinematográficos reais para dominar verdadeiramente a tecnologia de ponta.</p>
+            <h2 style="font-size: 1.8rem; color: #FFF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Marketing & Inteligência Artificial</h2>
+            <p>O <strong>Plínio Studio</strong> evoluiu. Não somos apenas uma escola audiovisual; somos uma <strong>Agência de Marketing e Automação</strong> de ponta. Fornecemos educação mediática de excelência e, ao mesmo tempo, toda a infraestrutura de serviços, automação e suporte técnico para nossos <strong>Franqueados</strong>. Aqui, você não apenas aprende a usar a tecnologia, você se torna parceiro de um ecossistema completo que trabalha por você.</p>
+        </div>
+
+        <div class="super-gerador-banner" onclick="abrirModalGeradorCompleto()">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Pl%C3%ADnio%20St%C3%BAdio_Plinio%20Fabr%C3%ADcio.png" alt="Acessar o Gerador Completo Plínio Studio">
+            <div class="super-gerador-overlay">
+                <span>⚡ Clique para acessar a Máquina</span>
+            </div>
         </div>
 
         <div class="divider"></div>
@@ -320,7 +341,7 @@
                     <span class="card-tag" style="color: var(--accent-primary);">💎 Premium • Cronologia Facial</span>
                     <h3>Retrato 4 Gerações</h3>
                     <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; line-height: 1.6; flex-grow: 1;">
-                        Estudo de continuidade temporal com iluminação dramática, evidenciando texturas dérmicas em resolução 8K.
+                        Estudo de continuity temporal com iluminação dramática, evidenciando texturas dérmicas em resolução 8K.
                     </p>
                     <button onclick="abrirModalPremium()" class="btn-action" style="width: 100%; background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); margin-bottom: 0;">
                         💎 Desbloquear Análise
@@ -651,7 +672,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         </div>
     </div>
 
-    <!-- Modal Gerador Completo Senha -->
     <div class="modal-overlay" id="modalGeradorCompleto">
         <div class="modal-content">
             <span class="close-modal" onclick="fecharModalGeradorCompleto()">&times;</span>
@@ -662,7 +682,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         </div>
     </div>
 
-    <!-- Modal Planos Gerador Completo -->
     <div class="modal-overlay" id="modalPlanosGerador">
         <div class="modal-content" style="border-top: 4px solid #EF4444;">
             <span class="close-modal" onclick="fecharModalPlanos()">&times;</span>
@@ -1043,7 +1062,13 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
         function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
         function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
 
-        // NOVA LÓGICA DO GERADOR COMPLETO (SEM IFRAME)
+        // NOVA LÓGICA DO MENU / GERADOR COMPLETO
+        function fecharMenuEAbrirPlanos() {
+            document.getElementById('navMenu').classList.remove('active');
+            fecharModalGeradorCompleto();
+            document.getElementById('modalPlanosGerador').classList.add('active');
+        }
+
         function abrirModalGeradorCompleto() {
             document.getElementById('inputGeradorCompleto').value = '';
             document.getElementById('inputGeradorCompleto').style.borderColor = 'var(--border-color)';
@@ -1056,7 +1081,6 @@ Shot with a 50mm lens, eye-level perspective, slight dynamic tilt, vertical aspe
             const senha = document.getElementById('inputGeradorCompleto').value.trim();
             if (senha === 'Nill') {
                 fecharModalGeradorCompleto();
-                // O site Veofree bloqueia iframes. A solução é abrir em uma nova aba com o 'window.open'
                 window.open('https://veoaifree.com/veo-video-generator/', '_blank');
             } else {
                 fecharModalGeradorCompleto();
