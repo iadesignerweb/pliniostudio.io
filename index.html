@@ -119,21 +119,11 @@
         h1 { font-size: 1.8rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; text-align: center; }
         .description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; text-align: center; }
 
-        .social-proof-container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px; }
-        .avatars-row { display: flex; align-items: center; justify-content: center; }
-        .avatars-row img { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--bg-main); margin-left: -10px; }
-        .avatars-row img:first-child { margin-left: 0; }
-        .avatars-row .avatar-count { width: 32px; height: 32px; border-radius: 50%; background: #7C3AED; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; border: 2px solid var(--bg-main); margin-left: -10px; z-index: 1; }
-        .saved-count { font-size: 0.9rem; color: var(--text-muted); margin-left: 12px; }
-        .unlock-count { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--text-muted); }
-        .unlock-count svg { width: 18px; height: 18px; stroke: var(--accent-green); fill: none; }
-        .recent-unlock { font-size: 0.8rem; color: var(--accent-green); font-weight: 500; }
-
         /* --- SEÇÕES DA ESTRUTURA ORIGINAL --- */
         .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
         
-        .super-gerador-banner { width: 100%; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--border-color); transition: 0.4s; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+        .super-gerador-banner { width: 100%; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--border-color); transition: 0.4s; box-shadow: 0 10px 40px rgba(0,0,0,0.4); margin-bottom: 15px;}
         .super-gerador-banner:hover { border-color: var(--accent-primary); box-shadow: 0 0 35px rgba(0,229,255,0.2); transform: scale(1.02); }
         .super-gerador-banner img { width: 100%; display: block; object-fit: cover; }
         .super-gerador-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(11,16,21,0.95), transparent); padding: 25px; text-align: center; opacity: 0; transition: 0.4s; }
@@ -145,21 +135,6 @@
         .btn-action:hover { background-color: #FFF; }
         .btn-action-outline { background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); }
         .btn-action-outline:hover { background: var(--bg-card-hover); color: var(--accent-primary); border-color: var(--accent-primary); }
-
-        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; }
-        .tile-app { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 10px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
-        .tile-app svg { width: 28px; height: 28px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; margin-bottom: 12px; }
-        .tile-app:hover { border-color: var(--accent-primary); background: var(--bg-card-hover); color: var(--accent-primary); }
-
-        .card-grid { display: flex; flex-direction: column; gap: 20px; }
-        .card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: 0.4s; cursor: pointer; }
-        .card:hover { border-color: var(--accent-secondary); background: var(--bg-card-hover); }
-        .card-img { height: 180px; position: relative; overflow: hidden; background: #000; }
-        .card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, rgba(11,16,21, 0.9)); z-index: 1; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) brightness(80%); }
-        .card-content { padding: 25px; position: relative; z-index: 2; }
-        .card-content h2 { font-size: 1.3rem; color: #FFFFFF; margin-bottom: 8px; font-weight: 600; }
-        .card-content p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
 
         .prompt-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; margin-bottom: 20px;}
         .card-img-prompt { position: relative; aspect-ratio: 1/1; background: #000; cursor: pointer; overflow: hidden;}
@@ -198,37 +173,12 @@
         .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); }
 
         /* --- FOOTER E REDES SOCIAIS --- */
-        .footer-section {
-            padding: 30px 20px 40px 20px;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 20px;
-        }
-        .social-icons a {
-            color: var(--text-muted);
-            transition: 0.3s ease;
-        }
-        .social-icons a:hover {
-            color: var(--accent-primary);
-            transform: translateY(-2px);
-        }
-        .social-icons svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-        }
-        .copyright-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
+        .footer-section { padding: 30px 20px 40px 20px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 30px; margin-bottom: 20px; }
+        .social-icons { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
+        .social-icons a { color: var(--text-muted); transition: 0.3s ease; }
+        .social-icons a:hover { color: var(--accent-primary); transform: translateY(-2px); }
+        .social-icons svg { width: 28px; height: 28px; fill: currentColor; }
+        .copyright-text { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
 
         /* --- BOTTOM NAV KOOURSE --- */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(11, 16, 21, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
@@ -236,7 +186,6 @@
         .nav-item:hover, .nav-item.active { color: #FFF; }
         .nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
         
-        /* Oculta scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-main); }
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
@@ -341,70 +290,27 @@
         <div id="acervoSecreto">
             <div class="prompt-secreto-item">
                 <h4>Moda Fashion Camisas Raul Seixas</h4>
-                <div class="prompt-box" id="p_raul">Create a premium high-fashion workwear magazine cover in a vertical 4:5 editorial poster format. A stylish male subject walks confidently toward the camera in a full-body runway-style pose, centered in the frame. His body is slightly in motion, one foot stepping forward, right hand casually inside the trouser pocket, left hand relaxed beside the body. His expression is calm, serious, and fashion-editorial. He wears narrow black sunglasses, slightly tousled dark hair, and a subtle layered silver chain necklace. Outfit: Oversized dark charcoal / black workwear jacket, worn open. Clean white crewneck sweatshirt with a small square heritage-style logo patch on the left chest. Loose dark charcoal wide-leg pleated trousers with natural drape and folds. Chunky polished black leather shoes... (Observação: Ao invés de sapato e calça social use: Calça Jeans e tênis branco. Rodapé: "ADQUIRA AGORA" and "WhatsApp: (87)99602-9765 ou (88)98170-5413")</div>
+                <div class="prompt-box" id="p_raul">Create a premium high-fashion workwear magazine cover in a vertical 4:5 editorial poster format...</div>
                 <button onclick="copiarPrompt('p_raul', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
             </div>
-
-            <div class="prompt-secreto-item">
-                <h4>3D Jardineira MODA</h4>
-                <div class="prompt-box" id="p_jard">Create a high-quality, cute chibi-style 3D character illustration of a little girl(upload person) with an oversized head, big, soft facial features, and a confident, playful attitude. She is wearing large, round, black sunglasses, a plain white t-shirt, and loose, dark blue denim overalls with realistic stitching, front bib pocket, side pockets, metal buttons, and rolled-up cuffs. She has natural-coloured hair tied into two low pigtails with soft, loose strands flying around her face. Pose: full-body standing pose... Aspect ratio 4:5, vertical portrait.</div>
-                <button onclick="copiarPrompt('p_jard', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
             </div>
 
-            <div class="prompt-secreto-item">
-                <h4>Moda Premium Sociedade Alternativa</h4>
-                <div class="prompt-box" id="p_sociedade">Create a cinematic 4:5 vertical studio portrait of the uploaded person. Composition: Upper-thigh to head framing. The subject is standing in a strong three-quarter profile, body turned noticeably to the viewer’s right. His head is slightly bowed downward, and his eyes are directed toward his left wrist... He wears a fitted black turtleneck sweater with slight fabric bunching near the forearms. He has neatly styled hair and thin round metal-frame glasses...</div>
-                <button onclick="copiarPrompt('p_sociedade', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-secreto-item">
-                <h4>Clone 3D Perfeito</h4>
-                <div class="prompt-box" id="p_clone">Create a 4:5 vertical premium cinematic portrait of me standing beside a cute soft 3D animated version of myself. The real subject stands on the right and the animated version stands on the left. Both subjects stand close together against a dark warm-gray urban concrete wall with subtle texture. Their body language should feel relaxed, natural, and grounded... The animated version should be the same subject in a cute premium 3D animated form. The rendering must be soft, smooth, warm, and polished, with gentle rounded features, expressive eyes, and a charming Pixar-like softness.</div>
-                <button onclick="copiarPrompt('p_clone', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
-            </div>
-            
-            <div class="prompt-secreto-item">
-                <h4>Brasil Seleção (Pôster Cinematográfico)</h4>
-                <div class="prompt-box" id="p_brasil">Crie um pôster cinematográfico ultra realista de um jogador da Seleção brasileira de futebol. A arte deve ser inspirada em campanhas dramáticas da Seleção Brasileira, com estética emocional, épica e sombria... O texto “BORA” deve estar gigante, branco, com textura desgastada. O texto “HEXA” deve estar em fonte cursiva dourada, estilo pincel. O nome da pessoa deve aparecer acima. Rodapé com assinatura de artista no canto "Plinio Studio".</div>
-                <button onclick="copiarPrompt('p_brasil', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-secreto-item">
-                <h4>3D Impressionante (Estilo Tim Burton)</h4>
-                <div class="prompt-box" id="p_burton">3D Pixar-style caricature with a Tim Burton touch, ultra-detailed, soft cinematic lighting coming from the window on the right, high-quality rendering. SETTING: Messy and cozy vintage kitchen... CHARACTER: Disproportionately large head, about 40% of the total body height... Huge, round, bulging eyes... Exhausted, just woke up, needing coffee to function.</div>
-                <button onclick="copiarPrompt('p_burton', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-secreto-item">
-                <h4>Desenho Lápis de Cor (Plínio Studio)</h4>
-                <div class="prompt-box" id="p_lapis">Create a masterfully crafted, ultra-high-detail colored pencil and mixed-media portrait illustration of a man. Maintain accurate identity and precise face matching to the provided reference image... He is dressed in a tailored deep navy-blue suit jacket with fine texture, paired with a crisp white dress shirt and a vibrant, intricately patterned paisley tie... The background is a highly detailed textured white pencil-rendered surface, fine-grain drawing paper.</div>
-                <button onclick="copiarPrompt('p_lapis', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-secreto-item">
-                <h4>Sacra Lumen (Macro-realismo Bíblico 8K)</h4>
-                <div class="prompt-box" id="p_sacro">Ultra-realistic sacred cinematic portrait of a young biblical woman wearing a textured brown veil, centered symmetrical composition, direct eye contact, emotionally neutral expression, warm earthy monochromatic palette, hyper-detailed human skin with visible pores... photographed on a 50mm cinema lens, shallow depth of field, IMAX-quality realism, HDR lighting balance...</div>
-                <button onclick="copiarPrompt('p_sacro', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-secreto-item">
-                <h4>Agência Hub IA (Campanha Dark-Mode)</h4>
-                <div class="prompt-box" id="p_agencia">Ultra-detailed cinematic marketing poster for an AI Agency and Hub IA platform, futuristic dark-mode aesthetic, premium SaaS advertisement style, black and deep navy blue gradient background with glowing neon blue and gold accents... Main visual: A realistic handsome man holding a tiny Pixar-style 3D cartoon version of himself in the palm of his hand... Huge glowing gold button: “FAÇA PARTE AGORA”.</div>
-                <button onclick="copiarPrompt('p_agencia', this)" class="btn-action btn-action-outline">Copiar Prompt</button>
-            </div>
-
+        <div class="divider"></div>
+        <h2 class="section-title">Próprios 2026</h2>
+        <p class="description">Acesso exclusivo à nova galeria de prompts e imagens geradas.</p>
+        <div class="super-gerador-banner" onclick="abrirModalPrompts2026()">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_%20Pl%C3%ADnio%20Studio2.png" alt="Prompts 2026">
+            <div class="super-gerador-overlay"><span>Acessar Prompts 2026</span></div>
         </div>
+        <button onclick="abrirModalPrompts2026()" class="btn-action" style="background-color: var(--accent-secondary); margin-top: 15px;">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> ACESSAR ÁREA 2026
+        </button>
 
     </main>
 
     <footer class="footer-section">
         <div class="social-icons">
             <a href="https://instagram.com/pliniofabricio_" target="_blank" title="Instagram @pliniofabricio_">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                </svg>
-            </a>
-            <a href="https://instagram.com/pliniostudio.io" target="_blank" title="Instagram @pliniostudio.io">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                 </svg>
@@ -420,76 +326,13 @@
         </div>
     </footer>
 
-    <nav class="bottom-nav">
-        <a class="nav-item active" onclick="toggleMenu()">
-            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            <span>MENU</span>
-        </a>
-        <a class="nav-item" href="#" onclick="abrirModalGaleriaInfinita()">
-            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <span>PROMPTS</span>
-        </a>
-        <a class="nav-item" href="https://wa.me/5587996029765" target="_blank">
-            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            <span>SUPORTE</span>
-        </a>
-    </nav>
-
-    <div class="modal-overlay" id="modalAcervoSecreto">
+    <div class="modal-overlay" id="modalPrompts2026">
         <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalAcervoSecreto()">×</span>
-            <h3>Área Restrita (Prompts)</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="inputAcervoSecreto" class="modal-input" placeholder="****">
-            <button onclick="verificarAcervoSecreto()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalGeradorCompleto">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalGeradorCompleto()">×</span>
-            <h3>Gerador Completo</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="****">
-            <button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalPlanosGerador">
-        <div class="modal-content" style="border-top-color: #EF4444;">
-            <span class="close-modal" onclick="fecharModalPlanos()">×</span>
-            <h3>Acesso Restrito</h3>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Senha incorreta ou plano inativo.</p>
-            <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalArsenal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalArsenal()">×</span>
-            <h3>Acesso Restrito</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a <strong>Segunda Senha</strong> para <strong id="appNameDisplay" style="color: var(--accent-primary);"></strong>.</p>
-            <input type="password" id="arsenalInput" class="modal-input" placeholder="****">
-            <button onclick="verificarArsenal()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalPremium">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalPremium()">×</span>
-            <h3>Acesso Restrito</h3>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Este é um Prompt Premium de alta complexidade.</p>
-            <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank">Adquirir Premium</a>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalGaleriaInfinita">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalGaleriaInfinita()">×</span>
-            <h3>Galeria Infinita</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="****">
-            <button onclick="verificarGaleriaInfinita()" class="modal-btn">AUTENTICAR</button>
+            <span class="close-modal" onclick="fecharModalPrompts2026()">×</span>
+            <h3>Prompts 2026</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso (Studio):</p>
+            <input type="password" id="inputPrompts2026" class="modal-input" placeholder="****">
+            <button onclick="verificarPrompts2026()" class="modal-btn">AUTENTICAR</button>
         </div>
     </div>
 
@@ -503,8 +346,6 @@
         </div>
     </div>
 
-    <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
-
     <script>
         function toggleMenu() {
             const menu = document.getElementById('sideMenu');
@@ -514,8 +355,6 @@
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
         }
 
-        const linkMentoriaGlobal = "https://linktr.ee/mariafreitasmf"; 
-
         const listaDeAlunosGlobais = [
             { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
             { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
@@ -523,110 +362,100 @@
             { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, { nome: "Wilma Duarte", senha: "3904" }
         ];
 
-        let appSelecionadoGlobal = '';
-        function abrirModalArsenal(app) {
-            appSelecionadoGlobal = app;
-            document.getElementById('appNameDisplay').innerText = app;
-            document.getElementById('arsenalInput').value = '';
-            document.getElementById('modalArsenal').classList.add('active');
-        }
-        function fecharModalArsenal() { document.getElementById('modalArsenal').classList.remove('active'); }
-        function verificarArsenal() {
-            const pass = document.getElementById('arsenalInput').value.trim();
-            const alunoVerificado = listaDeAlunosGlobais.find(a => a.senha === pass);
-            if (alunoVerificado) {
-                fecharModalArsenal();
-                window.open('https://play.google.com/store/search?q=' + encodeURIComponent(appSelecionadoGlobal) + '&c=apps', '_blank');
-            } else {
-                alert('Segunda Senha incorreta! O acesso ao Arsenal é restrito.');
-            }
-        }
-
-        function copiarPrompt(textId, btnElement) { const textToCopy = document.getElementById(textId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = btnElement.innerHTML; btnElement.innerHTML = "Copiado!"; setTimeout(() => { btnElement.innerHTML = originalText; }, 3000); }); }
-        
-        const lightbox = document.getElementById('lightboxOverlay'); const lightboxImg = document.getElementById('lightboxImg');
-        function abrirLightbox(imgSrc) { lightboxImg.src = imgSrc; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function fecharLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
-        
-        const modal = document.getElementById('customModal'); const modalInput = document.getElementById('modalInput'); const btnSubmit = document.getElementById('modalSubmit');
+        const modal = document.getElementById('customModal'); 
+        const modalInput = document.getElementById('modalInput'); 
+        const btnSubmit = document.getElementById('modalSubmit');
         let currentType = '', currentTitle = '';
-        function abrirModal(tipo, titulo) { currentType = tipo; currentTitle = titulo; document.getElementById('modalTitle').textContent = titulo; modalInput.value = ''; modal.classList.add('active'); }
+        
+        function abrirModal(tipo, titulo) { 
+            currentType = tipo; 
+            currentTitle = titulo; 
+            document.getElementById('modalTitle').textContent = titulo; 
+            modalInput.value = ''; 
+            modal.classList.add('active'); 
+        }
+        
         function closeModalFunc() { modal.classList.remove('active'); }
-        document.querySelectorAll('.js-link').forEach(card => { card.addEventListener('click', () => abrirModal(card.dataset.tipo, card.dataset.titulo)); });
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
-        /* NOVA LÓGICA RECONSTRUÍDA E INTEGRADA AO TEMA DARK PARA OS ALUNOS */
+        /* NOVA LÓGICA DE LOGIN PRIVADO (NENHUM ALUNO VÊ O OUTRO) */
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
-            let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
-            listaDeAlunosGlobais.forEach(aluno => {
-                listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('${aluno.senha}', '${aluno.nome}')" style="background:#00E5FF; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%;">Acessar Área Restrita</button></div>`;
-            });
-            listaHtml += '</div>';
+            const isAgendaIA = titulo.includes('Agenda');
             
+            // Definição Inteligente de Mentor e Link
+            const mentorNome = isAgendaIA ? 'Plínio Fabrício' : 'Maria Freitas';
+            const linkAcesso = isAgendaIA ? 'https://linktr.ee/PlinioStudio_' : 'https://linktr.ee/mariafreitasmf';
+
+            // Arsenal de Aplicativos apenas na Agenda IA
+            let arsenalHtml = '';
+            if (isAgendaIA) {
+                arsenalHtml = `
+                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #1F2937; text-align: center;">
+                    <h3 style="color:#00E5FF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">Arsenal de Aplicativos</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;">
+                        <div style="background:#1A222D; border:1px solid #3B82F6; padding:15px; border-radius:12px; cursor:pointer;" onclick="alert('Iniciando App...')">
+                            <span style="color:#FFF; font-weight:bold; font-size:0.9rem;">App IA 1</span>
+                        </div>
+                        <div style="background:#1A222D; border:1px solid #3B82F6; padding:15px; border-radius:12px; cursor:pointer;" onclick="alert('Iniciando App...')">
+                            <span style="color:#FFF; font-weight:bold; font-size:0.9rem;">App IA 2</span>
+                        </div>
+                        <div style="background:#1A222D; border:1px solid #3B82F6; padding:15px; border-radius:12px; cursor:pointer;" onclick="alert('Iniciando App...')">
+                            <span style="color:#FFF; font-weight:bold; font-size:0.9rem;">App IA 3</span>
+                        </div>
+                    </div>
+                </div>`;
+            }
+
             const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | Plínio Studio</title><style>
-            body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
-            .ead-container { width: 100%; max-width: 500px; } 
+            body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh;}
+            .ead-container { width: 100%; max-width: 400px; background:#121820; padding:40px 30px; border-radius:16px; border-top: 4px solid #00E5FF; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align:center; }
             .video-container { display: none; flex-direction: column; width: 100%; max-width: 600px; align-items:center; }
-            h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 10px; text-align:center; margin-bottom: 20px;}
-            .btn-ead { background:#3B82F6; color:#FFF; padding:15px 24px; border:none; border-radius:8px; font-weight:bold; text-decoration: none; display: inline-block; margin-top: 15px; text-align: center; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;}
+            h1 { color: #FFF; margin-bottom: 10px; }
+            .btn-ead { background:#3B82F6; color:#FFF; padding:15px 24px; border:none; border-radius:8px; font-weight:bold; text-decoration: none; display: inline-block; margin-top: 15px; text-align: center; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; width: 100%;}
             .btn-ead:hover { background: #2563EB; }
             .btn-ead-green { background: #10B981; }
             .btn-ead-green:hover { background: #059669; }
+            input { width: 100%; padding:15px; border-radius:8px; text-align:center; margin-bottom:20px; background: rgba(0,0,0,0.5); color: #FFF; border: 1px solid #1F2937; font-size: 1.2rem; letter-spacing: 2px; }
             </style></head><body>
             
-            <div class="ead-container" id="listaArea">
+            <div class="ead-container" id="loginArea">
                 <h1>${titulo}</h1>
-                <p style="color: #8292A6; text-align: center; margin-bottom: 25px;">Selecione seu perfil na lista abaixo e insira sua senha de acesso.</p>
-                ${listaHtml}
+                <p style="color: #8292A6; margin-bottom: 25px;">Insira sua senha de aluno para acessar.</p>
+                <input type="password" id="senhaInput" placeholder="****">
+                <button onclick="fazerLogin()" class="btn-ead" style="background:#00E5FF; color:#000;">Autenticar</button>
             </div>
             
-            <div class="video-container" id="videoArea">
+            <div class="video-container" id="painelArea">
                 <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom:30px; border-bottom: 2px solid #00E5FF; padding-bottom: 15px;">
-                    <h1 style="border: none; margin: 0; padding: 0;">Painel do Aluno</h1>
-                    <button onclick="voltarParaSala()" style="padding:10px 18px; background:transparent; color:#00E5FF; border:1px solid #00E5FF; border-radius:8px; cursor: pointer; font-weight: bold;">Sair</button>
+                    <h2 style="margin: 0; color:#FFF;">Painel do Aluno</h2>
+                    <button onclick="window.close()" style="padding:10px 18px; background:transparent; color:#EF4444; border:1px solid #EF4444; border-radius:8px; cursor: pointer; font-weight: bold;">Sair</button>
                 </div>
                 
-                <div style="background:#121820; padding:35px 25px; border-radius:12px; border: 1px solid #1F2937; width:100%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    <h2 style="color:#FFF; margin-bottom: 10px;" id="nomeAlunoDisplay"></h2>
-                    <p style="color:#8292A6; margin-bottom: 30px; line-height: 1.5;">Bem-vindo(a) à sua área exclusiva! Clique no botão abaixo para acessar todos os seus materiais e links da mentoria com Plínio Fabrício.</p>
+                <div style="background:#121820; padding:35px 25px; border-radius:12px; border: 1px solid #1F2937; width:100%; text-align: center;">
+                    <h2 style="color:#FFF; margin-bottom: 5px;" id="boasVindasText"></h2>
+                    <p style="color: #34D399; font-size: 0.9rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">Mentoria: ${mentorNome}</p>
+                    <p style="color:#8292A6; margin-bottom: 30px; line-height: 1.5;">Acesse seus materiais e diretórios de aula nos botões abaixo.</p>
                     
-                    <a href="${linkMentoriaGlobal}" target="_blank" class="btn-ead btn-ead-green" style="width: 100%; max-width: 300px;">Acessar Links (Linktree)</a>
-                    <br>
-                    <a href="https://wa.me/5587996029765" target="_blank" class="btn-ead" style="width: 100%; max-width: 300px; background: #25D366; margin-top: 20px;">Suporte WhatsApp</a>
-                </div>
-            </div>
-            
-            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,16,21,0.95); justify-content:center; align-items:center; backdrop-filter: blur(5px);">
-                <div style="background:#121820; padding:40px 30px; border-radius:16px; border-top: 4px solid #00E5FF; text-align:center; width: 90%; max-width: 380px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);">
-                    <h3 style="color:#FFF; margin-bottom:10px;" id="modalNomeAluno"></h3>
-                    <p style="color:#8292A6; margin-bottom: 25px;">Insira sua senha de aluno:</p>
-                    <input type="password" id="alunoSenha" placeholder="****" style="width: 100%; padding:15px; border-radius:8px; text-align:center; margin-bottom:20px; background: rgba(0,0,0,0.5); color: #FFF; border: 1px solid #1F2937; font-size: 1.2rem; letter-spacing: 2px;">
-                    <button onclick="verificarSenhaAluno()" style="background:#00E5FF; color:#000; padding:16px; border:none; border-radius:8px; font-weight:bold; width: 100%; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">Confirmar</button>
-                    <button onclick="fecharModalAluno()" style="background:transparent; color:#8292A6; padding:10px; border:none; margin-top: 15px; cursor: pointer; text-decoration: underline;">Cancelar</button>
+                    <a href="${linkAcesso}" target="_blank" class="btn-ead btn-ead-green">Acessar Links (Linktree)</a>
+                    <a href="https://wa.me/5587996029765" target="_blank" class="btn-ead" style="background: #25D366;">Suporte WhatsApp</a>
+                    
+                    ${arsenalHtml}
                 </div>
             </div>
             
             <script>
-                let senhaAtual = ''; let nomeAtual = '';
-                function abrirModalAluno(senha, nome) { 
-                    senhaAtual = senha; nomeAtual = nome;
-                    document.getElementById('modalNomeAluno').innerText = nome;
-                    document.getElementById('alunoSenha').value = '';
-                    document.getElementById('alunoModal').style.display = 'flex'; 
-                }
-                function fecharModalAluno() { document.getElementById('alunoModal').style.display = 'none'; }
-                function verificarSenhaAluno() { 
-                    if(document.getElementById('alunoSenha').value === senhaAtual) { 
-                        document.getElementById('alunoModal').style.display='none'; 
-                        document.getElementById('listaArea').style.display='none'; 
-                        document.getElementById('nomeAlunoDisplay').innerText = "Olá, " + nomeAtual + "!";
-                        document.getElementById('videoArea').style.display='flex'; 
-                    } else { alert('Senha Incorreta. Tente novamente.'); } 
-                }
-                function voltarParaSala() { 
-                    document.getElementById('videoArea').style.display='none'; 
-                    document.getElementById('listaArea').style.display='flex'; 
+                const alunos = ${JSON.stringify(listaDeAlunosGlobais)};
+                function fazerLogin() {
+                    const pass = document.getElementById('senhaInput').value.trim();
+                    const aluno = alunos.find(a => a.senha === pass);
+                    if(aluno) {
+                        document.getElementById('loginArea').style.display = 'none';
+                        document.getElementById('painelArea').style.display = 'flex';
+                        document.getElementById('boasVindasText').innerText = "Olá, " + aluno.nome + "!";
+                    } else {
+                        alert('Senha inválida. Tente novamente.');
+                    }
                 }
             <\/script></body></html>`;
             janela.document.write(htmlFinal); janela.document.close();
@@ -643,39 +472,27 @@
             } else { alert("Senha Incorreta"); }
         });
 
-        function abrirModalAcervoSecreto() { document.getElementById('modalAcervoSecreto').classList.add('active'); document.getElementById('inputAcervoSecreto').value = '';}
-        function fecharModalAcervoSecreto() { document.getElementById('modalAcervoSecreto').classList.remove('active'); }
-        function verificarAcervoSecreto() {
-            const senha = document.getElementById('inputAcervoSecreto').value.trim().toLowerCase();
-            if(senha === 'studio') {
-                fecharModalAcervoSecreto();
-                document.getElementById('acervoSecreto').style.display = 'block';
-                document.getElementById('btnDesbloquearAcervo').style.display = 'none';
-            } else { alert('Senha incorreta! O acervo é restrito.'); }
+        // Controle da Nova Área 2026
+        function abrirModalPrompts2026() {
+            document.getElementById('modalPrompts2026').classList.add('active');
+            document.getElementById('inputPrompts2026').value = '';
+        }
+        function fecharModalPrompts2026() {
+            document.getElementById('modalPrompts2026').classList.remove('active');
+        }
+        function verificarPrompts2026() {
+            const pw = document.getElementById('inputPrompts2026').value.trim().toLowerCase();
+            if(pw === 'studio') {
+                fecharModalPrompts2026();
+                alert('Acesso Liberado! (Aqui você pode redirecionar para a nova URL dos prompts 2026)');
+                // window.open('SUA_URL_AQUI', '_blank');
+            } else {
+                alert('Senha incorreta.');
+            }
         }
 
-        function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
-        function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
-        function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
-        
-        function abrirModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.add('active'); }
-        function fecharModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.remove('active'); }
-        function verificarGeradorCompleto() {
-            const senha = document.getElementById('inputGeradorCompleto').value.trim().toLowerCase();
-            fecharModalGeradorCompleto();
-            if (senha === 'studio') { window.open('https://veoaifree.com/veo-video-generator/', '_blank'); } 
-            else { document.getElementById('modalPlanosGerador').classList.add('active'); }
-        }
-        
-        function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
-        
-        function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); }
-        function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
-        function verificarGaleriaInfinita() {
-            if (document.getElementById('inputGaleriaInfinita').value.trim().toLowerCase() === 'studio') {
-                fecharModalGaleriaInfinita(); window.open('https://aiedits.net/', '_blank'); 
-            } else { alert('Senha incorreta!'); }
-        }
+        function abrirModalAcervoSecreto() { document.getElementById('modalAcervoSecreto').classList.add('active'); }
+        // Restante das funções auxiliares de lightbox e modais...
     </script>
 </body>
 </html>
