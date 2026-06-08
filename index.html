@@ -275,7 +275,7 @@
                     <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     7.121 pessoas já desbloquearam
                 </div>
-                <div class="recent-unlock">Alexandre P. desbloqueou recentemente</div>
+                <div class="recent-unlock">Ana Joelmma. desbloqueou recentemente</div>
             </div>
         </div>
 
@@ -390,7 +390,7 @@
             <span class="close-modal" onclick="fecharModalArsenal()">&times;</span>
             <h3>Acesso Restrito</h3>
             <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a <strong>Segunda Senha</strong> para <strong id="appNameDisplay" style="color: var(--accent-primary);"></strong>.</p>
-            <input type="password" id="arsenalInput" class="modal-input" placeholder="****">
+            <input type="password" id="arsenalInput" class="modal-input" placeholder="studio">
             <button onclick="verificarArsenal()" class="modal-btn">AUTENTICAR</button>
         </div>
     </div>
@@ -419,7 +419,7 @@
             <span class="close-modal" onclick="closeModalFunc()">&times;</span>
             <h3 id="modalTitle">Área Restrita</h3>
             <p id="modalDesc" style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="modalInput" class="modal-input" placeholder="****">
+            <input type="password" id="modalInput" class="modal-input" placeholder="studio">
             <button id="modalSubmit" class="modal-btn">ENTRAR</button>
         </div>
     </div>
@@ -514,11 +514,11 @@
 
         btnSubmit.addEventListener('click', () => {
             const pw = modalInput.value.trim().toLowerCase(); 
-            if (currentType === 'ebook' && pw === 'ia2031') {
+            if (currentType === 'ebook' && pw === 'studio') {
                 window.open('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA.pdf/file', '_blank'); closeModalFunc();
-            } else if (currentType === 'gerador' && pw === 'matrix') {
+            } else if (currentType === 'gerador' && pw === 'studio') {
                 window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank'); closeModalFunc();
-            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === '2031') { 
+            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === 'studio') { 
                 abrirPlataforma(currentTitle); closeModalFunc();
             } else { alert("Senha Incorreta"); }
         });
