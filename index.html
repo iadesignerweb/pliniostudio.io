@@ -184,7 +184,6 @@
         .close-modal:hover { color: #FFF; }
         .modal-content h3 { font-size: 1.4rem; color: #FFF; margin-bottom: 10px;}
         
-        /* CORRIGIDO O PLACEHOLDER PARA OS INPUTS DOS MODAIS */
         .modal-input { width: 100%; padding: 16px; margin-bottom: 20px; background: rgba(0,0,0,0.3); color: #FFF; border: 1px solid var(--border-color); border-radius: 8px; text-align: center; font-size: 1.2rem; transition: 0.3s; font-weight: 600; letter-spacing: 2px; }
         .modal-input:focus { border-color: var(--accent-primary); outline: none; }
         
@@ -340,7 +339,6 @@
         </button>
 
         <div id="acervoSecreto">
-            
             <div class="prompt-secreto-item">
                 <h4>Moda Fashion Camisas Raul Seixas</h4>
                 <div class="prompt-box" id="p_raul">Create a premium high-fashion workwear magazine cover in a vertical 4:5 editorial poster format. A stylish male subject walks confidently toward the camera in a full-body runway-style pose, centered in the frame. His body is slightly in motion, one foot stepping forward, right hand casually inside the trouser pocket, left hand relaxed beside the body. His expression is calm, serious, and fashion-editorial. He wears narrow black sunglasses, slightly tousled dark hair, and a subtle layered silver chain necklace. Outfit: Oversized dark charcoal / black workwear jacket, worn open. Clean white crewneck sweatshirt with a small square heritage-style logo patch on the left chest. Loose dark charcoal wide-leg pleated trousers with natural drape and folds. Chunky polished black leather shoes... (Observação: Ao invés de sapato e calça social use: Calça Jeans e tênis branco. Rodapé: "ADQUIRA AGORA" and "WhatsApp: (87)99602-9765 ou (88)98170-5413")</div>
@@ -508,7 +506,6 @@
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
 
     <script>
-        // Lógica de Interface Geral
         function toggleMenu() {
             const menu = document.getElementById('sideMenu');
             const overlay = document.getElementById('menuOverlay');
@@ -517,7 +514,8 @@
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
         }
 
-        // JS ORIGINAL INTACTO PARA OS ALUNOS (Senhas inalteradas nas áreas da mentoria e agenda IA)
+        const linkMentoriaGlobal = "https://linktr.ee/mariafreitasmf"; 
+
         const listaDeAlunosGlobais = [
             { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
             { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
@@ -557,35 +555,79 @@
         document.querySelectorAll('.js-link').forEach(card => { card.addEventListener('click', () => abrirModal(card.dataset.tipo, card.dataset.titulo)); });
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
+        /* NOVA LÓGICA RECONSTRUÍDA E INTEGRADA AO TEMA DARK PARA OS ALUNOS */
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
             let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
             listaDeAlunosGlobais.forEach(aluno => {
-                listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('${aluno.senha}')" style="background:#00E5FF; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%;">Acessar Aula</button></div>`;
+                listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('${aluno.senha}', '${aluno.nome}')" style="background:#00E5FF; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%;">Acessar Área Restrita</button></div>`;
             });
             listaHtml += '</div>';
             
-            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | EAD</title><style>
+            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | Plínio Studio</title><style>
             body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
-            .ead-container { width: 100%; max-width: 500px; } .video-container { display: none; flex-direction: column; width: 100%; max-width: 800px; align-items:center; }
-            h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 10px; text-align:center;}
+            .ead-container { width: 100%; max-width: 500px; } 
+            .video-container { display: none; flex-direction: column; width: 100%; max-width: 600px; align-items:center; }
+            h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 10px; text-align:center; margin-bottom: 20px;}
+            .btn-ead { background:#3B82F6; color:#FFF; padding:15px 24px; border:none; border-radius:8px; font-weight:bold; text-decoration: none; display: inline-block; margin-top: 15px; text-align: center; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;}
+            .btn-ead:hover { background: #2563EB; }
+            .btn-ead-green { background: #10B981; }
+            .btn-ead-green:hover { background: #059669; }
             </style></head><body>
-            <div class="ead-container" id="listaArea"><h1>${titulo}</h1>${listaHtml}</div>
-            <div class="video-container" id="videoArea">
-                <h1>Sala de Aula</h1><button onclick="voltarParaSala()" style="margin-bottom:20px; padding:10px; background:transparent; color:#00E5FF; border:1px solid #00E5FF; border-radius:8px;">Voltar</button>
-                <div style="background:#121820; padding:20px; border-radius:12px; border-left: 4px solid #00E5FF; width:100%;"><h2 style="color:#FFF;">Sua Aula</h2><p style="color:#8292A6;">Conteúdo do Professor Plínio Fabrício.</p></div>
+            
+            <div class="ead-container" id="listaArea">
+                <h1>${titulo}</h1>
+                <p style="color: #8292A6; text-align: center; margin-bottom: 25px;">Selecione seu perfil na lista abaixo e insira sua senha de acesso.</p>
+                ${listaHtml}
             </div>
-            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,16,21,0.9); justify-content:center; align-items:center;">
-                <div style="background:#121820; padding:30px; border-radius:12px; border:1px solid #1F2937; text-align:center;">
-                    <h3 style="color:#FFF; margin-bottom:15px;">Senha</h3>
-                    <input type="password" id="alunoSenha" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px;"><br>
-                    <button onclick="verificarSenhaAluno()" style="background:#3B82F6; color:#FFF; padding:10px 20px; border:none; border-radius:6px; font-weight:bold;">Entrar</button>
+            
+            <div class="video-container" id="videoArea">
+                <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom:30px; border-bottom: 2px solid #00E5FF; padding-bottom: 15px;">
+                    <h1 style="border: none; margin: 0; padding: 0;">Painel do Aluno</h1>
+                    <button onclick="voltarParaSala()" style="padding:10px 18px; background:transparent; color:#00E5FF; border:1px solid #00E5FF; border-radius:8px; cursor: pointer; font-weight: bold;">Sair</button>
+                </div>
+                
+                <div style="background:#121820; padding:35px 25px; border-radius:12px; border: 1px solid #1F2937; width:100%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <h2 style="color:#FFF; margin-bottom: 10px;" id="nomeAlunoDisplay"></h2>
+                    <p style="color:#8292A6; margin-bottom: 30px; line-height: 1.5;">Bem-vindo(a) à sua área exclusiva! Clique no botão abaixo para acessar todos os seus materiais e links da mentoria com Plínio Fabrício.</p>
+                    
+                    <a href="${linkMentoriaGlobal}" target="_blank" class="btn-ead btn-ead-green" style="width: 100%; max-width: 300px;">Acessar Links (Linktree)</a>
+                    <br>
+                    <a href="https://wa.me/5587996029765" target="_blank" class="btn-ead" style="width: 100%; max-width: 300px; background: #25D366; margin-top: 20px;">Suporte WhatsApp</a>
                 </div>
             </div>
+            
+            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,16,21,0.95); justify-content:center; align-items:center; backdrop-filter: blur(5px);">
+                <div style="background:#121820; padding:40px 30px; border-radius:16px; border-top: 4px solid #00E5FF; text-align:center; width: 90%; max-width: 380px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);">
+                    <h3 style="color:#FFF; margin-bottom:10px;" id="modalNomeAluno"></h3>
+                    <p style="color:#8292A6; margin-bottom: 25px;">Insira sua senha de aluno:</p>
+                    <input type="password" id="alunoSenha" placeholder="****" style="width: 100%; padding:15px; border-radius:8px; text-align:center; margin-bottom:20px; background: rgba(0,0,0,0.5); color: #FFF; border: 1px solid #1F2937; font-size: 1.2rem; letter-spacing: 2px;">
+                    <button onclick="verificarSenhaAluno()" style="background:#00E5FF; color:#000; padding:16px; border:none; border-radius:8px; font-weight:bold; width: 100%; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">Confirmar</button>
+                    <button onclick="fecharModalAluno()" style="background:transparent; color:#8292A6; padding:10px; border:none; margin-top: 15px; cursor: pointer; text-decoration: underline;">Cancelar</button>
+                </div>
+            </div>
+            
             <script>
-                let senhaAtual = ''; function abrirModalAluno(senha) { senhaAtual = senha; document.getElementById('alunoModal').style.display = 'flex'; }
-                function verificarSenhaAluno() { if(document.getElementById('alunoSenha').value === senhaAtual) { document.getElementById('alunoModal').style.display='none'; document.getElementById('listaArea').style.display='none'; document.getElementById('videoArea').style.display='flex'; } else { alert('Incorreta'); } }
-                function voltarParaSala() { document.getElementById('videoArea').style.display='none'; document.getElementById('listaArea').style.display='block'; }
+                let senhaAtual = ''; let nomeAtual = '';
+                function abrirModalAluno(senha, nome) { 
+                    senhaAtual = senha; nomeAtual = nome;
+                    document.getElementById('modalNomeAluno').innerText = nome;
+                    document.getElementById('alunoSenha').value = '';
+                    document.getElementById('alunoModal').style.display = 'flex'; 
+                }
+                function fecharModalAluno() { document.getElementById('alunoModal').style.display = 'none'; }
+                function verificarSenhaAluno() { 
+                    if(document.getElementById('alunoSenha').value === senhaAtual) { 
+                        document.getElementById('alunoModal').style.display='none'; 
+                        document.getElementById('listaArea').style.display='none'; 
+                        document.getElementById('nomeAlunoDisplay').innerText = "Olá, " + nomeAtual + "!";
+                        document.getElementById('videoArea').style.display='flex'; 
+                    } else { alert('Senha Incorreta. Tente novamente.'); } 
+                }
+                function voltarParaSala() { 
+                    document.getElementById('videoArea').style.display='none'; 
+                    document.getElementById('listaArea').style.display='flex'; 
+                }
             <\/script></body></html>`;
             janela.document.write(htmlFinal); janela.document.close();
         }
@@ -601,7 +643,6 @@
             } else { alert("Senha Incorreta"); }
         });
 
-        /* --- Lógica da Nova Galeria Secreta --- */
         function abrirModalAcervoSecreto() { document.getElementById('modalAcervoSecreto').classList.add('active'); document.getElementById('inputAcervoSecreto').value = '';}
         function fecharModalAcervoSecreto() { document.getElementById('modalAcervoSecreto').classList.remove('active'); }
         function verificarAcervoSecreto() {
@@ -610,9 +651,7 @@
                 fecharModalAcervoSecreto();
                 document.getElementById('acervoSecreto').style.display = 'block';
                 document.getElementById('btnDesbloquearAcervo').style.display = 'none';
-            } else {
-                alert('Senha incorreta! O acervo é restrito.');
-            }
+            } else { alert('Senha incorreta! O acervo é restrito.'); }
         }
 
         function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
