@@ -93,7 +93,7 @@
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; backdrop-filter: blur(3px); }
         .overlay.active { display: block; }
 
-        /* --- CONTEÚDO PRINCIPAL (TUTORIAL VIEW KOOURSE) --- */
+        /* --- CONTEÚDO PRINCIPAL --- */
         .app-container { max-width: 600px; margin: 0 auto; padding: 20px 24px 40px 24px; }
 
         .profile-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; justify-content: center; }
@@ -129,7 +129,7 @@
         .unlock-count svg { width: 18px; height: 18px; stroke: var(--accent-green); fill: none; }
         .recent-unlock { font-size: 0.8rem; color: var(--accent-green); font-weight: 500; }
 
-        /* --- SEÇÕES DA ESTRUTURA ORIGINAL (ADAPTADAS AO NOVO LAYOUT) --- */
+        /* --- SEÇÕES DA ESTRUTURA ORIGINAL --- */
         .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
         
@@ -172,7 +172,7 @@
         .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
 
-        /* --- MODAIS ORIGINAIS (COM CORES ATUALIZADAS) --- */
+        /* --- MODAIS ORIGINAIS --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { background: var(--bg-card); border-top: 4px solid var(--accent-primary); border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);}
@@ -190,6 +190,39 @@
         .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 4000; justify-content: center; align-items: center; cursor: zoom-out; opacity: 0; transition: 0.3s ease; }
         .lightbox-overlay.active { display: flex; opacity: 1; }
         .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); }
+
+        /* --- FOOTER E REDES SOCIAIS --- */
+        .footer-section {
+            padding: 30px 20px 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: var(--text-muted);
+            transition: 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+        .social-icons svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+        .copyright-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
 
         /* --- BOTTOM NAV KOOURSE --- */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(11, 16, 21, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
@@ -217,7 +250,7 @@
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <div class="logo-text" style="font-size: 1rem;">Navegação</div>
-            <div class="close-menu" onclick="toggleMenu()">&times;</div>
+            <div class="close-menu" onclick="toggleMenu()">×</div>
         </div>
         <div class="menu-links">
             <a href="#" onclick="abrirPeloMenu('curso', 'Agenda de IA'); toggleMenu();">
@@ -321,6 +354,26 @@
         <div class="divider"></div>
 
         <h2 class="section-title">Galeria de Prompts</h2>
+        
+        <div class="prompt-card">
+            <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_0000000076a0720e98ba1e97bd93cc77.png')">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_0000000076a0720e98ba1e97bd93cc77.png" alt="Moda Fashion Camisas Raul Seixas">
+            </div>
+            <div class="prompt-info-box">
+                <span class="card-tag" style="color: var(--text-muted);"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Treino Studio</span>
+                <h3>Moda Fashion Camisas Raul Seixas</h3>
+                <p>Capa de revista premium high-fashion workwear, formato editorial poster 4:5.</p>
+                <button onclick="togglePrompt('promptRaul', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <div id="promptRaul" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPromptRaul">Create a premium high-fashion workwear magazine cover in a vertical 4:5 editorial poster format.
+A stylish male subject walks confidently toward the camera in a full-body runway-style pose, centered in the frame. His body is slightly in motion, one foot stepping forward, right hand casually inside the trouser pocket, left hand relaxed beside the body. His expression is calm, serious, and fashion-editorial. He wears narrow black sunglasses, slightly tousled dark hair, and a subtle layered silver chain necklace.
+
+Outfit: Oversized dark charcoal / black workwear jacket, worn open. Clean white crewneck sweatshirt with a small square heritage-style logo patch on the left chest. Loose dark charcoal wide-leg pleated trousers with natural drape and folds. Chunky polished black leather shoes. Overall styling should feel minimal, utilitarian, premium, and street-luxury.</div>
+                    <button onclick="copiarPrompt('textoPromptRaul', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                </div>
+            </div>
+        </div>
+
         <div class="prompt-card">
             <div class="card-img-prompt" oncontextmenu="return false;">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000d190720e8757a751fde1a4d7.png" alt="Retrato">
@@ -351,6 +404,29 @@
 
     </main>
 
+    <footer class="footer-section">
+        <div class="social-icons">
+            <a href="https://instagram.com/pliniofabricio_" target="_blank" title="Instagram @pliniofabricio_">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+            </a>
+            <a href="https://instagram.com/pliniostudio.io" target="_blank" title="Instagram @pliniostudio.io">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+            </a>
+            <a href="https://youtube.com/@pliniofabricio_" target="_blank" title="YouTube @pliniofabricio_">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="copyright-text">
+            Copyright © 2026 Plínio Studio. Todos os direitos reservados.
+        </div>
+    </footer>
+
     <nav class="bottom-nav">
         <a class="nav-item active" onclick="toggleMenu()">
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -368,7 +444,7 @@
 
     <div class="modal-overlay" id="modalGeradorCompleto">
         <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalGeradorCompleto()">&times;</span>
+            <span class="close-modal" onclick="fecharModalGeradorCompleto()">×</span>
             <h3>Gerador Completo</h3>
             <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
             <input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="****">
@@ -378,7 +454,7 @@
 
     <div class="modal-overlay" id="modalPlanosGerador">
         <div class="modal-content" style="border-top-color: #EF4444;">
-            <span class="close-modal" onclick="fecharModalPlanos()">&times;</span>
+            <span class="close-modal" onclick="fecharModalPlanos()">×</span>
             <h3>Acesso Restrito</h3>
             <p style="color: var(--text-muted); margin-bottom: 20px;">Senha incorreta ou plano inativo.</p>
             <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a>
@@ -387,7 +463,7 @@
 
     <div class="modal-overlay" id="modalArsenal">
         <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalArsenal()">&times;</span>
+            <span class="close-modal" onclick="fecharModalArsenal()">×</span>
             <h3>Acesso Restrito</h3>
             <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a <strong>Segunda Senha</strong> para <strong id="appNameDisplay" style="color: var(--accent-primary);"></strong>.</p>
             <input type="password" id="arsenalInput" class="modal-input" placeholder="studio">
@@ -397,7 +473,7 @@
 
     <div class="modal-overlay" id="modalPremium">
         <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalPremium()">&times;</span>
+            <span class="close-modal" onclick="fecharModalPremium()">×</span>
             <h3>Acesso Restrito</h3>
             <p style="color: var(--text-muted); margin-bottom: 30px;">Este é um Prompt Premium de alta complexidade.</p>
             <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank">Adquirir Premium</a>
@@ -406,7 +482,7 @@
 
     <div class="modal-overlay" id="modalGaleriaInfinita">
         <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalGaleriaInfinita()">&times;</span>
+            <span class="close-modal" onclick="fecharModalGaleriaInfinita()">×</span>
             <h3>Galeria Infinita</h3>
             <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
             <input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="****">
@@ -416,7 +492,7 @@
 
     <div class="modal-overlay" id="customModal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModalFunc()">&times;</span>
+            <span class="close-modal" onclick="closeModalFunc()">×</span>
             <h3 id="modalTitle">Área Restrita</h3>
             <p id="modalDesc" style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
             <input type="password" id="modalInput" class="modal-input" placeholder="studio">
@@ -436,7 +512,7 @@
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
         }
 
-        // JS ORIGINAL INTACTO
+        // JS ORIGINAL INTACTO PARA OS ALUNOS (Senhas inalteradas nas áreas da mentoria e agenda IA)
         const linkMentoriaGlobal = "https://linktr.ee/mariafreitasmf"; 
 
         const listaDeAlunosGlobais = [
@@ -514,6 +590,7 @@
 
         btnSubmit.addEventListener('click', () => {
             const pw = modalInput.value.trim().toLowerCase(); 
+            // AS ÁREAS GERAIS AGORA SÃO DESBLOQUEADAS COM 'studio'
             if (currentType === 'ebook' && pw === 'studio') {
                 window.open('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA.pdf/file', '_blank'); closeModalFunc();
             } else if (currentType === 'gerador' && pw === 'studio') {
@@ -526,19 +603,24 @@
         function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
         function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
         function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
+        
         function abrirModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.add('active'); }
         function fecharModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.remove('active'); }
         function verificarGeradorCompleto() {
             const senha = document.getElementById('inputGeradorCompleto').value.trim().toLowerCase();
             fecharModalGeradorCompleto();
-            if (senha === 'nill') { window.open('https://veoaifree.com/veo-video-generator/', '_blank'); } 
+            // SENHA ALTERADA AQUI
+            if (senha === 'studio') { window.open('https://veoaifree.com/veo-video-generator/', '_blank'); } 
             else { document.getElementById('modalPlanosGerador').classList.add('active'); }
         }
+        
         function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
+        
         function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); }
         function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
         function verificarGaleriaInfinita() {
-            if (document.getElementById('inputGaleriaInfinita').value.trim().toLowerCase() === 'nill') {
+            // SENHA ALTERADA AQUI
+            if (document.getElementById('inputGaleriaInfinita').value.trim().toLowerCase() === 'studio') {
                 fecharModalGaleriaInfinita(); window.open('https://aiedits.net/', '_blank'); 
             } else { alert('Senha incorreta!'); }
         }
