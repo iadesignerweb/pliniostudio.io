@@ -1,594 +1,547 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Plínio Studio | Escola Audiovisual & IA</title>
-    <meta name="theme-color" content="#0B1015">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Plínio Studio | Escola Audiovisual & IA</title>
+    <meta name="theme-color" content="#0B1015">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        /* --- TEMA PRETO AZULADO (GRAFITE ESCURO) --- */
-        :root {
-            --bg-main: #0B1015;        
-            --bg-card: #121820;        
-            --bg-card-hover: #1A222D;
-            --text-main: #F8FAFC;
-            --text-muted: #8292A6;
-            --accent-primary: #00E5FF;
-            --accent-secondary: #3B82F6;
-            --accent-green: #34D399;   
-            --bg-green-soft: rgba(16, 185, 129, 0.15);
-            --border-color: #1F2937;
-        }
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '963317484266778'); 
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=963317484266778&ev=PageView&noscript=1"/></noscript>
+    
+    <style>
+        /* --- TEMA PRETO AZULADO (GRAFITE ESCURO) --- */
+        :root {
+            --bg-main: #0B1015;        
+            --bg-card: #121820;        
+            --bg-card-hover: #1A222D;
+            --text-main: #F8FAFC;
+            --text-muted: #8292A6;
+            --accent-primary: #00E5FF;
+            --accent-secondary: #3B82F6;
+            --accent-green: #34D399;   
+            --bg-green-soft: rgba(16, 185, 129, 0.15);
+            --border-color: #1F2937;
+        }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            padding-bottom: 90px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 90px;
+        }
 
-        .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
 
-        /* --- CABEÇALHO --- */
-        header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 24px; background-color: var(--bg-main);
-            position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color);
-        }
-        
-        .logo-text { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; color: #FFF; text-transform: uppercase;}
-        .logo-text span { color: var(--accent-primary); }
+        /* --- CABEÇALHO DO APLICATIVO --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background-color: var(--bg-main);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .logo-text { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; color: #FFF; text-transform: uppercase;}
+        .logo-text span { color: var(--accent-primary); }
 
-        .header-icons { display: flex; gap: 16px; align-items: center; }
-        .header-icons svg { width: 24px; height: 24px; fill: none; stroke: var(--text-muted); stroke-width: 2; cursor: pointer; transition: 0.3s; }
-        .header-icons svg:hover { stroke: #FFF; }
+        .header-icons { display: flex; gap: 16px; align-items: center; }
+        .header-icons svg { width: 24px; height: 24px; fill: none; stroke: var(--text-muted); stroke-width: 2; cursor: pointer; transition: 0.3s; }
+        .header-icons svg:hover { stroke: #FFF; }
 
-        /* --- MENU LATERAL --- */
-        .side-menu {
-            position: fixed; top: 0; right: -100%; width: 280px; height: 100%;
-            background: var(--bg-card); z-index: 2000; transition: 0.5s ease-out; 
-            border-left: 1px solid var(--border-color); box-shadow: -5px 0 30px rgba(0,0,0,0.5); overflow-y: auto;
-            display: flex; flex-direction: column;
-        }
-        .side-menu.active { right: 0; }
-        .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 25px 24px 20px 24px; border-bottom: 1px solid var(--border-color); }
-        .close-menu { color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: 0.3s; line-height: 1;}
-        .close-menu:hover { color: #FFF; }
-        .menu-links { padding: 10px 0; }
-        .menu-links a {
-            display: flex; align-items: center; gap: 12px; padding: 16px 24px; color: var(--text-main); text-decoration: none;
-            font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid var(--border-color); transition: 0.3s;
-        }
-        .menu-links a svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
-        .menu-links a:hover { background: var(--bg-card-hover); color: var(--accent-primary); padding-left: 30px; }
-        
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; backdrop-filter: blur(3px); }
-        .overlay.active { display: block; }
+        /* --- MENU LATERAL INTEGRADO AO JS --- */
+        .side-menu {
+            position: fixed; top: 0; right: -100%; width: 280px; height: 100%;
+            background: var(--bg-card); z-index: 2000; transition: 0.5s ease-out; 
+            border-left: 1px solid var(--border-color); box-shadow: -5px 0 30px rgba(0,0,0,0.5); overflow-y: auto;
+            display: flex; flex-direction: column;
+        }
+        .side-menu.active { right: 0; }
+        .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 25px 24px 20px 24px; border-bottom: 1px solid var(--border-color); }
+        .close-menu { color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: 0.3s; line-height: 1;}
+        .close-menu:hover { color: #FFF; }
+        .menu-links { padding: 10px 0; }
+        .menu-links a {
+            display: flex; align-items: center; gap: 12px; padding: 16px 24px; color: var(--text-main); text-decoration: none;
+            font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid var(--border-color); transition: 0.3s;
+        }
+        .menu-links a svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+        .menu-links a:hover { background: var(--bg-card-hover); color: var(--accent-primary); padding-left: 30px; }
+        
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; backdrop-filter: blur(3px); }
+        .overlay.active { display: block; }
 
-        /* --- CONTEÚDO PRINCIPAL --- */
-        .app-container { max-width: 600px; margin: 0 auto; padding: 20px 24px 40px 24px; }
+        /* --- CONTEÚDO PRINCIPAL (TUTORIAL VIEW KOOURSE) --- */
+        .app-container { max-width: 600px; margin: 0 auto; padding: 20px 24px 40px 24px; }
 
-        .profile-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; justify-content: center; }
-        .profile-bar img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
-        .profile-info { display: flex; flex-direction: column; }
-        .profile-name { font-size: 1rem; font-weight: 700; color: #FFF; }
-        .profile-handle { font-size: 0.85rem; color: var(--text-muted); }
+        .profile-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; justify-content: center; }
+        .profile-bar img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
+        .profile-info { display: flex; flex-direction: column; }
+        .profile-name { font-size: 1rem; font-weight: 700; color: #FFF; }
+        .profile-handle { font-size: 0.85rem; color: var(--text-muted); }
 
-        .video-wrapper {
-            position: relative; width: 100%; border-radius: 20px; overflow: hidden; background: #000;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin-bottom: 30px; border: 1px solid var(--border-color);
-        }
-        .video-wrapper iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
-        
-        .badge-premium {
-            position: absolute; top: 16px; right: 16px; background: var(--bg-green-soft); backdrop-filter: blur(8px);
-            color: var(--accent-green); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
-            display: flex; align-items: center; gap: 6px; z-index: 10; border: 1px solid rgba(52, 211, 153, 0.2); pointer-events: none;
-        }
-        .badge-premium svg { width: 12px; height: 12px; fill: currentColor; }
+        .video-wrapper {
+            position: relative; width: 100%; border-radius: 20px; overflow: hidden; background: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin-bottom: 30px; border: 1px solid var(--border-color);
+        }
+        .video-wrapper iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+        
+        .badge-premium {
+            position: absolute; top: 16px; right: 16px; background: var(--bg-green-soft); backdrop-filter: blur(8px);
+            color: var(--accent-green); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+            display: flex; align-items: center; gap: 6px; z-index: 10; border: 1px solid rgba(52, 211, 153, 0.2); pointer-events: none;
+        }
+        .badge-premium svg { width: 12px; height: 12px; fill: currentColor; }
 
-        .tag-exclusive { display: inline-block; background: rgba(255, 255, 255, 0.05); color: var(--accent-green); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; border: 1px solid var(--border-color); }
-        h1 { font-size: 1.8rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; text-align: center; }
-        .description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; text-align: center; }
+        .tag-exclusive { display: inline-block; background: rgba(255, 255, 255, 0.05); color: var(--accent-green); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; border: 1px solid var(--border-color); }
+        h1 { font-size: 1.8rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; text-align: center; }
+        .description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; text-align: center; }
 
-        .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
-        .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
-        
-        .super-gerador-banner { width: 100%; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--border-color); transition: 0.4s; box-shadow: 0 10px 40px rgba(0,0,0,0.4); margin-bottom: 15px;}
-        .super-gerador-banner:hover { border-color: var(--accent-primary); box-shadow: 0 0 35px rgba(0,229,255,0.2); transform: scale(1.02); }
-        .super-gerador-banner img { width: 100%; display: block; object-fit: cover; }
-        .super-gerador-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(11,16,21,0.95), transparent); padding: 25px; text-align: center; opacity: 0; transition: 0.4s; }
-        .super-gerador-banner:hover .super-gerador-overlay { opacity: 1; }
-        .super-gerador-overlay span { color: #FFF; font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
+        .social-proof-container { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px; }
+        .avatars-row { display: flex; align-items: center; justify-content: center; }
+        .avatars-row img { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--bg-main); margin-left: -10px; }
+        .avatars-row img:first-child { margin-left: 0; }
+        .avatars-row .avatar-count { width: 32px; height: 32px; border-radius: 50%; background: #7C3AED; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; border: 2px solid var(--bg-main); margin-left: -10px; z-index: 1; }
+        .saved-count { font-size: 0.9rem; color: var(--text-muted); margin-left: 12px; }
+        .unlock-count { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--text-muted); }
+        .unlock-count svg { width: 18px; height: 18px; stroke: var(--accent-green); fill: none; }
+        .recent-unlock { font-size: 0.8rem; color: var(--accent-green); font-weight: 500; }
 
-        .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #000; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: none; padding: 14px 26px; border-radius: 8px; transition: 0.3s; width: 100%; background-color: var(--accent-primary); cursor: pointer; }
-        .btn-action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;}
-        .btn-action:hover { background-color: #FFF; }
-        .btn-action-outline { background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); }
-        .btn-action-outline:hover { background: var(--bg-card-hover); color: var(--accent-primary); border-color: var(--accent-primary); }
+        /* --- SEÇÕES DA ESTRUTURA ORIGINAL (ADAPTADAS AO NOVO LAYOUT) --- */
+        .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
+        .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
+        
+        .super-gerador-banner { width: 100%; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--border-color); transition: 0.4s; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+        .super-gerador-banner:hover { border-color: var(--accent-primary); box-shadow: 0 0 35px rgba(0,229,255,0.2); transform: scale(1.02); }
+        .super-gerador-banner img { width: 100%; display: block; object-fit: cover; }
+        .super-gerador-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(11,16,21,0.95), transparent); padding: 25px; text-align: center; opacity: 0; transition: 0.4s; }
+        .super-gerador-banner:hover .super-gerador-overlay { opacity: 1; }
+        .super-gerador-overlay span { color: #FFF; font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
 
-        .prompt-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; margin-bottom: 20px;}
-        .card-img-prompt { position: relative; aspect-ratio: 1/1; background: #000; cursor: pointer; overflow: hidden;}
-        .card-img-prompt img { width: 100%; height: 100%; object-fit: cover; }
-        .prompt-info-box { padding: 25px; display: flex; flex-direction: column; }
-        .card-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; color: var(--accent-primary); }
-        .card-tag svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
-        .prompt-info-box h3 { color: #FFF; font-size: 1.3rem; margin-bottom: 10px; }
-        .prompt-info-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6;}
-        
-        /* --- ESTILO SANFONA (ACCORDION) PARA APLICATIVOS --- */
-        #acervoApps { display: none; margin-top: 20px; }
-        .accordion-item { border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
-        .accordion-header {
-            background-color: var(--bg-card); color: var(--text-main); cursor: pointer; padding: 16px 20px;
-            width: 100%; border: none; text-align: left; font-size: 1rem; font-weight: 600;
-            display: flex; align-items: center; justify-content: space-between; transition: 0.3s;
-        }
-        .accordion-header:hover { background-color: var(--bg-card-hover); }
-        .accordion-header.active { background-color: var(--border-color); border-bottom: 1px solid #000; }
-        .accordion-header-left { display: flex; align-items: center; gap: 15px; }
-        .accordion-header img { width: 36px; height: 36px; border-radius: 8px; background: #FFF; padding: 2px; }
-        .icon-arrow { transition: transform 0.3s ease; }
-        .accordion-header.active .icon-arrow { transform: rotate(180deg); }
-        .accordion-body {
-            background-color: var(--bg-main); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
-        }
-        .accordion-content-inner { padding: 20px; }
-        .accordion-content-inner p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; }
+        .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #000; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: none; padding: 14px 26px; border-radius: 8px; transition: 0.3s; width: 100%; background-color: var(--accent-primary); cursor: pointer; }
+        .btn-action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;}
+        .btn-action:hover { background-color: #FFF; }
+        .btn-action-outline { background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); }
+        .btn-action-outline:hover { background: var(--bg-card-hover); color: var(--accent-primary); border-color: var(--accent-primary); }
 
-        .prompt-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-bottom: 15px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-height: 250px; overflow-y: auto; line-height: 1.5; }
+        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; }
+        .tile-app { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 10px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
+        .tile-app svg { width: 28px; height: 28px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; margin-bottom: 12px; }
+        .tile-app:hover { border-color: var(--accent-primary); background: var(--bg-card-hover); color: var(--accent-primary); }
 
-        /* --- MODAIS --- */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--bg-card); border-top: 4px solid var(--accent-primary); border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid var(--border-color); }
-        .close-modal { position: absolute; top: 15px; right: 20px; color: var(--text-muted); font-size: 2rem; cursor: pointer; transition: 0.3s; line-height: 1; }
-        .close-modal:hover { color: #FFF; }
-        .modal-content h3 { font-size: 1.4rem; color: #FFF; margin-bottom: 10px;}
-        .modal-input { width: 100%; padding: 16px; margin-bottom: 20px; background: rgba(0,0,0,0.3); color: #FFF; border: 1px solid var(--border-color); border-radius: 8px; text-align: center; font-size: 1.2rem; transition: 0.3s; font-weight: 600; letter-spacing: 2px; }
-        .modal-input:focus { border-color: var(--accent-primary); outline: none; }
-        .modal-btn { background: var(--accent-secondary); color: #ffffff; padding: 16px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
-        .modal-btn:hover { background-color: #2563EB; }
+        .card-grid { display: flex; flex-direction: column; gap: 20px; }
+        .card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: 0.4s; cursor: pointer; }
+        .card:hover { border-color: var(--accent-secondary); background: var(--bg-card-hover); }
+        .card-img { height: 180px; position: relative; overflow: hidden; background: #000; }
+        .card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, rgba(11,16,21, 0.9)); z-index: 1; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) brightness(80%); }
+        .card-content { padding: 25px; position: relative; z-index: 2; }
+        .card-content h2 { font-size: 1.3rem; color: #FFFFFF; margin-bottom: 8px; font-weight: 600; }
+        .card-content p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
 
-        .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 4000; justify-content: center; align-items: center; cursor: zoom-out; opacity: 0; transition: 0.3s ease; }
-        .lightbox-overlay.active { display: flex; opacity: 1; }
-        .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); }
+        .prompt-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; margin-bottom: 20px;}
+        .card-img-prompt { position: relative; aspect-ratio: 1/1; background: #000; cursor: pointer; overflow: hidden;}
+        .card-img-prompt img { width: 100%; height: 100%; object-fit: cover; }
+        .prompt-info-box { padding: 25px; display: flex; flex-direction: column; }
+        .card-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; color: var(--accent-primary); }
+        .card-tag svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
+        .prompt-info-box h3 { color: #FFF; font-size: 1.3rem; margin-bottom: 10px; }
+        .prompt-info-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6;}
+        .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
 
-        .footer-section { padding: 30px 20px 40px 20px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 30px; margin-bottom: 20px; }
-        .copyright-text { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        /* --- MODAIS ORIGINAIS (COM CORES ATUALIZADAS) --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: var(--bg-card); border-top: 4px solid var(--accent-primary); border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);}
+        .close-modal { position: absolute; top: 15px; right: 20px; color: var(--text-muted); font-size: 2rem; cursor: pointer; transition: 0.3s; line-height: 1; }
+        .close-modal:hover { color: #FFF; }
+        .modal-content h3 { font-size: 1.4rem; color: #FFF; margin-bottom: 10px;}
+        .modal-input { width: 100%; padding: 16px; margin-bottom: 20px; background: rgba(0,0,0,0.3); color: #FFF; border: 1px solid var(--border-color); border-radius: 8px; text-align: center; font-size: 1.2rem; transition: 0.3s; font-weight: 600; letter-spacing: 2px; }
+        .modal-input:focus { border-color: var(--accent-primary); outline: none; }
+        .modal-btn { background: var(--accent-secondary); color: #ffffff; padding: 16px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
+        .modal-btn:hover { background-color: #2563EB; }
+        
+        .btn-whats-modal { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; width: 100%; border: none; cursor: pointer;}
+        .btn-whats-modal svg { width: 18px; height: 18px; fill: currentColor; }
 
-        /* --- BOTTOM NAV --- */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(11, 16, 21, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 600; transition: 0.3s; cursor: pointer; }
-        .nav-item:hover, .nav-item.active { color: #FFF; }
-        .nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-main); }
-        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
-    </style>
+        .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 4000; justify-content: center; align-items: center; cursor: zoom-out; opacity: 0; transition: 0.3s ease; }
+        .lightbox-overlay.active { display: flex; opacity: 1; }
+        .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); }
+
+        /* --- BOTTOM NAV KOOURSE --- */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(11, 16, 21, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 600; transition: 0.3s; cursor: pointer; }
+        .nav-item:hover, .nav-item.active { color: #FFF; }
+        .nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+        
+        /* Oculta scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-text">PLÍNIO<span>STUDIO</span></div>
-        <div class="header-icons">
-            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <svg onclick="toggleMenu()" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </div>
-    </header>
+    <header>
+        <div class="logo-text">PLÍNIO<span>STUDIO</span></div>
+        <div class="header-icons">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <svg onclick="toggleMenu()" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </div>
+    </header>
 
-    <div class="overlay" id="menuOverlay" onclick="toggleMenu()"></div>
-    <div class="side-menu" id="sideMenu">
-        <div class="menu-header">
-            <div class="logo-text" style="font-size: 1rem;">Navegação</div>
-            <div class="close-menu" onclick="toggleMenu()">×</div>
-        </div>
-        <div class="menu-links">
-            <a href="#" onclick="abrirPeloMenu('curso', 'Agenda de IA'); toggleMenu();">
-                <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> Agenda de IA
-            </a>
-            <a href="#" onclick="abrirPeloMenu('mentoria', 'Área de Mentoria'); toggleMenu();">
-                <svg viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg> Mentoria
-            </a>
-            <a href="#" onclick="fecharMenuEAbrirPlanos()" style="color: #FBBF24;">
-                <svg viewBox="0 0 24 24" stroke="#FBBF24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg> Planos do Gerador
-            </a>
-        </div>
-    </div>
+    <div class="overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <div class="logo-text" style="font-size: 1rem;">Navegação</div>
+            <div class="close-menu" onclick="toggleMenu()">&times;</div>
+        </div>
+        <div class="menu-links">
+            <a href="#" onclick="abrirPeloMenu('curso', 'Agenda de IA'); toggleMenu();">
+                <svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> Agenda de IA
+            </a>
+            <a href="#" onclick="abrirPeloMenu('mentoria', 'Área de Mentoria'); toggleMenu();">
+                <svg viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg> Mentoria
+            </a>
+            <a href="#" onclick="abrirPeloMenu('ebook', 'Baixar E-books'); toggleMenu();">
+                <svg viewBox="0 0 24 24"><path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Baixar E-books
+            </a>
+            <a href="#" onclick="fecharMenuEAbrirPlanos()" style="color: #FBBF24;">
+                <svg viewBox="0 0 24 24" stroke="#FBBF24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg> Planos do Gerador
+            </a>
+            <a href="https://wa.me/5587996029765" target="_blank" style="color: var(--accent-green);">
+                <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg> Atendimento WhatsApp
+            </a>
+        </div>
+    </div>
 
-    <main class="app-container">
-        
-        <div class="profile-bar">
-            <img src="https://yt3.ggpht.com/Dpau1KLU7AiVpNVo1o5nadS3Cbf1vktg1kQ3E6R64tZQMclzUSiciM6YSdpaYvpnSM5rAFPW3w=s176-c-k-c0x00ffffff-no-rj" alt="Plínio Fabrício">
-            <div class="profile-info">
-                <span class="profile-name">Plínio Fabrício</span>
-                <span class="profile-handle">@pliniofabricio_</span>
-            </div>
-        </div>
+    <main class="app-container">
+        
+        <div class="profile-bar">
+            <img src="https://yt3.ggpht.com/Dpau1KLU7AiVpNVo1o5nadS3Cbf1vktg1kQ3E6R64tZQMclzUSiciM6YSdpaYvpnSM5rAFPW3w=s176-c-k-c0x00ffffff-no-rj" alt="Plínio Fabrício">
+            <div class="profile-info">
+                <span class="profile-name">Plínio Fabrício</span>
+                <span class="profile-handle">@pliniofabricio_</span>
+            </div>
+        </div>
 
-        <div class="video-wrapper">
-            <div class="badge-premium">
-                <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                Liberado
-            </div>
-            <iframe src="https://www.youtube.com/embed/2vJxOgJv_z0?modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+        <div class="video-wrapper">
+            <div class="badge-premium">
+                <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                Liberado
+            </div>
+            <iframe src="https://www.youtube.com/embed/2vJxOgJv_z0?modestbranding=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
-        <div style="text-align: center;">
-            <div class="tag-exclusive">MÉTODO EXCLUSIVO</div>
-            <h1>O fim do aspecto artificial</h1>
-        </div>
+        <div style="text-align: center;">
+            <div class="tag-exclusive">MÉTODO EXCLUSIVO</div>
+            <h1>O fim do aspecto artificial</h1>
+            <p class="description">
+                A diferença entre um vídeo gerado que parece IA e uma produção audiovisual que parece cinematográfica e real está nos microdetalhes e na engenharia de colorimetria.
+            </p>
 
-        <div class="divider"></div>
+            <div class="social-proof-container">
+                <div class="avatars-row">
+                    <img src="https://i.pravatar.cc/100?img=11" alt="user">
+                    <img src="https://i.pravatar.cc/100?img=32" alt="user">
+                    <img src="https://i.pravatar.cc/100?img=45" alt="user">
+                    <div class="avatar-count">P</div>
+                    <span class="saved-count">142 salvaram</span>
+                </div>
+                <div class="unlock-count">
+                    <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    7.121 pessoas já desbloquearam
+                </div>
+                <div class="recent-unlock">Ana Joelmma. desbloqueou recentemente</div>
+            </div>
+        </div>
 
-        <h2 class="section-title">Estúdio Criativo</h2>
-        <div class="super-gerador-banner" onclick="abrirModalGeradorCompleto()">
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Pl%C3%ADnio%20St%C3%BAdio_Plinio%20Fabr%C3%ADcio.png" alt="Gerador">
-            <div class="super-gerador-overlay"><span>Acessar a Máquina</span></div>
-        </div>
+        <div class="divider"></div>
 
-        <div class="divider"></div>
+        <h2 class="section-title">Estúdio Criativo</h2>
+        <div class="super-gerador-banner" onclick="abrirModalGeradorCompleto()">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Pl%C3%ADnio%20St%C3%BAdio_Plinio%20Fabr%C3%ADcio.png" alt="Gerador Plínio Studio">
+            <div class="super-gerador-overlay"><span>Acessar a Máquina</span></div>
+        </div>
+        <button onclick="abrirModalGeradorCompleto()" class="btn-action" style="margin-top: 15px;">
+            <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> GERADOR COMPLETO
+        </button>
 
-        <!-- 1. CARD DELIVERY (PROMPT LIVRE E CLICÁVEL) -->
-        <h2 class="section-title">Galeria de Prompts (Teasers)</h2>
-        <div class="prompt-card">
-            <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_0000000076a0720e98ba1e97bd93cc77.png')">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_0000000076a0720e98ba1e97bd93cc77.png" alt="Delivery">
-            </div>
-            <div class="prompt-info-box">
-                <span class="card-tag" style="color: var(--accent-green);"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Liberado</span>
-                <h3>Delivery Gourmet</h3>
-                <p>Composição cinematográfica para fast-food premium e delivery moderno.</p>
-                <!-- Botão Livre: Abre direto o prompt sem senha -->
-                <button onclick="abrirPromptLivre()" class="btn-action btn-action-outline" style="border-color: var(--accent-green); color: var(--accent-green);">Esse prompt é livre</button>
-            </div>
-        </div>
+        <div class="divider"></div>
 
-        <div class="divider"></div>
+        <h2 class="section-title">Arsenal Indispensável</h2>
+        <div class="tile-grid">
+            <div class="tile-app" onclick="abrirModalArsenal('CapCut')"><svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg> CapCut</div>
+            <div class="tile-app" onclick="abrirModalArsenal('VN Video Editor')"><svg viewBox="0 0 24 24"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg> VN Editor</div>
+            <div class="tile-app" onclick="abrirModalArsenal('Lightroom Mobile')"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Lightroom</div>
+            <div class="tile-app" onclick="abrirModalArsenal('Snapseed')"><svg viewBox="0 0 24 24"><path d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/></svg> Snapseed</div>
+        </div>
 
-        <!-- 2. ACERVO DE APLICATIVOS (COM SANFONA) -->
-        <h2 class="section-title">Acervo de Aplicativos</h2>
-        <p class="description">Tenha acesso ao nosso arsenal de ferramentas e aplicativos vitais de Inteligência Artificial.</p>
-        
-        <button id="btnDesbloquearAcervo" onclick="abrirModalAcervoApps()" class="btn-action" style="background-color: var(--accent-secondary); margin-bottom: 20px;">
-            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> DESBLOQUEAR ACERVO (PLAY STORE)
-        </button>
+        <div class="divider"></div>
 
-        <div id="acervoApps">
-            <!-- A Sanfona de aplicativos será injetada aqui via JavaScript -->
-        </div>
+        <h2 class="section-title">Área do Aluno</h2>
+        <div class="card-grid">
+            <div class="card js-link" data-tipo="curso" data-titulo="Agenda de IA">
+                <div class="card-img"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"></div>
+                <div class="card-content"><h2>Agenda de IA</h2><p>Acesso direto às salas individuais de aprendizado.</p><span class="btn-action btn-action-outline">Acessar Sala</span></div>
+            </div>
+            <div class="card js-link" data-tipo="mentoria" data-titulo="Área de Mentoria">
+                <div class="card-img"><img src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_1280.jpg"></div>
+                <div class="card-content"><h2>Mentoria IA</h2><p>Acompanhamento personalizado para o seu desenvolvimento.</p><span class="btn-action btn-action-outline">Acessar Mentoria</span></div>
+            </div>
+            <div class="card js-link" data-tipo="ebook" data-titulo="Baixar E-books">
+                <div class="card-img"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"></div>
+                <div class="card-content"><h2>Biblioteca Digital</h2><p>Material didático e guias avançados de IA para download.</p><span class="btn-action btn-action-outline">Fazer Download</span></div>
+            </div>
+        </div>
 
-        <div class="divider"></div>
+        <div class="divider"></div>
 
-        <!-- 3. ÁREA 2026 -->
-        <h2 class="section-title">Próprios 2026</h2>
-        <p class="description">Acesso exclusivo à nova galeria de prompts e imagens geradas (Senha necessária).</p>
-        
-        <div id="area2026Container">
-            <button onclick="abrirModalPrompts2026()" class="btn-action" style="background-color: var(--accent-primary); margin-top: 15px; color: #000;">
-                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> ACESSAR ÁREA 2026
-            </button>
-        </div>
-        
-        <!-- Galeria Oculta que aparecerá após a senha -->
-        <div id="galeria2026Oculta" style="display: none; margin-top: 20px;">
-            <div style="background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); text-align: center;">
-                <h3 style="color: #FFF; margin-bottom: 15px;">Galeria 2026 Desbloqueada</h3>
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_0000000076a0720e98ba1e97bd93cc77.png" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Área pronta para receber as futuras imagens e prompts do acervo de 2026.</p>
-            </div>
-        </div>
+        <h2 class="section-title">Galeria de Prompts</h2>
+        <div class="prompt-card">
+            <div class="card-img-prompt" oncontextmenu="return false;">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000d190720e8757a751fde1a4d7.png" alt="Retrato">
+            </div>
+            <div class="prompt-info-box">
+                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Premium • Cronologia</span>
+                <h3>Retrato 4 Gerações</h3>
+                <p>Estudo de continuidade temporal com iluminação dramática.</p>
+                <button onclick="abrirModalPremium()" class="btn-action btn-action-outline">Desbloquear Análise</button>
+            </div>
+        </div>
+        
+        <div class="prompt-card">
+            <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_%20Pl%C3%ADnio%20Studio2.png')">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_%20Pl%C3%ADnio%20Studio2.png" alt="Moda Livre">
+            </div>
+            <div class="prompt-info-box">
+                <span class="card-tag" style="color: var(--text-muted);"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Treino Studio</span>
+                <h3>Moda & Textura</h3>
+                <p>Composição fotográfica editorial explorando micro-texturas.</p>
+                <button onclick="togglePrompt('promptModa', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <div id="promptModa" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPromptModa">Ultra-realistic sacred cinematic portrait of a young biblical woman... [Prompt Original]</div>
+                    <button onclick="copiarPrompt('textoPromptModa', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                </div>
+            </div>
+        </div>
 
-    </main>
+    </main>
 
-    <footer class="footer-section">
-        <div class="copyright-text">Copyright © 2026 Plínio Studio. Todos os direitos reservados.</div>
-    </footer>
+    <nav class="bottom-nav">
+        <a class="nav-item active" onclick="toggleMenu()">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <span>MENU</span>
+        </a>
+        <a class="nav-item" href="#" onclick="abrirModalGaleriaInfinita()">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <span>PROMPTS</span>
+        </a>
+        <a class="nav-item" href="https://wa.me/5587996029765" target="_blank">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+            <span>SUPORTE</span>
+        </a>
+    </nav>
 
-    <nav class="bottom-nav">
-        <a class="nav-item active" onclick="toggleMenu()">
-            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            <span>MENU</span>
-        </a>
-        <a class="nav-item" href="https://wa.me/5587996029765" target="_blank">
-            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            <span>SUPORTE</span>
-        </a>
-    </nav>
+    <div class="modal-overlay" id="modalGeradorCompleto">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModalGeradorCompleto()">&times;</span>
+            <h3>Gerador Completo</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
+            <input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="****">
+            <button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button>
+        </div>
+    </div>
 
-    <!-- MODAIS E CONTROLES -->
+    <div class="modal-overlay" id="modalPlanosGerador">
+        <div class="modal-content" style="border-top-color: #EF4444;">
+            <span class="close-modal" onclick="fecharModalPlanos()">&times;</span>
+            <h3>Acesso Restrito</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Senha incorreta ou plano inativo.</p>
+            <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a>
+        </div>
+    </div>
 
-    <!-- Modal Prompt Livre (Delivery) -->
-    <div class="modal-overlay" id="modalPromptLivre">
-        <div class="modal-content" style="border-top-color: var(--accent-green);">
-            <span class="close-modal" onclick="fecharPromptLivre()">×</span>
-            <h3 style="color: var(--accent-green);">Prompt Delivery Livre</h3>
-            <div class="prompt-box" id="p_delivery" style="text-align: left; margin-top: 15px;">Cinematic commercial photography of a high-end gourmet burger and fries setup, dynamic dark background, dramatic studio lighting with rim light emphasizing textures, floating ingredients, ultra-realistic 8k, photorealistic, shot on 50mm lens.</div>
-            <button onclick="copiarPrompt('p_delivery', this)" class="btn-action btn-action-outline" style="border-color: var(--accent-green); color: #FFF;">Copiar Prompt</button>
-        </div>
-    </div>
+    <div class="modal-overlay" id="modalArsenal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModalArsenal()">&times;</span>
+            <h3>Acesso Restrito</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a <strong>Segunda Senha</strong> para <strong id="appNameDisplay" style="color: var(--accent-primary);"></strong>.</p>
+            <input type="password" id="arsenalInput" class="modal-input" placeholder="studio">
+            <button onclick="verificarArsenal()" class="modal-btn">AUTENTICAR</button>
+        </div>
+    </div>
 
-    <!-- Modal Acervo Aplicativos Principal -->
-    <div class="modal-overlay" id="modalAcervoApps">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalAcervoApps()">×</span>
-            <h3>Acervo de Aplicativos</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso (Studio):</p>
-            <input type="password" id="inputAcervoApps" class="modal-input" placeholder="****">
-            <button onclick="verificarAcervoApps()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
+    <div class="modal-overlay" id="modalPremium">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModalPremium()">&times;</span>
+            <h3>Acesso Restrito</h3>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Este é um Prompt Premium de alta complexidade.</p>
+            <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank">Adquirir Premium</a>
+        </div>
+    </div>
 
-    <!-- Modal Prompts 2026 -->
-    <div class="modal-overlay" id="modalPrompts2026">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalPrompts2026()">×</span>
-            <h3>Área 2026</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso (Studio):</p>
-            <input type="password" id="inputPrompts2026" class="modal-input" placeholder="****">
-            <button onclick="verificarPrompts2026()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
+    <div class="modal-overlay" id="modalGaleriaInfinita">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModalGaleriaInfinita()">&times;</span>
+            <h3>Galeria Infinita</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
+            <input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="****">
+            <button onclick="verificarGaleriaInfinita()" class="modal-btn">AUTENTICAR</button>
+        </div>
+    </div>
 
-    <!-- Modal EAD Genérico (Login Alunos e outros) -->
-    <div class="modal-overlay" id="customModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModalFunc()">×</span>
-            <h3 id="modalTitle">Área Restrita</h3>
-            <p id="modalDesc" style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="modalInput" class="modal-input" placeholder="****">
-            <button id="modalSubmit" class="modal-btn">ENTRAR</button>
-        </div>
-    </div>
+    <div class="modal-overlay" id="customModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModalFunc()">&times;</span>
+            <h3 id="modalTitle">Área Restrita</h3>
+            <p id="modalDesc" style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
+            <input type="password" id="modalInput" class="modal-input" placeholder="studio">
+            <button id="modalSubmit" class="modal-btn">ENTRAR</button>
+        </div>
+    </div>
 
-    <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
+    <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('sideMenu');
-            const overlay = document.getElementById('menuOverlay');
-            menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-        }
+    <script>
+        // Lógica de Interface Geral
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('menuOverlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+        }
 
-        function copiarPrompt(textId, btnElement) { 
-            const textToCopy = document.getElementById(textId).innerText; 
-            navigator.clipboard.writeText(textToCopy).then(() => { 
-                const originalText = btnElement.innerHTML; 
-                btnElement.innerHTML = "Copiado!"; 
-                setTimeout(() => { btnElement.innerHTML = originalText; }, 3000); 
-            }); 
-        }
+        // JS ORIGINAL INTACTO
+        const linkMentoriaGlobal = "https://linktr.ee/mariafreitasmf"; 
 
-        const lightbox = document.getElementById('lightboxOverlay'); const lightboxImg = document.getElementById('lightboxImg');
-        function abrirLightbox(imgSrc) { lightboxImg.src = imgSrc; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function fecharLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+        const listaDeAlunosGlobais = [
+            { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
+            { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
+            { nome: "Luciene Pinto", senha: "4756" }, { nome: "Maria Eduarda", senha: "7109" }, { nome: "Maria Mentora", senha: "8234" },
+            { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, { nome: "Wilma Duarte", senha: "3904" }
+        ];
 
-        // LÓGICA DO PROMPT LIVRE (DELIVERY)
-        function abrirPromptLivre() { document.getElementById('modalPromptLivre').classList.add('active'); }
-        function fecharPromptLivre() { document.getElementById('modalPromptLivre').classList.remove('active'); }
+        let appSelecionadoGlobal = '';
+        function abrirModalArsenal(app) {
+            appSelecionadoGlobal = app;
+            document.getElementById('appNameDisplay').innerText = app;
+            document.getElementById('arsenalInput').value = '';
+            document.getElementById('modalArsenal').classList.add('active');
+        }
+        function fecharModalArsenal() { document.getElementById('modalArsenal').classList.remove('active'); }
+        function verificarArsenal() {
+            const pass = document.getElementById('arsenalInput').value.trim();
+            const alunoVerificado = listaDeAlunosGlobais.find(a => a.senha === pass);
+            if (alunoVerificado) {
+                fecharModalArsenal();
+                window.open('https://play.google.com/store/search?q=' + encodeURIComponent(appSelecionadoGlobal) + '&c=apps', '_blank');
+            } else {
+                alert('Segunda Senha incorreta! O acesso ao Arsenal é restrito.');
+            }
+        }
 
-        // BASE DE DADOS DOS 20 APLICATIVOS (IMAGENS REAIS LOGOS)
-        const appsIA = [
-            { nome: "ChatGPT", domain: "openai.com", desc: "O assistente de linguagem mais poderoso do mundo." },
-            { nome: "Gemini", domain: "google.com", desc: "IA multimodal e gerador do Google." },
-            { nome: "Claude", domain: "anthropic.com", desc: "Alta performance de texto e análise de dados." },
-            { nome: "Copilot", domain: "microsoft.com", desc: "Ferramenta integrada de IA criativa da Microsoft." },
-            { nome: "Canva", domain: "canva.com", desc: "Estúdio de design completo com IA generativa nativa." },
-            { nome: "CapCut", domain: "capcut.com", desc: "Edição de vídeo profissional com automação de IA." },
-            { nome: "Remini", domain: "remini.ai", desc: "Aprimoramento e restauração de fotos e texturas." },
-            { nome: "Character.AI", domain: "character.ai", desc: "Criação de personas e conversação interativa." },
-            { nome: "Perplexity", domain: "perplexity.ai", desc: "Mecanismo de busca profunda guiado por IA." },
-            { nome: "ElevenLabs", domain: "elevenlabs.io", desc: "O melhor sintetizador e clonador de voz." },
-            { nome: "Lensa", domain: "prisma-ai.com", desc: "Avatares mágicos e processamento de imagem." },
-            { nome: "Midjourney", domain: "midjourney.com", desc: "Geração de artes cinematográficas." },
-            { nome: "Runway", domain: "runwayml.com", desc: "Edição de vídeo generativa e efeitos visuais." },
-            { nome: "HeyGen", domain: "heygen.com", desc: "Geração de vídeos profissionais com avatares reais." },
-            { nome: "D-ID", domain: "d-id.com", desc: "Animação de rostos e sincronização labial." },
-            { nome: "You.com", domain: "you.com", desc: "Buscador personalizado focado em produtividade." },
-            { nome: "Poe", domain: "poe.com", desc: "Hub de acesso rápido aos maiores modelos de IA." },
-            { nome: "Photoroom", domain: "photoroom.com", desc: "Edição de produtos e remoção de fundo." },
-            { nome: "Pi", domain: "inflection.ai", desc: "Assistente de IA conversacional e emocional." },
-            { nome: "Leonardo AI", domain: "leonardo.ai", desc: "Produção de assets artísticos e fotográficos em massa." }
-        ];
+        function togglePrompt(id, btnElement) { const content = document.getElementById(id); if (content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; btnElement.innerHTML = "Mostrar Prompt"; } else { content.style.maxHeight = content.scrollHeight + "px"; btnElement.innerHTML = "Ocultar Prompt"; } }
+        function copiarPrompt(textId, btnElement) { const textToCopy = document.getElementById(textId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = btnElement.innerHTML; btnElement.innerHTML = "Copiado!"; setTimeout(() => { btnElement.innerHTML = originalText; }, 3000); }); }
+        
+        const lightbox = document.getElementById('lightboxOverlay'); const lightboxImg = document.getElementById('lightboxImg');
+        function abrirLightbox(imgSrc) { lightboxImg.src = imgSrc; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function fecharLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+        
+        const modal = document.getElementById('customModal'); const modalInput = document.getElementById('modalInput'); const btnSubmit = document.getElementById('modalSubmit');
+        let currentType = '', currentTitle = '';
+        function abrirModal(tipo, titulo) { currentType = tipo; currentTitle = titulo; document.getElementById('modalTitle').textContent = titulo; modalInput.value = ''; modal.classList.add('active'); }
+        function closeModalFunc() { modal.classList.remove('active'); }
+        document.querySelectorAll('.js-link').forEach(card => { card.addEventListener('click', () => abrirModal(card.dataset.tipo, card.dataset.titulo)); });
+        function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
-        // FUNÇÃO PARA GERAR O HTML DA SANFONA
-        function gerarHtmlSanfona(listaApps) {
-            let html = '';
-            listaApps.forEach((app, index) => {
-                const logoUrl = `https://logo.clearbit.com/${app.domain}`;
-                const playStoreLink = `https://play.google.com/store/search?q=${encodeURIComponent(app.nome)}&c=apps`;
-                
-                html += `
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleSanfona(this)">
-                        <div class="accordion-header-left">
-                            <img src="${logoUrl}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(app.nome)}&background=0D131A&color=00E5FF&rounded=true'" alt="${app.nome}">
-                            ${app.nome}
-                        </div>
-                        <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                    <div class="accordion-body">
-                        <div class="accordion-content-inner">
-                            <p>${app.desc}</p>
-                            <a href="${playStoreLink}" target="_blank" class="btn-action btn-action-outline" style="font-size: 0.75rem; padding: 10px 15px; width: auto;">
-                                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> 
-                                BUSCAR NA PLAY STORE
-                            </a>
-                        </div>
-                    </div>
-                </div>`;
-            });
-            return html;
-        }
+        function abrirPlataforma(titulo) {
+            const janela = window.open('', '_blank');
+            let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
+            listaDeAlunosGlobais.forEach(aluno => {
+                listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('${aluno.senha}')" style="background:#00E5FF; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%;">Acessar Aula</button></div>`;
+            });
+            listaHtml += '</div>';
+            
+            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | EAD</title><style>
+            body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
+            .ead-container { width: 100%; max-width: 500px; } .video-container { display: none; flex-direction: column; width: 100%; max-width: 800px; align-items:center; }
+            h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 10px; text-align:center;}
+            </style></head><body>
+            <div class="ead-container" id="listaArea"><h1>${titulo}</h1>${listaHtml}</div>
+            <div class="video-container" id="videoArea">
+                <h1>Sala de Aula</h1><button onclick="voltarParaSala()" style="margin-bottom:20px; padding:10px; background:transparent; color:#00E5FF; border:1px solid #00E5FF; border-radius:8px;">Voltar</button>
+                <div style="background:#121820; padding:20px; border-radius:12px; border-left: 4px solid #00E5FF; width:100%;"><h2 style="color:#FFF;">Sua Aula</h2><p style="color:#8292A6;">Conteúdo do Professor Plínio Fabrício.</p></div>
+            </div>
+            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,16,21,0.9); justify-content:center; align-items:center;">
+                <div style="background:#121820; padding:30px; border-radius:12px; border:1px solid #1F2937; text-align:center;">
+                    <h3 style="color:#FFF; margin-bottom:15px;">Senha</h3>
+                    <input type="password" id="alunoSenha" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px;"><br>
+                    <button onclick="verificarSenhaAluno()" style="background:#3B82F6; color:#FFF; padding:10px 20px; border:none; border-radius:6px; font-weight:bold;">Entrar</button>
+                </div>
+            </div>
+            <script>
+                let senhaAtual = ''; function abrirModalAluno(senha) { senhaAtual = senha; document.getElementById('alunoModal').style.display = 'flex'; }
+                function verificarSenhaAluno() { if(document.getElementById('alunoSenha').value === senhaAtual) { document.getElementById('alunoModal').style.display='none'; document.getElementById('listaArea').style.display='none'; document.getElementById('videoArea').style.display='flex'; } else { alert('Incorreta'); } }
+                function voltarParaSala() { document.getElementById('videoArea').style.display='none'; document.getElementById('listaArea').style.display='block'; }
+            <\/script></body></html>`;
+            janela.document.write(htmlFinal); janela.document.close();
+        }
 
-        // CONTROLADOR DA SANFONA
-        function toggleSanfona(element) {
-            element.classList.toggle('active');
-            const body = element.nextElementSibling;
-            if (element.classList.contains('active')) {
-                body.style.maxHeight = body.scrollHeight + "px";
-            } else {
-                body.style.maxHeight = null;
-            }
-        }
+        btnSubmit.addEventListener('click', () => {
+            const pw = modalInput.value.trim().toLowerCase(); 
+            if (currentType === 'ebook' && pw === 'studio') {
+                window.open('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA.pdf/file', '_blank'); closeModalFunc();
+            } else if (currentType === 'gerador' && pw === 'studio') {
+                window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank'); closeModalFunc();
+            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === 'studio') { 
+                abrirPlataforma(currentTitle); closeModalFunc();
+            } else { alert("Senha Incorreta"); }
+        });
 
-        // LÓGICA DO ACERVO DE APPS PRINCIPAL
-        function abrirModalAcervoApps() { document.getElementById('modalAcervoApps').classList.add('active'); document.getElementById('inputAcervoApps').value = ''; }
-        function fecharModalAcervoApps() { document.getElementById('modalAcervoApps').classList.remove('active'); }
-        function verificarAcervoApps() {
-            const pw = document.getElementById('inputAcervoApps').value.trim().toLowerCase();
-            if(pw === 'studio') {
-                fecharModalAcervoApps();
-                document.getElementById('btnDesbloquearAcervo').style.display = 'none';
-                const container = document.getElementById('acervoApps');
-                container.style.display = 'block';
-                container.innerHTML = gerarHtmlSanfona(appsIA);
-            } else { alert('Senha incorreta.'); }
-        }
-
-        // LÓGICA ÁREA 2026
-        function abrirModalPrompts2026() { document.getElementById('modalPrompts2026').classList.add('active'); document.getElementById('inputPrompts2026').value = '';}
-        function fecharModalPrompts2026() { document.getElementById('modalPrompts2026').classList.remove('active'); }
-        function verificarPrompts2026() {
-            const pw = document.getElementById('inputPrompts2026').value.trim().toLowerCase();
-            if(pw === 'studio') {
-                fecharModalPrompts2026();
-                document.getElementById('area2026Container').style.display = 'none';
-                document.getElementById('galeria2026Oculta').style.display = 'block';
-            } else { alert('Senha incorreta.'); }
-        }
-
-        // LÓGICA DE LOGIN DOS ALUNOS
-        const listaDeAlunosGlobais = [
-            { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
-            { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
-            { nome: "Luciene Pinto", senha: "4756" }, { nome: "Maria Eduarda", senha: "7109" }, { nome: "Maria Mentora", senha: "8234" },
-            { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, { nome: "Wilma Duarte", senha: "3904" }
-        ];
-
-        const modal = document.getElementById('customModal'); 
-        const modalInput = document.getElementById('modalInput'); 
-        const btnSubmit = document.getElementById('modalSubmit');
-        let currentType = '', currentTitle = '';
-        
-        function abrirModal(tipo, titulo) { 
-            currentType = tipo; currentTitle = titulo; 
-            document.getElementById('modalTitle').textContent = titulo; 
-            modalInput.value = ''; modal.classList.add('active'); 
-        }
-        function closeModalFunc() { modal.classList.remove('active'); }
-        function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
-
-        function abrirPlataforma(titulo) {
-            const janela = window.open('', '_blank');
-            const isAgendaIA = titulo.includes('Agenda');
-            
-            const mentorNome = isAgendaIA ? 'Plínio Fabrício' : 'Maria Freitas';
-            const linkAcesso = isAgendaIA ? 'https://linktr.ee/PlinioStudio_' : 'https://linktr.ee/mariafreitasmf';
-
-            // O ARSENAL É INJETADO DIRETAMENTE NA AGENDA IA DOS ALUNOS
-            let arsenalHtml = '';
-            if (isAgendaIA) {
-                arsenalHtml = `
-                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #1F2937; text-align: center;">
-                    <h3 style="color:#00E5FF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem;">Arsenal de Aplicativos</h3>
-                    <p style="color: #8292A6; font-size: 0.85rem; margin-bottom: 20px;">Ferramentas exclusivas já liberadas na sua área de IA.</p>
-                    <div style="text-align: left;">
-                        ${gerarHtmlSanfona(appsIA)}
-                    </div>
-                </div>`;
-            }
-
-            const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | Plínio Studio</title><style>
-            body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh;}
-            .ead-container { width: 100%; max-width: 400px; background:#121820; padding:40px 30px; border-radius:16px; border-top: 4px solid #00E5FF; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align:center; }
-            .video-container { display: none; flex-direction: column; width: 100%; max-width: 600px; align-items:center; }
-            h1 { color: #FFF; margin-bottom: 10px; }
-            .btn-ead { background:#3B82F6; color:#FFF; padding:15px 24px; border:none; border-radius:8px; font-weight:bold; text-decoration: none; display: inline-block; margin-top: 15px; text-align: center; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; width: 100%;}
-            .btn-ead:hover { background: #2563EB; }
-            .btn-ead-green { background: #10B981; }
-            .btn-ead-green:hover { background: #059669; }
-            input { width: 100%; padding:15px; border-radius:8px; text-align:center; margin-bottom:20px; background: rgba(0,0,0,0.5); color: #FFF; border: 1px solid #1F2937; font-size: 1.2rem; letter-spacing: 2px; }
-            
-            /* Estilos sanfona pro painel interno */
-            .accordion-item { border: 1px solid #1F2937; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
-            .accordion-header { background-color: #1A222D; color: #FFF; cursor: pointer; padding: 12px 16px; width: 100%; border: none; text-align: left; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: space-between; }
-            .accordion-header-left { display: flex; align-items: center; gap: 12px; }
-            .accordion-header img { width: 30px; height: 30px; border-radius: 6px; background: #FFF; padding: 2px;}
-            .accordion-body { background-color: #121820; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-            .accordion-content-inner { padding: 15px; }
-            .icon-arrow { transition: transform 0.3s ease; fill: none; stroke: currentColor; stroke-width: 2;}
-            .accordion-header.active .icon-arrow { transform: rotate(180deg); }
-            </style></head><body>
-            
-            <div class="ead-container" id="loginArea">
-                <h1>${titulo}</h1>
-                <p style="color: #8292A6; margin-bottom: 25px;">Insira sua senha de aluno para acessar.</p>
-                <input type="password" id="senhaInput" placeholder="****">
-                <button onclick="fazerLogin()" class="btn-ead" style="background:#00E5FF; color:#000;">Autenticar</button>
-            </div>
-            
-            <div class="video-container" id="painelArea">
-                <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom:30px; border-bottom: 2px solid #00E5FF; padding-bottom: 15px;">
-                    <h2 style="margin: 0; color:#FFF;">Painel do Aluno</h2>
-                    <button onclick="window.close()" style="padding:10px 18px; background:transparent; color:#EF4444; border:1px solid #EF4444; border-radius:8px; cursor: pointer; font-weight: bold;">Sair</button>
-                </div>
-                
-                <div style="background:#121820; padding:35px 25px; border-radius:12px; border: 1px solid #1F2937; width:100%; text-align: center;">
-                    <h2 style="color:#FFF; margin-bottom: 5px;" id="boasVindasText"></h2>
-                    <p style="color: #34D399; font-size: 0.9rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">Mentoria: ${mentorNome}</p>
-                    <p style="color:#8292A6; margin-bottom: 30px; line-height: 1.5;">Acesse seus materiais e diretórios de aula nos botões abaixo.</p>
-                    
-                    <a href="${linkAcesso}" target="_blank" class="btn-ead btn-ead-green">Acessar Links (Linktree)</a>
-                    <a href="https://wa.me/5587996029765" target="_blank" class="btn-ead" style="background: #25D366;">Suporte WhatsApp</a>
-                    
-                    ${arsenalHtml}
-                </div>
-            </div>
-            
-            <script>
-                const alunos = ${JSON.stringify(listaDeAlunosGlobais)};
-                function fazerLogin() {
-                    const pass = document.getElementById('senhaInput').value.trim();
-                    const aluno = alunos.find(a => a.senha === pass);
-                    if(aluno) {
-                        document.getElementById('loginArea').style.display = 'none';
-                        document.getElementById('painelArea').style.display = 'flex';
-                        document.getElementById('boasVindasText').innerText = "Olá, " + aluno.nome + "!";
-                    } else { alert('Senha inválida. Tente novamente.'); }
-                }
-                function toggleSanfona(element) {
-                    element.classList.toggle('active');
-                    const body = element.nextElementSibling;
-                    if (element.classList.contains('active')) { body.style.maxHeight = body.scrollHeight + "px"; } 
-                    else { body.style.maxHeight = null; }
-                }
-            <\/script></body></html>`;
-            janela.document.write(htmlFinal); janela.document.close();
-        }
-
-        btnSubmit.addEventListener('click', () => {
-            const pw = modalInput.value.trim().toLowerCase(); 
-            if (currentType === 'ebook' && pw === 'studio') {
-                window.open('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA.pdf/file', '_blank'); closeModalFunc();
-            } else if (currentType === 'gerador' && pw === 'studio') {
-                window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank'); closeModalFunc();
-            } else if ((currentType === 'curso' || currentType === 'mentoria') && pw === 'studio') { 
-                abrirPlataforma(currentTitle); closeModalFunc();
-            } else { alert("Senha Incorreta"); }
-        });
-
-    </script>
+        function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
+        function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
+        function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
+        function abrirModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.add('active'); }
+        function fecharModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.remove('active'); }
+        function verificarGeradorCompleto() {
+            const senha = document.getElementById('inputGeradorCompleto').value.trim().toLowerCase();
+            fecharModalGeradorCompleto();
+            if (senha === 'nill') { window.open('https://veoaifree.com/veo-video-generator/', '_blank'); } 
+            else { document.getElementById('modalPlanosGerador').classList.add('active'); }
+        }
+        function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
+        function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); }
+        function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
+        function verificarGaleriaInfinita() {
+            if (document.getElementById('inputGaleriaInfinita').value.trim().toLowerCase() === 'nill') {
+                fecharModalGaleriaInfinita(); window.open('https://aiedits.net/', '_blank'); 
+            } else { alert('Senha incorreta!'); }
+        }
+    </script>
 </body>
-</html>
+</html> 
