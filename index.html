@@ -76,8 +76,9 @@
         .header-icons svg { width: 24px; height: 24px; fill: none; stroke: var(--text-muted); stroke-width: 2; cursor: pointer; transition: 0.3s; }
         .header-icons svg:hover { stroke: #FFF; }
 
-        /* --- 📲 BOTÃO FIXO E PERMANENTE NO SITE (PWA) --- */
+        /* --- 📲 CONTAINER DOS BOTÕES PWA (MUDADO PARA DISPLAY NONE POR PADRÃO) --- */
         .pwa-box-fixo {
+            display: none; /* Só aparece quando o script validar que está pronto */
             background: rgba(18, 24, 32, 0.9);
             border: 1px dashed var(--accent-primary);
             border-radius: 16px;
@@ -212,7 +213,7 @@
         .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
 
-        /* --- LOGIN ULTRA MODERNO RESTAURADO (GLASSMORPHISM V2) --- */
+        /* --- LOGIN ULTRA MODERNO GLASSMORPHISM --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { 
@@ -289,7 +290,7 @@
             <div class="close-menu" onclick="toggleMenu()">×</div>
         </div>
         <div class="menu-links">
-            <div style="padding: 10px 24px; border-bottom: 1px solid var(--border-color);">
+            <div id="pwaMenuBox" style="padding: 10px 24px; border-bottom: 1px solid var(--border-color); display: none;">
                 <button onclick="dispararInstalacaoPWA()" class="pwa-btn-estiloso" style="font-size:0.75rem; padding:10px;">
                     📲 Adicionar à Tela Inicial
                 </button>
@@ -314,8 +315,8 @@
 
     <main class="app-container">
         
-        <div class="pwa-box-fixo">
-            <p>Acesse o Plínio Studio direto da galeria do seu smartphone!</p>
+        <div id="pwaTopoBox" class="pwa-box-fixo">
+            <p id="pwaTextoInstrucao">Acesse o Plínio Studio direto da galeria do seu smartphone!</p>
             <button onclick="dispararInstalacaoPWA()" class="pwa-btn-estiloso">
                 📲 ADICIONAR À TELA DO SMARTPHONE
             </button>
@@ -474,7 +475,7 @@
             <input type="password" id="modalInput" class="modal-input" placeholder="••••">
             <button id="modalSubmit" class="modal-btn">ENTRAR NA SALA</button>
 
-            <div style="border-top:1px solid var(--border-color); padding-top:15px; margin-top:5px;">
+            <div id="pwaLoginBox" style="border-top:1px solid var(--border-color); padding-top:15px; margin-top:5px; display: none;">
                 <button onclick="dispararInstalacaoPWA()" class="pwa-btn-estiloso" style="font-size:0.75rem; background:none; border:1px solid var(--accent-primary); color:var(--accent-primary);">
                     📲 Fixar App no Celular
                 </button>
@@ -499,7 +500,7 @@
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
         }
 
-        // --- MANUTENÇÃO DOS ALUNOS COM SENHAS INTEGRAIS ---
+        // --- MANUTENÇÃO DOS ALUNOS COM AS NOVAS ENTRADAS ---
         const listaDeAlunosGlobais = [
             { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
             { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
@@ -519,7 +520,7 @@
         document.querySelectorAll('.js-link').forEach(card => { card.addEventListener('click', () => abrirModal(card.dataset.tipo, card.dataset.titulo)); });
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
-        // --- SISTEMA EAD COM OS 20 APPS DO ARSENAL MANTIDOS DE FORMA SEGURA ---
+        // --- SISTEMA EAD COM OS 20 APPS EXCLUSIVOS DO ARSENAL INTERNO ---
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
             let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
@@ -598,29 +599,45 @@
             } else { alert("Senha Incorreta"); }
         });
 
-        // --- ENGINE PWA INTERATIVA (CONTROLA TODOS OS BOTÕES DE INSTALAÇÃO DO SITE) ---
-        let acionadorPromptPWA;
+        // --- 📲 NOVO MECANISMO ULTRA SEGURO DE INSTALAÇÃO PWA ---
+        let acionadorPromptPWA = null;
 
+        // Elementos dos botões estratégicos do layout
+        const boxTopo = document.getElementById('pwaTopoBox');
+        const boxMenu = document.getElementById('pwaMenuBox');
+        const boxLogin = document.getElementById('pwaLoginBox');
+        const textoInstrucao = document.getElementById('pwaTextoInstrucao');
+
+        // O navegador avisa silenciosamente que o PWA cumpre os requisitos e pode ser instalado
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
-            acionadorPromptPWA = e;
-            // Se o telemóvel for compatível, o script guarda o gatilho silenciosamente para quando o botão for clicado
+            acionadorPromptPWA = e; // Guarda o gatilho ativo do sistema Android
+            
+            // Ativa e exibe TODOS os botões de forma nativa e visível no layout
+            if(boxTopo) boxTopo.style.display = 'block';
+            if(boxMenu) boxMenu.style.display = 'block';
+            if(boxLogin) boxLogin.style.display = 'block';
         });
 
         async function dispararInstalacaoPWA() {
+            // Se o gatilho do sistema já tiver sido carregado pelo navegador, ele executa perfeitamente
             if (acionadorPromptPWA) {
                 acionadorPromptPWA.prompt();
                 const resultadoEscolha = await acionadorPromptPWA.userChoice;
                 if (resultadoEscolha.outcome === 'accepted') {
-                    console.log('App instalado com sucesso!');
+                    // Se aceitou, esconde as caixas de instalação porque já está a baixar
+                    if(boxTopo) boxTopo.style.display = 'none';
+                    if(boxMenu) boxMenu.style.display = 'none';
+                    if(boxLogin) boxLogin.style.display = 'none';
                 }
                 acionadorPromptPWA = null;
             } else {
-                // Mensagem educativa caso o app já esteja instalado ou use iOS/Safari
-                alert('Para instalar: Se estiver no Android, o app já está pronto para ir para a tela inicial. Se estiver no iPhone (Safari), clique no botão de compartilhamento (quadrado com seta) e escolha "Adicionar à Tela de Início".');
+                // Caso o Android ainda esteja a processar em segundo plano ou seja um iPhone/Navegador sem suporte direto
+                alert('O seu smartphone está a validar o app. Se a janela de confirmação não abrir automaticamente em 5 segundos, clique nos três pontinhos (ou botão de partilha no Safari) e selecione "Adicionar à Tela Inicial / de Início".');
             }
         }
 
+        // Verifica o Service Worker em segundo plano
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch((err) => console.log(err));
