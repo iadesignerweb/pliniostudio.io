@@ -669,7 +669,7 @@
             if(alunoEspecifico) {
                 listaHtml += `<div style="background:#121820; border:2px solid #00E5FF; padding:25px; border-radius:12px; text-align:center;"><div style="font-size:1.3rem; color:#FFF; margin-bottom:5px; font-weight:bold;">Olá, ${alunoEspecifico.nome}!</div><p style="color:#8292A6; margin-bottom:15px; font-size:0.9rem;">Sua área de treinamento exclusivo está conectada.</p><button onclick="document.getElementById('listaArea').style.display='none'; document.getElementById('videoArea').style.display='flex';" style="background:#00E5FF; color:#000; padding:14px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%; text-transform:uppercase; letter-spacing:1px;">Acessar Minha Aula Agora</button></div>`;
             } else {
-                // Modo Administrador Master (Acessado com a senha "studio")
+                // Modo Administrador Master (Acessado com a senha "nerdstudio")
                 listaDeAlunosGlobais.forEach(aluno => {
                     listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('${aluno.senha}')" style="background:#00E5FF; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%;">Acessar Aula</button></div>`;
                 });
