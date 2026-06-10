@@ -6,6 +6,8 @@
     <title>Plínio Studio | Escola Audiovisual & IA</title>
     <meta name="theme-color" content="#0B1015">
     
+    <link rel="manifest" href="manifest.json">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -93,7 +95,7 @@
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; backdrop-filter: blur(3px); }
         .overlay.active { display: block; }
 
-        /* --- CONTEÚDO PRINCIPAL (TUTORIAL VIEW KOOURSE) --- */
+        /* --- CONTEÚDO PRINCIPAL --- */
         .app-container { max-width: 600px; margin: 0 auto; padding: 20px 24px 40px 24px; }
 
         .profile-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; justify-content: center; }
@@ -129,7 +131,6 @@
         .unlock-count svg { width: 18px; height: 18px; stroke: var(--accent-green); fill: none; }
         .recent-unlock { font-size: 0.8rem; color: var(--accent-green); font-weight: 500; }
 
-        /* --- SEÇÕES DA ESTRUTURA ORIGINAL (ADAPTADAS AO NOVO LAYOUT) --- */
         .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
         
@@ -145,11 +146,6 @@
         .btn-action:hover { background-color: #FFF; }
         .btn-action-outline { background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); }
         .btn-action-outline:hover { background: var(--bg-card-hover); color: var(--accent-primary); border-color: var(--accent-primary); }
-
-        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; }
-        .tile-app { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 10px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
-        .tile-app svg { width: 28px; height: 28px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; margin-bottom: 12px; }
-        .tile-app:hover { border-color: var(--accent-primary); background: var(--bg-card-hover); color: var(--accent-primary); }
 
         .card-grid { display: flex; flex-direction: column; gap: 20px; }
         .card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: 0.4s; cursor: pointer; }
@@ -172,7 +168,6 @@
         .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
 
-        /* --- MODAIS ORIGINAIS (COM CORES ATUALIZADAS E PLACEHOLDER SEGURO) --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { background: var(--bg-card); border-top: 4px solid var(--accent-primary); border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);}
@@ -191,7 +186,6 @@
         .lightbox-overlay.active { display: flex; opacity: 1; }
         .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); }
 
-        /* --- FOOTER REDES SOCIAIS --- */
         .site-footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); margin-top: 40px; margin-bottom: 60px; }
         .site-footer .social-icons { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
         .site-footer .social-icons a { color: var(--text-muted); transition: 0.3s; }
@@ -199,13 +193,11 @@
         .site-footer .social-icons svg { width: 28px; height: 28px; fill: currentColor; }
         .site-footer p { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
 
-        /* --- BOTTOM NAV KOOURSE --- */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(11, 16, 21, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 600; transition: 0.3s; cursor: pointer; }
         .nav-item:hover, .nav-item.active { color: #FFF; }
         .nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
         
-        /* Oculta scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-main); }
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
@@ -220,6 +212,15 @@
             <svg onclick="toggleMenu()" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </div>
     </header>
+
+    <div id="areaInstalacao" style="display: none; text-align: center; padding: 15px; background-color: var(--accent-primary); border-bottom: 2px solid var(--border-color);">
+        <p style="margin: 0 0 10px 0; font-family: sans-serif; color: #000; font-weight: 700; font-size: 14px;">
+            Tenha a melhor experiência! Instale nossa plataforma no seu celular.
+        </p>
+        <button id="btnInstalar" style="background-color: var(--bg-main); color: var(--accent-primary); border: 1px solid var(--border-color); padding: 10px 20px; font-size: 14px; border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0px 4px 6px rgba(0,0,0,0.3); transition: 0.3s;">
+            📲 Instalar Aplicativo
+        </button>
+    </div>
 
     <div class="overlay" id="menuOverlay" onclick="toggleMenu()"></div>
     <div class="side-menu" id="sideMenu">
@@ -300,16 +301,6 @@
 
         <div class="divider"></div>
 
-        <h2 class="section-title">Arsenal Indispensável</h2>
-        <div class="tile-grid">
-            <div class="tile-app" onclick="abrirModalArsenal('CapCut')"><svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg> CapCut</div>
-            <div class="tile-app" onclick="abrirModalArsenal('VN Video Editor')"><svg viewBox="0 0 24 24"><path d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg> VN Editor</div>
-            <div class="tile-app" onclick="abrirModalArsenal('Lightroom Mobile')"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg> Lightroom</div>
-            <div class="tile-app" onclick="abrirModalArsenal('Snapseed')"><svg viewBox="0 0 24 24"><path d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/></svg> Snapseed</div>
-        </div>
-
-        <div class="divider"></div>
-
         <h2 class="section-title">Área do Aluno</h2>
         <div class="card-grid">
             <div class="card js-link" data-tipo="curso" data-titulo="Agenda de IA">
@@ -372,212 +363,6 @@
             </div>
         </div>
 
-        <div id="conteudoAcervo2026" style="display: none;">
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Moda Fashion Camisas Raul Seixas</h3>
-                <div class="prompt-box" id="p_raul">Create a premium high-fashion workwear magazine cover in a vertical 4:5 editorial poster format.
-A stylish male subject walks confidently toward the camera in a full-body runway-style pose, centered in the frame. His body is slightly in motion, one foot stepping forward, right hand casually inside the trouser pocket, left hand relaxed beside the body. His expression is calm, serious, and fashion-editorial. He wears narrow black sunglasses, slightly tousled dark hair, and a subtle layered silver chain necklace.
-
-Outfit:
-Oversized dark charcoal / black workwear jacket, worn open. Clean white crewneck sweatshirt with a small square heritage-style logo patch on the left chest. Loose dark charcoal wide-leg pleated trousers with natural drape and folds. Chunky polished black leather shoes. Overall styling should feel minimal, utilitarian, premium, and street-luxury.
-
-Scene & Lighting:
-Set the subject in a dark grey studio environment with a smooth seamless backdrop and slightly reflective floor. Use soft directional studio lighting from the front-left, creating realistic shadows on the floor and adding depth to the clothing. The image should have a muted monochrome palette with crisp contrast, clean skin tones, and high-end fashion campaign quality.
-
-Composition: Full-body framing, subject vertically centered. Slightly low, straight-on editorial camera angle. Subject overlaps the background typography naturally. Clean negative space around the upper and side areas for text. Premium magazine-cover balance and hierarchy.
-
-Typography Gothic & Graphic Layout:
-At the very top, oversized bold white text: “PS”. Small condensed white text at the top-right: “SOCIEDADE ”. Behind the subject, huge dark semi-transparent text spanning the width: “ALTERNATIVA”. On the right-middle side, large bold white number: “01”. On the lower-left side, four small editorial text blocks with bold headings and short subtext, laid out like magazine cover blurbs. Bottom-right corner, very large condensed white headline: “CAMISAS”.
-
-Visual Style: Ultra-realistic fashion editorial photography, luxury streetwear campaign, magazine-cover graphic design, crisp fabric details, natural garment folds, sharp typography gotic integration, professional studio shadows, premium workwear aesthetic, clean commercial retouching, high contrast, sophisticated and modern. Observação: Ao invés de sapato e calça social use: Calça Jeans e tênis branco. Rodapé: "ADQUIRA AGORA" and "WhatsApp: (87)99602-9765 ou (88)98170-5413" and "Instagram: @Scheylam</div>
-                <button onclick="copiarPrompt('p_raul', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">3D Jardineira MODA</h3>
-                <div class="prompt-box" id="p_jardineira">Create a high-quality, cute chibi-style 3D character illustration of a little girl(upload person) with an oversized head, big, soft facial features, and a confident, playful attitude. She is wearing large, round, black sunglasses, a plain white t-shirt, and loose, dark blue denim overalls with realistic stitching, front bib pocket, side pockets, metal buttons, and rolled-up cuffs. She has natural-coloured hair tied into two low pigtails with soft, loose strands flying around her face.
-Pose: full-body standing pose, body tilted, one hand resting on her hip, the other hand lifting or adjusting her sunglasses near her eye. Her expression is cool, slightly pouty, stylish, and confident. She wears clean white sneakers and white socks.
-Style: adorable premium 3D cartoon render, soft skin, detailed hair strands, realistic denim texture, clean studio lighting, smooth shadows, white background, high resolution, sharp details, cute collectable character aesthetic. Aspect ratio 4:5, vertical portrait.</div>
-                <button onclick="copiarPrompt('p_jardineira', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Moda Premium Sociedade Alternativa</h3>
-                <div class="prompt-box" id="p_sociedade">Create a cinematic 4:5 vertical studio portrait of the uploaded person.
-Composition: Upper-thigh to head framing. The subject is standing in a strong three-quarter profile, body turned noticeably to the viewer’s right. His head is slightly bowed downward, and his eyes are directed toward his left wrist. He is not looking at the camera.
-Pose lock: His right arm is bent naturally and holds a closed silver MacBook along his right side, slightly raised under the arm. The back of the laptop faces outward and the Apple logo is visible. His right hand grips the bottom corner of the laptop naturally. His left arm is raised across the chest and bent at the elbow. The left wrist is turned inward as if checking a silver metal wristwatch. The left hand hangs softly over the wrist with relaxed, slightly curved fingers.
-Appearance: He wears a fitted black turtleneck sweater with slight fabric bunching near the forearms. He has neatly styled hair and thin round metal-frame glasses. Expression is calm, focused, natural, and elegant.
-Background: Deep black seamless studio background with a very subtle dark textured feel.
-Lighting: Soft dramatic studio light from the upper left. Add a subtle rear rim light to separate the hair, shoulder, and body edges from the background. Keep lighting clean, dark, premium, and cinematic.
-Style: Ultra-realistic editorial studio photography. High detail, realistic hands, realistic proportions, clean shadows, minimal composition, luxury creative-professional aesthetic. Priority order: 1. Preserve the pose exactly. 2. Preserve the arm positions, hand positions, head angle, and laptop/watch placement. 3. Keep the framing and body angle consistent. 4. Apply the premium cinematic studio look without changing the pose.</div>
-                <button onclick="copiarPrompt('p_sociedade', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Desenho 3D (Bicicleta)</h3>
-                <div class="prompt-box" id="p_bike">Create a premium high-quality 3D stylized render of the uploaded man. Render him in a refined chibi caricature style, with the head slightly larger than the body and subtly exaggerated, charming proportions, but do not make him look like a toy or blind box figure. The result should look like a polished high-end animated 3D character render, clean, cinematic, and visually premium.
-Show him riding a bicycle with natural, smooth, and believable body movement, as if casually cycling through the city. His posture should feel relaxed and lively, not stiff. His facial expression should be warm, cheerful, and natural, with a soft, genuine smile and a subtle, confident, determined feeling. Show him in a flattering three-quarter view, facing towards the camera.
-He is wearing a highly textured furry blue hoodie, layered over a cream t-shirt with “PLUM” written on the chest, along with loose black velvet pants with soft folds and rich texture. On his feet, he wears oversized green Puma sneakers. He also wears modern eyeglasses.
-The background should be a bright, clean, and colorful Jakarta urban scene, with modern buildings, busy streets, a visible TransJakarta lane, and recognizable Jakarta city atmosphere. Keep the environment visually appealing and detailed, but clean and not cluttered.
-Use bright soft lighting with a mix of natural daylight and clean cinematic fill light. The overall image should feel premium, colorful, clean, and highly detailed, with beautiful 3D rendering, rich textures, and a high-end animated-film quality. 4:5 aspect ratio.</div>
-                <button onclick="copiarPrompt('p_bike', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Anime Casal 3D</h3>
-                <div class="prompt-box" id="p_casal">Ultra-detailed stylized 3D character render of a playful young couple (male and female), designed with exaggerated chibi proportions (oversized heads, compact bodies), large expressive eyes, soft smooth skin, and highly detailed hair strands with natural color, natural flow and subtle flyaways.
-Characters: Female: long straight or slightly tousled hair, natural volume, optional minimal hair clip. Male: short to medium stylized hair, soft texture with clean strand detail, and grooming details.
-Facial Expression (IMPORTANT): Both characters have a mischievous, slightly defiant expression. Eyebrows slightly lowered, eyes looking sharply to the side (side-eye), nose subtly scrunched, lips pressed into a tight playful smirk.
-Pose (IMPORTANT — match exactly for BOTH): Standing back-to-back, close together. Feet close and pointing forward. Arms relaxed straight down at their sides. Eyes looking sideways (same direction or slightly toward each other). compact posture. Interaction Detail: Their backs lightly touching, giving a subtle cute couple vibe, but both maintain the same pose (no hugging or hand-holding).
-Clothing: Oversized long-sleeve cream beige sweatshirts, and maching trousers (minimal design, soft folds, chest pocket). Simple socks and casual sneakers. Slight color contrast between male and female outfits.
-Lighting: Soft studio lighting, gentle directional key light, smooth soft shadows, subtle ambient fill, soft highlight transitions. Rendering Style: High-end 3D stylized realism (Pixar-like quality). Background: Clean, soft bokeh seamless studio backdrop with warm tones. No objects in the background. Composition: 4:5 aspect ratio. Vertical portrait. Full body, centered. Cinematic poster layout. Balanced spacing between characters.</div>
-                <button onclick="copiarPrompt('p_casal', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">3D Professional</h3>
-                <div class="prompt-box" id="p_prof">Create a highly polished, ultra-detailed 3D animated portrait in a modern Pixar / Disney-inspired character style. Subject & Appearance: A woman with large, expressive eyes, soft rosy cheeks, and a smooth, cute youthful face. Her hair is natural color, styled in a slightly messy yet natural way, with subtle flyaways for realism. Outfit & Styling: She wears a vibrant, long-sleeved patchwork button-down shirt featuring intricate mixed patterns (paisley, florals, geometric motifs, and solid color blocks). The color palette includes rich, saturated tones of yellow, blue, red, green, and purple, with clearly visible fabric texture, stitching, and seams. The shirt is neatly tucked into high-waisted, tailored cream-white wide-leg trousers with sharp front pleats and a clean, structured silhouette. Pose & Expression: Relaxed and confident stance. She stands upright with both hands casually placed inside her trouser pockets. Her expression is soft and warm, featuring a gentle, confident, slightly whimsical half-smile. Eyes looking directly at camera. Composition & Framing (STRICT): Medium shot. Perfectly centered composition with balanced negative space. Straight-on, eye-level camera angle. Vertical 4:5 aspect ratio. Environment & Background: A geometric feature wall made of overlapping, staggered 3D rectangular panels with subtle wood grain textures. The background displays a smooth, vibrant gradient transitioning from bright golden-yellow (left), to warm orange (center), to deep magenta-pink (right). Background must remain clean, graphic, and visually striking with no additional elements. Lighting: Soft, diffused cinematic studio lighting. Even facial illumination with gentle, soft-edged shadows. Subtle highlights on hair and fabric to enhance depth and material realism. Rendering & Quality: Ultra-high resolution (8K). Pixar-quality character rendering with stylized realism. Octane Render / Unreal Engine 5 quality. Highly detailed materials: skin shading, fabric weave, wood texture. Crisp edges, vibrant color grading, and smooth global illumination.</div>
-                <button onclick="copiarPrompt('p_prof', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Indecisão Pensando</h3>
-                <div class="prompt-box" id="p_indecisao">Transform the uploaded woman into a premium 4:5 vertical semi-realistic digital illustration drawn directly on white lined notebook paper. The artwork should look like it is painted and sketched on the paper surface, not pasted as a sticker, not a cut-out, and not separated from the background. Use the uploaded image for face and identity reference and redrawn in this soft illustration style, not a generic cartoon character. Show her sitting cross-legged in the center of the page. Keep the pose natural, relaxed, and slightly imperfect, not stiff or symmetrical. Her upper body should gently tilt to one side, with soft relaxed shoulders, a calm seated posture, and hands resting naturally near the ankles. The body language should feel effortless, feminine, and candid, as if she is sitting comfortably and lost in her own thoughts. Her head is slightly raised and turned upward to one side. Her eyes look away thoughtfully, with a soft dreamy expression and a gentle subtle smile, giving the feeling that she is quietly imagining something. Dress her in a white fitted sleeveless ribbed tank top, light blue high-waisted jeans with rolled cuffs, and off-white canvas sneakers with laces. Add black round eyeglasses, small hoop earrings, and a delicate necklace. Render the artwork in a soft high-detail digital painting style with hand-drawn paper texture: smooth natural skin shading, refined soft facial details, rich flowing hair with layered strands and gentle highlights, detailed denim folds and sneaker details, clean but delicate linework, subtle paper-grain texture visible through the artwork, soft warm lighting and premium feminine illustration quality. The subject should blend naturally with the notebook page, as if the illustration was created directly on the paper, with no thick white border, no sticker outline, no cut-out edge, and no drop shadow around the body. Background: white ruled notebook paper with faint horizontal lines and subtle paper texture. At the top-left corner, add a small beige paper heart clipped with a metallic paperclip. Around the subject, add light scrapbook-style hand-drawn doodles in black and warm beige: curved arrows, dotted lines, sparkles, hearts, accent strokes, and a small lightbulb doodle. Add handwritten motivational words around her: BRAVE, DREAMER, CREATIVE, INSPIRED, CONFIDENT. The words should look hand-drawn on the notebook page or lightly sketched onto the page, not sticker labels. Final look: soft, premium, feminine, semi-realistic notebook-page illustration, airy and detailed, with a natural tilted pose and thoughtful dreamy mood. Negative instructions: no sticker cutout, no thick white outline, no drop shadow around the subject, no pasted-paper effect, no chibi style, no mascot look, no flat vector art, no childish cartoon, no stiff pose, no generic face, no face and identity change.</div>
-                <button onclick="copiarPrompt('p_indecisao', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompt 2D Plínio Studio</h3>
-                <div class="prompt-box" id="p_2dplinio">Create a hyper-realistic, high-detail portrait illustration using the uploaded image as the absolute facial reference. The subject’s face must remain 100% identical to the reference photo — no changes to facial structure, proportions, skin tone, beard shape, jawline, nose, lips, eyes, or expression.
-The artwork features a half-body portrait of a young man with a rugged yet refined look, captured in a dramatic close-up framing with a slightly low-angle perspective. His expression is intense, thoughtful, and emotionally charged, with subtle tension in the brows and a focused gaze directed straight at the viewer.
-Hair & Grooming: His dark hair is windswept and dynamic, styled with natural volume and movement, individual strands sharply defined to convey motion. He has a well-groomed short beard and mustache, with realistic density and natural edges.
-Hands & Details: One hand is raised near the chin in a casual, contemplative pose. The hand features detailed black ink tattoos on the fingers and wrist, rendered with sharp line clarity and realistic skin interaction.
-Clothing: He is wearing an oversized black hoodie, matte fabric with soft folds and natural drape. The hoodie should feel realistic, slightly loose, and well-integrated into the portrait without distracting from the face.
-Lighting & Texture: Use bright, even studio lighting with soft highlights that enhance facial contours. Skin texture must be clearly visible, including fine pores, subtle freckles, natural blemishes, and gentle shadow transitions. Eyes should have vivid reflections and lifelike depth, adding intensity and realism.
-Background & Color: Set the subject against a solid, bold, vibrant grafite background, clean and seamless, creating strong contrast with the black hoodie and skin tones. The background should be flat and graphic, enhancing poster-style impact.
-Style & Quality: Blend semi-photorealistic and semi-illustrative aesthetics, characteristic of modern high-end poster art. Emphasize clarity, sharp edges, rich color saturation, and dynamic energy. Ultra-high resolution, crisp details, smooth gradients, professional illustration finish. Do not alter the subject. Use the uploaded image strictly as reference.</div>
-                <button onclick="copiarPrompt('p_2dplinio', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompt Plínio Studio (Selective Color)</h3>
-                <div class="prompt-box" id="p_selective">A high-contrast studio portrait using a selective color (“color splash”) technique. The subject is positioned front-facing toward the camera in a centered head-and-shoulders composition, with squared shoulders and a straight, balanced posture, creating a strong editorial portrait. The image is rendered primarily in monochrome, with only the lips remaining in vivid color.
-Identity & Face Match (Strict): Use the reference image as a strict identity reference. Preserve the exact facial structure, proportions, skin tone, eye shape, nose, lips, jawline, and overall likeness. Maintain natural skin texture with visible pores and realistic imperfections. No beautification, reshaping, or identity alteration.
-Expression & Pose: The subject faces directly forward with a calm, restrained expression and steady eye contact. The gaze feels introspective and emotionally quiet, with relaxed eyelids and neutral brows. Lips remain gently closed in a natural resting position, conveying confidence, composure, and subtle emotional depth. The pose remains still and centered, emphasizing calm intensity.
-Selective Color: The entire image is grayscale except for matte red lipstick, which remains the only colored element and serves as the primary focal point.
-Lighting & Composition: Soft directional studio lighting from slightly above camera level creates gentle shadows that define facial structure while maintaining smooth tonal transitions. High dynamic range grayscale with deep blacks and soft highlights. Shallow depth of field keeps the face sharp while the background fades softly.
-Styling & Background: Long dark wavy hair parted at the center, falling naturally over the shoulders. The subject wears a structured black blazer with a formal white shirt. Background is a neutral dark gray studio gradient, clean and distraction-free, creating a cinematic, sophisticated high-fashion editorial mood. Aspect Ratio & Quality: 1:1 aspect ratio, 4K–8K resolution, ultra-high detail.</div>
-                <button onclick="copiarPrompt('p_selective', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompt Sacro (Macrorealismo Bíblico 8K)</h3>
-                <div class="prompt-box" id="p_sacro">𝕾𝖆𝖈𝖗𝖆 𝕷𝖚𝖒𝖊𝖓 — Macrorealismo Bíblico 8K. Biblical Ultra Macro Portrait, Sacred Cinematic Realism, Holy Veil Portrait, Macrorealismo Devocional, IMAX Sacred Portrait, Prompt Nazaré 50mm, Cinematic Sacred Woman, 𝕬𝖊𝖛𝖚𝖒 𝕷𝖚𝖝 - Sacred Faces Collection.
-Ultra-realistic sacred cinematic portrait of a young biblical woman wearing a textured brown veil, centered symmetrical composition, direct eye contact, emotionally neutral expression, warm earthy monochromatic palette, hyper-detailed human skin with visible pores, micro sweat, natural facial oil, subtle imperfections, ultra detailed iris texture, realistic eyelashes, individual eyebrow strands, soft cracked lips, ultra defined facial anatomy, realistic subsurface scattering, microscopic fabric fibers and stitching on the veil and tunic, ultra detailed hair strands beneath the fabric, realistic textile folds, warm cinematic low-key lighting, soft diffused shadows, dark amber background with subtle texture depth, photographed on a 50mm cinema lens, shallow depth of field, IMAX-quality realism, HDR lighting balance, clean image without grain, no noise, no typography, no artifacts, no CGI look, extremely sharp focus, museum-grade realism, volumetric cinematic atmosphere, ultra refined color grading, photorealistic skin reflection, master-level composition, unprecedented detail richness, 8K ultra realism, vertical 9:16 format for story, visually flawless, emotionally powerful, sacred cinematic aesthetic.</div>
-                <button onclick="copiarPrompt('p_sacro', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompt Épico Troy</h3>
-                <div class="prompt-box" id="p_troy">Ultra-realistic cinematic battle scene inspired by the movie Troy, legendary duel between Menelaus and Paris outside the massive walls of Troy, over-the-shoulder camera angle positioned behind Menelaus, showing the muscular back armor, bronze shoulder plates, sword in hand and dark flowing cape in foreground, Paris standing ahead in combat stance facing him, intense pre-battle tension, gigantic stone walls of Troy dominating the background, hundreds of spectators and soldiers watching from the top of the fortress walls, ancient Greek and Trojan armies lined behind both warriors, banners waving under desert wind, dusty battlefield atmosphere, physically accurate ancient bronze armor with scratches, dents and realistic metallic reflections, hyper detailed skin texture with sweat, dirt and battle marks, realistic hair strands moving in wind, ultra detailed sand and stone ground, cinematic sunlight with warm golden highlights and slightly cool blue shadows, epic atmospheric depth, volumetric dust particles illuminated by sunlight, dramatic historical realism, IMAX 65mm cinematic composition, photographed on a 50mm anamorphic lens, shallow depth of field with sharp central focus, physically correct lighting, no CGI look, no fantasy exaggeration, grounded historical realism, emotionally intense duel atmosphere, monumental scale, ultra detailed textures in armor, fabric and environment, museum-grade realism, HDR cinematic color grading, clean image without grain or digital noise, legendary Trojan War aesthetic, visually breathtaking composition, 8K hyperrealism, vertical 9:16 cinematic frame.</div>
-                <button onclick="copiarPrompt('p_troy', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompt Desenho Plinio Studio</h3>
-                <div class="prompt-box" id="p_desenhoplinio">Create a masterfully crafted, ultra-high-detail colored pencil and mixed-media portrait illustration of a man. Maintain accurate identity and precise face matching to the provided reference image. The composition is a close-up, head-and-upper-shoulders-only framing, perfectly centered, His shoulders is turned slightly (about 10–15 degrees) to right side, while his head is subtly rotated back toward the camera, maintaining direct eye contact with the viewer. He wears a warm, confident smile with teeth visible, conveying charm and approachability. He is dressed in a tailored deep navy-blue suit jacket with fine texture, paired with a crisp white dress shirt and a vibrant, intricately patterned paisley tie featuring rich multicolor tones (reds, greens, yellows, and blues), adding a bold visual accent.
-The artwork blends contemporary digital illustration with traditional hand-drawn techniques, featuring visible pencil strokes, hatching, and cross-hatching that enhance depth and realism. His skin tone is natural warm and lifelike, enriched with subtle chromatic highlights—hints of warm reds, soft yellows, and cool greens—creating a dynamic, painterly effect.
-His hair is dark, and neatly styled back with defined texture and volume, rendered with precise linework and highlights. Facial features are sharp and well-defined, including a strong jawline, expressive eyes, and subtle skin detailing for realism.
-The background is a highly detailed textured white pencil-rendered surface, fine-grain drawing paper. It is enriched with expressive, hand-drawn colored pencil strokes and layered shading in vivid tones—magenta, deep purple, bright green, yellow, and subtle hints of blue—radiating outward from behind the subject’s head. Visible pencil marks, cross-hatching, and soft blending techniques create depth and movement, adding dynamic artistic contrast while maintaining clear focus on the subject.
-Bottom Effect: The lower portion (chest and shoulders) gradually dissolves into loose pencil strokes, soft hatching, and fragmented color, fading into the paper background for an unfinished artistic effect while keeping the face and upper details sharp.
-Lighting is bright and frontal, producing clean, luminous highlights on the forehead, nose, cheekbones, and hair, with soft, controlled shadows that maintain clarity and detail.
-Shot from an eye-level. Ultra-sharp focus, hyper-detailed rendering, vibrant color grading, and a premium editorial illustration aesthetic. Resolution: 8K. Aspect Ratio: 4:5. Style Keywords: Detailed colored pencil illustration, cross-hatching, hyper-realistic drawing, vibrant abstract background, fine art portrait, editorial illustration, masterpiece quality.</div>
-                <button onclick="copiarPrompt('p_desenhoplinio', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Mãe e filho</h3>
-                <div class="prompt-box" id="p_maefilho">Sheila Barros Ilustração digital estilo caricatura semi-realista ultra detalhada, retrato de casal sorrindo em pose selfie muito próxima da câmera, composição vertical, fundo branco minimalista com leves rabiscos artísticos azul-claro feitos à mão. Homem à esquerda com rosto levemente exagerado em perspectiva grande-angular, nariz um pouco ampliado, sorriso divertido e expressão simpática, cabelo médio escuro levemente bagunçado repartido ao meio, barba curta e bigode bem definidos, usando camisa polo azul vibrante com detalhes internos vinho e pequeno logo bordado vermelho no peito. Mulher à direita encostando a cabeça no ombro dele, expressão extremamente feliz e acolhedora, sorriso aberto mostrando os dentes, cabelos cacheados escuros volumosos, usando óculos finos transparentes/metalizados discretos, colar artesanal com pingentes coloridos e blusa azul sem mangas com detalhe náutico branco.
-Estilo artístico híbrido entre sketch tradicional e pintura digital premium, linhas pretas desenhadas à mão com traços orgânicos e soltos, mistura de aquarela suave com lápis de cor e tinta digital, textura visível de ilustração editorial moderna, aparência semelhante a caricatura artística feita para revista ou retrato personalizado profissional. Proporções faciais levemente exageradas mas mantendo fidelidade e carisma dos personagens. Iluminação suave e limpa, cores vivas porém naturais, pele com textura delicada e pinceladas sutis. Atmosfera alegre, afetiva e descontraída.
-Ultra detailed, expressive faces, hand-drawn ink outlines, watercolor texture, colored pencil shading, modern caricature portrait, semi-realistic comic illustration, high detail eyes, soft shadows, premium digital painting, sketchbook aesthetic, white clean background, candid couple selfie vibe, slightly distorted wide-angle facial perspective, charming and humorous style, cinematic artistic portrait, 4K.
-**NEGATIVE PROMPT:**
-fotorealismo extremo, 3D render, baixa resolução, mãos deformadas, olhos tortos, excesso de blur, pele plástica, fundo poluído, sombras pesadas, cores lavadas, expressão triste, arte infantil, anime, cartoon simples, deformações grotescas, arte borrada, múltiplos membros, dentes deformados, óculos tortos, rosto duplicado, traços rígidos.</div>
-                <button onclick="copiarPrompt('p_maefilho', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Clone 3D Perfeito</h3>
-                <div class="prompt-box" id="p_clone3d">Create a 4:5 vertical premium cinematic portrait of me standing beside a cute soft 3D animated version of myself.
-The real subject stands on the right and the animated version stands on the left. Both subjects stand close together against a dark warm-gray urban concrete wall with subtle texture. Their body language should feel relaxed, natural, and grounded, as if they are standing very near the wall and lightly resting against it. Both subjects have their arms crossed. Keep only a very subtle outward/back-to-back angle, not a strong side pose. Their shoulders may lightly brush or stay very close, while both faces remain turned toward the camera.
-The real subject should be fully photorealistic, with accurate facial likeness, natural skin texture, realistic hair, expressive eyes, and a soft confident smile. He wears a black oversized printed t-shirt with a bold modern urban chest graphic and blue slightly distressed jeans.
-The animated version should be the same subject in a cute premium 3D animated form. The rendering must be soft, smooth, warm, and polished, with gentle rounded features, expressive eyes, and a charming Pixar-like softness.
-He must be clearly smaller than the real subject in both height and overall visual mass. The real subject must remain the main dominant subject, and the animated version must feel like a small companion version of the same person. Give the animated version a mini compact body, narrow small shoulders, short torso, short arms and legs, and a larger expressive head, but do not make him visually overpowering or too wide. He should feel light, compact, cute, and secondary in the frame. He wears a matching black printed t-shirt and blue distressed jeans.
-Lighting is very important: Use soft, balanced, bright-enough cinematic lighting — not dark, not flat, and not over-bright. The faces, t-shirts, and jeans should be clearly visible, with soft frontal / slightly top-front illumination and a smooth warm-neutral tone. Keep the background slightly blurred, moodier and slightly darker than the subjects. Preserve the soft deep wall-shadow effect behind the animated subject and between both subjects, so the image has depth, richness, and a premium cinematic feel. The result should look well-lit but still moody, exactly like the original image.
-The background should remain a simple dark muted gray urban wall with subtle concrete texture, soft tonal variation, softly blurred and no strong design, no graffiti, no posters, and no distractions.
-The final image should feel like a premium real-person + animated-self portrait, with soft polished animated rendering, correct size hierarchy, bright-enough cinematic lighting, relaxed wall-side pose, and a clearly smaller cute animated companion.
-Important locks: Keep the real subject visually dominant. Keep the animated version clearly smaller and lighter in visual presence. Keep the soft wall-shadow depth. Keep the dark warm-gray urban wall. Keep the animated rendering soft, smooth, and cute. Maintain 4:5 vertical aspect ratio.</div>
-                <button onclick="copiarPrompt('p_clone3d', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">4 Gerações</h3>
-                <div class="prompt-box" id="p_4geracoes">#Prompt
-Criar retrato artístico de estúdio com 4 gerações da mesma pessoa (referência de rosto), organizadas em composição diagonal vertical, da versão mais idosa na parte superior até a versão mais jovem na parte inferior. Todas as versões do rosto voltadas para a mesma direção, com iluminação baixa e dramática.
-Fundo preto profundo, textura de pele altamente detalhada e tons suaves e refinados. A transição de idade deve parecer natural: versão idosa, versão madura, versão adulta, versão jovem e versão criança sorrindo.
-Estilo fotográfico ultra-realista, elegante e sofisticado, foco nítido, sombras ricas e resolução 8K.</div>
-                <button onclick="copiarPrompt('p_4geracoes', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">PROMPT Brasil Seleção</h3>
-                <div class="prompt-box" id="p_brasil">Crie um pôster cinematográfico ultra realista de um jogador da Seleção brasileira de futebol. A arte deve ser inspirada em campanhas dramáticas da Seleção Brasileira, com estética emocional, épica e sombria. A composição deve conter: Um close principal do rosto da pessoa ocupando grande parte da imagem. Uma segunda versão da mesma pessoa ao fundo, de corpo inteiro, caminhando de cabeça baixa no gramado. Expressão séria, decepcionada e determinada. Uniforme amarelo da Seleção Brasileira estilo Copa do Mundo. Número 10 na camisa e no short. Suor realista na pele. Iluminação cinematográfica forte vindo de cima. Atmosfera noturna em estádio lotado. Luzes de estádio desfocadas ao fundo. Fumaça escura e textura dramática. Escudo gigante da CBF desfocado atrás do personagem.
-A paleta de cores deve conter: dourado escuro, amarelo intenso, preto cinematográfico, azul escuro, verde discreto. A imagem precisa parecer um pôster oficial da Netflix ou FIFA, extremamente realista e emocional.
-Adicionar: granulação cinematográfica, contraste forte, sombras profundas, detalhes hiper-realistas, profundidade de campo, iluminação volumétrica, textura premium de pôster esportivo.
-Inserir os textos exatamente assim: "ÚLTIMA CHANCE". “BORA PRO”. “HEXA”.
-E abaixo: “NEM SEMPRE O SONHO TEM O FINAL QUE A GENTE ESPERA. FORÇA! ESSA VAI DEFINIR A SUA HISTÓRIA.”
-O texto “BORA” deve estar gigante, branco, com textura desgastada. O texto “HEXA” deve estar em fonte cursiva dourada, estilo pincel. O nome da pessoa deve aparecer acima. Rodapé com assinatura de artista no canto "Plinio Studio" em letras espaçadas e minimalistas. Inserir o escudo da CBF na parte inferior da arte.
-Estilo visual: cinematic sports poster, FIFA World Cup aesthetic, Nike football campaign, emotional storytelling, dramatic sports poster, ultra realistic, 8k, movie poster composition, high detail skin texture, dark atmosphere, realistic football photography. Proporção vertical 4:5.</div>
-                <button onclick="copiarPrompt('p_brasil', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">3D Impressionante (Estilo Tim Burton)</h3>
-                <div class="prompt-box" id="p_timburton">3D Pixar-style caricature with a Tim Burton touch, ultra-detailed, soft cinematic lighting coming from the window on the right, high-quality rendering.
-SETTING: Messy and cozy vintage kitchen, worn teal walls with stains, stained beige tiles behind the stove, old blue stove with 4 gold knobs, peeling teal cabinets, pots and pans hanging on the wall, window with half-open wooden shutter on the right, table with red-blue-white checkered tablecloth, coffee cup on the table, morning with diffused natural light.
-CHARACTER: Proportion: Disproportionately large head, about 40% of the total body height. Thin and long neck. Small, thin, and slightly awkward body. Face: Huge, round, bulging eyes, dark irises with a lot of shine, pronounced bluish-gray dark circles under the eyes, arched eyebrows, small, upturned nose, small mouth with an expression of extreme tiredness/bad mood, lips pursed downwards, subtle freckles on the cheeks. Hair: Extremely exaggerated volume, frizzy and messy as if it had been electrocuted, strands flying everywhere, detailed texture strand by strand. [ADAPT: use the color, length, and texture of the hair from the reference image]. Pose: Sitting at the kitchen table, elbows resting on the table, holding a large mug of coffee with both hands, body slightly leaning forward. Clothing: Long-sleeved pajamas with a print, buttons down the front. [USE RANDOM COLORS: change the color of the pajamas and the print each generation, keep only the clothing style]. Expression: Exhausted, just woke up, needing coffee to function.
-[ADAPT FROM REFERENCE]: Use the gender, eye color, hair color, and hair length of the person in the reference image. If the person wears glasses in the reference, add large, round, cartoon-style glasses. Maintain the same proportion of a large head and thin body regardless of gender.
-ARTISTIC STYLE: Realistic textures on skin and fabrics, digital painting with visible brushstrokes in the background, high contrast, depth of field, slightly desaturated colors with vibrant color accents, "cute but creepy" aesthetic. COMPOSITION: Half-body framing, centered character, camera at eye level. 5:7 aspect ratio, portrait format. Insert a discreet watermark in the lower right corner of the image, vertical text (rotated 90°), written "PromotersMX", Calibri Light font, white color with low opacity (semi-transparent), medium size.</div>
-                <button onclick="copiarPrompt('p_timburton', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompts Para Agência (Opção 1)</h3>
-                <div class="prompt-box" id="p_agencia1">Ultra-detailed cinematic marketing poster for an AI Agency and Hub IA platform, futuristic dark-mode aesthetic, premium SaaS advertisement style, black and deep navy blue gradient background with glowing neon blue and gold accents, highly professional Brazilian marketing campaign design. Main title at top left: “Agência de Marketing e Hub IA”. Huge typography, modern bold sans-serif font, elegant hierarchy, white and gold text. Subtitle: “Tudo que você precisa. Em um só lugar.” Main composition: A realistic handsome man holding a tiny Pixar-style 3D cartoon version of himself in the palm of his hand, smiling and pointing at the miniature character. Reduce character scale slightly to prioritize marketing content and informational blocks. Studio portrait photography lighting, soft cinematic glow, realistic skin textures, shallow depth of field, luxury advertising look, 50mm lens, IMAX quality, ultra realistic. Miniature character: Pixar-inspired 3D style, expressive face, oversized head, charming cartoon proportions, modern casual clothing.
-Add futuristic glowing UI panels around the composition explaining the Hub IA ecosystem: Inteligência Artificial, Automação, Gerador de Imagens, Gerador de Vídeos, Social Media, Análise de Dados, Voz & Narração, Integrações, Escalabilidade.
-Add section: “VANTAGENS PARA FRANQUIAS E PARCERIAS” with glowing bullet points: Plataforma White Label, Treinamento Completo, Ferramentas Premium, Atualizações Constantes, Escalabilidade Ilimitada, Modelo Lucrativo, Comunidade de Parceiros.
-Add large CTA section at bottom: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Huge glowing gold button: “FAÇA PARTE AGORA”. Modern dashboard interface mockup displayed in lower center/right area, futuristic AI SaaS interface with analytics, automation icons, image/video generation tools and neon UI cards. Style: Apple + OpenAI + futuristic SaaS startup aesthetic, premium cinematic advertising campaign, volumetric lighting, glossy UI, soft reflections, subtle particles, ultra clean layout. Color palette: Deep navy blue, black, electric blue neon, gold accents, white typography. Composition: Balanced infographic style, highly readable, social-media optimized, Instagram/Facebook ad format. Aspect ratio 4:5 and 9:16 versions. 8K resolution. Ultra sharp. Photorealistic. Cinematic advertising design.</div>
-                <button onclick="copiarPrompt('p_agencia1', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompts Para Agência (Opção 2)</h3>
-                <div class="prompt-box" id="p_agencia2">3D Pixar-style cinematic marketing campaign poster for a futuristic AI Hub platform called “Hub IA”, modern premium dark interface design, Brazilian startup advertisement aesthetic, glowing neon blue UI elements. Scene: A realistic man in studio lighting holding a tiny stylized Pixar version of himself on his hand while pointing at the miniature character with excitement and surprise. The miniature character is intentionally smaller to give visual priority to business information panels and franchise marketing content. Background: Dark luxury gradient with subtle futuristic lighting rings, cinematic glow, depth and premium atmosphere.
-Add futuristic floating holographic panels showing: IA Generativa, Marketing Automatizado, Produção de Conteúdo, Geração de Vídeo, Geração de Imagens, Gestão de Redes Sociais, Analytics, Escala Empresarial.
-Large bold typography: “Agência de Marketing e Hub IA”. Secondary headline: “Transforme inteligência em resultados.” Main CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”.
-Add glowing premium cards: Franquias, Parceiros, Afiliados, Criadores, Agências, Empreendedores. Futuristic SaaS dashboard interface at bottom center with neon borders and realistic UI. Style references: OpenAI presentation aesthetic, Apple keynote visuals, modern AI startup branding, cinematic advertisement, ultra polished infographic. Lighting: Soft studio lighting + blue rim light + subtle volumetric glow. Textures: Hyper-detailed skin, realistic fabric, glossy interface elements. Camera: 50mm lens, cinematic depth of field, IMAX quality. Colors: Black, dark navy, electric blue, gold, white. 8K. Ultra detailed. Photorealistic. Social media premium ad.</div>
-                <button onclick="copiarPrompt('p_agencia2', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-
-            <div class="prompt-card" style="padding: 20px;">
-                <h3 style="color: #FFF; font-size: 1.2rem; margin-bottom: 10px;">Prompts Para Agência (Opção 3)</h3>
-                <div class="prompt-box" id="p_agencia3">Luxury cinematic promotional artwork for an AI Marketing Agency and AI Hub ecosystem, futuristic business poster, modern technology startup branding. Top text: “Agência de Marketing e Hub IA”. Main visual: Professional man holding a tiny cartoon Pixar-style miniature version of himself in his palm, expressive interaction, realistic studio portrait mixed with stylized 3D animation aesthetics. Reduce prominence of the cartoon figure slightly and increase focus on franchise/business opportunity messaging.
-Add glowing sections explaining: “O QUE É O HUB IA?” A complete AI ecosystem for: automação, marketing, conteúdo, IA generativa, vídeos, imagens, produtividade.
-Main business opportunity section: “VANTAGENS PARA FRANQUIAS E PARCERIAS”. Include: White Label, Suporte Completo, Tecnologia Proprietária, Ferramentas Premium, Monetização Escalável, Comunidade Exclusiva.
-Huge golden CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Modern futuristic dashboard screens floating in composition, holographic interface style.</div>
-                <button onclick="copiarPrompt('p_agencia3', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff;">Copiar Prompt</button>
-            </div>
-        </div>
-
     </main>
 
     <footer class="footer-section" style="padding: 40px 20px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 40px; margin-bottom: 80px;">
@@ -610,64 +395,6 @@ Huge golden CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Modern futuristic
         </a>
     </nav>
 
-    <div class="modal-overlay" id="modalAcervo2026">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalAcervo2026()">×</span>
-            <h3>Área Restrita (Acervo)</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="inputAcervo2026" class="modal-input" placeholder="****">
-            <button onclick="verificarAcervo2026()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalGeradorCompleto">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalGeradorCompleto()">×</span>
-            <h3>Gerador Completo</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="****">
-            <button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalPlanosGerador">
-        <div class="modal-content" style="border-top-color: #EF4444;">
-            <span class="close-modal" onclick="fecharModalPlanos()">×</span>
-            <h3>Acesso Restrito</h3>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Senha incorreta ou plano inativo.</p>
-            <a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalArsenal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalArsenal()">×</span>
-            <h3>Acesso Restrito</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a <strong>Segunda Senha</strong> para <strong id="appNameDisplay" style="color: var(--accent-primary);"></strong>.</p>
-            <input type="password" id="arsenalInput" class="modal-input" placeholder="****">
-            <button onclick="verificarArsenal()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalPremium">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalPremium()">×</span>
-            <h3>Acesso Restrito</h3>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Este é um Prompt Premium de alta complexidade.</p>
-            <a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank">Adquirir Premium</a>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalGaleriaInfinita">
-        <div class="modal-content">
-            <span class="close-modal" onclick="fecharModalGaleriaInfinita()">×</span>
-            <h3>Galeria Infinita</h3>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="****">
-            <button onclick="verificarGaleriaInfinita()" class="modal-btn">AUTENTICAR</button>
-        </div>
-    </div>
-
     <div class="modal-overlay" id="customModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModalFunc()">×</span>
@@ -678,10 +405,7 @@ Huge golden CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Modern futuristic
         </div>
     </div>
 
-    <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
-
     <script>
-        // Lógica de Interface Geral
         function toggleMenu() {
             const menu = document.getElementById('sideMenu');
             const overlay = document.getElementById('menuOverlay');
@@ -690,39 +414,19 @@ Huge golden CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Modern futuristic
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
         }
 
-        // JS ORIGINAL INTACTO DOS ALUNOS
+        // --- ATUALIZAÇÃO DA LISTA DE ALUNOS ---
         const listaDeAlunosGlobais = [
             { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
             { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
             { nome: "Luciene Pinto", senha: "4756" }, { nome: "Maria Eduarda", senha: "7109" }, { nome: "Maria Mentora", senha: "8234" },
-            { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, { nome: "Wilma Duarte", senha: "3904" }
+            { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, 
+            { nome: "Wilma Duarte", senha: "3904" },
+            // Novos alunos adicionados com senhas provisórias
+            { nome: "Rock Bone", senha: "7711" }, { nome: "Ederaldo Lemos", senha: "7722" }, { nome: "Luciene Simões", senha: "7733" }, { nome: "Potira", senha: "7744" }
         ];
-
-        let appSelecionadoGlobal = '';
-        function abrirModalArsenal(app) {
-            appSelecionadoGlobal = app;
-            document.getElementById('appNameDisplay').innerText = app;
-            document.getElementById('arsenalInput').value = '';
-            document.getElementById('modalArsenal').classList.add('active');
-        }
-        function fecharModalArsenal() { document.getElementById('modalArsenal').classList.remove('active'); }
-        function verificarArsenal() {
-            const pass = document.getElementById('arsenalInput').value.trim();
-            const alunoVerificado = listaDeAlunosGlobais.find(a => a.senha === pass);
-            if (alunoVerificado) {
-                fecharModalArsenal();
-                window.open('https://play.google.com/store/search?q=' + encodeURIComponent(appSelecionadoGlobal) + '&c=apps', '_blank');
-            } else {
-                alert('Segunda Senha incorreta! O acesso ao Arsenal é restrito.');
-            }
-        }
 
         function togglePrompt(id, btnElement) { const content = document.getElementById(id); if (content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; btnElement.innerHTML = "Mostrar Prompt"; } else { content.style.maxHeight = content.scrollHeight + "px"; btnElement.innerHTML = "Ocultar Prompt"; } }
         function copiarPrompt(textId, btnElement) { const textToCopy = document.getElementById(textId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = btnElement.innerHTML; btnElement.innerHTML = "Copiado!"; setTimeout(() => { btnElement.innerHTML = originalText; }, 3000); }); }
-        
-        const lightbox = document.getElementById('lightboxOverlay'); const lightboxImg = document.getElementById('lightboxImg');
-        function abrirLightbox(imgSrc) { lightboxImg.src = imgSrc; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function fecharLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
         
         const modal = document.getElementById('customModal'); const modalInput = document.getElementById('modalInput'); const btnSubmit = document.getElementById('modalSubmit');
         let currentType = '', currentTitle = '';
@@ -739,13 +443,15 @@ Huge golden CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Modern futuristic
             });
             listaHtml += '</div>';
             
-            // Verifica o nome do professor com base no título
             let nomeProf = titulo.toLowerCase().includes('mentoria') ? 'Mentora: Maria Freitas' : 'Professor: Plínio Fabrício';
             
+            // --- OS 4 APLICATIVOS AGORA FICAM EXCLUSIVOS DENTRO DA SALA ---
             const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | EAD</title><style>
             body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
             .ead-container { width: 100%; max-width: 500px; } .video-container { display: none; flex-direction: column; width: 100%; max-width: 800px; align-items:center; }
             h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 10px; text-align:center;}
+            .app-btn { background:#0B1015; border:1px solid #1F2937; border-radius:8px; padding:15px 5px; text-align:center; color:#00E5FF; text-decoration:none; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
+            .app-btn:hover { border-color: #00E5FF; background: #121820;}
             </style></head><body>
             <div class="ead-container" id="listaArea"><h1>${titulo}</h1>${listaHtml}</div>
             <div class="video-container" id="videoArea">
@@ -755,13 +461,23 @@ Huge golden CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Modern futuristic
                     <h2 style="color:#FFF;">Sua Aula</h2>
                     <p style="color:#8292A6;">Conteúdo: ${nomeProf}</p>
                     <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="display:inline-block; margin-top:15px; background:#00E5FF; color:#000; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">Acessar Link da Mentoria</a>
+                    
+                    <div style="margin-top: 30px; border-top: 1px solid #1F2937; padding-top: 20px;">
+                        <h3 style="color:#FFF; text-align:center; margin-bottom: 15px; font-size: 1.1rem;">Arsenal Indispensável (Apenas Alunos)</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px;">
+                            <a href="https://play.google.com/store/search?q=CapCut&c=apps" target="_blank" class="app-btn">CapCut</a>
+                            <a href="https://play.google.com/store/search?q=VN+Video+Editor&c=apps" target="_blank" class="app-btn">VN Editor</a>
+                            <a href="https://play.google.com/store/search?q=Lightroom+Mobile&c=apps" target="_blank" class="app-btn">Lightroom</a>
+                            <a href="https://play.google.com/store/search?q=Snapseed&c=apps" target="_blank" class="app-btn">Snapseed</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,16,21,0.9); justify-content:center; align-items:center;">
                 <div style="background:#121820; padding:30px; border-radius:12px; border:1px solid #1F2937; text-align:center;">
                     <h3 style="color:#FFF; margin-bottom:15px;">Senha</h3>
                     <input type="password" id="alunoSenha" placeholder="****" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px; background: #000; color: #fff; border: 1px solid #1F2937;"><br>
-                    <button onclick="verificarSenhaAluno()" style="background:#3B82F6; color:#FFF; padding:10px 20px; border:none; border-radius:6px; font-weight:bold; cursor: pointer;">Entrar</button>
+                    <button onclick="verificarSenhaAluno()" style="background:#00E5FF; color:#000; padding:10px 20px; border:none; border-radius:6px; font-weight:bold; cursor: pointer;">Entrar</button>
                 </div>
             </div>
             <script>
@@ -782,35 +498,35 @@ Huge golden CTA: “SEJA ALUNO OU FRANQUEADO DA PLATAFORMA”. Modern futuristic
             } else { alert("Senha Incorreta"); }
         });
 
-        // NOVAS FUNÇÕES PARA O ACERVO 2026
-        function abrirModalAcervo2026() { document.getElementById('modalAcervo2026').classList.add('active'); document.getElementById('inputAcervo2026').value = ''; }
-        function fecharModalAcervo2026() { document.getElementById('modalAcervo2026').classList.remove('active'); }
-        function verificarAcervo2026() {
-            const senha = document.getElementById('inputAcervo2026').value.trim().toLowerCase();
-            if (senha === 'studio') {
-                fecharModalAcervo2026();
-                document.getElementById('conteudoAcervo2026').style.display = 'block';
-            } else { alert('Senha incorreta! Acesso restrito.'); }
+        // --- LÓGICA DE INSTALAÇÃO PWA ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                .catch((error) => console.log('Falha no Service Worker:', error));
+            });
         }
 
-        function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
-        function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
-        function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
-        function abrirModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.add('active'); document.getElementById('inputGeradorCompleto').value = ''; }
-        function fecharModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.remove('active'); }
-        function verificarGeradorCompleto() {
-            const senha = document.getElementById('inputGeradorCompleto').value.trim().toLowerCase();
-            fecharModalGeradorCompleto();
-            if (senha === 'studio') { window.open('https://veoaifree.com/veo-video-generator/', '_blank'); } 
-            else { document.getElementById('modalPlanosGerador').classList.add('active'); }
-        }
-        function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
-        function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); document.getElementById('inputGaleriaInfinita').value = ''; }
-        function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
-        function verificarGaleriaInfinita() {
-            if (document.getElementById('inputGaleriaInfinita').value.trim().toLowerCase() === 'studio') {
-                fecharModalGaleriaInfinita(); window.open('https://aiedits.net/', '_blank'); 
-            } else { alert('Senha incorreta!'); }
+        let eventoInstalacao;
+        const areaInstalacao = document.getElementById('areaInstalacao');
+        const btnInstalar = document.getElementById('btnInstalar');
+
+        window.addEventListener('beforeinstallprompt', (evento) => {
+            evento.preventDefault();
+            eventoInstalacao = evento;
+            areaInstalacao.style.display = 'block'; // Mostra o banner estiloso
+        });
+
+        if (btnInstalar) {
+            btnInstalar.addEventListener('click', async () => {
+                if (eventoInstalacao) {
+                    eventoInstalacao.prompt();
+                    const escolha = await eventoInstalacao.userChoice;
+                    if (escolha.outcome === 'accepted') {
+                        areaInstalacao.style.display = 'none';
+                    }
+                    eventoInstalacao = null;
+                }
+            });
         }
     </script>
 </body>
