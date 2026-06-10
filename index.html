@@ -7,6 +7,9 @@
     <meta name="theme-color" content="#0B1015">
     
     <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="192x192" href="icone-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icone-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icone-512.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,6 +75,53 @@
         .header-icons { display: flex; gap: 16px; align-items: center; }
         .header-icons svg { width: 24px; height: 24px; fill: none; stroke: var(--text-muted); stroke-width: 2; cursor: pointer; transition: 0.3s; }
         .header-icons svg:hover { stroke: #FFF; }
+
+        /* --- SEÇÃO DE INSTALAÇÃO DO APP (PWA) --- */
+        .pwa-install-banner {
+            display: none;
+            background: linear-gradient(135deg, #121820 0%, #0B1015 100%);
+            border: 1px solid var(--accent-primary);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 550px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+        }
+        .pwa-install-banner h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #FFF;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .pwa-install-banner p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .pwa-btn {
+            background-color: var(--accent-primary);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+        }
+        .pwa-btn:hover {
+            background-color: #FFF;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
+        }
 
         /* --- MENU LATERAL INTEGRADO AO JS --- */
         .side-menu {
@@ -168,16 +218,41 @@
         .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
 
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        /* --- DESIGN DE LOGIN ULTRA MODERNO (GLASSMORPHISM) --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--bg-card); border-top: 4px solid var(--accent-primary); border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);}
-        .close-modal { position: absolute; top: 15px; right: 20px; color: var(--text-muted); font-size: 2rem; cursor: pointer; transition: 0.3s; line-height: 1; }
-        .close-modal:hover { color: #FFF; }
-        .modal-content h3 { font-size: 1.4rem; color: #FFF; margin-bottom: 10px;}
-        .modal-input { width: 100%; padding: 16px; margin-bottom: 20px; background: rgba(0,0,0,0.3); color: #FFF; border: 1px solid var(--border-color); border-radius: 8px; text-align: center; font-size: 1.2rem; transition: 0.3s; font-weight: 600; letter-spacing: 2px; }
-        .modal-input:focus { border-color: var(--accent-primary); outline: none; }
-        .modal-btn { background: var(--accent-secondary); color: #ffffff; padding: 16px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
-        .modal-btn:hover { background-color: #2563EB; }
+        .modal-content { 
+            background: rgba(18, 24, 32, 0.75); 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 4px solid var(--accent-primary); 
+            border-radius: 24px; 
+            padding: 40px 30px; 
+            width: 90%; 
+            max-width: 400px; 
+            text-align: center; 
+            position: relative; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .close-modal { position: absolute; top: 18px; right: 22px; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: 0.3s; line-height: 1; }
+        .close-modal:hover { color: var(--accent-primary); }
+        .modal-content h3 { font-size: 1.4rem; font-weight: 800; color: #FFF; margin-bottom: 8px; letter-spacing: -0.5px;}
+        .modal-input { 
+            width: 100%; 
+            padding: 16px; 
+            margin-bottom: 20px; 
+            background: rgba(0, 0, 0, 0.4); 
+            color: #FFF; 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            text-align: center; 
+            font-size: 1.3rem; 
+            transition: 0.3s; 
+            font-weight: 700; 
+            letter-spacing: 4px; 
+        }
+        .modal-input:focus { border-color: var(--accent-primary); box-shadow: 0 0 15px rgba(0,229,255,0.2); outline: none; }
+        .modal-btn { background: linear-gradient(135deg, var(--accent-secondary) 0%, #1D4ED8 100%); color: #ffffff; padding: 16px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+        .modal-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
         
         .btn-whats-modal { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; width: 100%; border: none; cursor: pointer;}
         .btn-whats-modal svg { width: 18px; height: 18px; fill: currentColor; }
@@ -213,13 +288,10 @@
         </div>
     </header>
 
-    <div id="areaInstalacao" style="display: none; text-align: center; padding: 15px; background-color: var(--accent-primary); border-bottom: 2px solid var(--border-color);">
-        <p style="margin: 0 0 10px 0; font-family: sans-serif; color: #000; font-weight: 700; font-size: 14px;">
-            Tenha a melhor experiência! Instale nossa plataforma no seu celular.
-        </p>
-        <button id="btnInstalar" style="background-color: var(--bg-main); color: var(--accent-primary); border: 1px solid var(--border-color); padding: 10px 20px; font-size: 14px; border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; box-shadow: 0px 4px 6px rgba(0,0,0,0.3); transition: 0.3s;">
-            📲 Instalar Aplicativo
-        </button>
+    <div id="areaInstalacaoPWA" class="pwa-install-banner">
+        <h2>⚡ Aplicativo Oficial Plínio Studio</h2>
+        <p>Fixe a nossa escola audiovisual e galeria de prompts diretamente na tela do seu celular sem usar espaço de memória.</p>
+        <button id="btnInstalarPWA" class="pwa-btn">📲 Instalar App no Aparelho</button>
     </div>
 
     <div class="overlay" id="menuOverlay" onclick="toggleMenu()"></div>
@@ -248,7 +320,6 @@
     </div>
 
     <main class="app-container">
-        
         <div class="profile-bar">
             <img src="https://yt3.ggpht.com/Dpau1KLU7AiVpNVo1o5nadS3Cbf1vktg1kQ3E6R64tZQMclzUSiciM6YSdpaYvpnSM5rAFPW3w=s176-c-k-c0x00ffffff-no-rj" alt="Plínio Fabrício">
             <div class="profile-info">
@@ -362,7 +433,6 @@
                 <button onclick="abrirModalAcervo2026()" class="btn-action btn-action-outline">Desbloquear Acervo Completo</button>
             </div>
         </div>
-
     </main>
 
     <footer class="footer-section" style="padding: 40px 20px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 40px; margin-bottom: 80px;">
@@ -399,13 +469,21 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModalFunc()">×</span>
             <h3 id="modalTitle">Área Restrita</h3>
-            <p id="modalDesc" style="color: var(--text-muted); margin-bottom: 25px;">Insira a senha de acesso:</p>
-            <input type="password" id="modalInput" class="modal-input" placeholder="****">
-            <button id="modalSubmit" class="modal-btn">ENTRAR</button>
+            <p id="modalDesc" style="color: var(--text-muted); margin-bottom: 25px; font-size:0.9rem;">Insira o código de aluno para acessar:</p>
+            <input type="password" id="modalInput" class="modal-input" placeholder="••••">
+            <button id="modalSubmit" class="modal-btn">ENTRAR NA SALA</button>
         </div>
     </div>
 
+    <div class="modal-overlay" id="modalAcervo2026"><div class="modal-content"><span class="close-modal" onclick="fecharModalAcervo2026()">×</span><h3>Área Restrita (Acervo)</h3><p style="color:var(--text-muted);margin-bottom:25px;">Insira a senha de acesso:</p><input type="password" id="inputAcervo2026" class="modal-input" placeholder="••••"><button onclick="verificarAcervo2026()" class="modal-btn">AUTENTICAR</button></div></div>
+    <div class="modal-overlay" id="modalGeradorCompleto"><div class="modal-content"><span class="close-modal" onclick="fecharModalGeradorCompleto()">×</span><h3>Gerador Completo</h3><p style="color:var(--text-muted);margin-bottom:25px;">Insira a senha de acesso:</p><input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="••••"><button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button></div></div>
+    <div class="modal-overlay" id="modalPlanosGerador"><div class="modal-content" style="border-top-color:#EF4444;"><span class="close-modal" onclick="fecharModalPlanos()">×</span><h3>Acesso Restrito</h3><p style="color:var(--text-muted);margin-bottom:20px;">Senha incorreta ou plano inativo.</p><a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a></div></div>
+    <div class="modal-overlay" id="modalPremium"><div class="modal-content"><span class="close-modal" onclick="fecharModalPremium()">×</span><h3>Acesso Restrito</h3><p style="color:var(--text-muted);margin-bottom:30px;">Este é um Prompt Premium de alta complexidade.</p><a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank">Adquirir Premium</a></div></div>
+    <div class="modal-overlay" id="modalGaleriaInfinita"><div class="modal-content"><span class="close-modal" onclick="fecharModalGaleriaInfinita()">×</span><h3>Galeria Infinita</h3><p style="color:var(--text-muted);margin-bottom:25px;">Insira a senha de acesso:</p><input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="••••"><button onclick="verificarGaleriaInfinita()" class="modal-btn">AUTENTICAR</button></div></div>
+    <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
+
     <script>
+        // --- GERAL DA INTERFACE ---
         function toggleMenu() {
             const menu = document.getElementById('sideMenu');
             const overlay = document.getElementById('menuOverlay');
@@ -414,14 +492,14 @@
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
         }
 
-        // --- ATUALIZAÇÃO DA LISTA DE ALUNOS ---
+        // --- LISTA DE ALUNOS COM OS 4 NOVOS INTEGRADOS ---
         const listaDeAlunosGlobais = [
             { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
             { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
             { nome: "Luciene Pinto", senha: "4756" }, { nome: "Maria Eduarda", senha: "7109" }, { nome: "Maria Mentora", senha: "8234" },
             { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, 
             { nome: "Wilma Duarte", senha: "3904" },
-            // Novos alunos adicionados com senhas provisórias
+            // Novos alunos comandantes lincados
             { nome: "Rock Bone", senha: "7711" }, { nome: "Ederaldo Lemos", senha: "7722" }, { nome: "Luciene Simões", senha: "7733" }, { nome: "Potira", senha: "7744" }
         ];
 
@@ -435,6 +513,7 @@
         document.querySelectorAll('.js-link').forEach(card => { card.addEventListener('click', () => abrirModal(card.dataset.tipo, card.dataset.titulo)); });
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
+        // --- SISTEMA EAD COM OS 20 APPS EXCLUSIVOS DO ARSENAL INTERNO ---
         function abrirPlataforma(titulo) {
             const janela = window.open('', '_blank');
             let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
@@ -445,30 +524,46 @@
             
             let nomeProf = titulo.toLowerCase().includes('mentoria') ? 'Mentora: Maria Freitas' : 'Professor: Plínio Fabrício';
             
-            // --- OS 4 APLICATIVOS AGORA FICAM EXCLUSIVOS DENTRO DA SALA ---
+            // Injeção exata dos 20 apps dentro do ambiente de segurança da aula
             const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | EAD</title><style>
             body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
             .ead-container { width: 100%; max-width: 500px; } .video-container { display: none; flex-direction: column; width: 100%; max-width: 800px; align-items:center; }
             h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 10px; text-align:center;}
-            .app-btn { background:#0B1015; border:1px solid #1F2937; border-radius:8px; padding:15px 5px; text-align:center; color:#00E5FF; text-decoration:none; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
+            .app-btn { background:#0B1015; border:1px solid #1F2937; border-radius:8px; padding:12px 4px; text-align:center; color:#00E5FF; text-decoration:none; font-size: 0.75rem; font-weight: bold; transition: 0.3s; display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
             .app-btn:hover { border-color: #00E5FF; background: #121820;}
             </style></head><body>
             <div class="ead-container" id="listaArea"><h1>${titulo}</h1>${listaHtml}</div>
             <div class="video-container" id="videoArea">
-                <h1>Sala de Aula</h1>
+                <h1>Sala de Aula Virtual</h1>
                 <button onclick="window.close()" style="margin-bottom:20px; padding:10px; background:transparent; color:#00E5FF; border:1px solid #00E5FF; border-radius:8px; cursor: pointer;">Voltar para Plataforma</button>
                 <div style="background:#121820; padding:20px; border-radius:12px; border-left: 4px solid #00E5FF; width:100%;">
-                    <h2 style="color:#FFF;">Sua Aula</h2>
-                    <p style="color:#8292A6;">Conteúdo: ${nomeProf}</p>
+                    <h2 style="color:#FFF;">Sua Aula Liberada</h2>
+                    <p style="color:#8292A6;">${nomeProf}</p>
                     <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="display:inline-block; margin-top:15px; background:#00E5FF; color:#000; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold;">Acessar Link da Mentoria</a>
                     
                     <div style="margin-top: 30px; border-top: 1px solid #1F2937; padding-top: 20px;">
-                        <h3 style="color:#FFF; text-align:center; margin-bottom: 15px; font-size: 1.1rem;">Arsenal Indispensável (Apenas Alunos)</h3>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px;">
+                        <h3 style="color:#FFF; text-align:center; margin-bottom: 15px; font-size: 1.1rem; letter-spacing:0.5px;">Arsenal Completo (20 Apps Exclusivos)</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;">
                             <a href="https://play.google.com/store/search?q=CapCut&c=apps" target="_blank" class="app-btn">CapCut</a>
                             <a href="https://play.google.com/store/search?q=VN+Video+Editor&c=apps" target="_blank" class="app-btn">VN Editor</a>
                             <a href="https://play.google.com/store/search?q=Lightroom+Mobile&c=apps" target="_blank" class="app-btn">Lightroom</a>
                             <a href="https://play.google.com/store/search?q=Snapseed&c=apps" target="_blank" class="app-btn">Snapseed</a>
+                            <a href="https://play.google.com/store/search?q=Canva&c=apps" target="_blank" class="app-btn">Canva</a>
+                            <a href="https://play.google.com/store/search?q=Photoshop+Express&c=apps" target="_blank" class="app-btn">Photoshop Express</a>
+                            <a href="https://play.google.com/store/search?q=InShot&c=apps" target="_blank" class="app-btn">InShot</a>
+                            <a href="https://play.google.com/store/search?q=Remini&c=apps" target="_blank" class="app-btn">Remini IA</a>
+                            <a href="https://play.google.com/store/search?q=PicsArt&c=apps" target="_blank" class="app-btn">PicsArt</a>
+                            <a href="https://play.google.com/store/search?q=KineMaster&c=apps" target="_blank" class="app-btn">KineMaster</a>
+                            <a href="https://play.google.com/store/search?q=Alight+Motion&c=apps" target="_blank" class="app-btn">Alight Motion</a>
+                            <a href="https://play.google.com/store/search?q=PowerDirector&c=apps" target="_blank" class="app-btn">PowerDirector</a>
+                            <a href="https://play.google.com/store/search?q=Epik+Editor&c=apps" target="_blank" class="app-btn">Epik Photo</a>
+                            <a href="https://play.google.com/store/search?q=Veed.io&c=apps" target="_blank" class="app-btn">Veed Video</a>
+                            <a href="https://play.google.com/store/search?q=FaceApp&c=apps" target="_blank" class="app-btn">FaceApp</a>
+                            <a href="https://play.google.com/store/search?q=Photoroom&c=apps" target="_blank" class="app-btn">Photoroom</a>
+                            <a href="https://play.google.com/store/search?q=Lens+Distortions&c=apps" target="_blank" class="app-btn">Lens Distortions</a>
+                            <a href="https://play.google.com/store/search?q=VLLO&c=apps" target="_blank" class="app-btn">VLLO Editor</a>
+                            <a href="https://play.google.com/store/search?q=FilmoraGo&c=apps" target="_blank" class="app-btn">Filmora Mobile</a>
+                            <a href="https://play.google.com/store/search?q=ChatGPT&c=apps" target="_blank" class="app-btn">ChatGPT App</a>
                         </div>
                     </div>
                 </div>
@@ -476,7 +571,7 @@
             <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,16,21,0.9); justify-content:center; align-items:center;">
                 <div style="background:#121820; padding:30px; border-radius:12px; border:1px solid #1F2937; text-align:center;">
                     <h3 style="color:#FFF; margin-bottom:15px;">Senha</h3>
-                    <input type="password" id="alunoSenha" placeholder="****" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px; background: #000; color: #fff; border: 1px solid #1F2937;"><br>
+                    <input type="password" id="alunoSenha" placeholder="••••" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px; background: #000; color: #fff; border: 1px solid #1F2937;"><br>
                     <button onclick="verificarSenhaAluno()" style="background:#00E5FF; color:#000; padding:10px 20px; border:none; border-radius:6px; font-weight:bold; cursor: pointer;">Entrar</button>
                 </div>
             </div>
@@ -498,36 +593,45 @@
             } else { alert("Senha Incorreta"); }
         });
 
-        // --- LÓGICA DE INSTALAÇÃO PWA ---
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                .catch((error) => console.log('Falha no Service Worker:', error));
-            });
-        }
+        // --- SISTEMA INTERATIVO DE DOWNLOAD DO PWA ---
+        let acionadorPromptPWA;
+        const divInstalacao = document.getElementById('areaInstalacaoPWA');
+        const botaoInstalarPWA = document.getElementById('btnInstalarPWA');
 
-        let eventoInstalacao;
-        const areaInstalacao = document.getElementById('areaInstalacao');
-        const btnInstalar = document.getElementById('btnInstalar');
-
-        window.addEventListener('beforeinstallprompt', (evento) => {
-            evento.preventDefault();
-            eventoInstalacao = evento;
-            areaInstalacao.style.display = 'block'; // Mostra o banner estiloso
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            acionadorPromptPWA = e;
+            divInstalacao.style.display = 'block'; // Apresenta a área de clique para o utilizador
         });
 
-        if (btnInstalar) {
-            btnInstalar.addEventListener('click', async () => {
-                if (eventoInstalacao) {
-                    eventoInstalacao.prompt();
-                    const escolha = await eventoInstalacao.userChoice;
-                    if (escolha.outcome === 'accepted') {
-                        areaInstalacao.style.display = 'none';
+        if (botaoInstalarPWA) {
+            botaoInstalarPWA.addEventListener('click', async () => {
+                if (acionadorPromptPWA) {
+                    acionadorPromptPWA.prompt();
+                    const resultadoEscolha = await acionadorPromptPWA.userChoice;
+                    if (resultadoEscolha.outcome === 'accepted') {
+                        divInstalacao.style.display = 'none';
                     }
-                    eventoInstalacao = null;
+                    acionadorPromptPWA = null;
                 }
             });
         }
+
+        // --- MANUTENÇÃO DOS SCRIPTS ADICIONAIS ---
+        function abrirModalAcervo2026() { document.getElementById('modalAcervo2026').classList.add('active'); document.getElementById('inputAcervo2026').value = ''; }
+        function fecharModalAcervo2026() { document.getElementById('modalAcervo2026').classList.remove('active'); }
+        function verificarAcervo2026() { if (document.getElementById('inputAcervo2026').value.trim().toLowerCase() === 'studio') { fecharModalAcervo2026(); document.getElementById('conteudoAcervo2026').style.display = 'block'; } else { alert('Senha incorreta!'); } }
+        function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
+        function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
+        function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
+        function abrirModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.add('active'); document.getElementById('inputGeradorCompleto').value = ''; }
+        function fecharModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.remove('active'); }
+        function verificarGeradorCompleto() { const senha = document.getElementById('inputGeradorCompleto').value.trim().toLowerCase(); fecharModalGeradorCompleto(); if (senha === 'studio') { window.open('https://veoaifree.com/veo-video-generator/', '_blank'); } else { document.getElementById('modalPlanosGerador').classList.add('active'); } }
+        function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
+        function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); document.getElementById('inputGaleriaInfinita').value = ''; }
+        function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
+        function verificarGaleriaInfinita() { if (document.getElementById('inputGaleriaInfinita').value.trim().toLowerCase() === 'studio') { fecharModalGaleriaInfinita(); window.open('https://aiedits.net/', '_blank'); } else { alert('Senha incorreta!'); } }
+        function fecharLightbox() { document.getElementById('lightboxOverlay').classList.remove('active'); document.body.style.overflow = ''; }
     </script>
 </body>
 </html>
