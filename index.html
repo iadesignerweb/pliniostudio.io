@@ -470,6 +470,21 @@
         <h2 class="section-title">Galeria de Prompts</h2>
         
         <div class="prompt-card">
+            <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000cbd0720ea457e5efbcc32584.png')">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000cbd0720ea457e5efbcc32584.png" alt="Avatar Multiverso Apps">
+            </div>
+            <div class="prompt-info-box">
+                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Novo Lançamento • Pop Art</span>
+                <h3>Avatar Multiverso Apps</h3>
+                <p>Grid tridimensional de aplicativos com interação realista do avatar em cada ambiente.</p>
+                <button onclick="togglePrompt('promptMultiverso', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <div id="promptMultiverso" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPromptMultiverso">A 3D grid layout of 12 distinct square app icons. Each icon features a realistic man (image Uploaded), wearing stylish modern outfits that match the color palette of that specific app. The apps include versions of Spotify, Netflix, TikTok, Gmail, Google, Safari, App Store, Chrome, Clock, Calendar, Instagram, and Notes. The man is interacting with or posing inside the 3D frame of each app icon. Clean white studio background, vibrant colors, realistic textures, highly detailed, professional digital art, 8k resolution, pop art style.</div>
+                    <button onclick="copiarPrompt('textoPromptMultiverso', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                </div>
+            </div>
+        </div>
+        <div class="prompt-card">
             <div class="card-img-prompt" oncontextmenu="return false;">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000d190720e8757a751fde1a4d7.png" alt="Retrato">
             </div>
@@ -528,7 +543,7 @@
                 <p>Digite um conceito simples e veja nossa metodologia estruturar o prompt perfeito e gerar a malha tridimensional em tempo real.</p>
                 
                 <div id="faseInput3D">
-                    <input type="text" id="promptAluno" class="modal-input" placeholder="Ex: Um astronauta vintage..." style="margin-bottom: 15px; font-size: 1rem; letter-spacing: normal;">
+                    <input type="text" id="promptAluno" class="modal-input" placeholder="Ex: Um carro de brinquedo..." style="margin-bottom: 15px; font-size: 1rem; letter-spacing: normal;">
                     <button onclick="iniciarSimulacao3D()" class="btn-action">GERAR MODELO 3D</button>
                 </div>
 
@@ -548,6 +563,7 @@
                     
                     <div style="width: 100%; height: 350px; background: #000; border-radius: 12px; overflow: hidden; position: relative;">
                         <model-viewer 
+                            id="modeloVisualizador"
                             src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
                             alt="Modelo 3D Interativo"
                             auto-rotate 
@@ -973,9 +989,9 @@
         function abrirLightbox(url) { document.getElementById('lightboxImg').src = url; document.getElementById('lightboxOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function fecharLightbox() { document.getElementById('lightboxOverlay').classList.remove('active'); document.body.style.overflow = ''; }
 
-        // --- LÓGICA DO SIMULADOR 3D INTERATIVO ---
+        // --- LÓGICA DO SIMULADOR 3D INTERATIVO ATUALIZADA ---
         function iniciarSimulacao3D() {
-            const input = document.getElementById('promptAluno').value.trim();
+            const input = document.getElementById('promptAluno').value.trim().toLowerCase();
             if(!input) {
                 mostrarAviso('Por favor, digite um conceito para gerar o modelo 3D.', 'erro', 'Atenção');
                 return;
@@ -997,9 +1013,24 @@
             setTimeout(() => {
                 telaProcessamento.style.display = 'none';
                 
-                // Formata o prompt do aluno no padrão Plínio Studio
+                // Formata o prompt no padrão avançado
                 const promptFinal = `"Cinematic 3D render of ${input}, ultra-detailed, 8k resolution, Unreal Engine 5 aesthetic, physically based rendering (PBR) textures, dramatic volumetric studio lighting, ray tracing, masterpiece, hyper-realistic."`;
                 document.getElementById('promptOtimizadoDisplay').innerText = promptFinal;
+                
+                // --- SISTEMA DE GATILHOS PARA TROCA DO MODELO 3D ---
+                const visualizador = document.getElementById('modeloVisualizador');
+                
+                // Verifica palavras-chave e carrega modelos .glb diferentes (públicos de exemplo)
+                if (input.includes('carro') || input.includes('car')) {
+                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/ToyCar/glTF-Binary/ToyCar.glb';
+                } else if (input.includes('avião') || input.includes('aviao') || input.includes('airplane')) {
+                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/FlightHelmet/glTF-Binary/FlightHelmet.glb'; 
+                } else if (input.includes('cadeira') || input.includes('chair')) {
+                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/SheenChair/glTF-Binary/SheenChair.glb';
+                } else {
+                    // Modelo padrão caso não encontre a palavra-chave
+                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
+                }
                 
                 document.getElementById('faseResultado3D').style.display = 'flex';
             }, 3500);
@@ -1013,8 +1044,9 @@
 
         function baixarProjeto3D() {
             // Aqui iniciamos o download do arquivo .glb direto do servidor
+            const visualizador = document.getElementById('modeloVisualizador');
             const link = document.createElement('a');
-            link.href = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
+            link.href = visualizador.src; // Baixa o arquivo que está sendo visualizado no momento
             link.download = 'PlinioStudio_Projeto3D.glb';
             document.body.appendChild(link);
             link.click();
