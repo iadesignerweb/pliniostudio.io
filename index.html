@@ -438,17 +438,6 @@
 
         <div class="divider"></div>
 
-        <h2 class="section-title">Estúdio Criativo</h2>
-        <div class="super-gerador-banner" onclick="abrirModalGeradorCompleto()">
-            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Banner%20Pl%C3%ADnio%20St%C3%BAdio_Plinio%20Fabr%C3%ADcio.png" alt="Gerador Plínio Studio">
-            <div class="super-gerador-overlay"><span>Acessar a Máquina</span></div>
-        </div>
-        <button onclick="abrirModalGeradorCompleto()" class="btn-action" style="margin-top: 15px;">
-            <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> GERADOR COMPLETO
-        </button>
-
-        <div class="divider"></div>
-
         <h2 class="section-title">Área do Aluno</h2>
         <div class="card-grid">
             <div class="card js-link" data-tipo="curso" data-titulo="Agenda de IA">
@@ -474,16 +463,17 @@
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000cbd0720ea457e5efbcc32584.png" alt="Avatar Multiverso Apps">
             </div>
             <div class="prompt-info-box">
-                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Novo Lançamento • Pop Art</span>
+                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Premium • Pop Art</span>
                 <h3>Avatar Multiverso Apps</h3>
                 <p>Grid tridimensional de aplicativos com interação realista do avatar em cada ambiente.</p>
-                <button onclick="togglePrompt('promptMultiverso', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <button onclick="abrirModalPromptPremium('promptMultiverso')" class="btn-action btn-action-outline"><svg viewBox="0 0 24 24" style="width:16px;height:16px;margin-right:5px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2-2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> Liberar Prompt Premium</button>
                 <div id="promptMultiverso" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptMultiverso">A 3D grid layout of 12 distinct square app icons. Each icon features a realistic man (image Uploaded), wearing stylish modern outfits that match the color palette of that specific app. The apps include versions of Spotify, Netflix, TikTok, Gmail, Google, Safari, App Store, Chrome, Clock, Calendar, Instagram, and Notes. The man is interacting with or posing inside the 3D frame of each app icon. Clean white studio background, vibrant colors, realistic textures, highly detailed, professional digital art, 8k resolution, pop art style.</div>
                     <button onclick="copiarPrompt('textoPromptMultiverso', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
+        
         <div class="prompt-card">
             <div class="card-img-prompt" oncontextmenu="return false;">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000d190720e8757a751fde1a4d7.png" alt="Retrato">
@@ -540,27 +530,9 @@
             <div class="prompt-info-box" id="boxSimulador3D">
                 <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Laboratório Interativo</span>
                 <h3>Simulador de Materialização 3D</h3>
-                <p>Digite um conceito simples e veja nossa metodologia estruturar o prompt perfeito e gerar a malha tridimensional em tempo real.</p>
+                <p>Explore a malha tridimensional e a estrutura gerada pela nossa metodologia em tempo real.</p>
                 
-                <div id="faseInput3D">
-                    <input type="text" id="promptAluno" class="modal-input" placeholder="Ex: Um carro de brinquedo..." style="margin-bottom: 15px; font-size: 1rem; letter-spacing: normal;">
-                    <button onclick="iniciarSimulacao3D()" class="btn-action">GERAR MODELO 3D</button>
-                </div>
-
-                <div id="faseProcessamento3D" style="display: none; background: #000; border: 1px solid #1F2937; padding: 20px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #34D399; height: 250px; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                    <div id="textoProcessamento" style="margin-bottom: 15px;">Iniciando motor de renderização...</div>
-                    <style>
-                        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-                    </style>
-                    <div class="spinner" style="border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid var(--accent-primary); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite;"></div>
-                </div>
-
-                <div id="faseResultado3D" style="display: none; flex-direction: column; gap: 15px;">
-                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; font-size: 0.85rem; color: var(--text-muted); text-align: left;">
-                        <strong style="color: #FFF;">Prompt Otimizado pelo Plínio Studio:</strong><br><br>
-                        <span id="promptOtimizadoDisplay" style="font-family: monospace;">"Cinematic 3D render of [OBJETO], 8k resolution, Unreal Engine 5, PBR textures, volumetric lighting, ray tracing, highly detailed."</span>
-                    </div>
-                    
+                <div id="faseResultado3D" style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
                     <div style="width: 100%; height: 350px; background: #000; border-radius: 12px; overflow: hidden; position: relative;">
                         <model-viewer 
                             id="modeloVisualizador"
@@ -580,7 +552,6 @@
                             <svg viewBox="0 0 24 24" style="stroke: currentColor; fill: none; width: 18px; height: 18px;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             BAIXAR PROJETO (.GLB)
                         </button>
-                        <button onclick="resetarSimulacao3D()" class="btn-action btn-action-outline" style="font-size: 0.75rem;">Testar Novo Prompt</button>
                     </div>
                 </div>
             </div>
@@ -640,7 +611,7 @@
             <h3 id="modalTitle">Área Restrita</h3>
             <p id="modalDesc" style="color: var(--text-muted); margin-bottom: 20px; font-size:0.9rem;">Insira sua senha de acesso:</p>
             <input type="password" id="modalInput" class="modal-input" placeholder="••••">
-            <button id="modalSubmit" class="modal-btn">ENTRAR NA SALA</button>
+            <button id="modalSubmit" class="modal-btn">AUTENTICAR</button>
         </div>
     </div>
 
@@ -658,7 +629,6 @@
 
     <div class="modal-overlay" id="modalPlanosGerador"><div class="modal-content" style="border-top-color:#EF4444;"><span class="close-modal" onclick="fecharModalPlanos()">×</span><h3>Acesso Restrito</h3><p style="color:var(--text-muted);margin-bottom:20px;">Senha incorreta ou plano inativo.</p><a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a></div></div>
     <div class="modal-overlay" id="modalGaleriaInfinita"><div class="modal-content"><span class="close-modal" onclick="fecharModalGaleriaInfinita()">×</span><h3>Galeria Infinita</h3><p style="color:var(--text-muted);margin-bottom:25px;">Exclusivo para Administração. Insira a Senha Master:</p><input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="••••"><button onclick="verificarGaleriaInfinita()" class="modal-btn">AUTENTICAR</button></div></div>
-    <div class="modal-overlay" id="modalGeradorCompleto"><div class="modal-content"><span class="close-modal" onclick="fecharModalGeradorCompleto()">×</span><h3>Gerador Completo</h3><p style="color:var(--text-muted);margin-bottom:25px;">Exclusivo para Administração. Insira a Senha Master:</p><input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="••••"><button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button></div></div>
     
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
 
@@ -682,7 +652,7 @@
             }
         }
 
-        // --- 🛑 FUNÇÃO PARA EXIBIR MENSAGENS PROFISSIONAIS (Adeus Alert!) ---
+        // --- 🛑 FUNÇÃO PARA EXIBIR MENSAGENS PROFISSIONAIS ---
         function mostrarAviso(mensagem, tipo = 'erro', titulo = 'Acesso Negado') {
             document.getElementById('tituloAvisoCustomizado').innerText = titulo;
             document.getElementById('textoAvisoCustomizado').innerText = mensagem;
@@ -815,13 +785,16 @@
         function copiarPrompt(textId, btnElement) { const textToCopy = document.getElementById(textId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = btnElement.innerHTML; btnElement.innerHTML = "Copiado!"; setTimeout(() => { btnElement.innerHTML = originalText; }, 3000); }); }
         
         const modal = document.getElementById('customModal'); const modalInput = document.getElementById('modalInput'); const btnSubmit = document.getElementById('modalSubmit');
-        let currentType = '', currentTitle = '';
-        function abrirModal(tipo, titulo) { currentType = tipo; currentTitle = titulo; document.getElementById('modalTitle').textContent = titulo; modalInput.value = ''; modal.classList.add('active'); }
+        let currentType = '', currentTitle = '', currentPromptId = '';
+        
+        function abrirModal(tipo, titulo) { currentType = tipo; currentTitle = titulo; currentPromptId = ''; document.getElementById('modalTitle').textContent = titulo; document.getElementById('modalDesc').textContent = 'Insira sua senha de acesso:'; modalInput.value = ''; modal.classList.add('active'); }
+        function abrirModalPromptPremium(promptId) { currentType = 'premium'; currentPromptId = promptId; document.getElementById('modalTitle').textContent = 'Prompt Premium'; document.getElementById('modalDesc').textContent = 'Insira a senha de acesso (admin1316):'; modalInput.value = ''; modal.classList.add('active'); }
         function closeModalFunc() { modal.classList.remove('active'); }
+        
         document.querySelectorAll('.js-link').forEach(card => { card.addEventListener('click', () => abrirModal(card.dataset.tipo, card.dataset.titulo)); });
         function abrirPeloMenu(tipo, titulo) { abrirModal(tipo, titulo); }
 
-        // --- SISTEMA EAD COM CONEXÃO DIRETA (SEM ALERTAS NATIVOS) ---
+        // --- SISTEMA EAD COM CONEXÃO DIRETA ---
         function abrirPlataformaDireta(titulo, alunoEspecifico) {
             const janela = window.open('', '_blank');
             let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
@@ -903,18 +876,30 @@
             const pw = modalInput.value.trim().toLowerCase(); 
             const alunoEncontrado = listaDeAlunosGlobais.find(aluno => aluno.senha === pw);
 
-            // 1. CHECAGEM DO ADMINISTRADOR (ACESSO TOTAL)
+            // CHECAGEM DO PROMPT PREMIUM
+            if (currentType === 'premium') {
+                if (pw === 'admin1316' && currentPromptId) {
+                    const promptContent = document.getElementById(currentPromptId);
+                    promptContent.style.maxHeight = promptContent.scrollHeight + "px";
+                    closeModalFunc();
+                    currentType = '';
+                    currentPromptId = '';
+                } else {
+                    mostrarAviso("Senha incorreta para o Prompt Premium.", "erro", "Acesso Negado");
+                }
+                return;
+            }
+
+            // CHECAGEM DO ADMINISTRADOR (ACESSO TOTAL)
             if (pw === 'admin1316') {
                 if (currentType === 'ebook') {
                     window.open('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA.pdf/file', '_blank');
-                } else if (currentType === 'gerador') {
-                    window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank');
                 } else {
                     abrirPlataformaDireta(currentTitle, null);
                 }
                 closeModalFunc();
             } 
-            // 2. CHECAGEM DO ALUNO (ACESSO RESTRITO ÀS AULAS)
+            // CHECAGEM DO ALUNO (ACESSO RESTRITO ÀS AULAS)
             else if (alunoEncontrado) {
                 if (currentType === 'curso' || currentType === 'mentoria') {
                     abrirPlataformaDireta(currentTitle, alunoEncontrado);
@@ -923,24 +908,13 @@
                     mostrarAviso("Área bloqueada para alunos. O acesso a este recurso é restrito à Administração.", "erro", "Acesso Restrito");
                 }
             } 
-            // 3. SENHA INVÁLIDA
+            // SENHA INVÁLIDA
             else { 
                 mostrarAviso("A senha inserida não foi encontrada em nossa base de dados. Tente novamente.", "erro", "Senha Inválida");
             }
         });
 
-        // --- VALIDAÇÃO INDIVIDUAL DAS FERRAMENTAS RESTRITAS (SÓ ADMIN) ---
-        function verificarGeradorCompleto() { 
-            const senha = document.getElementById('inputGeradorCompleto').value.trim().toLowerCase(); 
-            if (senha === 'admin1316') { 
-                fecharModalGeradorCompleto(); 
-                window.open('https://veoaifree.com/veo-video-generator/', '_blank'); 
-            } else { 
-                fecharModalGeradorCompleto();
-                document.getElementById('modalPlanosGerador').classList.add('active'); 
-            } 
-        }
-
+        // --- VALIDAÇÃO INDIVIDUAL DAS FERRAMENTAS RESTRITAS ---
         function verificarGaleriaInfinita() { 
             const pw = document.getElementById('inputGaleriaInfinita').value.trim().toLowerCase();
             if (pw === 'admin1316') { 
@@ -981,78 +955,22 @@
         }
 
         function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
-        function abrirModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.add('active'); document.getElementById('inputGeradorCompleto').value = ''; }
-        function fecharModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.remove('active'); }
         function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
         function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); document.getElementById('inputGaleriaInfinita').value = ''; }
         function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
         function abrirLightbox(url) { document.getElementById('lightboxImg').src = url; document.getElementById('lightboxOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function fecharLightbox() { document.getElementById('lightboxOverlay').classList.remove('active'); document.body.style.overflow = ''; }
 
-        // --- LÓGICA DO SIMULADOR 3D INTERATIVO ATUALIZADA ---
-        function iniciarSimulacao3D() {
-            const input = document.getElementById('promptAluno').value.trim().toLowerCase();
-            if(!input) {
-                mostrarAviso('Por favor, digite um conceito para gerar o modelo 3D.', 'erro', 'Atenção');
-                return;
-            }
-
-            // Oculta input, mostra processamento
-            document.getElementById('faseInput3D').style.display = 'none';
-            const telaProcessamento = document.getElementById('faseProcessamento3D');
-            telaProcessamento.style.display = 'flex';
-            
-            const textoProc = document.getElementById('textoProcessamento');
-            
-            // Simulação de IA trabalhando
-            setTimeout(() => { textoProc.innerText = "Aplicando texturas PBR..."; }, 800);
-            setTimeout(() => { textoProc.innerText = "Calculando iluminação global..."; }, 1600);
-            setTimeout(() => { textoProc.innerText = "Otimizando malha tridimensional..."; }, 2400);
-            
-            // Finaliza e mostra resultado
-            setTimeout(() => {
-                telaProcessamento.style.display = 'none';
-                
-                // Formata o prompt no padrão avançado
-                const promptFinal = `"Cinematic 3D render of ${input}, ultra-detailed, 8k resolution, Unreal Engine 5 aesthetic, physically based rendering (PBR) textures, dramatic volumetric studio lighting, ray tracing, masterpiece, hyper-realistic."`;
-                document.getElementById('promptOtimizadoDisplay').innerText = promptFinal;
-                
-                // --- SISTEMA DE GATILHOS PARA TROCA DO MODELO 3D ---
-                const visualizador = document.getElementById('modeloVisualizador');
-                
-                // Verifica palavras-chave e carrega modelos .glb diferentes (públicos de exemplo)
-                if (input.includes('carro') || input.includes('car')) {
-                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/ToyCar/glTF-Binary/ToyCar.glb';
-                } else if (input.includes('avião') || input.includes('aviao') || input.includes('airplane')) {
-                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/FlightHelmet/glTF-Binary/FlightHelmet.glb'; 
-                } else if (input.includes('cadeira') || input.includes('chair')) {
-                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/SheenChair/glTF-Binary/SheenChair.glb';
-                } else {
-                    // Modelo padrão caso não encontre a palavra-chave
-                    visualizador.src = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
-                }
-                
-                document.getElementById('faseResultado3D').style.display = 'flex';
-            }, 3500);
-        }
-
-        function resetarSimulacao3D() {
-            document.getElementById('faseResultado3D').style.display = 'none';
-            document.getElementById('promptAluno').value = '';
-            document.getElementById('faseInput3D').style.display = 'block';
-        }
-
+        // --- SIMULADOR 3D DOWNLOAD ---
         function baixarProjeto3D() {
-            // Aqui iniciamos o download do arquivo .glb direto do servidor
             const visualizador = document.getElementById('modeloVisualizador');
             const link = document.createElement('a');
-            link.href = visualizador.src; // Baixa o arquivo que está sendo visualizado no momento
+            link.href = visualizador.src;
             link.download = 'PlinioStudio_Projeto3D.glb';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             
-            // Pequeno feedback visual
             const btn = event.currentTarget;
             const originalText = btn.innerHTML;
             btn.innerHTML = 'DOWNLOAD INICIADO!';
