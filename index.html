@@ -391,12 +391,27 @@
             <iframe src="https://www.youtube.com/embed/AX5RZHlbX_4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
+        <div class="video-wrapper">
+            <div class="badge-premium" style="background: var(--accent-secondary); color: #FFF; border-color: var(--accent-secondary);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Novo Lançamento
+            </div>
+            <iframe src="https://www.youtube.com/embed/v4V37xFh_XA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
         <div style="text-align: center;">
             <div class="tag-exclusive">MÉTODO EXCLUSIVO</div>
             <h1>O fim do aspecto artificial</h1>
             <p class="description">
                 A diferença entre um vídeo gerado que parece IA e uma produção audiovisual que parece cinematográfica e real está nos microdetalhes e na engenharia de colorimetria.
             </p>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin-bottom: 40px; text-align: center;">
+                <h3 style="color: #FFF; margin-bottom: 10px;">Baixe o material didático</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Esteja com a mensalidade em dias para ter acesso ao material.</p>
+                <input type="password" id="senhaMaterialCopa" class="modal-input" placeholder="Digite a senha" style="max-width: 300px; margin: 0 auto 15px auto; display: block;">
+                <button onclick="baixarMaterialCopa()" class="btn-action" style="max-width: 300px; margin: 0 auto; display: flex;">ACESSAR MATERIAL</button>
+            </div>
 
             <div class="social-proof-container">
                 <div class="avatars-row">
@@ -446,15 +461,20 @@
         <div class="divider"></div>
 
         <h2 class="section-title">Galeria de Prompts</h2>
+        
         <div class="prompt-card">
             <div class="card-img-prompt" oncontextmenu="return false;">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000d190720e8757a751fde1a4d7.png" alt="Retrato">
             </div>
             <div class="prompt-info-box">
-                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Premium • Cronologia</span>
+                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Acesso Liberado • Cronologia</span>
                 <h3>Retrato 4 Gerações</h3>
                 <p>Estudo de continuidade temporal com iluminação dramática.</p>
-                <button onclick="abrirModalPremium()" class="btn-action btn-action-outline">Desbloquear Análise</button>
+                <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <div id="prompt4Geracoes" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPrompt4Geracoes">Cinematic portrait of four generations of a family standing together, ultra-realistic photography, 8k resolution, dramatic chiaroscuro lighting, shot on 50mm prime lens, Arri Alexa cinematic color grading, shallow depth of field, highly detailed faces showing natural aging progression, sharp focus on eyes, emotional depth, photorealistic textures.</div>
+                    <button onclick="copiarPrompt('textoPrompt4Geracoes', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                </div>
             </div>
         </div>
         
@@ -464,12 +484,12 @@
             </div>
             <div class="prompt-info-box">
                 <span class="card-tag" style="color: var(--text-muted);"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Treino Studio</span>
-                <h3>Moda & Textura</h3>
-                <p>Composição fotográfica editorial explorando micro-texturas.</p>
-                <button onclick="togglePrompt('promptModa', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
-                <div id="promptModa" class="prompt-collapse">
-                    <div class="prompt-box" id="textoPromptModa">Ultra-realistic sacred cinematic portrait of a young biblical woman... [Prompt Original]</div>
-                    <button onclick="copiarPrompt('textoPromptModa', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                <h3>Estilo Sacro</h3>
+                <p>Composição fotográfica editorial explorando micro-texturas e iluminação sacra.</p>
+                <button onclick="togglePrompt('promptSacro', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <div id="promptSacro" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPromptSacro">Ultra-realistic sacred cinematic portrait of a young biblical woman, intricate micro-details of ancient fabric texture, dramatic Rembrandt lighting, ethereal glowing background, [INSERIR AÇÃO OU ELEMENTO ESPECÍFICO AQUI], shot on Arri Alexa, 50mm lens, 8k, hyper-detailed skin pores, masterful color grading.</div>
+                    <button onclick="copiarPrompt('textoPromptSacro', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -477,17 +497,39 @@
         <div class="divider"></div>
 
         <h2 class="section-title">Galeria de Prompts 2026</h2>
+        
         <div class="prompt-card">
-            <div class="card-img-prompt" onclick="abrirModalAcervo2026()">
+            <div class="card-img-prompt">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_0000000076a0720e98ba1e97bd93cc77.png" alt="Acervo Prompts 2026">
             </div>
             <div class="prompt-info-box">
-                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Coleção Exclusiva</span>
-                <h3>Moda Fashion Camisas Raul Seixas & Mais</h3>
-                <p>Acesse o acervo restrito com todos os nossos prompts de engenharia audiovisual de alta conversão.</p>
-                <button onclick="abrirModalAcervo2026()" class="btn-action btn-action-outline">Desbloquear Acervo Completo</button>
+                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Acesso Liberado</span>
+                <h3>Modo Fashion</h3>
+                <p>Composição editorial com pegada vintage rock and roll e textura hiper-realista.</p>
+                <button onclick="togglePrompt('promptFashion', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <div id="promptFashion" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPromptFashion">Vintage 70s rock fashion editorial portrait, man wearing a classic retro rock band t-shirt, dark leather jacket, dark aviator sunglasses, professional studio lighting setup, highly detailed fabric micro-texture, cinematic color grading, shot on 50mm lens, shallow depth of field, 8k resolution, photorealistic masterpiece.</div>
+                    <button onclick="copiarPrompt('textoPromptFashion', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                </div>
             </div>
         </div>
+
+        <div class="prompt-card">
+            <div class="card-img-prompt" style="background: #121820; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" style="width: 60px; height: 60px; stroke: var(--accent-primary); fill: none; stroke-width: 1;"><path d="M12 2v20M2 12h20M4.929 4.929l14.142 14.142M4.929 19.071L19.071 4.929"></path></svg>
+            </div>
+            <div class="prompt-info-box">
+                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Acesso Liberado</span>
+                <h3>As Quatro Estações</h3>
+                <p>Estudo de continuidade de iluminação e transição temporal ambiental.</p>
+                <button onclick="togglePrompt('promptEstacoes', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <div id="promptEstacoes" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPromptEstacoes">Four vertically divided cinematic scenes representing Spring, Summer, Autumn, and Winter in a single breathtaking continuous landscape, transitioning seamlessly from blooming flowers to bright sun, to falling orange leaves, to heavy pristine snow, vibrant seasonal color palettes, 8k resolution, hyper-detailed nature photography, Arri Alexa color science, perfectly balanced exposure.</div>
+                    <button onclick="copiarPrompt('textoPromptEstacoes', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <footer class="footer-section" style="padding: 40px 20px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 40px; margin-bottom: 80px;">
@@ -530,11 +572,22 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="modalAcervo2026"><div class="modal-content"><span class="close-modal" onclick="fecharModalAcervo2026()">×</span><h3>Área Restrita (Acervo)</h3><p style="color:var(--text-muted);margin-bottom:25px;">Exclusivo para Administração. Insira a Senha Master:</p><input type="password" id="inputAcervo2026" class="modal-input" placeholder="••••"><button onclick="verificarAcervo2026()" class="modal-btn">AUTENTICAR</button></div></div>
-    <div class="modal-overlay" id="modalGeradorCompleto"><div class="modal-content"><span class="close-modal" onclick="fecharModalGeradorCompleto()">×</span><h3>Gerador Completo</h3><p style="color:var(--text-muted);margin-bottom:25px;">Exclusivo para Administração. Insira a Senha Master:</p><input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="••••"><button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button></div></div>
+    <div class="modal-overlay" id="modalErroMensalidade">
+        <div class="modal-content" style="border-top-color:#EF4444;">
+            <span class="close-modal" onclick="document.getElementById('modalErroMensalidade').classList.remove('active')">×</span>
+            <h3>Acesso Restrito</h3>
+            <p style="color:var(--text-muted);margin-bottom:20px;">Senha incorreta. Verifique se sua mensalidade está em dia com o suporte.</p>
+            <a href="https://wa.me/5587996029765?text=Ol%C3%A1%2C+gostaria+de+verificar+minha+mensalidade+para+acessar+o+material+did%C3%A1tico+da+aula+Copa+2026." target="_blank" class="btn-whats-modal" onclick="document.getElementById('modalErroMensalidade').classList.remove('active')">
+                <svg viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                Falar no WhatsApp
+            </a>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="modalPlanosGerador"><div class="modal-content" style="border-top-color:#EF4444;"><span class="close-modal" onclick="fecharModalPlanos()">×</span><h3>Acesso Restrito</h3><p style="color:var(--text-muted);margin-bottom:20px;">Senha incorreta ou plano inativo.</p><a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a></div></div>
-    <div class="modal-overlay" id="modalPremium"><div class="modal-content"><span class="close-modal" onclick="fecharModalPremium()">×</span><h3>Acesso Restrito</h3><p style="color:var(--text-muted);margin-bottom:30px;">Este é um Prompt Premium de alta complexidade.</p><a href="https://wa.me/5587996029765" class="btn-whats-modal" target="_blank">Adquirir Premium</a></div></div>
     <div class="modal-overlay" id="modalGaleriaInfinita"><div class="modal-content"><span class="close-modal" onclick="fecharModalGaleriaInfinita()">×</span><h3>Galeria Infinita</h3><p style="color:var(--text-muted);margin-bottom:25px;">Exclusivo para Administração. Insira a Senha Master:</p><input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="••••"><button onclick="verificarGaleriaInfinita()" class="modal-btn">AUTENTICAR</button></div></div>
+    <div class="modal-overlay" id="modalGeradorCompleto"><div class="modal-content"><span class="close-modal" onclick="fecharModalGeradorCompleto()">×</span><h3>Gerador Completo</h3><p style="color:var(--text-muted);margin-bottom:25px;">Exclusivo para Administração. Insira a Senha Master:</p><input type="password" id="inputGeradorCompleto" class="modal-input" placeholder="••••"><button onclick="verificarGeradorCompleto()" class="modal-btn">AUTENTICAR</button></div></div>
+    
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
 
     <div class="modal-overlay" id="modalAvisoCustomizado" style="z-index: 9999;">
@@ -547,6 +600,16 @@
     </div>
 
     <script>
+        // --- FUNÇÃO DOWNLOAD MATERIAL COPA ---
+        function baixarMaterialCopa() {
+            const senha = document.getElementById('senhaMaterialCopa').value.trim();
+            if (senha === 'Copa2031') {
+                window.open('https://www.mediafire.com/folder/9dmfhmepas8w7/Audiovisual+Copa', '_blank');
+            } else {
+                document.getElementById('modalErroMensalidade').classList.add('active');
+            }
+        }
+
         // --- 🛑 FUNÇÃO PARA EXIBIR MENSAGENS PROFISSIONAIS (Adeus Alert!) ---
         function mostrarAviso(mensagem, tipo = 'erro', titulo = 'Acesso Negado') {
             document.getElementById('tituloAvisoCustomizado').innerText = titulo;
@@ -763,7 +826,6 @@
             janela.document.write(htmlFinal); janela.document.close();
         }
 
-
         // --- LOGÍSTICA DE VALIDAÇÃO COM SENHA MASTER VS SENHA ALUNO ---
         btnSubmit.addEventListener('click', () => {
             const pw = modalInput.value.trim().toLowerCase(); 
@@ -776,7 +838,7 @@
                 } else if (currentType === 'gerador') {
                     window.open('https://iadesignerweb.github.io/imagem-gerador/', '_blank');
                 } else {
-                    abrirPlataformaDireta(currentTitle, null); // Abre a plataforma completa
+                    abrirPlataformaDireta(currentTitle, null);
                 }
                 closeModalFunc();
             } 
@@ -796,16 +858,6 @@
         });
 
         // --- VALIDAÇÃO INDIVIDUAL DAS FERRAMENTAS RESTRITAS (SÓ ADMIN) ---
-        function verificarAcervo2026() { 
-            const pw = document.getElementById('inputAcervo2026').value.trim().toLowerCase();
-            if (pw === 'admin1316') { 
-                fecharModalAcervo2026(); 
-                window.open('https://wa.me/5587996029765?text=Quero+acesso+ao+Acervo+2026', '_blank'); 
-            } else { 
-                mostrarAviso('Acesso restrito à senha administrativa (Master).', 'erro', 'Acesso Negado'); 
-            } 
-        }
-
         function verificarGeradorCompleto() { 
             const senha = document.getElementById('inputGeradorCompleto').value.trim().toLowerCase(); 
             if (senha === 'admin1316') { 
@@ -856,15 +908,13 @@
             });
         }
 
-        function fecharModalAcervo2026() { document.getElementById('modalAcervo2026').classList.remove('active'); }
-        function abrirModalPremium() { document.getElementById('modalPremium').classList.add('active'); }
-        function fecharModalPremium() { document.getElementById('modalPremium').classList.remove('active'); }
         function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
         function abrirModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.add('active'); document.getElementById('inputGeradorCompleto').value = ''; }
         function fecharModalGeradorCompleto() { document.getElementById('modalGeradorCompleto').classList.remove('active'); }
         function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
         function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); document.getElementById('inputGaleriaInfinita').value = ''; }
         function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
+        function abrirLightbox(url) { document.getElementById('lightboxImg').src = url; document.getElementById('lightboxOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function fecharLightbox() { document.getElementById('lightboxOverlay').classList.remove('active'); document.body.style.overflow = ''; }
     </script>
 </body>
