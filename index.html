@@ -110,7 +110,7 @@
             opacity: 0;
             animation: fadeInSub 2s forwards 1.5s;
         }
-        @pragma keyframes fadeInSub { to { opacity: 1; } }
+        @keyframes fadeInSub { to { opacity: 1; } }
 
         .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
 
@@ -487,9 +487,28 @@
             <div class="prompts-empire-bg"></div>
             <div class="prompts-empire-overlay"></div>
             <div class="prompts-empire-content">
-                <h2 class="section-title" style="color: #FFF; margin-top:0; text-shadow: 0 4px 10px rgba(0,0,0,0.8);">AI Trends Prompt Empire</h2>
+                
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; color: #FFF; text-transform: uppercase; text-shadow: 0 4px 10px rgba(0,0,0,0.8);">PLÍNIO <span style="color: #0078D7;">STUDIO</span></div>
+                    <div style="font-size: 1rem; font-weight: 400; color: #E2E8F0; margin-top: 5px;">Biblioteca Oficial de Prompts • Galeria de Obras e Estilos</div>
+                </div>
+
+                <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px; width: 45%; min-width: 150px; text-align: center; position: relative;">
+                        <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.7rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;">FREE</span>
+                        <div style="font-size: 3.5rem; margin: 30px 0;">💻</div>
+                        <div style="background-color: #0033A0; color: #fff; padding: 4px 10px; font-size: 0.85rem; display: inline-block;">Premium Sociedade</div>
+                    </div>
+                    
+                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px; width: 45%; min-width: 150px; text-align: center; position: relative;">
+                        <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.7rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;">FREE</span>
+                        <div style="margin: 30px auto; width: 60px; height: 50px; background-color: #0033A0; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🚲</div>
+                        <div style="background-color: #0033A0; color: #fff; padding: 4px 10px; font-size: 0.85rem; display: inline-block;">3D Homem Bicicleta</div>
+                    </div>
+                </div>
+
                 <p class="description" style="color: #E2E8F0; max-width: 500px; margin: 0 auto 30px auto;">
-                    Sincronização direta com o ecossistema estratégico de materialização. Os 10 primeiros prompts estão abertos para livre engenharia; os demais são exclusivos para detentores da licença VIP.
+                    Sincronização direta com o ecossistema estratégico de materialização. Os primeiros prompts estão abertos para livre engenharia; os demais são exclusivos para detentores da licença VIP.
                 </p>
                 
                 <div id="empire-dynamic-grid" class="card-grid">
@@ -502,14 +521,14 @@
 
         <div style="text-align: center;">
             <div class="tag-exclusive">MÉTODO EXCLUSIVO</div>
-            <h1>O fim do aspect artificial</h1>
+            <h1>O fim do aspecto artificial</h1>
             <p class="description">
-                A diferença entre um vídeo gerado que parece IA e uma produção audiovisual que parece cinematográfica e real está nos microdetalhes e na engenharia de colorimetria.
+                A diferença entre um vídeo gerado que parece IA e uma produção audiovisual que parece cinematográfica e real está nos microdetalhes e na engenharia de colorimetria. Confira o audiovisual da Copa 2026 acima.
             </p>
 
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin-bottom: 40px; text-align: center;">
-                <h3 style="color: #FFF; margin-bottom: 10px;">Baixe o material didático</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Esteja com a mensalidade em dias para ter acesso ao material.</p>
+                <h3 style="color: #FFF; margin-bottom: 10px;">Baixe o material didático do vídeo da Copa 2026</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Esteja com a mensalidade em dias para ter acesso ao material do audiovisual acima.</p>
                 <input type="password" id="senhaMaterialCopa" class="modal-input" placeholder="Digite a senha" style="max-width: 300px; margin: 0 auto 15px auto; display: block;">
                 <button onclick="baixarMaterialCopa()" class="btn-action" style="max-width: 300px; margin: 0 auto; display: flex;">ACESSAR MATERIAL</button>
             </div>
@@ -676,20 +695,20 @@
         
         <div class="marquee-container">
             <div class="marquee-content">
-                <div class="marquee-item">⚡ Plínio Studio</div>
-                <div class="marquee-item">🎬 YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item">📸 Instagram</div>
-                <div class="marquee-item">✨ Powered by Gemini <span class="gemini-star">✦</span></div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
                 
-                <div class="marquee-item">⚡ Plínio Studio</div>
-                <div class="marquee-item">🎬 YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item">📸 Instagram</div>
-                <div class="marquee-item">✨ Powered by Gemini <span class="gemini-star">✦</span></div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
 
-                <div class="marquee-item">⚡ Plínio Studio</div>
-                <div class="marquee-item">🎬 YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item">📸 Instagram</div>
-                <div class="marquee-item">✨ Powered by Gemini <span class="gemini-star">✦</span></div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
             </div>
         </div>
 
@@ -774,7 +793,7 @@
         // --- 🛑 FUNÇÃO PARA EXIBIR MENSAGENS PROFISSIONAIS ---
         function mostrarAviso(mensagem, tipo = 'erro', titulo = 'Acesso Negado') {
             document.getElementById('tituloAvisoCustomizado').innerText = titulo;
-            document.getElementById('textoAvisoCustomizado').innerText = message;
+            document.getElementById('textoAvisoCustomizado').innerText = mensagem;
             const box = document.getElementById('boxAvisoCustomizado');
             const btn = document.getElementById('btnAvisoCustomizado');
             const icone = document.getElementById('iconeAviso');
@@ -796,7 +815,6 @@
             document.getElementById('modalAvisoCustomizado').classList.add('active');
         }
         function fecharModalAviso() { document.getElementById('modalAvisoCustomizado').classList.remove('active'); }
-
 
         // --- 🌌 SIMULADOR WARP SPEED CANVAS ---
         const canvas = document.getElementById('warpCanvas');
