@@ -236,11 +236,27 @@
         .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
         
-        .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #000; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: none; padding: 14px 26px; border-radius: 8px; transition: 0.3s; width: 100%; background-color: var(--accent-primary); cursor: pointer; }
+        /* --- ESTÉTICA EXCLUSIVA DE BOTÕES OUTLINE (FUNDO TRANSPARENTE, BORDA CIANO) --- */
+        .btn-action { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+            background: transparent; 
+            color: #FFF; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            border: 1px solid var(--accent-primary); 
+            padding: 14px 26px; 
+            border-radius: 8px; 
+            transition: 0.3s; 
+            width: 100%; 
+            cursor: pointer; 
+        }
         .btn-action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;}
-        .btn-action:hover { background-color: #FFF; }
-        .btn-action-outline { background: transparent; border: 1px solid var(--accent-primary); color: var(--text-main); }
-        .btn-action-outline:hover { background: var(--bg-card-hover); color: var(--accent-primary); border-color: var(--accent-primary); }
+        .btn-action:hover { background: rgba(0, 229, 255, 0.1); border-color: #FFF; }
 
         .card-grid { display: flex; flex-direction: column; gap: 20px; }
         .card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: 0.4s; cursor: pointer; }
@@ -526,7 +542,7 @@
             <h3 style="color: #FFF; margin-bottom: 10px; font-size: 1.1rem;">Material didático do vídeo da Copa</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Esteja com a mensalidade em dias para acessar.</p>
             <input type="password" id="senhaMaterialCopa" class="modal-input" placeholder="Digite a senha" style="max-width: 250px; padding: 12px; font-size: 1rem; margin: 0 auto 15px auto; display: block;">
-            <button onclick="baixarMaterialCopa()" class="btn-action" style="max-width: 250px; padding: 10px 20px; font-size: 0.8rem; margin: 0 auto; display: flex;">ACESSAR MATERIAL</button>
+            <button onclick="baixarMaterialCopa()" class="btn-action" style="max-width: 250px; padding: 10px 20px; font-size: 0.8rem; margin: 0 auto;">ACESSAR MATERIAL</button>
         </div>
 
         <section id="galeria-empire" class="prompts-empire-section">
@@ -588,15 +604,15 @@
         <div class="card-grid">
             <div class="card js-link" data-tipo="curso" data-titulo="Agenda de IA">
                 <div class="card-img"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"></div>
-                <div class="card-content"><h2>Agenda de IA</h2><p>Acesso direto às salas individuais de aprendizado.</p><span class="btn-action btn-action-outline">Acessar Sala</span></div>
+                <div class="card-content"><h2>Agenda de IA</h2><p>Acesso direto às salas individuais de aprendizado.</p><span class="btn-action">Acessar Sala</span></div>
             </div>
             <div class="card js-link" data-tipo="mentoria" data-titulo="Área de Mentoria">
                 <div class="card-img"><img src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_1280.jpg"></div>
-                <div class="card-content"><h2>Mentoria IA</h2><p>Acompanhamento personalizado para o seu desenvolvimento.</p><span class="btn-action btn-action-outline">Acessar Mentoria</span></div>
+                <div class="card-content"><h2>Mentoria IA</h2><p>Acompanhamento personalizado para o seu desenvolvimento.</p><span class="btn-action">Acessar Mentoria</span></div>
             </div>
             <div class="card js-link" data-tipo="ebook" data-titulo="Baixar E-books">
                 <div class="card-img"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"></div>
-                <div class="card-content"><h2>Biblioteca Digital</h2><p>Material didático e guias avançados de IA para download.</p><span class="btn-action btn-action-outline">Fazer Download</span></div>
+                <div class="card-content"><h2>Biblioteca Digital</h2><p>Material didático e guias avançados de IA para download.</p><span class="btn-action">Fazer Download</span></div>
             </div>
         </div>
 
@@ -612,10 +628,10 @@
                 <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Premium • Pop Art</span>
                 <h3>Avatar Multiverso Apps</h3>
                 <p>Grid tridimensional de aplicativos com interação realista do avatar em cada ambiente.</p>
-                <button onclick="abrirModalPromptPremium('promptMultiverso')" class="btn-action btn-action-outline"><svg viewBox="0 0 24 24" style="width:16px;height:16px;margin-right:5px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2-2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> Liberar Prompt Premium</button>
+                <button onclick="abrirModalPromptPremium('promptMultiverso')" class="btn-action"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2-2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> LIBERAR PROMPT PREMIUM</button>
                 <div id="promptMultiverso" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptMultiverso">A 3D grid layout of 12 distinct square app icons. Each icon features a realistic man (image Uploaded), wearing stylish modern outfits that match the color palette of that specific app. The apps include versions of Spotify, Netflix, TikTok, Gmail, Google, Safari, App Store, Chrome, Clock, Calendar, Instagram, and Notes. The man is interacting with or posing inside the 3D frame of each app icon. Clean white studio background, vibrant colors, realistic textures, highly detailed, professional digital art, 8k resolution, pop art style.</div>
-                    <button onclick="copiarPrompt('textoPromptMultiverso')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPromptMultiverso')" class="btn-action" style="margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -628,10 +644,10 @@
                 <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Acesso Liberado • Cronologia</span>
                 <h3>Retrato 4 Gerações</h3>
                 <p>Estudo de continuidade temporal com iluminação dramática.</p>
-                <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action">Mostrar Prompt</button>
                 <div id="prompt4Geracoes" class="prompt-collapse">
                     <div class="prompt-box" id="textoPrompt4Geracoes">Cinematic portrait of four generations of a family standing together, ultra-realistic photography, 8k resolution, dramatic chiaroscuro lighting, shot on 50mm prime lens, Arri Alexa cinematic color grading, shallow depth of field, highly detailed faces showing natural aging progression, sharp focus on eyes, emotional depth, photorealistic textures.</div>
-                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -644,10 +660,10 @@
                 <span class="card-tag" style="color: var(--text-muted);"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Treino Studio</span>
                 <h3>Estilo Sacro</h3>
                 <p>Composição fotográfica editorial explorando micro-texturas e iluminação sacra.</p>
-                <button onclick="togglePrompt('promptSacro', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <button onclick="togglePrompt('promptSacro', this)" class="btn-action">Mostrar Prompt</button>
                 <div id="promptSacro" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptSacro">Ultra-realistic sacred cinematic portrait of a young biblical woman, intricate micro-details of ancient fabric texture, dramatic Rembrandt lighting, ethereal glowing background, [INSERIR AÇÃO OU ELEMENTO ESPECÍFICO AQUI], shot on Arri Alexa, 50mm lens, 8k, hyper-detailed skin pores, masterful color grading.</div>
-                    <button onclick="copiarPrompt('textoPromptSacro')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPromptSacro')" class="btn-action" style="margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -664,10 +680,10 @@
                 <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Acesso Liberado</span>
                 <h3>Modo Fashion</h3>
                 <p>Composição editorial com pegada vintage rock and roll e textura hiper-realista.</p>
-                <button onclick="togglePrompt('promptFashion', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
+                <button onclick="togglePrompt('promptFashion', this)" class="btn-action">Mostrar Prompt</button>
                 <div id="promptFashion" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptFashion">Vintage 70s rock fashion editorial portrait, man wearing a classic retro rock band t-shirt, dark leather jacket, dark aviator sunglasses, professional studio lighting setup, highly detailed fabric micro-texture, cinematic color grading, shot on 50mm lens, shallow depth of field, 8k resolution, photorealistic masterpiece.</div>
-                    <button onclick="copiarPrompt('textoPromptFashion')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPromptFashion')" class="btn-action" style="margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -694,7 +710,7 @@
                     </div>
 
                     <div style="display: flex; gap: 10px; flex-direction: column;">
-                        <button onclick="baixarProjeto3D()" class="btn-action" style="background: #3B82F6; color: #FFF;">
+                        <button onclick="baixarProjeto3D()" class="btn-action">
                             <svg viewBox="0 0 24 24" style="stroke: currentColor; fill: none; width: 18px; height: 18px;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             BAIXAR PROJETO (.GLB)
                         </button>
@@ -709,14 +725,44 @@
         
         <div class="marquee-container">
             <div class="marquee-content">
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram Oficial</div>
+                <div class="marquee-item">
+                    <svg width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="512" height="512" rx="100" fill="#0B1015"/>
+                        <circle cx="256" cy="256" r="180" fill="none" stroke="#00E5FF" stroke-width="20"/>
+                        <path d="M210 160v192l140-96z" fill="#00E5FF"/>
+                        <text x="256" y="460" font-family="sans-serif" font-weight="900" font-size="42" fill="#FFF" text-anchor="middle" letter-spacing="2">PS</text>
+                    </svg> Plínio Studio
+                </div>
+                <div class="marquee-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg> YouTube: Canal Plínio Fabrício
+                </div>
+                <div class="marquee-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#E1306C" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg> Instagram Oficial
+                </div>
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
                 
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram Oficial</div>
+                <div class="marquee-item">
+                    <svg width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="512" height="512" rx="100" fill="#0B1015"/>
+                        <circle cx="256" cy="256" r="180" fill="none" stroke="#00E5FF" stroke-width="20"/>
+                        <path d="M210 160v192l140-96z" fill="#00E5FF"/>
+                        <text x="256" y="460" font-family="sans-serif" font-weight="900" font-size="42" fill="#FFF" text-anchor="middle" letter-spacing="2">PS</text>
+                    </svg> Plínio Studio
+                </div>
+                <div class="marquee-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg> YouTube: Canal Plínio Fabrício
+                </div>
+                <div class="marquee-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#E1306C" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg> Instagram Oficial
+                </div>
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
             </div>
         </div>
@@ -824,15 +870,18 @@
             
             if (tipo === 'erro') {
                 box.style.borderTopColor = '#EF4444';
-                btn.style.background = '#EF4444';
+                btn.style.background = 'transparent';
+                btn.style.border = '1px solid #EF4444';
+                btn.style.color = '#FFF';
                 btn.style.boxShadow = '0 4px 15px rgba(239, 68, 68, 0.3)';
                 btn.innerText = 'TENTAR NOVAMENTE';
                 icone.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48" stroke="#EF4444" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
             } else {
                 box.style.borderTopColor = 'var(--accent-primary)';
-                btn.style.background = 'var(--accent-primary)';
+                btn.style.background = 'transparent';
+                btn.style.border = '1px solid var(--accent-primary)';
+                btn.style.color = '#FFF';
                 btn.style.boxShadow = '0 4px 15px rgba(0, 229, 255, 0.3)';
-                btn.style.color = '#000';
                 btn.innerText = 'ENTENDI';
                 icone.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48" stroke="var(--accent-primary)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>';
             }
@@ -979,10 +1028,10 @@
             let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
             
             if(alunoEspecifico) {
-                listaHtml += `<div style="background:#121820; border:2px solid #00E5FF; padding:25px; border-radius:12px; text-align:center;"><div style="font-size:1.3rem; color:#FFF; margin-bottom:5px; font-weight:bold;">Olá, ${alunoEspecifico.nome}!</div><p style="color:#8292A6; margin-bottom:15px; font-size:0.9rem;">Sua área de treinamento exclusivo está conectada.</p><button onclick="abrirModalAluno('1316')" style="background:#00E5FF; color:#000; padding:14px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%; text-transform:uppercase; letter-spacing:1px;">Acessar Minha Aula Agora</button></div>`;
+                listaHtml += `<div style="background:#121820; border:2px solid #00E5FF; padding:25px; border-radius:12px; text-align:center;"><div style="font-size:1.3rem; color:#FFF; margin-bottom:5px; font-weight:bold;">Olá, ${alunoEspecifico.nome}!</div><p style="color:#8292A6; margin-bottom:15px; font-size:0.9rem;">Sua área de treinamento exclusivo está conectada.</p><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:14px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; text-transform:uppercase; letter-spacing:1px;">Acessar Minha Aula Agora</button></div>`;
             } else {
                 listaDeAlunosGlobais.forEach(aluno => {
-                    listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('1316')" style="background:#00E5FF; color:#000; padding:12px 20px; border-radius:8px; border:none; font-weight:bold; cursor:pointer; width:100%;">Acessar Aula</button></div>`;
+                    listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:12px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%;">Acessar Aula</button></div>`;
                 });
             }
             listaHtml += '</div>';
@@ -1004,7 +1053,7 @@
                 <div style="background:#121820; padding:25px; border-radius:12px; border-left: 4px solid #00E5FF; width:100%; max-width:550px;">
                     <h2 style="color:#FFF;">Aula Liberada</h2>
                     <p style="color:#8292A6; margin-bottom:20px;">${nomeProf}</p>
-                    <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="display:inline-block; background:#00E5FF; color:#000; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.5px;">Acessar Link da Mentoria</a>
+                    <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="display:inline-block; background:transparent; color:#FFF; border:1px solid #00E5FF; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.5px;">Acessar Link da Mentoria</a>
                     
                     <div style="margin-top: 30px; border-top: 1px solid #1F2937; padding-top: 20px;">
                         <h3 style="color:#FFF; text-align:center; margin-bottom: 15px; font-size: 1.1rem;">Arsenal Completo (20 Apps Exclusivos)</h3>
@@ -1039,7 +1088,7 @@
                     <h3 style="color:#FFF; margin-bottom:15px;">Senha da Sala</h3>
                     <div id="msgErroInLine" style="color:#EF4444; font-size:0.85rem; margin-bottom:10px; display:none;">Senha incorreta!</div>
                     <input type="password" id="alunoSenha" placeholder="••••" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px; background: #000; color: #fff; border: 1px solid #1F2937; font-size:1.2rem; letter-spacing:4px;"><br>
-                    <button onclick="verificarSenhaAluno()" style="background:#00E5FF; color:#000; padding:10px 20px; border:none; border-radius:6px; font-weight:bold; cursor: pointer;">Entrar</button>
+                    <button onclick="verificarSenhaAluno()" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:10px 20px; border-radius:6px; font-weight:bold; cursor: pointer;">Entrar</button>
                     <button onclick="document.getElementById('alunoModal').style.display='none'" style="background:transparent; color:#8292A6; margin-top:10px; padding:10px; border:none; cursor:pointer; font-size:0.8rem; width:100%;">Cancelar</button>
                 </div>
             </div>
@@ -1154,10 +1203,8 @@
             const btn = event.currentTarget;
             const originalText = btn.innerHTML;
             btn.innerHTML = 'DOWNLOAD INICIADO!';
-            btn.style.background = 'var(--accent-green)';
             setTimeout(() => {
                 btn.innerHTML = originalText;
-                btn.style.background = '#3B82F6';
             }, 3000);
         }
 
@@ -1213,8 +1260,9 @@
                                 const actionBtn = premiumCard.querySelector('button') || premiumCard.querySelector('.btn-action');
                                 if (actionBtn) {
                                     actionBtn.className = 'btn-action';
-                                    actionBtn.style.background = '#FBBF24';
-                                    actionBtn.style.color = '#000';
+                                    actionBtn.style.background = 'transparent';
+                                    actionBtn.style.border = '1px solid #FBBF24';
+                                    actionBtn.style.color = '#FFF';
                                     actionBtn.style.fontWeight = '800';
                                     actionBtn.innerHTML = 'LIBERAR EMPIRE PREMIUM • R$ 49,90';
                                     actionBtn.onclick = (e) => {
