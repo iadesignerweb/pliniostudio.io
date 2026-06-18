@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Plínio Studio | Escola Audiovisual & IA</title>
-    <meta name="theme-color" content="#0B1015">
+    <meta name="theme-color" content="#09090B">
     
     <link rel="manifest" href="manifest.json">
     
@@ -32,18 +32,18 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=963317484266778&ev=PageView&noscript=1"/></noscript>
     
     <style>
-        /* --- TEMA PRETO AZULADO (GRAFITE ESCURO) --- */
+        /* --- TEMA PREMIUM (INSPIRADO NO KLING AI) --- */
         :root {
-            --bg-main: #0B1015;        
-            --bg-card: #121820;        
-            --bg-card-hover: #1A222D;
-            --text-main: #F8FAFC;
-            --text-muted: #8292A6;
-            --accent-primary: #00E5FF;
+            --bg-main: #09090B;        
+            --bg-card: #18181B;        
+            --bg-card-hover: #27272A;
+            --text-main: #FAFAFA;
+            --text-muted: #A1A1AA;
+            --accent-primary: #00E5FF; /* Mantendo o Cyan do Plínio Studio para a logo e ícones */
+            --accent-kling: #4ADE80;   /* Verde Kling para ações de destaque */
             --accent-secondary: #3B82F6;
-            --accent-green: #34D399;   
-            --bg-green-soft: rgba(16, 185, 129, 0.15);
-            --border-color: #1F2937;
+            --bg-green-soft: rgba(74, 222, 128, 0.15);
+            --border-color: #27272A;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -120,7 +120,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 24px;
-            background-color: var(--bg-main);
+            background-color: rgba(9, 9, 11, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -137,7 +138,7 @@
         /* --- 📲 BANNER PWA TOPO --- */
         .pwa-box-fixo {
             display: none; 
-            background: rgba(18, 24, 32, 0.9);
+            background: var(--bg-card);
             border: 1px dashed var(--accent-primary);
             border-radius: 16px;
             padding: 18px;
@@ -153,7 +154,7 @@
             font-weight: 500;
         }
         .pwa-btn-estiloso {
-            background: linear-gradient(135deg, var(--accent-primary) 0%, #00B3CC 100%);
+            background: var(--accent-primary);
             color: #000;
             font-weight: 800;
             font-size: 0.85rem;
@@ -215,8 +216,8 @@
         
         .badge-premium {
             position: absolute; top: 16px; right: 16px; background: var(--bg-green-soft); backdrop-filter: blur(8px);
-            color: var(--accent-green); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
-            display: flex; align-items: center; gap: 6px; z-index: 10; border: 1px solid rgba(52, 211, 153, 0.2); pointer-events: none;
+            color: var(--accent-kling); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+            display: flex; align-items: center; gap: 6px; z-index: 10; border: 1px solid rgba(74, 222, 128, 0.2); pointer-events: none;
         }
         .badge-premium svg { width: 12px; height: 12px; fill: currentColor; }
 
@@ -230,13 +231,12 @@
         .avatars-row .avatar-count { width: 32px; height: 32px; border-radius: 50%; background: #7C3AED; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; border: 2px solid var(--bg-main); margin-left: -10px; z-index: 1; }
         .saved-count { font-size: 0.9rem; color: var(--text-muted); margin-left: 12px; }
         .unlock-count { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--text-muted); }
-        .unlock-count svg { width: 18px; height: 18px; stroke: var(--accent-green); fill: none; }
-        .recent-unlock { font-size: 0.8rem; color: var(--accent-green); font-weight: 500; }
+        .unlock-count svg { width: 18px; height: 18px; stroke: var(--accent-kling); fill: none; }
+        .recent-unlock { font-size: 0.8rem; color: var(--accent-kling); font-weight: 500; }
 
         .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
         
-        /* --- ESTÉTICA EXCLUSIVA DE BOTÕES OUTLINE (FUNDO TRANSPARENTE, BORDA CIANO) --- */
         .btn-action { 
             display: inline-flex; 
             align-items: center; 
@@ -262,7 +262,7 @@
         .card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: 0.4s; cursor: pointer; }
         .card:hover { border-color: var(--accent-secondary); background: var(--bg-card-hover); }
         .card-img { height: 180px; position: relative; overflow: hidden; background: #000; }
-        .card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, rgba(11,16,21, 0.9)); z-index: 1; }
+        .card-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, rgba(9,9,11, 0.9)); z-index: 1; }
         .card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) brightness(80%); }
         .card-content { padding: 25px; position: relative; z-index: 2; }
         .card-content h2 { font-size: 1.3rem; color: #FFFFFF; margin-bottom: 8px; font-weight: 600; }
@@ -280,11 +280,11 @@
         .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
 
         /* --- LOGIN GLASSMORPHISM --- */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { 
-            background: rgba(18, 24, 32, 0.95); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--bg-card); 
+            border: 1px solid var(--border-color);
             border-top: 4px solid var(--accent-primary); 
             border-radius: 24px; 
             padding: 40px 30px; 
@@ -292,7 +292,7 @@
             max-width: 400px; 
             text-align: center; 
             position: relative; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
         }
         .close-modal { position: absolute; top: 18px; right: 22px; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: 0.3s; line-height: 1; }
         .close-modal:hover { color: var(--accent-primary); }
@@ -312,7 +312,7 @@
             letter-spacing: 4px; 
         }
         .modal-input:focus { border-color: var(--accent-primary); box-shadow: 0 0 15px rgba(0,229,255,0.2); outline: none; }
-        .modal-btn { background: linear-gradient(135deg, var(--accent-secondary) 0%, #1D4ED8 100%); color: #ffffff; padding: 16px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); margin-bottom: 15px; }
+        .modal-btn { background: var(--accent-secondary); color: #ffffff; padding: 16px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); margin-bottom: 15px; }
         .modal-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
         
         .btn-whats-modal { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; width: 100%; border: none; cursor: pointer;}
@@ -324,13 +324,13 @@
             bottom: -80px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--accent-green);
+            background: var(--accent-kling);
             color: #000;
             padding: 14px 28px;
             border-radius: 30px;
             font-weight: 700;
             font-size: 0.9rem;
-            box-shadow: 0 10px 30px rgba(52, 211, 153, 0.4);
+            box-shadow: 0 10px 30px rgba(74, 222, 128, 0.4);
             z-index: 9999;
             transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             display: flex;
@@ -338,15 +338,13 @@
             gap: 10px;
             pointer-events: none;
         }
-        .toast-notification.show {
-            bottom: 90px;
-        }
+        .toast-notification.show { bottom: 90px; }
 
         .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 4000; justify-content: center; align-items: center; cursor: zoom-out; opacity: 0; transition: 0.3s ease; }
         .lightbox-overlay.active { display: flex; opacity: 1; }
         .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); }
 
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(11, 16, 21, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(9, 9, 11, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.7rem; font-weight: 600; transition: 0.3s; cursor: pointer; }
         .nav-item:hover, .nav-item.active { color: #FFF; }
         .nav-item svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
@@ -377,7 +375,7 @@
         .prompts-empire-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(11, 16, 21, 0.97) 0%, rgba(11, 16, 21, 0.88) 60%, rgba(0, 229, 255, 0.12) 100%);
+            background: linear-gradient(135deg, rgba(9, 9, 11, 0.97) 0%, rgba(9, 9, 11, 0.88) 60%, rgba(0, 229, 255, 0.12) 100%);
             z-index: 1;
         }
         .prompts-empire-content {
@@ -389,7 +387,7 @@
         .marquee-container {
             width: 100%;
             overflow: hidden;
-            background: rgba(18, 24, 32, 0.6);
+            background: var(--bg-card);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             padding: 14px 0;
@@ -430,7 +428,7 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
 
     <div id="splash-screen">
         <canvas id="warpCanvas"></canvas>
@@ -474,10 +472,10 @@
             <a href="#" onclick="abrirPeloMenu('ebook', 'Baixar E-books'); toggleMenu();">
                 <svg viewBox="0 0 24 24"><path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Baixar E-books
             </a>
-            <a href="#" onclick="fecharMenuEAbrirVendas()" style="color: #FBBF24;">
-                <svg viewBox="0 0 24 24" stroke="#FBBF24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg> Planos: BRONZE, PRATA E OURO
+            <a href="#planos-assinatura" onclick="toggleMenu();" style="color: #FBBF24;">
+                <svg viewBox="0 0 24 24" stroke="#FBBF24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Planos e Franquias
             </a>
-            <a href="https://wa.me/5587996029765" target="_blank" style="color: var(--accent-green);">
+            <a href="https://wa.me/5587996029765" target="_blank" style="color: var(--accent-kling);">
                 <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg> Atendimento WhatsApp
             </a>
         </div>
@@ -485,19 +483,19 @@
 
     <main class="app-container">
         
-        <div id="quem-somos" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px 30px; text-align: center; margin-bottom: 40px; box-shadow: 0 12px 40px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
-            <div style="position: absolute; top: -40px; left: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);"></div>
-            <div style="width: 60px; height: 60px; background: rgba(0, 229, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; border: 1px solid rgba(0, 229, 255, 0.2);">
-                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+        <div style="text-align: center; padding: 30px 20px; background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-main) 100%); border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div style="display: inline-block; background: rgba(0, 229, 255, 0.1); color: var(--accent-primary); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px; border: 1px solid rgba(0, 229, 255, 0.2);">
+                 O Futuro do Ensino Audiovisual
             </div>
-            <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 18px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase;">Quem Somos</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 520px; margin: 0 auto; text-align: justify;">
-                O <strong>Plínio Studio</strong> é a plataforma definitiva de convergência entre Audiovisual Cinematográfico e Inteligência Artificial. Oferecemos um ecossistema completo: desde o <strong>aprendizado individual</strong> até a aquisição de <strong>Franquias Oficiais</strong> para escolas e instituições de ensino.<br><br>
-                Criamos e estruturamos <strong>Salas de Aula Virtuais e Mentorias</strong> 100% personalizadas com o nome da sua empresa, escola ou marca. Nosso objetivo é erradicar o aspecto artificial, fornecendo a infraestrutura exata para professores e líderes escalarem seus negócios com IA profissional.
+            <h1 style="font-size: 1.8rem; font-weight: 800; color: #FFF; margin-bottom: 15px; line-height: 1.2;">
+                Estruture seu Método.<br>Saia na Frente da Concorrência.
+            </h1>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                Escolas, mentores e professores particulares: adquiram sua <strong>Franquia Oficial</strong> ou <strong>Sala de Aula Virtual</strong> personalizada. Organize seu método pedagógico com IA e elimine o aspecto artificial das suas aulas.
             </p>
+            <a href="#planos-assinatura" style="display: inline-block; background: var(--accent-primary); color: #000; font-weight: 800; text-transform: uppercase; padding: 14px 28px; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 229, 255, 0.2); transition: 0.3s; letter-spacing: 1px; font-size: 0.85rem;">
+                CONHECER FRANQUIAS
+            </a>
         </div>
 
         <div id="pwaTopoBox" class="pwa-box-fixo">
@@ -512,6 +510,23 @@
             <div class="profile-info">
                 <span class="profile-name">Plínio Fabrício</span>
                 <span class="profile-handle">@pliniofabricio_</span>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px;">
+            <div class="js-link" data-tipo="curso" data-titulo="Agenda de IA" style="background: var(--accent-kling); color: #000; border-radius: 12px; padding: 20px 10px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; font-weight: 700; transition: transform 0.2s;">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: none; stroke: #000; stroke-width: 2;"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <span style="font-size: 0.85rem;">Agenda IA</span>
+            </div>
+            
+            <a href="#galeria-prompts-secao" style="text-decoration: none; background: var(--bg-card); border: 1px solid var(--border-color); color: #FFF; border-radius: 12px; padding: 20px 10px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; transition: transform 0.2s;">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2;"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span style="font-size: 0.85rem;">Prompts</span>
+            </a>
+
+            <div class="js-link" data-tipo="mentoria" data-titulo="Área de Mentoria" style="background: var(--bg-card); border: 1px solid var(--border-color); color: #FFF; border-radius: 12px; padding: 20px 10px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; transition: transform 0.2s;">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span style="font-size: 0.85rem;">Mentorias</span>
             </div>
         </div>
 
@@ -545,6 +560,92 @@
             <button onclick="baixarMaterialCopa()" class="btn-action" style="max-width: 250px; padding: 10px 20px; font-size: 0.8rem; margin: 0 auto;">ACESSAR MATERIAL</button>
         </div>
 
+        <div id="quem-somos" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px 30px; text-align: center; margin-bottom: 40px; box-shadow: 0 12px 40px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -40px; left: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);"></div>
+            <div style="width: 60px; height: 60px; background: rgba(0, 229, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; border: 1px solid rgba(0, 229, 255, 0.2);">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 18px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase;">Quem Somos</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 520px; margin: 0 auto; text-align: justify;">
+                O <strong>Plínio Studio</strong> é a plataforma definitiva de convergência entre Audiovisual Cinematográfico e Inteligência Artificial. Oferecemos um ecossistema completo: desde o aprendizado individual até a aquisição de Franquias Oficiais. Nosso objetivo é fornecer a infraestrutura exata para escalar negócios com IA profissional.
+            </p>
+        </div>
+
+        <div id="planos-assinatura" style="padding: 20px 0 40px 0;">
+            <h2 class="section-title" style="margin-top: 0;">Planos e Franquias</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 0.9rem;">
+                Escolha a estrutura ideal para escalar seu ensino e produções.
+            </p>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; margin-bottom: 25px;">
+                <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 10px;">Plano Bronze <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 400;">/ Aluno VIP</span></h3>
+                <div style="font-size: 2.5rem; font-weight: 800; color: #FFF; margin-bottom: 20px;">
+                    R$ 97<span style="font-size: 1rem; color: var(--text-muted); font-weight: 500;">/mês</span>
+                </div>
+                
+                <ul style="list-style: none; padding: 0; margin-bottom: 30px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+                    <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-kling); fill: none; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Acesso à Sala de Aula Virtual
+                    </li>
+                    <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-kling); fill: none; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Galeria de Prompts Liberada
+                    </li>
+                    <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-kling); fill: none; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Material Didático de IA
+                    </li>
+                </ul>
+
+                <a href="#" target="_blank" style="display: block; width: 100%; background: #FFF; color: #000; text-align: center; padding: 15px; border-radius: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; margin-bottom: 15px;">
+                    Assinar Plano Bronze
+                </a>
+                <div style="background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--border-color); border-radius: 8px; padding: 12px; text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+                    ⚠️ Após o pagamento, envie o comprovante para o <a href="https://wa.me/5587996029765" style="color: #FFF; text-decoration: underline;">Suporte no WhatsApp</a> para a criação imediata da sua sala.
+                </div>
+            </div>
+
+            <div style="background: #121820; border: 2px solid var(--accent-primary); border-radius: 16px; padding: 30px; position: relative; box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);">
+                <div style="position: absolute; top: -12px; right: 20px; background: var(--accent-primary); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
+                    Recomendado
+                </div>
+                <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 10px;">Franquia Ouro <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 400;">/ Escolas e Mentores</span></h3>
+                <div style="font-size: 2.5rem; font-weight: 800; color: #FFF; margin-bottom: 20px;">
+                    R$ 497<span style="font-size: 1rem; color: var(--text-muted); font-weight: 500;">/único</span>
+                </div>
+                
+                <ul style="list-style: none; padding: 0; margin-bottom: 30px; color: var(--text-main); font-size: 0.95rem; line-height: 1.8;">
+                    <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-primary); fill: none; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <strong>Tudo do plano Bronze</strong>
+                    </li>
+                    <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-primary); fill: none; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Plataforma com Nome da sua Marca
+                    </li>
+                    <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-primary); fill: none; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Organização do Método Pedagógico
+                    </li>
+                    <li style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-primary); fill: none; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Mentoria Direta de Estruturação
+                    </li>
+                </ul>
+
+                <a href="#" target="_blank" style="display: block; width: 100%; background: var(--accent-primary); color: #000; text-align: center; padding: 15px; border-radius: 12px; font-weight: 800; text-decoration: none; text-transform: uppercase; margin-bottom: 15px; transition: 0.3s;">
+                    Adquirir Franquia Ouro
+                </a>
+                <div style="background: rgba(0, 229, 255, 0.05); border: 1px dashed var(--accent-primary); border-radius: 8px; padding: 12px; text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+                    ⚠️ Após o pagamento, envie o comprovante para o <a href="https://wa.me/5587996029765" style="color: var(--accent-primary); text-decoration: underline;">Suporte no WhatsApp</a> para a configuração da sua Franquia.
+                </div>
+            </div>
+        </div>
+
         <section id="galeria-empire" class="prompts-empire-section">
             <div class="prompts-empire-bg"></div>
             <div class="prompts-empire-overlay"></div>
@@ -556,13 +657,13 @@
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;">
-                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px 10px; text-align: center; position: relative;">
+                    <div style="background-color: rgba(26, 30, 36, 0.8); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 10px; text-align: center; position: relative;">
                         <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.6rem; font-weight: bold; padding: 3px 6px; border-radius: 4px;">FREE</span>
                         <div style="font-size: 2.5rem; margin: 20px 0;">💻</div>
                         <div style="background-color: #0033A0; color: #fff; padding: 4px 8px; font-size: 0.75rem; display: inline-block; border-radius: 4px;">Premium Sociedade</div>
                     </div>
                     
-                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px 10px; text-align: center; position: relative;">
+                    <div style="background-color: rgba(26, 30, 36, 0.8); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px 10px; text-align: center; position: relative;">
                         <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.6rem; font-weight: bold; padding: 3px 6px; border-radius: 4px;">FREE</span>
                         <div style="margin: 20px auto; width: 40px; height: 35px; background-color: #0033A0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 6px;">🚲</div>
                         <div style="background-color: #0033A0; color: #fff; padding: 4px 8px; font-size: 0.75rem; display: inline-block; border-radius: 4px;">3D Homem Bicicleta</div>
@@ -594,76 +695,65 @@
                     <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     11.376 pessoas já desbloquearam
                 </div>
-                <div class="recent-unlock">Wilma Siqueira. desbloqueou recentemente</div>
+                <div class="recent-unlock">Wilma Siqueira desbloqueou recentemente</div>
             </div>
         </div>
 
         <div class="divider"></div>
 
-        <h2 class="section-title">Área do Aluno</h2>
-        <div class="card-grid">
-            <div class="card js-link" data-tipo="curso" data-titulo="Agenda de IA">
-                <div class="card-img"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"></div>
-                <div class="card-content"><h2>Agenda de IA</h2><p>Acesso direto às salas individuais de aprendizado.</p><span class="btn-action">Acessar Sala</span></div>
-            </div>
-            <div class="card js-link" data-tipo="mentoria" data-titulo="Área de Mentoria">
-                <div class="card-img"><img src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_1280.jpg"></div>
-                <div class="card-content"><h2>Mentoria IA</h2><p>Acompanhamento personalizado para o seu desenvolvimento.</p><span class="btn-action">Acessar Mentoria</span></div>
-            </div>
-            <div class="card js-link" data-tipo="ebook" data-titulo="Baixar E-books">
-                <div class="card-img"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"></div>
-                <div class="card-content"><h2>Biblioteca Digital</h2><p>Material didático e guias avançados de IA para download.</p><span class="btn-action">Fazer Download</span></div>
-            </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <h2 class="section-title">Galeria de Prompts</h2>
-        
-        <div class="prompt-card">
-            <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000cbd0720ea457e5efbcc32584.png')">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000cbd0720ea457e5efbcc32584.png" alt="Avatar Multiverso Apps">
-            </div>
-            <div class="prompt-info-box">
-                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Premium • Pop Art</span>
-                <h3>Avatar Multiverso Apps</h3>
-                <p>Grid tridimensional de aplicativos com interação realista do avatar em cada ambiente.</p>
-                <button onclick="abrirModalPromptPremium('promptMultiverso')" class="btn-action"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2-2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> LIBERAR PROMPT PREMIUM</button>
-                <div id="promptMultiverso" class="prompt-collapse">
-                    <div class="prompt-box" id="textoPromptMultiverso">A 3D grid layout of 12 distinct square app icons. Each icon features a realistic man (image Uploaded), wearing stylish modern outfits that match the color palette of that specific app. The apps include versions of Spotify, Netflix, TikTok, Gmail, Google, Safari, App Store, Chrome, Clock, Calendar, Instagram, and Notes. The man is interacting with or posing inside the 3D frame of each app icon. Clean white studio background, vibrant colors, realistic textures, highly detailed, professional digital art, 8k resolution, pop art style.</div>
-                    <button onclick="copiarPrompt('textoPromptMultiverso')" class="btn-action" style="margin-top: 5px;">Copiar</button>
+        <div id="galeria-prompts-secao">
+            <h2 class="section-title">Galeria de Prompts</h2>
+            
+            <button onclick="voltarParaHome()" style="display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); color: #FFF; border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 25px; transition: 0.3s; width: 100%; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+                Voltar para Início da Plataforma
+            </button>
+            
+            <div class="prompt-card">
+                <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000cbd0720ea457e5efbcc32584.png')">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000cbd0720ea457e5efbcc32584.png" alt="Avatar Multiverso Apps">
+                </div>
+                <div class="prompt-info-box">
+                    <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Premium • Pop Art</span>
+                    <h3>Avatar Multiverso Apps</h3>
+                    <p>Grid tridimensional de aplicativos com interação realista do avatar em cada ambiente.</p>
+                    <button onclick="abrirModalPromptPremium('promptMultiverso')" class="btn-action"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2-2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> LIBERAR PROMPT PREMIUM</button>
+                    <div id="promptMultiverso" class="prompt-collapse">
+                        <div class="prompt-box" id="textoPromptMultiverso">A 3D grid layout of 12 distinct square app icons. Each icon features a realistic man (image Uploaded), wearing stylish modern outfits that match the color palette of that specific app. The apps include versions of Spotify, Netflix, TikTok, Gmail, Google, Safari, App Store, Chrome, Clock, Calendar, Instagram, and Notes. The man is interacting with or posing inside the 3D frame of each app icon. Clean white studio background, vibrant colors, realistic textures, highly detailed, professional digital art, 8k resolution, pop art style.</div>
+                        <button onclick="copiarPrompt('textoPromptMultiverso')" class="btn-action" style="margin-top: 5px;">Copiar</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="prompt-card">
-            <div class="card-img-prompt" oncontextmenu="return false;">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000d190720e8757a751fde1a4d7.png" alt="Retrato">
-            </div>
-            <div class="prompt-info-box">
-                <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Acesso Liberado • Cronologia</span>
-                <h3>Retrato 4 Gerações</h3>
-                <p>Estudo de continuidade temporal com iluminação dramática.</p>
-                <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action">Mostrar Prompt</button>
-                <div id="prompt4Geracoes" class="prompt-collapse">
-                    <div class="prompt-box" id="textoPrompt4Geracoes">Cinematic portrait of four generations of a family standing together, ultra-realistic photography, 8k resolution, dramatic chiaroscuro lighting, shot on 50mm prime lens, Arri Alexa cinematic color grading, shallow depth of field, highly detailed faces showing natural aging progression, sharp focus on eyes, emotional depth, photorealistic textures.</div>
-                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="margin-top: 5px;">Copiar</button>
+            
+            <div class="prompt-card">
+                <div class="card-img-prompt" oncontextmenu="return false;">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/file_00000000d190720e8757a751fde1a4d7.png" alt="Retrato">
+                </div>
+                <div class="prompt-info-box">
+                    <span class="card-tag"><svg viewBox="0 0 24 24"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Acesso Liberado • Cronologia</span>
+                    <h3>Retrato 4 Gerações</h3>
+                    <p>Estudo de continuidade temporal com iluminação dramática.</p>
+                    <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action">Mostrar Prompt</button>
+                    <div id="prompt4Geracoes" class="prompt-collapse">
+                        <div class="prompt-box" id="textoPrompt4Geracoes">Cinematic portrait of four generations of a family standing together, ultra-realistic photography, 8k resolution, dramatic chiaroscuro lighting, shot on 50mm prime lens, Arri Alexa cinematic color grading, shallow depth of field, highly detailed faces showing natural aging progression, sharp focus on eyes, emotional depth, photorealistic textures.</div>
+                        <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="margin-top: 5px;">Copiar</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="prompt-card">
-            <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_%20Pl%C3%ADnio%20Studio2.png')">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_%20Pl%C3%ADnio%20Studio2.png" alt="Moda Livre">
-            </div>
-            <div class="prompt-info-box">
-                <span class="card-tag" style="color: var(--text-muted);"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Treino Studio</span>
-                <h3>Estilo Sacro</h3>
-                <p>Composição fotográfica editorial explorando micro-texturas e iluminação sacra.</p>
-                <button onclick="togglePrompt('promptSacro', this)" class="btn-action">Mostrar Prompt</button>
-                <div id="promptSacro" class="prompt-collapse">
-                    <div class="prompt-box" id="textoPromptSacro">Ultra-realistic sacred cinematic portrait of a young biblical woman, intricate micro-details of ancient fabric texture, dramatic Rembrandt lighting, ethereal glowing background, [INSERIR AÇÃO OU ELEMENTO ESPECÍFICO AQUI], shot on Arri Alexa, 50mm lens, 8k, hyper-detailed skin pores, masterful color grading.</div>
-                    <button onclick="copiarPrompt('textoPromptSacro')" class="btn-action" style="margin-top: 5px;">Copiar</button>
+            
+            <div class="prompt-card">
+                <div class="card-img-prompt" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_%20Pl%C3%ADnio%20Studio2.png')">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/Eva%20Green_%20Pl%C3%ADnio%20Studio2.png" alt="Moda Livre">
+                </div>
+                <div class="prompt-info-box">
+                    <span class="card-tag" style="color: var(--text-muted);"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Treino Studio</span>
+                    <h3>Estilo Sacro</h3>
+                    <p>Composição fotográfica editorial explorando micro-texturas e iluminação sacra.</p>
+                    <button onclick="togglePrompt('promptSacro', this)" class="btn-action">Mostrar Prompt</button>
+                    <div id="promptSacro" class="prompt-collapse">
+                        <div class="prompt-box" id="textoPromptSacro">Ultra-realistic sacred cinematic portrait of a young biblical woman, intricate micro-details of ancient fabric texture, dramatic Rembrandt lighting, ethereal glowing background, [INSERIR AÇÃO OU ELEMENTO ESPECÍFICO AQUI], shot on Arri Alexa, 50mm lens, 8k, hyper-detailed skin pores, masterful color grading.</div>
+                        <button onclick="copiarPrompt('textoPromptSacro')" class="btn-action" style="margin-top: 5px;">Copiar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -703,7 +793,7 @@
                             auto-rotate 
                             camera-controls 
                             shadow-intensity="1"
-                            style="width: 100%; height: 100%; background-color: #121820;"
+                            style="width: 100%; height: 100%; background-color: #09090B;"
                             exposure="1.2">
                         </model-viewer>
                         <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #FFF; font-size: 0.7rem; padding: 6px 10px; border-radius: 4px; pointer-events: none; border: 1px solid rgba(255,255,255,0.2);">Gire e dê zoom com o dedo</div>
@@ -788,7 +878,7 @@
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             <span>MENU</span>
         </a>
-        <a class="nav-item" href="#galeria-empire">
+        <a class="nav-item" href="#galeria-prompts-secao">
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             <span>PROMPTS</span>
         </a>
@@ -850,6 +940,14 @@
     </div>
 
     <script>
+        // --- FUNÇÃO VOLTAR PARA HOME ---
+        function voltarParaHome() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
         // --- FUNÇÃO DOWNLOAD MATERIAL COPA ---
         function baixarMaterialCopa() {
             const senha = document.getElementById('senhaMaterialCopa').value.trim();
@@ -907,7 +1005,7 @@
         }
 
         function animarUniverso() {
-            ctx.fillStyle = 'rgba(11, 16, 21, 0.2)';
+            ctx.fillStyle = 'rgba(9, 9, 11, 0.2)';
             ctx.fillRect(0, 0, width, height);
             
             const cx = width / 2;
@@ -988,7 +1086,7 @@
             { nome: "Luciene Pinto", senha: "4756" }, { nome: "Maria Eduarda", senha: "7109" }, { nome: "Maria Mentora", senha: "8234" },
             { nome: "Martha Produtora", senha: "9512" }, { nome: "Maurina e Anikelly", senha: "1765" }, { nome: "Scheila e Samantha", senha: "2489" }, 
             { nome: "Wilma Duarte", senha: "3904" },
-            { nome: "Rock Bone", senha: "7711" }, { nome: "Ederaldo Lemos", senha: "7722" }, { nome: "Luciene Simões", senha: "7733" }, { nome: "Potira", senha: "7744" }
+            { nome: "Rock Bone", senha: "7711" }, { nome: "Ederaldo Lemos", senha: "7722" }, { nome: "Luciene Simões", senha: "7733" }, { nome: "Potira", senha: "7744" }, { nome: "Diana Amiga", senha: "7745" }
         ];
 
         function togglePrompt(id, btnElement) { 
@@ -1028,10 +1126,10 @@
             let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
             
             if(alunoEspecifico) {
-                listaHtml += `<div style="background:#121820; border:2px solid #00E5FF; padding:25px; border-radius:12px; text-align:center;"><div style="font-size:1.3rem; color:#FFF; margin-bottom:5px; font-weight:bold;">Olá, ${alunoEspecifico.nome}!</div><p style="color:#8292A6; margin-bottom:15px; font-size:0.9rem;">Sua área de treinamento exclusivo está conectada.</p><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:14px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; text-transform:uppercase; letter-spacing:1px;">Acessar Minha Aula Agora</button></div>`;
+                listaHtml += `<div style="background:#18181B; border:2px solid #00E5FF; padding:25px; border-radius:12px; text-align:center;"><div style="font-size:1.3rem; color:#FFF; margin-bottom:5px; font-weight:bold;">Olá, ${alunoEspecifico.nome}!</div><p style="color:#A1A1AA; margin-bottom:15px; font-size:0.9rem;">Sua área de treinamento exclusivo está conectada.</p><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:14px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; text-transform:uppercase; letter-spacing:1px;">Acessar Minha Aula Agora</button></div>`;
             } else {
                 listaDeAlunosGlobais.forEach(aluno => {
-                    listaHtml += `<div style="background:#121820; border:1px solid #1F2937; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:12px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%;">Acessar Aula</button></div>`;
+                    listaHtml += `<div style="background:#18181B; border:1px solid #27272A; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:10px;">${aluno.nome}</div><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:12px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%;">Acessar Aula</button></div>`;
                 });
             }
             listaHtml += '</div>';
@@ -1040,22 +1138,22 @@
             let nomeAlunoPainel = alunoEspecifico ? alunoEspecifico.nome : 'Administrador Master';
             
             const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | EAD</title><style>
-            body { background-color: #0B1015; color: #F8FAFC; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
+            body { background-color: #09090B; color: #FAFAFA; font-family: sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
             .ead-container { width: 100%; max-width: 500px; } .video-container { display: none; flex-direction: column; width: 100%; max-width: 800px; align-items:center; }
             h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 10px; text-align:center;}
-            .app-btn { background:#0B1015; border:1px solid #1F2937; border-radius:8px; padding:12px 4px; text-align:center; color:#00E5FF; text-decoration:none; font-size: 0.75rem; font-weight: bold; transition: 0.3s; display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
-            .app-btn:hover { border-color: #00E5FF; background: #121820;}
+            .app-btn { background:#09090B; border:1px solid #27272A; border-radius:8px; padding:12px 4px; text-align:center; color:#00E5FF; text-decoration:none; font-size: 0.75rem; font-weight: bold; transition: 0.3s; display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
+            .app-btn:hover { border-color: #00E5FF; background: #18181B;}
             </style></head><body>
             <div class="ead-container" id="listaArea"><h1>${titulo}</h1>${listaHtml}</div>
             <div class="video-container" id="videoArea" style="display:none;">
                 <h1>Sala de Aula Virtual</h1>
                 <h3 style="color:#00E5FF; margin-bottom:20px; font-weight:400;">Usuário: ${nomeAlunoPainel}</h3>
-                <div style="background:#121820; padding:25px; border-radius:12px; border-left: 4px solid #00E5FF; width:100%; max-width:550px;">
+                <div style="background:#18181B; padding:25px; border-radius:12px; border-left: 4px solid #00E5FF; width:100%; max-width:550px;">
                     <h2 style="color:#FFF;">Aula Liberada</h2>
-                    <p style="color:#8292A6; margin-bottom:20px;">${nomeProf}</p>
+                    <p style="color:#A1A1AA; margin-bottom:20px;">${nomeProf}</p>
                     <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="display:inline-block; background:transparent; color:#FFF; border:1px solid #00E5FF; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; text-transform:uppercase; font-size:0.85rem; letter-spacing:0.5px;">Acessar Link da Mentoria</a>
                     
-                    <div style="margin-top: 30px; border-top: 1px solid #1F2937; padding-top: 20px;">
+                    <div style="margin-top: 30px; border-top: 1px solid #27272A; padding-top: 20px;">
                         <h3 style="color:#FFF; text-align:center; margin-bottom: 15px; font-size: 1.1rem;">Arsenal Completo (20 Apps Exclusivos)</h3>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;">
                             <a href="https://play.google.com/store/search?q=CapCut&c=apps" target="_blank" class="app-btn">CapCut</a>
@@ -1083,13 +1181,13 @@
                 </div>
             </div>
             
-            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,16,21,0.9); justify-content:center; align-items:center;">
-                <div style="background:#121820; padding:30px; border-radius:12px; border:1px solid #1F2937; text-align:center;">
+            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(9, 9, 11, 0.9); justify-content:center; align-items:center;">
+                <div style="background:#18181B; padding:30px; border-radius:12px; border:1px solid #27272A; text-align:center;">
                     <h3 style="color:#FFF; margin-bottom:15px;">Senha da Sala</h3>
                     <div id="msgErroInLine" style="color:#EF4444; font-size:0.85rem; margin-bottom:10px; display:none;">Senha incorreta!</div>
-                    <input type="password" id="alunoSenha" placeholder="••••" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px; background: #000; color: #fff; border: 1px solid #1F2937; font-size:1.2rem; letter-spacing:4px;"><br>
+                    <input type="password" id="alunoSenha" placeholder="••••" style="padding:10px; border-radius:6px; text-align:center; margin-bottom:15px; background: #000; color: #fff; border: 1px solid #27272A; font-size:1.2rem; letter-spacing:4px;"><br>
                     <button onclick="verificarSenhaAluno()" style="background:transparent; color:#FFF; border:1px solid #00E5FF; padding:10px 20px; border-radius:6px; font-weight:bold; cursor: pointer;">Entrar</button>
-                    <button onclick="document.getElementById('alunoModal').style.display='none'" style="background:transparent; color:#8292A6; margin-top:10px; padding:10px; border:none; cursor:pointer; font-size:0.8rem; width:100%;">Cancelar</button>
+                    <button onclick="document.getElementById('alunoModal').style.display='none'" style="background:transparent; color:#A1A1AA; margin-top:10px; padding:10px; border:none; cursor:pointer; font-size:0.8rem; width:100%;">Cancelar</button>
                 </div>
             </div>
             <script>
