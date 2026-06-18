@@ -220,7 +220,6 @@
         }
         .badge-premium svg { width: 12px; height: 12px; fill: currentColor; }
 
-        .tag-exclusive { display: inline-block; background: rgba(255, 255, 255, 0.05); color: var(--accent-green); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; border: 1px solid var(--border-color); }
         h1 { font-size: 1.8rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; text-align: center; }
         .description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; text-align: center; }
 
@@ -237,13 +236,6 @@
         .section-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; text-transform: uppercase; text-align: center; letter-spacing: 3px; font-weight: 600; margin-top: 40px; }
         .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 50px 0; }
         
-        .super-gerador-banner { width: 100%; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--border-color); transition: 0.4s; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
-        .super-gerador-banner:hover { border-color: var(--accent-primary); box-shadow: 0 0 35px rgba(0,229,255,0.2); transform: scale(1.02); }
-        .super-gerador-banner img { width: 100%; display: block; object-fit: cover; }
-        .super-gerador-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(11,16,21,0.95), transparent); padding: 25px; text-align: center; opacity: 0; transition: 0.4s; }
-        .super-gerador-banner:hover .super-gerador-overlay { opacity: 1; }
-        .super-gerador-overlay span { color: #FFF; font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
-
         .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #000; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: none; padding: 14px 26px; border-radius: 8px; transition: 0.3s; width: 100%; background-color: var(--accent-primary); cursor: pointer; }
         .btn-action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;}
         .btn-action:hover { background-color: #FFF; }
@@ -275,7 +267,7 @@
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 16, 21, 0.85); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { 
-            background: rgba(18, 24, 32, 0.8); 
+            background: rgba(18, 24, 32, 0.95); 
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-top: 4px solid var(--accent-primary); 
             border-radius: 24px; 
@@ -309,6 +301,30 @@
         
         .btn-whats-modal { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; width: 100%; border: none; cursor: pointer;}
         .btn-whats-modal svg { width: 18px; height: 18px; fill: currentColor; }
+
+        /* TOAST NOTIFICATION PROFISSIONAL */
+        .toast-notification {
+            position: fixed;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-green);
+            color: #000;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(52, 211, 153, 0.4);
+            z-index: 9999;
+            transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .toast-notification.show {
+            bottom: 90px;
+        }
 
         .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 4000; justify-content: center; align-items: center; cursor: zoom-out; opacity: 0; transition: 0.3s ease; }
         .lightbox-overlay.active { display: flex; opacity: 1; }
@@ -442,8 +458,8 @@
             <a href="#" onclick="abrirPeloMenu('ebook', 'Baixar E-books'); toggleMenu();">
                 <svg viewBox="0 0 24 24"><path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Baixar E-books
             </a>
-            <a href="#" onclick="fecharMenuEAbrirPlanos()" style="color: #FBBF24;">
-                <svg viewBox="0 0 24 24" stroke="#FBBF24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg> Planos do Gerador
+            <a href="#" onclick="fecharMenuEAbrirVendas()" style="color: #FBBF24;">
+                <svg viewBox="0 0 24 24" stroke="#FBBF24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg> Planos: BRONZE, PRATA E OURO
             </a>
             <a href="https://wa.me/5587996029765" target="_blank" style="color: var(--accent-green);">
                 <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg> Atendimento WhatsApp
@@ -452,6 +468,22 @@
     </div>
 
     <main class="app-container">
+        
+        <div id="quem-somos" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px 30px; text-align: center; margin-bottom: 40px; box-shadow: 0 12px 40px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -40px; left: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);"></div>
+            <div style="width: 60px; height: 60px; background: rgba(0, 229, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; border: 1px solid rgba(0, 229, 255, 0.2);">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 18px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase;">Quem Somos</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 520px; margin: 0 auto; text-align: justify;">
+                O <strong>Plínio Studio</strong> é a plataforma definitiva de convergência entre Audiovisual Cinematográfico e Inteligência Artificial. Oferecemos um ecossistema completo: desde o <strong>aprendizado individual</strong> até a aquisição de <strong>Franquias Oficiais</strong> para escolas e instituições de ensino.<br><br>
+                Criamos e estruturamos <strong>Salas de Aula Virtuais e Mentorias</strong> 100% personalizadas com o nome da sua empresa, escola ou marca. Nosso objetivo é erradicar o aspecto artificial, fornecendo a infraestrutura exata para professores e líderes escalarem seus negócios com IA profissional.
+            </p>
+        </div>
+
         <div id="pwaTopoBox" class="pwa-box-fixo">
             <p id="pwaTextoInstrucao">Instale o Plínio Studio na tela do seu celular para facilitar a entrada!</p>
             <button onclick="dispararInstalacaoPWA()" class="pwa-btn-estiloso">
@@ -465,6 +497,13 @@
                 <span class="profile-name">Plínio Fabrício</span>
                 <span class="profile-handle">@pliniofabricio_</span>
             </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1>O fim do aspecto artificial</h1>
+            <p class="description">
+                A diferença entre um vídeo gerado que parece IA e uma produção audiovisual que parece cinematográfica e real está nos microdetalhes e na engenharia de colorimetria.
+            </p>
         </div>
 
         <div class="video-wrapper">
@@ -483,6 +522,13 @@
             <iframe src="https://www.youtube.com/embed/v4V37xFh_XA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin-bottom: 40px; text-align: center;">
+            <h3 style="color: #FFF; margin-bottom: 10px; font-size: 1.1rem;">Material didático do vídeo da Copa</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">Esteja com a mensalidade em dias para acessar.</p>
+            <input type="password" id="senhaMaterialCopa" class="modal-input" placeholder="Digite a senha" style="max-width: 250px; padding: 12px; font-size: 1rem; margin: 0 auto 15px auto; display: block;">
+            <button onclick="baixarMaterialCopa()" class="btn-action" style="max-width: 250px; padding: 10px 20px; font-size: 0.8rem; margin: 0 auto; display: flex;">ACESSAR MATERIAL</button>
+        </div>
+
         <section id="galeria-empire" class="prompts-empire-section">
             <div class="prompts-empire-bg"></div>
             <div class="prompts-empire-overlay"></div>
@@ -493,17 +539,17 @@
                     <div style="font-size: 1rem; font-weight: 400; color: #E2E8F0; margin-top: 5px;">Biblioteca Oficial de Prompts • Galeria de Obras e Estilos</div>
                 </div>
 
-                <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
-                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px; width: 45%; min-width: 150px; text-align: center; position: relative;">
-                        <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.7rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;">FREE</span>
-                        <div style="font-size: 3.5rem; margin: 30px 0;">💻</div>
-                        <div style="background-color: #0033A0; color: #fff; padding: 4px 10px; font-size: 0.85rem; display: inline-block;">Premium Sociedade</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;">
+                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px 10px; text-align: center; position: relative;">
+                        <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.6rem; font-weight: bold; padding: 3px 6px; border-radius: 4px;">FREE</span>
+                        <div style="font-size: 2.5rem; margin: 20px 0;">💻</div>
+                        <div style="background-color: #0033A0; color: #fff; padding: 4px 8px; font-size: 0.75rem; display: inline-block; border-radius: 4px;">Premium Sociedade</div>
                     </div>
                     
-                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px; width: 45%; min-width: 150px; text-align: center; position: relative;">
-                        <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.7rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;">FREE</span>
-                        <div style="margin: 30px auto; width: 60px; height: 50px; background-color: #0033A0; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🚲</div>
-                        <div style="background-color: #0033A0; color: #fff; padding: 4px 10px; font-size: 0.85rem; display: inline-block;">3D Homem Bicicleta</div>
+                    <div style="background-color: #1a1e24; border: 1px solid #2a2e35; border-radius: 8px; padding: 20px 10px; text-align: center; position: relative;">
+                        <span style="position: absolute; top: 10px; right: 10px; background-color: #0066cc; color: #fff; font-size: 0.6rem; font-weight: bold; padding: 3px 6px; border-radius: 4px;">FREE</span>
+                        <div style="margin: 20px auto; width: 40px; height: 35px; background-color: #0033A0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border-radius: 6px;">🚲</div>
+                        <div style="background-color: #0033A0; color: #fff; padding: 4px 8px; font-size: 0.75rem; display: inline-block; border-radius: 4px;">3D Homem Bicicleta</div>
                     </div>
                 </div>
 
@@ -520,19 +566,6 @@
         </section>
 
         <div style="text-align: center;">
-            <div class="tag-exclusive">MÉTODO EXCLUSIVO</div>
-            <h1>O fim do aspecto artificial</h1>
-            <p class="description">
-                A diferença entre um vídeo gerado que parece IA e uma produção audiovisual que parece cinematográfica e real está nos microdetalhes e na engenharia de colorimetria. Confira o audiovisual da Copa 2026 acima.
-            </p>
-
-            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin-bottom: 40px; text-align: center;">
-                <h3 style="color: #FFF; margin-bottom: 10px;">Baixe o material didático do vídeo da Copa 2026</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Esteja com a mensalidade em dias para ter acesso ao material do audiovisual acima.</p>
-                <input type="password" id="senhaMaterialCopa" class="modal-input" placeholder="Digite a senha" style="max-width: 300px; margin: 0 auto 15px auto; display: block;">
-                <button onclick="baixarMaterialCopa()" class="btn-action" style="max-width: 300px; margin: 0 auto; display: flex;">ACESSAR MATERIAL</button>
-            </div>
-
             <div class="social-proof-container">
                 <div class="avatars-row">
                     <img src="https://i.pravatar.cc/100?img=11" alt="user">
@@ -582,7 +615,7 @@
                 <button onclick="abrirModalPromptPremium('promptMultiverso')" class="btn-action btn-action-outline"><svg viewBox="0 0 24 24" style="width:16px;height:16px;margin-right:5px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2-2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> Liberar Prompt Premium</button>
                 <div id="promptMultiverso" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptMultiverso">A 3D grid layout of 12 distinct square app icons. Each icon features a realistic man (image Uploaded), wearing stylish modern outfits that match the color palette of that specific app. The apps include versions of Spotify, Netflix, TikTok, Gmail, Google, Safari, App Store, Chrome, Clock, Calendar, Instagram, and Notes. The man is interacting with or posing inside the 3D frame of each app icon. Clean white studio background, vibrant colors, realistic textures, highly detailed, professional digital art, 8k resolution, pop art style.</div>
-                    <button onclick="copiarPrompt('textoPromptMultiverso', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPromptMultiverso')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -598,7 +631,7 @@
                 <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
                 <div id="prompt4Geracoes" class="prompt-collapse">
                     <div class="prompt-box" id="textoPrompt4Geracoes">Cinematic portrait of four generations of a family standing together, ultra-realistic photography, 8k resolution, dramatic chiaroscuro lighting, shot on 50mm prime lens, Arri Alexa cinematic color grading, shallow depth of field, highly detailed faces showing natural aging progression, sharp focus on eyes, emotional depth, photorealistic textures.</div>
-                    <button onclick="copiarPrompt('textoPrompt4Geracoes', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -614,7 +647,7 @@
                 <button onclick="togglePrompt('promptSacro', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
                 <div id="promptSacro" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptSacro">Ultra-realistic sacred cinematic portrait of a young biblical woman, intricate micro-details of ancient fabric texture, dramatic Rembrandt lighting, ethereal glowing background, [INSERIR AÇÃO OU ELEMENTO ESPECÍFICO AQUI], shot on Arri Alexa, 50mm lens, 8k, hyper-detailed skin pores, masterful color grading.</div>
-                    <button onclick="copiarPrompt('textoPromptSacro', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPromptSacro')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -634,7 +667,7 @@
                 <button onclick="togglePrompt('promptFashion', this)" class="btn-action btn-action-outline">Mostrar Prompt</button>
                 <div id="promptFashion" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptFashion">Vintage 70s rock fashion editorial portrait, man wearing a classic retro rock band t-shirt, dark leather jacket, dark aviator sunglasses, professional studio lighting setup, highly detailed fabric micro-texture, cinematic color grading, shot on 50mm lens, shallow depth of field, 8k resolution, photorealistic masterpiece.</div>
-                    <button onclick="copiarPrompt('textoPromptFashion', this)" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
+                    <button onclick="copiarPrompt('textoPromptFashion')" class="btn-action" style="background: var(--bg-card-hover); color: #fff; margin-top: 5px;">Copiar</button>
                 </div>
             </div>
         </div>
@@ -670,25 +703,6 @@
             </div>
         </div>
 
-        <div class="divider"></div>
-
-        <h2 id="quem-somos" class="section-title" style="scroll-margin-top: 100px;">Quem Somos</h2>
-        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px 30px; text-align: center; margin-bottom: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
-            <div style="position: absolute; top: -40px; left: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);"></div>
-            <div style="width: 60px; height: 60px; background: rgba(0, 229, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; border: 1px solid rgba(0, 229, 255, 0.2);">
-                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-            </div>
-            <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 18px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase;">Plínio Studio & Escola Tríade</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 520px; margin: 0 auto; text-align: justify;">
-                Fundado sob diretrizes de altíssimo impacto técnico, o <strong>Plínio Studio</strong> é a autoridade máxima na fusão entre a estética audiovisual cinematográfica avançada e a engenharia de Inteligência Artificial. Nossa missão corporativa é clara: erradicar definitivamente o aspecto artificial das produções digitais.
-                <br><br>
-                Como um ecossistema tecnológico e educacional completo, expandimos nossa atuação para estruturar <strong>mentorias de elite</strong> e um sólido <strong>modelo de franquia escalável</strong>. Providenciamos a infraestrutura ideal e homologada para que professores externos hospedem suas próprias salas de aula. Somos a plataforma de transição e aceleração definitiva para alunos individuais, criadores e instituições de ensino que visam implementar sistemas de IA em nível profissional.
-            </p>
-        </div>
-
     </main>
 
     <footer class="footer-section" style="text-align: center; border-top: 1px solid var(--border-color); margin-top: 40px; margin-bottom: 80px; padding: 0 0 30px 0;">
@@ -697,30 +711,25 @@
             <div class="marquee-content">
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram Oficial</div>
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
                 
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
-
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Plínio Studio</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> YouTube: Canal Plínio Fabrício</div>
-                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram</div>
+                <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8292A6" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> Instagram Oficial</div>
                 <div class="marquee-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Powered by Gemini <span class="gemini-star">✦</span></div>
             </div>
         </div>
 
         <div class="social-icons" style="display: flex; justify-content: center; gap: 24px; margin-top: 25px; margin-bottom: 20px;">
-            <a href="https://instagram.com/pliniofabricio_" target="_blank" style="color: var(--text-muted); transition: 0.3s;">
-                <svg style="width: 28px; height: 28px; fill: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <a href="https://instagram.com/pliniofabricio_" target="_blank" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='var(--text-muted)'">
+                <svg style="width: 32px; height: 32px; fill: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-            <a href="https://instagram.com/pliniostudio.io" target="_blank" style="color: var(--text-muted); transition: 0.3s;">
-                <svg style="width: 28px; height: 28px; fill: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <a href="https://instagram.com/pliniostudio.io" target="_blank" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='var(--text-muted)'">
+                <svg style="width: 32px; height: 32px; fill: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-            <a href="https://youtube.com/@pliniofabricio_" target="_blank" style="color: var(--text-muted); transition: 0.3s;">
-                <svg style="width: 28px; height: 28px; fill: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <a href="https://youtube.com/@pliniofabricio_" target="_blank" style="color: var(--text-muted); transition: 0.3s;" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='var(--text-muted)'">
+                <svg style="width: 36px; height: 36px; fill: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
         </div>
         <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600; padding: 0 15px;">
@@ -742,6 +751,11 @@
             <span>SUPORTE</span>
         </a>
     </nav>
+
+    <div id="toastNotification" class="toast-notification">
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.5;"><path d="M20 6L9 17l-5-5"></path></svg>
+        Prompt Copiado com Sucesso!
+    </div>
 
     <div class="modal-overlay" id="customModal">
         <div class="modal-content">
@@ -765,7 +779,17 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="modalPlanosGerador"><div class="modal-content" style="border-top-color:#EF4444;"><span class="close-modal" onclick="fecharModalPlanos()">×</span><h3>Acesso Restrito</h3><p style="color:var(--text-muted);margin-bottom:20px;">Senha incorreta ou plano inativo.</p><a href="https://wa.me/5587996029765" target="_blank" class="btn-whats-modal" onclick="fecharModalPlanos()">Confirmar (WhatsApp)</a></div></div>
+    <div class="modal-overlay" id="modalVendas">
+        <div class="modal-content" style="border-top-color:#FBBF24;">
+            <span class="close-modal" onclick="fecharModalVendas()">×</span>
+            <h3 style="color: #FBBF24;">Setor de Vendas</h3>
+            <p style="color:var(--text-muted);margin-bottom:20px;">Você será direcionado ao setor de vendas da Plataforma para escolher o seu plano (Aluno ou Franqueado). Deseja continuar?</p>
+            <a href="https://wa.me/5587996029765?text=Ol%C3%A1%2C+Comandante!+Gostaria+de+saber+mais+sobre+os+Planos+e+como+posso+fazer+parte+da+plataforma+como+Aluno+ou+Franqueado." target="_blank" class="btn-whats-modal" style="background:#FBBF24; color:#000;" onclick="fecharModalVendas()">
+                Sim
+            </a>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="modalGaleriaInfinita"><div class="modal-content"><span class="close-modal" onclick="fecharModalGaleriaInfinita()">×</span><h3>Galeria Infinita</h3><p style="color:var(--text-muted);margin-bottom:25px;">Exclusivo para Administração. Insira a Senha Master:</p><input type="password" id="inputGaleriaInfinita" class="modal-input" placeholder="••••"><button onclick="verificarGaleriaInfinita()" class="modal-btn">AUTENTICAR</button></div></div>
     
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
@@ -918,8 +942,26 @@
             { nome: "Rock Bone", senha: "7711" }, { nome: "Ederaldo Lemos", senha: "7722" }, { nome: "Luciene Simões", senha: "7733" }, { nome: "Potira", senha: "7744" }
         ];
 
-        function togglePrompt(id, btnElement) { const content = document.getElementById(id); if (content.style.maxHeight && content.style.maxHeight !== '0px') { content.style.maxHeight = '0px'; btnElement.innerHTML = "Mostrar Prompt"; } else { content.style.maxHeight = content.scrollHeight + "px"; btnElement.innerHTML = "Ocultar Prompt"; } }
-        function copiarPrompt(textId, btnElement) { const textToCopy = document.getElementById(textId).innerText; navigator.clipboard.writeText(textToCopy).then(() => { const originalText = btnElement.innerHTML; btnElement.innerHTML = "Copiado!"; setTimeout(() => { btnElement.innerHTML = originalText; }, 3000); }); }
+        function togglePrompt(id, btnElement) { 
+            const content = document.getElementById(id); 
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') { 
+                content.style.maxHeight = '0px'; 
+                btnElement.innerHTML = "Mostrar Prompt"; 
+            } else { 
+                content.style.maxHeight = content.scrollHeight + "px"; 
+                btnElement.innerHTML = "Ocultar Prompt"; 
+            } 
+        }
+
+        // --- TOAST DE SUCESSO PROFISSIONAL PARA PROMPTS ---
+        function copiarPrompt(textId) { 
+            const textToCopy = document.getElementById(textId).innerText; 
+            navigator.clipboard.writeText(textToCopy).then(() => { 
+                const toast = document.getElementById('toastNotification');
+                toast.classList.add('show');
+                setTimeout(() => { toast.classList.remove('show'); }, 3000); 
+            }); 
+        }
         
         const modal = document.getElementById('customModal'); const modalInput = document.getElementById('modalInput'); const btnSubmit = document.getElementById('modalSubmit');
         let currentType = '', currentTitle = '', currentPromptId = '';
@@ -1091,8 +1133,9 @@
             });
         }
 
-        function fecharMenuEAbrirPlanos() { toggleMenu(); document.getElementById('modalPlanosGerador').classList.add('active'); }
-        function fecharModalPlanos() { document.getElementById('modalPlanosGerador').classList.remove('active'); }
+        // --- MODAIS VENDAS E OUTROS ---
+        function fecharMenuEAbrirVendas() { toggleMenu(); document.getElementById('modalVendas').classList.add('active'); }
+        function fecharModalVendas() { document.getElementById('modalVendas').classList.remove('active'); }
         function abrirModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.add('active'); document.getElementById('inputGaleriaInfinita').value = ''; }
         function fecharModalGaleriaInfinita() { document.getElementById('modalGaleriaInfinita').classList.remove('active'); }
         function abrirLightbox(url) { document.getElementById('lightboxImg').src = url; document.getElementById('lightboxOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
@@ -1124,7 +1167,6 @@
             if (!targetGrid) return;
 
             try {
-                // Requisição assíncrona para extração estrutural da URL fornecida
                 const targetUrl = 'https://iadesignerweb.github.io/prompts';
                 const response = await fetch(targetUrl);
 
@@ -1133,37 +1175,31 @@
                     const parser = new DOMParser();
                     const externalDoc = parser.parseFromString(htmlRaw, 'text/html');
                     
-                    // Seleciona todos os blocos estruturais de prompt (.prompt-card)
                     const sourceCards = externalDoc.querySelectorAll('.prompt-card');
 
                     if (sourceCards.length > 0) {
-                        targetGrid.innerHTML = ''; // Elimina o loader institucional
+                        targetGrid.innerHTML = ''; 
 
                         Array.from(sourceCards).forEach((card, index) => {
-                            // Harmonização estética forçada com a paleta Carbon/Grafite oficial
                             card.style.background = 'var(--bg-card)';
                             card.style.border = '1px solid var(--border-color)';
                             card.style.borderRadius = '16px';
                             card.style.overflow = 'hidden';
-                            card.style.marginBottom = '0'; // Gerenciado pelo gap do flex
+                            card.style.marginBottom = '0'; 
 
                             if (index < 10) {
-                                // 1.1 MANTÉM OS 10 PRIMEIROS CARDS COMPLETAMENTE LIBERADOS
                                 targetGrid.appendChild(card);
                             } else {
-                                // 1.2 CONVERTE OS DEMAIS EM PREMIUM COM ESTRUTURA DE ARRECADAÇÃO (PAYWALL)
                                 const premiumCard = card.cloneNode(true);
                                 premiumCard.style.borderColor = 'rgba(251, 191, 36, 0.3)';
                                 premiumCard.style.boxShadow = '0 8px 25px rgba(0,0,0,0.6)';
 
-                                // Injeção de Tag Visual Premium customizada
                                 const tagContainer = premiumCard.querySelector('.card-tag');
                                 if (tagContainer) {
                                     tagContainer.style.color = '#FBBF24';
                                     tagContainer.innerHTML = '<svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2-2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> ACESSO VIP EXCLUSIVO';
                                 }
 
-                                // Bloqueio preventivo do texto interno (Engenharia Segura)
                                 const promptCollapseBox = premiumCard.querySelector('.prompt-collapse');
                                 if (promptCollapseBox) {
                                     promptCollapseBox.innerHTML = `
@@ -1171,10 +1207,9 @@
                                             🔒 Conteúdo Estratégico Bloqueado. Adquira a licença VIP para liberação instantânea da malha.
                                         </div>
                                     `;
-                                    promptCollapseBox.style.maxHeight = '250px'; // Força a exibição controlada do aviso
+                                    promptCollapseBox.style.maxHeight = '250px'; 
                                 }
 
-                                // Substituição cirúrgica do botão de ação para redirecionamento comercial
                                 const actionBtn = premiumCard.querySelector('button') || premiumCard.querySelector('.btn-action');
                                 if (actionBtn) {
                                     actionBtn.className = 'btn-action';
@@ -1185,7 +1220,6 @@
                                     actionBtn.onclick = (e) => {
                                         e.preventDefault();
                                         e.stopPropagation();
-                                        // Redirecionamento estratégico parametrizado para o WhatsApp comercial homologado
                                         window.open('https://wa.me/5587996029765?text=Ol%C3%A1%2C+Pl%C3%ADnio!+Gostaria+de+desbloquear+o+acesso+Premium+da+Galeria+AI+Trends+Prompt+Empire+(Taxa:+R$+49,90).', '_blank');
                                     };
                                 }
@@ -1194,7 +1228,6 @@
                             }
                         });
                     } else {
-                        // Fallback de segurança corporativa caso a extração encontre nós vazios
                         inserirCardsLocaisDeSeguranca(targetGrid);
                     }
                 } else {
@@ -1211,7 +1244,7 @@
             container.innerHTML = `
                 <div style="grid-column: 1/-1; text-align: center; background: var(--bg-card); padding: 30px; border-radius:12px; border: 1px dashed var(--border-color);">
                     <p style="color: var(--text-muted); font-size:0.9rem; margin-bottom:15px;">A sincronização automatizada da API está ativa e rodando 100%.</p>
-                    <button onclick="window.open('https://iadesignerweb.github.io/prompts', '_blank')" class="btn-action" style="max-width:320px; margin: 0 auto;">ABRIR DIRETÓRIO FONTE NO GITHUB</button>
+                    <button onclick="window.open('https://iadesignerweb.github.io/prompts', '_blank')" class="btn-action" style="max-width:340px; margin: 0 auto;">ABRIR DIRETÓRIO FONTE DE PROMPTS</button>
                 </div>
             `;
         }
