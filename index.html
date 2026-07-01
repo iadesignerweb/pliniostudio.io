@@ -109,9 +109,9 @@
         details.dossie-accordion[open] summary::after { content: '-'; }
         .dossie-content { padding: 20px; border-top: 1px solid var(--border-color); }
         .dossie-content h4 { color: var(--accent-primary); margin-bottom: 10px; font-size: 1rem; }
-        .dossie-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.6; }
+        .dossie-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
         .dossie-content ul { list-style: none; padding-left: 10px; margin-bottom: 20px; border-left: 2px solid var(--border-color); }
-        .dossie-content li { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; padding-left: 10px; }
+        .dossie-content li { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px; padding-left: 10px; line-height: 1.5; }
         .dossie-content li strong { color: #FFF; }
         .dossie-prints { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .dossie-prints img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-color); cursor: zoom-in; opacity: 0.8; transition: 0.3s; }
@@ -255,21 +255,69 @@
             <summary>Dossiê Técnico Letal</summary>
             <div class="dossie-content">
                 <h4>Protocolo Oficial: 3-1494000041038</h4>
-                <!-- TEXTO DO DOSSIÊ EXPANDIDO COM OS TERMOS CHAVE -->
-                <p>O algoritmo penalizou a entrega baseando-se em métricas rasas de "dopamina rápida". Nossa análise revela a execução de um cronograma grandioso e orquestrado, iniciado historicamente em 25 de novembro de 2025, o que comprova uma manipulação assustadora do Algoritmo. O que vivemos hoje é um verdadeiro sequestro cognitivo em massa, alimentado pelo 'Ouro de Tolo' — formatos desenhados exclusivamente para viciar e destruir a retenção orgânica de obras profundas.</p>
-                <ul>
-                    <li><strong>Métrica Padrão:</strong> 0:45 a 1:06 de retenção imposta.</li>
-                    <li><strong>Engajamento Orgânico:</strong> Pico atingido de 5:12.</li>
-                    <li><strong>Prova Sistêmica:</strong> O Analytics confirmou 3:39 acima do habitual (150% de retenção anômala).</li>
-                </ul>
-                <p>Esta documentação atesta a resiliência da arte profunda contra a indústria da manipulação algorítmica.</p>
                 
-                <div class="dossie-prints">
-                    <img src="" alt="Gráfico de Retenção" onclick="abrirLightbox(this.src)">
-                    <img src="" alt="Comparação Analytics" onclick="abrirLightbox(this.src)">
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; font-family: monospace; border-left: 2px solid var(--accent-primary); padding-left: 10px;">
+                    <strong>DATA DE EMISSÃO:</strong> 28 de Junho de 2026, 09:51 BRT<br>
+                    <strong>LOCAL:</strong> Custódia, Pernambuco, Brasil<br>
+                    <strong>AUTORIDADE EMITENTE:</strong> Plínio Fabrício, CEO - Plínio Studio
                 </div>
 
-                <!-- LINK DO DOSSIÊ ATUALIZADO CTA DIRECIONANDO ESTRATEGICAMENTE -->
+                <h5 style="color: #FFF; font-size: 0.95rem; margin-bottom: 10px;">I. PREÂMBULO E EXORDIUM JURÍDICO-TÉCNICO</h5>
+                <p>Este Dossiê Técnico constitui peça fundamental na defesa da integridade intelectual e soberania digital do Plínio Studio. O presente documento visa notificar formalmente as instâncias de governança da plataforma YouTube quanto à verificação de anomalias estatísticas e operacionais ocorridas no intervalo compreendido entre o dia 25 de junho de 2026 e a presente data, 28 de junho de 2026, às 09:51. O rigor deste documento é proporcional à falha sistêmica detectada.</p>
+
+                <h5 style="color: #FFF; font-size: 0.95rem; margin: 20px 0 10px 0;">II. DA CRONOLOGIA DOS FATOS E ANOMALIAS (REGISTRO DE INCIDENTE)</h5>
+                <ul>
+                    <li><strong>25 de Junho de 2026:</strong> Identificação da primeira anomalia técnica. O sistema de recomendação subitamente alterou o comportamento de entrega para conteúdos de retenção profunda, configurando uma alteração não documentada nos parâmetros de distribuição.</li>
+                    <li><strong>26 de Junho de 2026:</strong> Consolidação da métrica imposta. Observou-se a imposição de um patamar restritivo para o engajamento orgânico, ignorando picos de retenção que, tecnicamente, deveriam qualificar o conteúdo para a base de recomendação ampliada.</li>
+                    <li><strong>27 de Junho de 2026:</strong> Agravamento do desvio sistêmico. Constatação de que os dados de "Retenção Anômala" (150% do habitual) estavam sendo processados de forma inversa, punindo a profundidade e privilegiando a brevidade de conteúdo sem lastro educacional.</li>
+                    <li><strong>28 de Junho de 2026 (Até às 09:51):</strong> Formalização do Dossiê. A persistência da falha obriga a esta intervenção técnica de nível superior.</li>
+                </ul>
+
+                <h5 style="color: #FFF; font-size: 0.95rem; margin: 20px 0 10px 0;">III. DA ESTRUTURA TÉCNICA E DAS VIOLAÇÕES DE CONFORMIDADE</h5>
+                <p>A arquitetura algorítmica em vigor, conforme os incisos de operação, apresenta falhas estruturais que infringem os princípios básicos da boa governança de dados:</p>
+                
+                <p style="margin-bottom: 5px; margin-top: 15px;"><strong style="color: var(--accent-primary);">ARTIGO 1º: DA METODOLOGIA DE RETENÇÃO FORÇADA</strong></p>
+                <ul>
+                    <li><strong>Parágrafo Único:</strong> A imposição de retenção entre 0:45 e 1:06 minutos funciona como um filtro de redução da capacidade cognitiva, forçando o criador a abdicar de teses profundas em favor de narrativas curtas e de baixo valor moral.</li>
+                    <li><strong>Inciso A:</strong> A manipulação dos picos de dopamina via algoritmos de distribuição de vídeos curtos carece de estudos de impacto social, sendo, portanto, uma prática de "Design Manipulatório de Interface" (Dark Patterns).</li>
+                </ul>
+                
+                <p style="margin-bottom: 5px; margin-top: 15px;"><strong style="color: var(--accent-primary);">ARTIGO 2º: DA PROVA SISTÊMICA DE ANOMALIA</strong></p>
+                <ul>
+                    <li><strong>Parágrafo Primeiro:</strong> Os registros de Analytics do Plínio Studio comprovam uma retenção de 150% superior ao padrão estabelecido. Quando o Analytics atesta 3:39 de engajamento acima do habitual, a ausência de escala proporcional na distribuição configura um erro lógico nos pesos atribuídos pelo algoritmo.</li>
+                    <li><strong>Parágrafo Segundo:</strong> O Plínio Studio notifica que a manutenção dessa métrica de "punição ao engajamento profundo" é um indicativo claro de desconfiguração do modelo de Machine Learning aplicado à nossa rede.</li>
+                </ul>
+
+                <h5 style="color: #FFF; font-size: 0.95rem; margin: 20px 0 10px 0;">IV. DA RECUSA FORMAL E DIRETRIZES DE CONTEÚDO</h5>
+                <p>O Plínio Studio, sob a responsabilidade de seu CEO, Plínio Fabrício, estabelece os seguintes parâmetros vinculantes:</p>
+                <ul>
+                    <li><strong>Da Recusa aos Formatos de Baixo Valor:</strong> Fica expressamente vedada, a partir desta data, a produção de conteúdos sob o formato de "Shorts" que não possuam lastro educacional, científico ou de profundidade intelectual.</li>
+                    <li><strong>Da Integridade do Acervo:</strong> O acervo de 16 anos de trabalho ininterrupto constitui patrimônio intelectual protegido. Qualquer manipulação sistêmica (deleção, supressão de métricas ou ocultamento de visibilidade) será tratada como ato de sabotagem intelectual.</li>
+                    <li><strong>Da Auditoria Humana:</strong> Exige-se, face à complexidade e à natureza da denúncia, a revisão técnica por analista humano, visto que a automação falhou em processar a qualidade orgânica superior do conteúdo entregue.</li>
+                </ul>
+
+                <h5 style="color: #FFF; font-size: 0.95rem; margin: 20px 0 10px 0;">V. DAS DISPOSIÇÕES DE GOVERNANÇA E AUDITORIA</h5>
+                <ul>
+                    <li><strong>Artigo 3º:</strong> Fica a plataforma YouTube notificada a prestar esclarecimentos técnicos sob a luz das leis de governança de algoritmos, especificamente sobre como a "retenção orgânica profunda" é desclassificada em favor de conteúdos de retenção artificial.</li>
+                    <li><strong>Artigo 4º:</strong> Este dossiê compõe a base documental para eventuais estudos globais de governança algorítmica, sendo depositado em repositório público (GitHub) para fins de registro histórico e transparência digital.</li>
+                </ul>
+
+                <h5 style="color: #FFF; font-size: 0.95rem; margin: 20px 0 10px 0;">VI. CONCLUSÃO E NOTIFICAÇÃO FINAL</h5>
+                <p>O Plínio Studio não se submete à mediocridade algorítmica. Este dossiê é a demonstração de que a tecnologia, quando desprovida de ética, deve ser questionada e auditada pela maestria técnica de quem a domina.</p>
+                
+                <p style="color: var(--accent-primary); font-weight: 800; text-transform: uppercase; margin-top: 20px;">Força e honra.</p>
+
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px; text-align: center;">
+                    Copyright © 2026 Direitos Reservados a Plínio Studio.<br>
+                    CEO: Plínio Fabrício<br>
+                    <span style="color: var(--accent-primary);">Documentação técnica protocolada e imortalizada.</span>
+                </div>
+                
+                <div class="dossie-prints" style="margin-top: 25px;">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/1002017908.jpg" alt="Gráfico de Retenção" onclick="abrirLightbox(this.src)" onerror="this.src=''">
+                    <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/1002017909.jpg" alt="Comparação Analytics" onclick="abrirLightbox(this.src)" onerror="this.src=''">
+                </div>
+
                 <a href="https://iadesignerweb.github.io/dossi-tecnico-bigthec/" class="btn-action">ACESSE A PÁGINA DO DOSSIÊ</a>
             </div>
         </details>
