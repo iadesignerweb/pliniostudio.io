@@ -130,9 +130,9 @@
         .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 10px; margin-bottom: 10px; color: var(--text-main); font-size: 0.8rem; font-family: monospace; white-space: pre-wrap; }
 
         /* BOTÕES GERAIS */
-        .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #FFF; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-primary); padding: 12px 20px; border-radius: 8px; transition: 0.3s; width: 100%; cursor: pointer; }
+        .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #FFF; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-primary); padding: 12px 20px; border-radius: 8px; transition: 0.3s; width: 100%; cursor: pointer; text-decoration: none; }
         .btn-action svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2;}
-        .btn-action:hover { background: rgba(0, 229, 255, 0.1); border-color: #FFF; }
+        .btn-action:hover { background: rgba(0, 229, 255, 0.1); border-color: #FFF; color: #FFF; }
         
         .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); }
         .btn-secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
@@ -207,12 +207,14 @@
             <a href="#" onclick="abrirModalPagamentos(); toggleMenu();" style="color: #FBBF24;">
                 <svg viewBox="0 0 24 24" stroke="#FBBF24" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Adquirir Franquias (SaaS)
             </a>
-            <a href="https://iadesignerweb.github.io/prompts" target="_blank" style="color: var(--accent-primary);">
+            <!-- TARGET BLANK REMOVIDO ABAIXO PARA O BOTÃO VOLTAR FUNCIONAR -->
+            <a href="https://iadesignerweb.github.io/prompts" style="color: var(--accent-primary);">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> Galeria Completa de Prompts
             </a>
             <a href="#" onclick="abrirPeloMenu('ebook', 'Baixar E-books'); toggleMenu();">
                 <svg viewBox="0 0 24 24"><path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Biblioteca de E-books
             </a>
+            <!-- ESTE FICA COM TARGET BLANK POIS ABRE O WHATSAPP EXTERNO -->
             <a href="https://wa.me/5587996029765" target="_blank">
                 <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg> Suporte Oficial
             </a>
@@ -244,7 +246,8 @@
             </div>
         </div>
 
-        <h2 class="section-title">O Toxidade do Algoritmo.</h2>
+        <!-- CORREÇÃO GRAMATICAL APLICADA AQUI -->
+        <h2 class="section-title">A Toxicidade do Algoritmo.</h2>
         <div class="video-wrapper">
             <div class="badge-premium">DOPAMINA</div>
             <iframe src="https://www.youtube.com/embed/umIrDefXqXg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -267,7 +270,8 @@
                     <img src="" alt="Comparação Analytics" onclick="abrirLightbox(this.src)">
                 </div>
 
-                <a href="#" onclick="window.print()" class="btn-action">Baixar Dossiê Completo (PDF)</a>
+                <!-- BOTÃO CORRIGIDO PARA LINK (ALTERE O HREF PARA O LINK REAL DO DOSSIÊ) -->
+                <a href="dossie.html" class="btn-action">Baixar Dossiê Completo (PDF)</a>
             </div>
         </details>
 
@@ -295,9 +299,10 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             </div>
         </div>
 
-        <button onclick="window.open('https://iadesignerweb.github.io/prompts', '_blank')" class="btn-action btn-secondary" style="margin-bottom: 20px;">
+        <!-- BOTÃO CONVERTIDO PARA LINK NATIVO PARA PRESERVAR HISTÓRICO DO CELULAR -->
+        <a href="https://iadesignerweb.github.io/prompts" class="btn-action btn-secondary" style="margin-bottom: 20px; text-decoration: none; text-align: center;">
             Acessar Galeria Completa no Menu
-        </button>
+        </a>
 
     </main>
 
