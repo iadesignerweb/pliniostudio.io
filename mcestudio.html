@@ -16,6 +16,9 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .header {
             text-align: center;
@@ -27,7 +30,7 @@
         }
         .slogan {
             font-size: 1.3rem;
-            color: #00d2ff; /* Ciano do M */
+            color: #00d2ff;
             font-weight: bold;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -38,17 +41,25 @@
             color: #cccccc;
             line-height: 1.6;
             margin-bottom: 40px;
-            padding: 0 20px;
+            padding: 25px;
             background: #1a1a1a;
-            padding: 20px;
             border-radius: 8px;
-            border-left: 4px solid #ff007f; /* Rosa do C */
+            border-left: 4px solid #ff007f;
+            text-align: left;
+        }
+        .about h3 {
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
         }
         .form-box {
             background-color: #1e1e1e;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            flex-grow: 1;
         }
         label {
             display: block;
@@ -68,11 +79,23 @@
             font-size: 1rem;
             box-sizing: border-box;
             transition: all 0.3s ease;
+            appearance: none;
         }
         textarea:focus, select:focus {
             outline: none;
             border-color: #ff007f;
             box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+        select optgroup {
+            color: #ff007f;
+            font-weight: bold;
+            background-color: #1a1a1a;
+            padding: 10px;
+        }
+        select option {
+            color: #ffffff;
+            background-color: #2a2a2a;
+            padding: 5px;
         }
         .btn-gerar {
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
@@ -91,9 +114,13 @@
         .btn-gerar:hover {
             opacity: 0.85;
         }
-        .option-destaque {
-            font-weight: bold;
-            color: #ff007f;
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 40px;
+            border-top: 1px solid #222;
         }
     </style>
 </head>
@@ -102,9 +129,12 @@
         <div class="header">
             <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg" alt="Logo MC Estúdio" class="logo">
             <div class="slogan">"Música sob medida. A inteligência é artificial, mas a qualidade e a direção musical têm 30 anos de história."</div>
+            
             <div class="about">
-                <strong>Por que escolher o MC Estúdio?</strong><br>
-                Criar uma música inesquecível não é apenas apertar um botão. É preciso entender de ritmo, harmonia, mixagem e sentimento. No MC Estúdio, nossa tecnologia é rigorosamente estruturada, calibrada e dirigida por um produtor musical e compositor com 30 anos de bagagem em estúdios profissionais. Você traz a ideia, nós entregamos a obra-prima.
+                <h3>Quem Somos</h3>
+                <p>Criar uma música inesquecível não é apenas apertar um botão. É preciso entender de ritmo, harmonia, mixagem e sentimento.</p>
+                <p>No MC Estúdio, nossa tecnologia de Inteligência Artificial não trabalha sozinha. Ela é rigorosamente estruturada, calibrada e dirigida por um produtor musical e compositor com 30 anos de bagagem em estúdios profissionais.</p>
+                <p>Cada estilo, do Forró ao Rock, do Xote romântico à trilha de aniversário, carrega a garantia de qualidade de quem dedicou a vida inteira à arte de emocionar através do som. Você traz a ideia, nós entregamos a obra-prima.</p>
             </div>
         </div>
 
@@ -113,20 +143,47 @@
                 <label for="letra">1. Sua Letra ou Detalhes da Homenagem:</label>
                 <textarea id="letra" rows="6" placeholder="Cole aqui a letra da sua música, os detalhes do jingle da loja ou a mensagem para o aniversário..."></textarea>
 
-                <label for="estilo">2. Escolha o Estilo Musical:</label>
+                <label for="estilo">2. Escolha seu Repertório:</label>
                 <select id="estilo">
-                    <option value="" disabled selected>Selecione um ritmo...</option>
-                    <option value="forro">Forró Pé de Serra</option>
-                    <option value="xote">Xote Romântico</option>
-                    <option value="baiao">Baião</option>
-                    <option value="romantica">Música Romântica</option>
-                    <option value="rock">Rock Anos 70</option>
-                    <option value="varzeabeat" class="option-destaque">Várzeabeat (Assinatura Exclusiva)</option>
+                    <option value="" disabled selected>Selecione o tipo de projeto...</option>
+                    
+                    <optgroup label="• Comércio e Lojas">
+                        <option value="jingle-30">Jingles e comerciais curtos - 30s</option>
+                        <option value="jingle-60">Jingles e comerciais padrões - 1min</option>
+                    </optgroup>
+
+                    <optgroup label="• Celebrações Familiares">
+                        <option value="homenagem">Homenagens</option>
+                    </optgroup>
+
+                    <optgroup label="• Eventos Especiais">
+                        <option value="casamento">Casamentos</option>
+                        <option value="chadebebe">Chás de Bebê</option>
+                    </optgroup>
+
+                    <optgroup label="• Datas Comemorativas">
+                        <option value="aniversario">Aniversário</option>
+                        <option value="outros">Outros</option>
+                    </optgroup>
+
+                    <optgroup label="• Gêneros Puros">
+                        <option value="forro">Forró</option>
+                        <option value="xote">Xote</option>
+                        <option value="baiao">Baião</option>
+                        <option value="romantica">Música Romântica</option>
+                        <option value="rock">Rock</option>
+                        <option value="varzeabeat">Várzeabeat | O Toque da Casa</option>
+                    </optgroup>
                 </select>
 
                 <button type="button" class="btn-gerar">GERAR MINHA MÚSICA</button>
             </form>
         </div>
+
+        <div class="footer">
+            @Copyright 2026 - Plínio Fabrício Studio | Todos direitos reservados
+        </div>
     </div>
 </body>
 </html>
+
