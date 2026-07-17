@@ -27,6 +27,8 @@
         .logo {
             max-width: 180px;
             margin-bottom: 20px;
+            /* Esta é a mágica que derrete o fundo preto do seu JPG */
+            mix-blend-mode: screen; 
         }
         .slogan {
             font-size: 1.3rem;
@@ -68,7 +70,7 @@
             color: #00d2ff;
             font-size: 1.1rem;
         }
-        textarea, select {
+        textarea {
             width: 100%;
             padding: 15px;
             margin-bottom: 25px;
@@ -79,24 +81,106 @@
             font-size: 1rem;
             box-sizing: border-box;
             transition: all 0.3s ease;
-            appearance: none;
+            resize: vertical;
         }
-        textarea:focus, select:focus {
+        textarea:focus {
             outline: none;
             border-color: #ff007f;
             box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
         }
-        select optgroup {
+
+        /* --- ESTILOS DO NOVO MENU SUSPENSO PREMIUM --- */
+        select#estilo { 
+            display: none; /* Esconde o amador, mas mantém os dados */
+        }
+        .custom-select-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+            user-select: none;
+        }
+        .custom-select {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #2a2a2a;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .custom-select:hover, .custom-select.open {
+            border-color: #ff007f;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+        .custom-select .arrow {
+            font-size: 0.8rem;
+            color: #00d2ff;
+            transition: transform 0.3s ease;
+        }
+        .custom-select.open .arrow {
+            transform: rotate(180deg);
+        }
+        .custom-options {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            max-height: 350px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+        }
+        .custom-options.open {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .custom-optgroup {
             color: #ff007f;
             font-weight: bold;
-            background-color: #1a1a1a;
-            padding: 10px;
+            padding: 15px 15px 8px 15px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #111;
+            border-bottom: 1px solid #222;
         }
-        select option {
-            color: #ffffff;
+        .custom-option {
+            padding: 12px 15px 12px 25px;
+            color: #ccc;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-bottom: 1px solid #222;
+            font-size: 0.95rem;
+        }
+        .custom-option:last-child {
+            border-bottom: none;
+        }
+        .custom-option:hover {
             background-color: #2a2a2a;
-            padding: 5px;
+            color: #fff;
         }
+        .custom-option.selected {
+            background-color: #222;
+            color: #00d2ff;
+            font-weight: bold;
+            border-left: 3px solid #00d2ff;
+            padding-left: 22px;
+        }
+        /* ------------------------------------------- */
+
         .btn-gerar {
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
             color: white;
@@ -128,7 +212,7 @@
     <div class="container">
         <div class="header">
             <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg" alt="Logo MC Estúdio" class="logo">
-            <div class="slogan">"Música sob medida. A inteligência é artificial, mas a qualidade e a direção musical têm 30 anos de história."</div>
+            <div class="slogan">Música sob medida. A inteligência é artificial, mas a qualidade e a direção musical têm 30 anos de história.</div>
             
             <div class="about">
                 <h3>Quem Somos</h3>
@@ -144,39 +228,40 @@
                 <textarea id="letra" rows="6" placeholder="Cole aqui a letra da sua música, os detalhes do jingle da loja ou a mensagem para o aniversário..."></textarea>
 
                 <label for="estilo">2. Escolha seu Repertório:</label>
+                <!-- O HTML original mantido intacto -->
                 <select id="estilo">
                     <option value="" disabled selected>Selecione o tipo de projeto...</option>
                     
                     <optgroup label="• Comércio e Lojas">
-                        <option value="jingle-30">Jingles e comerciais curtos - 30s</option>
-                        <option value="jingle-60">Jingles e comerciais padrões - 1min</option>
+                        <option value="Jingle de 30s">Jingles e comerciais curtos - 30s</option>
+                        <option value="Jingle de 1min">Jingles e comerciais padrões - 1min</option>
                     </optgroup>
 
                     <optgroup label="• Celebrações Familiares">
-                        <option value="homenagem">Homenagens</option>
+                        <option value="Homenagem">Homenagens</option>
                     </optgroup>
 
                     <optgroup label="• Eventos Especiais">
-                        <option value="casamento">Casamentos</option>
-                        <option value="chadebebe">Chás de Bebê</option>
+                        <option value="Casamento">Casamentos</option>
+                        <option value="Chá de Bebê">Chás de Bebê</option>
                     </optgroup>
 
                     <optgroup label="• Datas Comemorativas">
-                        <option value="aniversario">Aniversário</option>
-                        <option value="outros">Outros</option>
+                        <option value="Aniversário">Aniversário</option>
+                        <option value="Outros Eventos">Outros</option>
                     </optgroup>
 
                     <optgroup label="• Gêneros Puros">
-                        <option value="forro">Forró</option>
-                        <option value="xote">Xote</option>
-                        <option value="baiao">Baião</option>
-                        <option value="romantica">Música Romântica</option>
-                        <option value="rock">Rock</option>
-                        <option value="varzeabeat">Várzeabeat | O Toque da Casa</option>
+                        <option value="Forró">Forró</option>
+                        <option value="Xote">Xote</option>
+                        <option value="Baião">Baião</option>
+                        <option value="Música Romântica">Música Romântica</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Várzeabeat">Várzeabeat | O Toque da Casa</option>
                     </optgroup>
                 </select>
 
-                <button type="button" class="btn-gerar">GERAR MINHA MÚSICA</button>
+                <button type="button" class="btn-gerar" id="btn-whatsapp">GERAR MINHA MÚSICA</button>
             </form>
         </div>
 
@@ -184,6 +269,82 @@
             @Copyright 2026 - Plínio Fabrício Studio | Todos direitos reservados
         </div>
     </div>
+
+    <!-- Motor do Menu Suspenso Customizado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const select = document.getElementById('estilo');
+            const wrapper = document.createElement('div');
+            wrapper.className = 'custom-select-wrapper';
+            select.parentNode.insertBefore(wrapper, select);
+            wrapper.appendChild(select); 
+
+            const trigger = document.createElement('div');
+            trigger.className = 'custom-select';
+            trigger.innerHTML = '<span class="selected-text">Selecione o tipo de projeto...</span><span class="arrow">▼</span>';
+            wrapper.appendChild(trigger);
+
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'custom-options';
+            wrapper.appendChild(optionsContainer);
+
+            Array.from(select.children).forEach(child => {
+                if (child.tagName === 'OPTGROUP') {
+                    const groupTitle = document.createElement('div');
+                    groupTitle.className = 'custom-optgroup';
+                    groupTitle.textContent = child.label.replace('• ', ''); 
+                    optionsContainer.appendChild(groupTitle);
+
+                    Array.from(child.children).forEach(option => {
+                        createCustomOption(option, optionsContainer, trigger, select);
+                    });
+                } else if (child.tagName === 'OPTION' && child.value !== "") {
+                    createCustomOption(child, optionsContainer, trigger, select);
+                }
+            });
+
+            function createCustomOption(optionEl, container, triggerEl, originalSelect) {
+                const opt = document.createElement('div');
+                opt.className = 'custom-option';
+                opt.textContent = optionEl.textContent;
+                opt.dataset.value = optionEl.value;
+                
+                if(optionEl.value === 'Várzeabeat') {
+                    opt.style.color = '#00d2ff';
+                }
+                
+                opt.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    originalSelect.value = this.dataset.value;
+                    triggerEl.querySelector('.selected-text').textContent = this.textContent;
+                    
+                    container.querySelectorAll('.custom-option').forEach(el => el.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    container.classList.remove('open');
+                    triggerEl.classList.remove('open');
+                });
+                container.appendChild(opt);
+            }
+
+            trigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = optionsContainer.classList.contains('open');
+                if (!isOpen) {
+                    optionsContainer.classList.add('open');
+                    trigger.classList.add('open');
+                } else {
+                    optionsContainer.classList.remove('open');
+                    trigger.classList.remove('open');
+                }
+            });
+
+            document.addEventListener('click', function() {
+                optionsContainer.classList.remove('open');
+                trigger.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>
 
