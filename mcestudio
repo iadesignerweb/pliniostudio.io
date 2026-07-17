@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Estúdio - Sua Fábrica de Música</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+        }
+        .logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+        .slogan {
+            font-size: 1.3rem;
+            color: #00d2ff; /* Ciano do M */
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .about {
+            font-size: 1rem;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            padding: 0 20px;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff007f; /* Rosa do C */
+        }
+        .form-box {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #00d2ff;
+            font-size: 1.1rem;
+        }
+        textarea, select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #2a2a2a;
+            color: #fff;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        textarea:focus, select:focus {
+            outline: none;
+            border-color: #ff007f;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+        .btn-gerar {
+            background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: opacity 0.3s;
+        }
+        .btn-gerar:hover {
+            opacity: 0.85;
+        }
+        .option-destaque {
+            font-weight: bold;
+            color: #ff007f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg" alt="Logo MC Estúdio" class="logo">
+            <div class="slogan">"Música sob medida. A inteligência é artificial, mas a qualidade e a direção musical têm 30 anos de história."</div>
+            <div class="about">
+                <strong>Por que escolher o MC Estúdio?</strong><br>
+                Criar uma música inesquecível não é apenas apertar um botão. É preciso entender de ritmo, harmonia, mixagem e sentimento. No MC Estúdio, nossa tecnologia é rigorosamente estruturada, calibrada e dirigida por um produtor musical e compositor com 30 anos de bagagem em estúdios profissionais. Você traz a ideia, nós entregamos a obra-prima.
+            </div>
+        </div>
+
+        <div class="form-box">
+            <form id="mc-form">
+                <label for="letra">1. Sua Letra ou Detalhes da Homenagem:</label>
+                <textarea id="letra" rows="6" placeholder="Cole aqui a letra da sua música, os detalhes do jingle da loja ou a mensagem para o aniversário..."></textarea>
+
+                <label for="estilo">2. Escolha o Estilo Musical:</label>
+                <select id="estilo">
+                    <option value="" disabled selected>Selecione um ritmo...</option>
+                    <option value="forro">Forró Pé de Serra</option>
+                    <option value="xote">Xote Romântico</option>
+                    <option value="baiao">Baião</option>
+                    <option value="romantica">Música Romântica</option>
+                    <option value="rock">Rock Anos 70</option>
+                    <option value="varzeabeat" class="option-destaque">Várzeabeat (Assinatura Exclusiva)</option>
+                </select>
+
+                <button type="button" class="btn-gerar">GERAR MINHA MÚSICA</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
