@@ -27,7 +27,6 @@
         .logo {
             max-width: 180px;
             margin-bottom: 20px;
-            /* Esta é a mágica que derrete o fundo preto do seu JPG */
             mix-blend-mode: screen; 
         }
         .slogan {
@@ -91,7 +90,7 @@
 
         /* --- ESTILOS DO NOVO MENU SUSPENSO PREMIUM --- */
         select#estilo { 
-            display: none; /* Esconde o amador, mas mantém os dados */
+            display: none; 
         }
         .custom-select-wrapper {
             position: relative;
@@ -179,7 +178,6 @@
             border-left: 3px solid #00d2ff;
             padding-left: 22px;
         }
-        /* ------------------------------------------- */
 
         .btn-gerar {
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
@@ -228,7 +226,6 @@
                 <textarea id="letra" rows="6" placeholder="Cole aqui a letra da sua música, os detalhes do jingle da loja ou a mensagem para o aniversário..."></textarea>
 
                 <label for="estilo">2. Escolha seu Repertório:</label>
-                <!-- O HTML original mantido intacto -->
                 <select id="estilo">
                     <option value="" disabled selected>Selecione o tipo de projeto...</option>
                     
@@ -345,6 +342,58 @@
             });
         });
     </script>
+
+    <!-- Motor de Envio para o Webhook do Make.com -->
+    <script>
+        document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
+            e.preventDefault(); 
+
+            const letra = document.getElementById('letra').value;
+            const estilo = document.getElementById('estilo').value;
+            const botao = document.getElementById('btn-whatsapp');
+
+            // Trava de segurança
+            if(!letra || !estilo) {
+                alert("Comandante, por favor, preencha a letra e escolha um estilo musical!");
+                return;
+            }
+
+            // Aquece os motores visuais 
+            const textoOriginal = botao.innerText;
+            botao.innerText = "ENVIANDO PARA A FÁBRICA...";
+            botao.style.opacity = "0.7";
+            botao.disabled = true;
+
+            // O link do Webhook no Make.com
+            const webhookUrl = "https://hook.eu1.make.com/t7cr9u2togq7dkirqj4mkruenkczc419";
+
+            // Dispara os dados para o servidor
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    letra: letra,
+                    estilo: estilo
+                })
+            })
+            .then(response => {
+                // SUCESSO! Redirecionando para o Mercado Pago
+                window.location.href = "https://mpago.la/2YyFDas";
+                
+                // Restaura o botão
+                botao.innerText = textoOriginal;
+                botao.style.opacity = "1";
+                botao.disabled = false;
+            })
+            .catch(error => {
+                alert("Ocorreu uma falha na transmissão. Tente novamente.");
+                botao.innerText = textoOriginal;
+                botao.style.opacity = "1";
+                botao.disabled = false;
+            });
+        });
+    </script>
 </body>
 </html>
-
