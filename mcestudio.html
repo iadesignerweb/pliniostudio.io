@@ -394,13 +394,10 @@
                 })
             })
             .then(response => {
-                // SUCESSO! Redirecionando para o Mercado Pago
-                window.location.href = "https://mpago.la/2YyFDas";
-                
-                // Restaura o botão (caso o usuário volte na página)
-                botao.innerText = textoOriginal;
-                botao.style.opacity = "1";
-                botao.disabled = false;
+                // SUCESSO! Dá um respiro de 2 segundos (2000ms) antes de ir para o Mercado Pago
+                setTimeout(function() {
+                    window.location.href = "https://mpago.la/2YyFDas";
+                }, 2000);
             })
             .catch(error => {
                 alert("Ocorreu uma falha na transmissão. Tente novamente.");
