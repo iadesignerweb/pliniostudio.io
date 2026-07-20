@@ -68,11 +68,12 @@
             font-weight: bold;
             color: #00d2ff;
             font-size: 1.1rem;
+            margin-top: 20px;
         }
-        textarea {
+        input[type="text"], input[type="tel"], textarea {
             width: 100%;
             padding: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             border: 1px solid #333;
             border-radius: 8px;
             background-color: #2a2a2a;
@@ -80,9 +81,12 @@
             font-size: 1rem;
             box-sizing: border-box;
             transition: all 0.3s ease;
-            resize: vertical;
         }
-        textarea:focus {
+        textarea {
+            resize: vertical;
+            margin-bottom: 25px;
+        }
+        input:focus, textarea:focus {
             outline: none;
             border-color: #ff007f;
             box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
@@ -222,11 +226,17 @@
 
         <div class="form-box">
             <form id="mc-form">
-                <label for="letra">1. Sua Letra ou Detalhes da Homenagem:</label>
-                <textarea id="letra" rows="6" placeholder="Cole aqui a letra da sua música, os detalhes do jingle da loja ou a mensagem para o aniversário..."></textarea>
+                <label for="nome">1. Seu Nome:</label>
+                <input type="text" id="nome" placeholder="Como devemos chamar você?" required>
 
-                <label for="estilo">2. Escolha seu Repertório:</label>
-                <select id="estilo">
+                <label for="telefone">2. Seu WhatsApp:</label>
+                <input type="tel" id="telefone" placeholder="(DD) 9XXXX-XXXX" required>
+
+                <label for="letra">3. Sua Letra ou Detalhes da Homenagem:</label>
+                <textarea id="letra" rows="6" placeholder="Cole aqui a letra da sua música, os detalhes do jingle da loja ou a mensagem para o aniversário..." required></textarea>
+
+                <label for="estilo">4. Escolha seu Repertório:</label>
+                <select id="estilo" required>
                     <option value="" disabled selected>Selecione o tipo de projeto...</option>
                     
                     <optgroup label="• Comércio e Lojas">
@@ -348,32 +358,37 @@
         document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
             e.preventDefault(); 
 
+            // Coleta todos os dados do formulário
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
             const letra = document.getElementById('letra').value;
             const estilo = document.getElementById('estilo').value;
             const botao = document.getElementById('btn-whatsapp');
 
-            // Trava de segurança
-            if(!letra || !estilo) {
-                alert("Comandante, por favor, preencha a letra e escolha um estilo musical!");
+            // Trava de segurança para não enviar vazio
+            if(!nome || !telefone || !letra || !estilo) {
+                alert("Comandante, por favor, preencha todos os campos para continuarmos!");
                 return;
             }
 
-            // Aquece os motores visuais 
+            // Aquece os motores visuais com a mensagem da Maria Clara
             const textoOriginal = botao.innerText;
-            botao.innerText = "ENVIANDO PARA A FÁBRICA...";
+            botao.innerText = "✨ Maria Clara está digitando...";
             botao.style.opacity = "0.7";
             botao.disabled = true;
 
             // O link do Webhook no Make.com
             const webhookUrl = "https://hook.eu1.make.com/t7cr9u2togq7dkirqj4mkruenkczc419";
 
-            // Dispara os dados para o servidor
+            // Dispara os dados completos para o servidor
             fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    nome: nome,
+                    telefone: telefone,
                     letra: letra,
                     estilo: estilo
                 })
@@ -382,7 +397,7 @@
                 // SUCESSO! Redirecionando para o Mercado Pago
                 window.location.href = "https://mpago.la/2YyFDas";
                 
-                // Restaura o botão
+                // Restaura o botão (caso o usuário volte na página)
                 botao.innerText = textoOriginal;
                 botao.style.opacity = "1";
                 botao.disabled = false;
