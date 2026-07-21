@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC Estúdio - Sua Fábrica de Música</title>
+    <title>MC Estúdio - Gerador de Música</title>
     <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg">
     <style>
         body {
@@ -21,41 +21,109 @@
             display: flex;
             flex-direction: column;
         }
-        .header {
-            text-align: center;
-            padding: 40px 0 20px 0;
+        
+        /* --- MENU HAMBÚRGUER MINIMALISTA --- */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 0;
+            position: relative;
         }
-        .logo {
-            max-width: 180px;
-            margin-bottom: 20px;
-            mix-blend-mode: screen; 
-        }
-        .slogan {
-            font-size: 1.3rem;
+        .hamburger-btn {
+            font-size: 28px;
             color: #00d2ff;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s;
+            padding: 5px;
         }
-        .about {
-            font-size: 1rem;
-            color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            padding: 25px;
+        .hamburger-btn:hover {
+            color: #ff007f;
+        }
+        .menu-panel {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
             background: #1a1a1a;
+            padding: 25px;
             border-radius: 8px;
-            border-left: 4px solid #ff007f;
+            width: 320px;
+            border-left: 2px solid #333;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+            z-index: 1000;
             text-align: left;
         }
-        .about h3 {
+        .menu-panel.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        .menu-panel h3 {
             color: #ffffff;
             margin-top: 0;
             margin-bottom: 15px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 1.1rem;
         }
+        .menu-panel p {
+            font-size: 0.85rem;
+            color: #aaaaaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .menu-panel .highlight {
+            color: #00d2ff;
+            font-weight: bold;
+        }
+        .menu-divider {
+            height: 1px;
+            background: #333;
+            margin: 20px 0;
+        }
+        .menu-link {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            color: #dddddd;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: #222;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .menu-link:hover {
+            background: #2a2a2a;
+            border-color: #00d2ff;
+            color: #ffffff;
+        }
+
+        /* --- CABEÇALHO --- */
+        .header {
+            text-align: center;
+            padding: 10px 0 30px 0;
+        }
+        .logo {
+            max-width: 180px;
+            margin-bottom: 10px;
+            mix-blend-mode: screen; 
+        }
+        .slogan {
+            font-size: 1rem;
+            color: #666666;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* --- FORMULÁRIO --- */
         .form-box {
             background-color: #1e1e1e;
             padding: 30px;
@@ -68,8 +136,10 @@
             margin-bottom: 10px;
             font-weight: bold;
             color: #00d2ff;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         input[type="text"], input[type="tel"], textarea {
             width: 100%;
@@ -93,10 +163,8 @@
             box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
         }
 
-        /* --- ESTILOS DO NOVO MENU SUSPENSO PREMIUM --- */
-        select#estilo { 
-            display: none; 
-        }
+        /* --- MENU SUSPENSO CUSTOMIZADO --- */
+        select#estilo { display: none; }
         .custom-select-wrapper {
             position: relative;
             margin-bottom: 30px;
@@ -121,14 +189,8 @@
             border-color: #ff007f;
             box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
         }
-        .custom-select .arrow {
-            font-size: 0.8rem;
-            color: #00d2ff;
-            transition: transform 0.3s ease;
-        }
-        .custom-select.open .arrow {
-            transform: rotate(180deg);
-        }
+        .custom-select .arrow { font-size: 0.8rem; color: #00d2ff; transition: transform 0.3s ease; }
+        .custom-select.open .arrow { transform: rotate(180deg); }
         .custom-options {
             position: absolute;
             top: calc(100% + 8px);
@@ -143,14 +205,8 @@
             display: none;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
         }
-        .custom-options.open {
-            display: block;
-            animation: fadeIn 0.2s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .custom-options.open { display: block; animation: fadeIn 0.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .custom-optgroup {
             color: #ff007f;
             font-weight: bold;
@@ -169,13 +225,8 @@
             border-bottom: 1px solid #222;
             font-size: 0.95rem;
         }
-        .custom-option:last-child {
-            border-bottom: none;
-        }
-        .custom-option:hover {
-            background-color: #2a2a2a;
-            color: #fff;
-        }
+        .custom-option:last-child { border-bottom: none; }
+        .custom-option:hover { background-color: #2a2a2a; color: #fff; }
         .custom-option.selected {
             background-color: #222;
             color: #00d2ff;
@@ -184,81 +235,151 @@
             padding-left: 22px;
         }
 
+        /* --- BOTÕES DE AÇÃO --- */
+        .gerador-wrapper {
+            text-align: center;
+            margin-top: 10px;
+        }
         .btn-gerar {
+            position: relative;
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
             color: white;
             border: none;
             padding: 18px 30px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            animation: pulseGlow 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             transition: opacity 0.3s;
         }
-        .btn-gerar:hover {
-            opacity: 0.85;
+        .btn-gerar:hover { opacity: 0.85; }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(0, 210, 255, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 0, 127, 0.7); }
+            100% { box-shadow: 0 0 10px rgba(0, 210, 255, 0.4); }
         }
+        .icon-star {
+            animation: spinStar 4s linear infinite;
+        }
+        @keyframes spinStar { 100% { transform: rotate(360deg); } }
+
+        .divisor {
+            text-align: center;
+            margin: 25px 0;
+            color: #666;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            position: relative;
+            letter-spacing: 2px;
+        }
+        .divisor::before, .divisor::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #333;
+        }
+        .divisor::before { left: 0; }
+        .divisor::after { right: 0; }
+
+        .btn-pix {
+            background: transparent;
+            color: #32BCAD;
+            border: 1px solid #32BCAD;
+            padding: 15px 30px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .btn-pix:hover {
+            background: #32BCAD;
+            color: #121212;
+            box-shadow: 0 0 15px rgba(50, 188, 173, 0.3);
+        }
+
         .footer {
             text-align: center;
             padding: 20px;
-            color: #666;
-            font-size: 0.85rem;
+            color: #555;
+            font-size: 0.75rem;
             margin-top: 40px;
             border-top: 1px solid #222;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        
+        <div class="top-bar">
+            <button class="hamburger-btn" id="menu-toggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="menu-panel" id="menu-panel">
+                <h3>Quem Somos</h3>
+                <p>Sabe aquela letra que você sempre quis transformar em música, ou aquela homenagem que queria fazer para alguém especial? Agora você pode!</p>
+                <p>Lançamos nossa própria Fábrica de Músicas. Nós juntamos a velocidade da Inteligência Artificial com a direção musical e o refinamento de 30 anos de experiência em estúdio.</p>
+                <p>Seja um Forró, um Jingle para Loja ou Homenagens, a qualidade aqui é de ponta.</p>
+                <p class="highlight">Você só precisa escrever a sua ideia e escolher o estilo. O resto é com Maria Clara! Ela fará sua canção com perfeição.</p>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="https://mpago.la/2YyFDas" class="menu-link">Comprar 1 Crédito (R$ 5)</a>
+                <a href="#" class="menu-link">Pacotes de Assinatura</a>
+                <a href="#" class="menu-link">Suporte Técnico</a>
+            </div>
+        </div>
+
         <div class="header">
             <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg" alt="Logo MC Estúdio" class="logo">
-            <div class="slogan">Música sob medida. A inteligência é artificial, mas a qualidade e a direção musical têm 30 anos de história.</div>
-            
-            <div class="about">
-                <h3>Quem Somos</h3>
-                <p>Criar uma música inesquecível não é apenas apertar um botão. É preciso entender de ritmo, harmonia, mixagem e sentimento.</p>
-                <p>No MC Estúdio, nossa tecnologia de Inteligência Artificial não trabalha sozinha. Ela é rigorosamente estruturada, calibrada e dirigida por um produtor musical e compositor com 30 anos de bagagem em estúdios profissionais.</p>
-                <p>Cada estilo, do Forró ao Rock, do Xote romântico à trilha de aniversário, carrega a garantia de qualidade de quem dedicou a vida inteira à arte de emocionar através do som. Você traz a ideia, nós entregamos a obra-prima.</p>
-            </div>
+            <div class="slogan">Gerador de Música</div>
         </div>
 
         <div class="form-box">
             <form id="mc-form">
-                <label for="nome">1. Seu Nome:</label>
+                <label for="nome">Nome</label>
                 <input type="text" id="nome" placeholder="Como devemos chamar você?" required>
 
-                <label for="telefone">2. Seu WhatsApp:</label>
+                <label for="telefone">WhatsApp</label>
                 <input type="tel" id="telefone" placeholder="(DD) 9XXXX-XXXX" required>
 
-                <label for="letra">3. Sua Letra ou Detalhes da Homenagem:</label>
-                <textarea id="letra" rows="6" placeholder="Cole aqui a letra da sua música, os detalhes do jingle da loja ou a mensagem para o aniversário..." required></textarea>
+                <label for="letra">Letra ou Detalhes da Homenagem</label>
+                <textarea id="letra" rows="6" placeholder="Descreva sua ideia, jingle ou cole a letra..." required></textarea>
 
-                <label for="estilo">4. Escolha seu Repertório:</label>
+                <label for="estilo">Repertório</label>
                 <select id="estilo" required>
-                    <option value="" disabled selected>Selecione o tipo de projeto...</option>
-                    
+                    <option value="" disabled selected>Selecione o estilo da música...</option>
                     <optgroup label="• Comércio e Lojas">
                         <option value="Jingle de 30s">Jingles e comerciais curtos - 30s</option>
                         <option value="Jingle de 1min">Jingles e comerciais padrões - 1min</option>
                     </optgroup>
-
                     <optgroup label="• Celebrações Familiares">
                         <option value="Homenagem">Homenagens</option>
                     </optgroup>
-
                     <optgroup label="• Eventos Especiais">
                         <option value="Casamento">Casamentos</option>
                         <option value="Chá de Bebê">Chás de Bebê</option>
                     </optgroup>
-
                     <optgroup label="• Datas Comemorativas">
                         <option value="Aniversário">Aniversário</option>
                         <option value="Outros Eventos">Outros</option>
                     </optgroup>
-
                     <optgroup label="• Gêneros Puros">
                         <option value="Forró">Forró</option>
                         <option value="Xote">Xote</option>
@@ -269,16 +390,37 @@
                     </optgroup>
                 </select>
 
-                <button type="button" class="btn-gerar" id="btn-whatsapp">GERAR MINHA MÚSICA</button>
+                <div class="gerador-wrapper">
+                    <button type="button" class="btn-gerar" id="btn-whatsapp">
+                        <svg class="icon-star" fill="#ffffff" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                        <span id="texto-botao">GERAR MINHA MÚSICA</span>
+                    </button>
+                </div>
+
+                <div class="divisor">ou</div>
+
+                <button type="button" class="btn-pix" id="btn-pix">Comprar 1 Crédito - R$ 5</button>
             </form>
         </div>
 
         <div class="footer">
-            @Copyright 2026 - Plínio Fabrício Studio | Todos direitos reservados
+            &copy; 2026 Plínio Fabrício Studio | Todos os direitos reservados
         </div>
     </div>
 
-    <!-- Motor do Menu Suspenso Customizado -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('menu-panel').classList.toggle('active');
+        });
+        document.addEventListener('click', function() {
+            document.getElementById('menu-panel').classList.remove('active');
+        });
+        document.getElementById('menu-panel').addEventListener('click', function(e) {
+            e.stopPropagation(); 
+        });
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const select = document.getElementById('estilo');
@@ -289,7 +431,7 @@
 
             const trigger = document.createElement('div');
             trigger.className = 'custom-select';
-            trigger.innerHTML = '<span class="selected-text">Selecione o tipo de projeto...</span><span class="arrow">▼</span>';
+            trigger.innerHTML = '<span class="selected-text">Selecione o estilo da música...</span><span class="arrow">▼</span>';
             wrapper.appendChild(trigger);
 
             const optionsContainer = document.createElement('div');
@@ -354,58 +496,59 @@
         });
     </script>
 
-    <!-- Motor de Envio para o Webhook do Make.com -->
     <script>
         document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
             e.preventDefault(); 
 
-            // Coleta todos os dados do formulário
             const nome = document.getElementById('nome').value;
             const telefone = document.getElementById('telefone').value;
             const letra = document.getElementById('letra').value;
             const estilo = document.getElementById('estilo').value;
             const botao = document.getElementById('btn-whatsapp');
+            const textoBotao = document.getElementById('texto-botao');
+            const icone = botao.querySelector('.icon-star');
 
-            // Trava de segurança para não enviar vazio
             if(!nome || !telefone || !letra || !estilo) {
                 alert("Comandante, por favor, preencha todos os campos para continuarmos!");
                 return;
             }
 
-            // Aquece os motores visuais com a mensagem da Maria Clara
-            const textoOriginal = botao.innerText;
-            botao.innerText = "✨ Maria Clara está digitando...";
-            botao.style.opacity = "0.7";
+            // Efeito visual estilo Gemini
+            const textoOriginal = textoBotao.innerText;
+            textoBotao.innerText = "Maria Clara está gerando sua canção, aguarde...";
+            botao.style.opacity = "0.8";
+            botao.style.animation = "none";
+            botao.style.boxShadow = "0 0 30px rgba(255, 0, 127, 0.8)";
+            icone.style.animationDuration = "1s"; // Gira mais rápido
             botao.disabled = true;
 
-            // O link do Webhook no Make.com
             const webhookUrl = "https://hook.eu1.make.com/t7cr9u2togq7dkirqj4mkruenkczc419";
 
-            // Dispara os dados completos para o servidor
             fetch(webhookUrl, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    nome: nome,
-                    telefone: telefone,
-                    letra: letra,
-                    estilo: estilo
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome: nome, telefone: telefone, letra: letra, estilo: estilo })
             })
             .then(response => {
-                // SUCESSO! Dá um respiro de 2 segundos (2000ms) antes de ir para o Mercado Pago
+                // Aguarda 3 segundos antes de redirecionar
                 setTimeout(function() {
                     window.location.href = "https://mpago.la/2YyFDas";
-                }, 2000);
+                }, 3000);
             })
             .catch(error => {
                 alert("Ocorreu uma falha na transmissão. Tente novamente.");
-                botao.innerText = textoOriginal;
+                textoBotao.innerText = textoOriginal;
                 botao.style.opacity = "1";
+                botao.style.animation = "pulseGlow 2s infinite";
+                icone.style.animationDuration = "4s";
                 botao.disabled = false;
             });
+        });
+
+        // Botão Avulso Pix
+        document.getElementById('btn-pix').addEventListener('click', function(e) {
+            e.preventDefault(); 
+            window.location.href = "https://mpago.la/2YyFDas";
         });
     </script>
 </body>
