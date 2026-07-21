@@ -252,6 +252,17 @@
         }
         .btn-pix:hover { color: #32BCAD; border-color: #32BCAD; }
 
+        /* --- RODAPÉ --- */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #555;
+            font-size: 0.75rem;
+            margin-top: auto; /* Empurra o rodapé para o final da tela */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -323,6 +334,11 @@
         <div class="pix-container">
             <button type="button" class="btn-pix" id="btn-pix">Testar com 1 Crédito (R$ 5)</button>
         </div>
+
+        <div class="footer">
+            &copy; Copyright 2026 - Plínio Studio | Todos os direitos reservados
+        </div>
+
     </div>
 
     <script>
