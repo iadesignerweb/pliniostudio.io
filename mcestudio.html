@@ -40,7 +40,7 @@
             gap: 10px;
         }
         .logo {
-            width: 40px; /* Logo menorzinha estilo ícone do app */
+            width: 40px; 
             border-radius: 8px;
         }
         .app-title {
@@ -104,7 +104,7 @@
 
         /* --- PROMPT CARD (Onde a mágica acontece) --- */
         .prompt-card {
-            background-color: #1a1a1c; /* Cor do card do MusicGPT */
+            background-color: #1a1a1c;
             border-radius: 32px;
             padding: 25px;
             display: flex;
@@ -167,7 +167,7 @@
             padding: 10px 16px;
             background-color: transparent;
             border: 1px solid #333;
-            border-radius: 50px; /* Estilo pílula */
+            border-radius: 50px;
             color: #ccc;
             font-size: 0.9rem;
             cursor: pointer;
@@ -179,7 +179,7 @@
         /* Lista de opções do Repertório */
         .custom-options {
             position: absolute;
-            bottom: calc(100% + 10px); /* Abre para cima */
+            bottom: calc(100% + 10px);
             left: 0;
             background-color: #2a2a2c;
             border: 1px solid #3a3a3c;
@@ -214,7 +214,7 @@
             color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 50px; /* Pílula */
+            border-radius: 50px; 
             font-size: 0.95rem;
             font-weight: bold;
             cursor: pointer;
@@ -224,9 +224,11 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
             animation: pulseGlow 2s infinite;
             transition: opacity 0.3s;
+            text-align: left; /* Adicionado para comportar texto longo */
+            line-height: 1.2;
         }
         .btn-gerar:hover { opacity: 0.85; }
-        .btn-gerar svg { animation: spinStar 4s linear infinite; }
+        .btn-gerar svg { animation: spinStar 4s linear infinite; flex-shrink: 0; }
         
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 10px rgba(0, 210, 255, 0.4); }
@@ -252,13 +254,53 @@
         }
         .btn-pix:hover { color: #32BCAD; border-color: #32BCAD; }
 
+        /* --- TELA FASE BETA (Lista de Espera) --- */
+        .beta-screen {
+            display: none; /* Oculto por padrão */
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        .beta-title {
+            color: #00d2ff;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .beta-text {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .urgency-box {
+            background: #212124;
+            border: 1px solid #ff007f;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.1);
+        }
+        .urgency-text {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .btn-express {
+            width: 100%;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 15px 24px;
+        }
+
         /* --- RODAPÉ --- */
         .footer {
             text-align: center;
             padding: 20px 0;
             color: #555;
             font-size: 0.75rem;
-            margin-top: auto; /* Empurra o rodapé para o final da tela */
+            margin-top: auto; 
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -290,49 +332,62 @@
         <h1 class="hero-title">Crie com MC Estúdio</h1>
 
         <div class="prompt-card">
-            <form id="mc-form">
-                
-                <div class="user-info-row">
-                    <input type="text" id="nome" placeholder="Seu Nome" required>
-                    <input type="tel" id="telefone" placeholder="Seu WhatsApp" required>
+            
+            <div id="form-container">
+                <form id="mc-form">
+                    <div class="user-info-row">
+                        <input type="text" id="nome" placeholder="Seu Nome" required>
+                        <input type="tel" id="telefone" placeholder="Seu WhatsApp" required>
+                    </div>
+
+                    <textarea id="letra" placeholder="Descreva sua ideia, jingle ou cole a letra em estilo livre..." required></textarea>
+
+                    <select id="estilo" required>
+                        <option value="" disabled selected>Repertório...</option>
+                        <optgroup label="Comércio e Lojas">
+                            <option value="Jingle de 30s">Jingles Curtos - 30s</option>
+                            <option value="Jingle de 1min">Jingles Padrões - 1min</option>
+                        </optgroup>
+                        <optgroup label="Celebrações">
+                            <option value="Homenagem">Homenagens</option>
+                            <option value="Casamento">Casamentos</option>
+                            <option value="Chá de Bebê">Chás de Bebê</option>
+                        </optgroup>
+                        <optgroup label="Gêneros Puros">
+                            <option value="Forró">Forró</option>
+                            <option value="Xote">Xote</option>
+                            <option value="Música Romântica">Música Romântica</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Várzeabeat">Várzeabeat</option>
+                        </optgroup>
+                    </select>
+
+                    <div class="toolbar">
+                        <div id="select-anchor"></div>
+                        <button type="button" class="btn-gerar" id="btn-whatsapp">
+                            <span id="texto-botao">Gerar</span>
+                            <svg class="icon-star" fill="#ffffff" width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="pix-container">
+                    <button type="button" class="btn-pix" id="btn-pix">Testar com 1 Crédito (R$ 5)</button>
                 </div>
+            </div>
 
-                <textarea id="letra" placeholder="Descreva sua ideia, jingle ou cole a letra em estilo livre..." required></textarea>
-
-                <select id="estilo" required>
-                    <option value="" disabled selected>Repertório...</option>
-                    <optgroup label="Comércio e Lojas">
-                        <option value="Jingle de 30s">Jingles Curtos - 30s</option>
-                        <option value="Jingle de 1min">Jingles Padrões - 1min</option>
-                    </optgroup>
-                    <optgroup label="Celebrações">
-                        <option value="Homenagem">Homenagens</option>
-                        <option value="Casamento">Casamentos</option>
-                        <option value="Chá de Bebê">Chás de Bebê</option>
-                    </optgroup>
-                    <optgroup label="Gêneros Puros">
-                        <option value="Forró">Forró</option>
-                        <option value="Xote">Xote</option>
-                        <option value="Música Romântica">Música Romântica</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Várzeabeat">Várzeabeat</option>
-                    </optgroup>
-                </select>
-
-                <div class="toolbar">
-                    <div id="select-anchor"></div>
-
-                    <button type="button" class="btn-gerar" id="btn-whatsapp">
-                        <span id="texto-botao">Gerar</span>
-                        <svg class="icon-star" fill="#ffffff" width="18px" height="18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+            <div id="beta-screen" class="beta-screen">
+                <h2 class="beta-title">Sucesso!</h2>
+                <p class="beta-text">Você está cadastrado na nossa Fase Beta. Como estamos refinando nosso sistema automático, você garantiu seu lugar e será um dos primeiros a receber sua música assim que a ferramenta estiver 100% liberada.</p>
+                
+                <div class="urgency-box">
+                    <p class="urgency-text">Tem urgência e não quer esperar? Compre um Crédito de Produção Expressa por apenas R$ 5,00! Nossa equipe de estúdio assumirá o seu pedido manualmente e entregaremos a sua música sob medida em até 2 dias.</p>
+                    <button type="button" class="btn-gerar btn-express" id="btn-express">
+                        <span>Comprar Produção Expressa</span>
                     </button>
                 </div>
+            </div>
 
-            </form>
-        </div>
-
-        <div class="pix-container">
-            <button type="button" class="btn-pix" id="btn-pix">Testar com 1 Crédito (R$ 5)</button>
         </div>
 
         <div class="footer">
@@ -342,6 +397,7 @@
     </div>
 
     <script>
+        // Menu Hambúrguer
         document.getElementById('menu-toggle').addEventListener('click', function(e) {
             e.stopPropagation();
             document.getElementById('menu-panel').classList.toggle('active');
@@ -350,9 +406,8 @@
             document.getElementById('menu-panel').classList.remove('active');
         });
         document.getElementById('menu-panel').addEventListener('click', function(e) { e.stopPropagation(); });
-    </script>
 
-    <script>
+        // Custom Select (Estilo Tools)
         document.addEventListener('DOMContentLoaded', function() {
             const select = document.getElementById('estilo');
             const anchor = document.getElementById('select-anchor');
@@ -404,9 +459,8 @@
             });
             document.addEventListener('click', function() { optionsContainer.classList.remove('open'); });
         });
-    </script>
 
-    <script>
+        // Lógica Principal de Disparo (Webhook + Transição de Tela)
         document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
             e.preventDefault(); 
 
@@ -423,11 +477,11 @@
                 return;
             }
 
-            // Efeito visual 
+            // AÇÃO TÁTICA 1: Mudança do texto de processamento
             const textoOriginal = textoBotao.innerText;
-            textoBotao.innerText = "Gerando...";
+            textoBotao.innerText = "Maria Clara está mixando a sua música. Aguarde um momento até a canção ser gerada...";
             botao.style.opacity = "0.8";
-            icone.style.animationDuration = "0.5s"; // Gira rápido
+            icone.style.animationDuration = "0.5s"; // Estrela roda rápido
             botao.disabled = true;
 
             const webhookUrl = "https://hook.eu1.make.com/t7cr9u2togq7dkirqj4mkruenkczc419";
@@ -438,7 +492,12 @@
                 body: JSON.stringify({ nome: nome, telefone: telefone, letra: letra, estilo: estilo })
             })
             .then(response => {
-                setTimeout(function() { window.location.href = "https://mpago.la/2YyFDas"; }, 3000);
+                // Aguarda 3 segundos mantendo a ilusão de mixagem
+                setTimeout(function() {
+                    // AÇÃO TÁTICA 2: Esconde o Form e Exibe a Tela Beta
+                    document.getElementById('form-container').style.display = 'none';
+                    document.getElementById('beta-screen').style.display = 'block';
+                }, 3000);
             })
             .catch(error => {
                 alert("Falha na conexão. Tente novamente.");
@@ -449,7 +508,14 @@
             });
         });
 
+        // Botões de Pagamento Extra
         document.getElementById('btn-pix').addEventListener('click', function(e) {
+            e.preventDefault(); 
+            window.location.href = "https://mpago.la/2YyFDas";
+        });
+
+        // AÇÃO TÁTICA 3: Botão da Oferta de Urgência na Fase Beta
+        document.getElementById('btn-express').addEventListener('click', function(e) {
             e.preventDefault(); 
             window.location.href = "https://mpago.la/2YyFDas";
         });
