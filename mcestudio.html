@@ -77,6 +77,21 @@
         }
         .menu-panel h3 { margin-top: 0; font-size: 1rem; color: #fff; }
         .menu-panel p { font-size: 0.85rem; color: #aaa; line-height: 1.5; }
+        
+        /* Divisores e Títulos Internos do Menu */
+        .menu-divider {
+            height: 1px;
+            background: #333;
+            margin: 15px 0;
+        }
+        .menu-section-title {
+            color: #00d2ff;
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .menu-link {
             display: block;
             padding: 12px;
@@ -109,7 +124,7 @@
             font-weight: 700;
             margin: 0 0 2px 0;
             color: #f1f1f1;
-            white-space: nowrap; /* Impede de quebrar a linha */
+            white-space: nowrap; 
         }
         .hero-subtitle {
             font-size: 0.70rem;
@@ -117,7 +132,7 @@
             font-weight: bold;
             width: 100%;
             text-align: justify;
-            text-align-last: justify; /* O Segredo do alinhamento perfeito */
+            text-align-last: justify; 
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -177,7 +192,6 @@
             outline: none;
         }
         
-        /* O Efeito Brilhante nos Placeholders de Nome e WhatsApp */
         input[type="text"]::-webkit-input-placeholder, 
         input[type="tel"]::-webkit-input-placeholder {
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
@@ -381,6 +395,16 @@
             <div class="menu-panel" id="menu-panel">
                 <h3>Quem Somos</h3>
                 <p>Nós juntamos a velocidade da Inteligência Artificial com a direção musical de 30 anos de experiência em estúdio. Você escreve a ideia, a Maria Clara transforma em música.</p>
+                
+                <div class="menu-divider"></div>
+                
+                <h4 class="menu-section-title">Planos de Assinatura</h4>
+                <a href="#" class="menu-link beta-plan-link">Plano Teste (7 Dias) - 2 Créditos</a>
+                <a href="#" class="menu-link beta-plan-link">Plano Mensal - 10 Créditos (R$ 9,90)</a>
+                <a href="#" class="menu-link beta-plan-link">Plano Anual - 150 Créditos (R$ 79,90)</a>
+                
+                <div class="menu-divider"></div>
+                
                 <a href="https://mpago.la/2YyFDas" class="menu-link">Comprar 1 Crédito (R$ 5)</a>
                 <a href="#" class="menu-link">Suporte Técnico</a>
             </div>
@@ -399,13 +423,11 @@
             <div id="form-container">
                 <form id="mc-form">
                     
-                    <!-- DADOS DO USUÁRIO (NOME E WHATSAPP BRILHANTES) -->
                     <div class="user-info-row">
                         <input type="text" id="nome" placeholder="Seu Nome">
                         <input type="tel" id="telefone" placeholder="Seu WhatsApp">
                     </div>
 
-                    <!-- TEXTAREA COM O NOVO TEXTO DA MARIA CLARA -->
                     <textarea id="letra" placeholder="Cole sua ideia ou a letra da sua canção, que a Maria Clara vai fazer a mágica para você..."></textarea>
 
                     <select id="estilo">
@@ -492,6 +514,15 @@
         document.addEventListener('click', function() { document.getElementById('menu-panel').classList.remove('active'); });
         document.getElementById('menu-panel').addEventListener('click', function(e) { e.stopPropagation(); });
 
+        // AVISO INTELIGENTE DOS PLANOS (FASE BETA)
+        document.querySelectorAll('.beta-plan-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                mostrarAlerta("Aviso da Fase Beta: Os planos estão em homologação. Aproveite o Crédito Expresso de R$ 5,00!");
+                document.getElementById('menu-panel').classList.remove('active');
+            });
+        });
+
         // Custom Select
         document.addEventListener('DOMContentLoaded', function() {
             const select = document.getElementById('estilo');
@@ -546,7 +577,7 @@
             toast.classList.add('show');
             setTimeout(function() {
                 toast.classList.remove('show');
-            }, 3500); // Fica na tela por 3.5 segundos
+            }, 3500); 
         }
 
         // Lógica de Disparo
@@ -561,23 +592,10 @@
             const textoBotao = document.getElementById('texto-botao');
             const icone = botao.querySelector('.icon-star');
 
-            // Validação Inteligente e Carinhosa
-            if(!nome) {
-                mostrarAlerta("Meu querido, o meu amado, você esqueceu de digitar seu nome!");
-                return;
-            }
-            if(!telefone) {
-                mostrarAlerta("Meu querido, faltou colocar o seu WhatsApp para a gente conversar!");
-                return;
-            }
-            if(!letra) {
-                mostrarAlerta("Meu amado, faltou escrever a ideia para a sua música!");
-                return;
-            }
-            if(!estilo) {
-                mostrarAlerta("Quase lá! Faltou só escolher o repertório sob medida.");
-                return;
-            }
+            if(!nome) { mostrarAlerta("Meu querido, o meu amado, você esqueceu de digitar seu nome!"); return; }
+            if(!telefone) { mostrarAlerta("Meu querido, faltou colocar o seu WhatsApp para a gente conversar!"); return; }
+            if(!letra) { mostrarAlerta("Meu amado, faltou escrever a ideia para a sua música!"); return; }
+            if(!estilo) { mostrarAlerta("Quase lá! Faltou só escolher o repertório sob medida."); return; }
 
             const textoOriginal = textoBotao.innerText;
             textoBotao.innerText = "Maria Clara está mixando a sua música. Aguarde um momento até a canção ser gerada...";
