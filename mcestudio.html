@@ -224,7 +224,7 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
             animation: pulseGlow 2s infinite;
             transition: opacity 0.3s;
-            text-align: left; /* Adicionado para comportar texto longo */
+            text-align: left;
             line-height: 1.2;
         }
         .btn-gerar:hover { opacity: 0.85; }
@@ -256,7 +256,7 @@
 
         /* --- TELA FASE BETA (Lista de Espera) --- */
         .beta-screen {
-            display: none; /* Oculto por padrão */
+            display: none;
             text-align: center;
             animation: fadeIn 0.5s ease;
         }
@@ -294,13 +294,47 @@
             padding: 15px 24px;
         }
 
+        /* --- LETREIRO DESLIZANTE DE APOIOS (TICKER) --- */
+        .supporters-ticker {
+            overflow: hidden;
+            white-space: nowrap;
+            background: #141416;
+            padding: 12px 0;
+            margin: 30px 0 10px 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .ticker-track {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 20s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 25px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
         /* --- RODAPÉ --- */
         .footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 10px 0 20px 0;
             color: #555;
             font-size: 0.75rem;
-            margin-top: auto; 
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -311,6 +345,7 @@
 <body>
     <div class="container">
         
+        <!-- HEADER ESTILO APP -->
         <div class="top-bar">
             <div class="logo-header">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg" alt="Logo" class="logo">
@@ -321,6 +356,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
 
+            <!-- MENU RECOLHIDO -->
             <div class="menu-panel" id="menu-panel">
                 <h3>Quem Somos</h3>
                 <p>Nós juntamos a velocidade da Inteligência Artificial com a direção musical de 30 anos de experiência em estúdio. Você escreve a ideia, a Maria Clara transforma em música.</p>
@@ -331,8 +367,10 @@
 
         <h1 class="hero-title">Crie com MC Estúdio</h1>
 
+        <!-- O CARD MAGNÉTICO PRINCIPAL -->
         <div class="prompt-card">
             
+            <!-- CAIXA 1: FORMULÁRIO -->
             <div id="form-container">
                 <form id="mc-form">
                     <div class="user-info-row">
@@ -376,6 +414,7 @@
                 </div>
             </div>
 
+            <!-- CAIXA 2: TELA FASE BETA -->
             <div id="beta-screen" class="beta-screen">
                 <h2 class="beta-title">Sucesso!</h2>
                 <p class="beta-text">Você está cadastrado na nossa Fase Beta. Como estamos refinando nosso sistema automático, você garantiu seu lugar e será um dos primeiros a receber sua música assim que a ferramenta estiver 100% liberada.</p>
@@ -390,12 +429,39 @@
 
         </div>
 
+        <!-- LETREIRO DESLIZANTE DE APOIOS (TICKER) -->
+        <div class="supporters-ticker">
+            <div class="ticker-track">
+                <span class="ticker-item">Apoios: Google</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">Gemini</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">YouTube</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">Plínio Fabrício</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">Plínio Studio</span>
+                <!-- Duplicado para loop infinito perfeito -->
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">Google</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">Gemini</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">YouTube</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">Plínio Fabrício</span>
+                <span class="ticker-item">&bull;</span>
+                <span class="ticker-item">Plínio Studio</span>
+            </div>
+        </div>
+
         <div class="footer">
             &copy; Copyright 2026 - Plínio Studio | Todos os direitos reservados
         </div>
 
     </div>
 
+    <!-- MOTOR JAVASCRIPT -->
     <script>
         // Menu Hambúrguer
         document.getElementById('menu-toggle').addEventListener('click', function(e) {
@@ -477,11 +543,10 @@
                 return;
             }
 
-            // AÇÃO TÁTICA 1: Mudança do texto de processamento
             const textoOriginal = textoBotao.innerText;
             textoBotao.innerText = "Maria Clara está mixando a sua música. Aguarde um momento até a canção ser gerada...";
             botao.style.opacity = "0.8";
-            icone.style.animationDuration = "0.5s"; // Estrela roda rápido
+            icone.style.animationDuration = "0.5s";
             botao.disabled = true;
 
             const webhookUrl = "https://hook.eu1.make.com/t7cr9u2togq7dkirqj4mkruenkczc419";
@@ -492,9 +557,7 @@
                 body: JSON.stringify({ nome: nome, telefone: telefone, letra: letra, estilo: estilo })
             })
             .then(response => {
-                // Aguarda 3 segundos mantendo a ilusão de mixagem
                 setTimeout(function() {
-                    // AÇÃO TÁTICA 2: Esconde o Form e Exibe a Tela Beta
                     document.getElementById('form-container').style.display = 'none';
                     document.getElementById('beta-screen').style.display = 'block';
                 }, 3000);
@@ -514,7 +577,6 @@
             window.location.href = "https://mpago.la/2YyFDas";
         });
 
-        // AÇÃO TÁTICA 3: Botão da Oferta de Urgência na Fase Beta
         document.getElementById('btn-express').addEventListener('click', function(e) {
             e.preventDefault(); 
             window.location.href = "https://mpago.la/2YyFDas";
