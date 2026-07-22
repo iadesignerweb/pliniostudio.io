@@ -6,9 +6,9 @@
     <title>MC Estúdio - Gerador de Música</title>
     <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg">
     <style>
-        /* --- RESET E ESTILO GLOBAL BASEADO NO MUSICGPT --- */
+        /* --- RESET E ESTILO GLOBAL --- */
         body {
-            background-color: #0d0d0f; /* Fundo super escuro */
+            background-color: #0d0d0f;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
@@ -59,7 +59,6 @@
         }
         .hamburger-btn:hover { color: #fff; }
         
-        /* Painel do Menu */
         .menu-panel {
             display: none;
             position: absolute;
@@ -93,16 +92,54 @@
         }
         .menu-link:hover { background: #333; color: #fff; }
 
-        /* --- TÍTULO PRINCIPAL --- */
+        /* --- TÍTULO PRINCIPAL E SUBTÍTULO NEON --- */
         .hero-title {
             text-align: center;
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 5px; /* Reduzido para aproximar o subtítulo */
             color: #f1f1f1;
         }
+        .hero-subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+        }
 
-        /* --- PROMPT CARD (Onde a mágica acontece) --- */
+        /* --- ALERTA CUSTOMIZADO (TOAST) --- */
+        .custom-toast {
+            visibility: hidden;
+            min-width: 280px;
+            background-color: #1a1a1c;
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px 24px;
+            position: fixed;
+            z-index: 2000;
+            left: 50%;
+            top: 20px; 
+            font-size: 0.9rem;
+            border: 1px solid #ff007f;
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.5);
+            transform: translate(-50%, -50px);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .custom-toast.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* --- PROMPT CARD --- */
         .prompt-card {
             background-color: #1a1a1c;
             border-radius: 32px;
@@ -113,7 +150,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Inputs de Nome e WhatsApp integrados sem bordas brutas */
         .user-info-row {
             display: flex;
             gap: 15px;
@@ -128,11 +164,8 @@
             font-size: 1rem;
             outline: none;
         }
-        input::placeholder, textarea::placeholder {
-            color: #666;
-        }
+        input::placeholder, textarea::placeholder { color: #666; }
 
-        /* Textarea Principal */
         textarea {
             width: 100%;
             background: transparent;
@@ -145,7 +178,7 @@
             min-height: 120px;
         }
 
-        /* --- TOOLBAR INFERIOR (Repertório e Botão Gerar) --- */
+        /* --- TOOLBAR INFERIOR --- */
         .toolbar {
             display: flex;
             justify-content: space-between;
@@ -153,7 +186,6 @@
             margin-top: 10px;
         }
 
-        /* Menu Suspenso Customizado (Estilo "Tools") */
         select#estilo { display: none; }
         .custom-select-wrapper {
             position: relative;
@@ -176,7 +208,6 @@
         .custom-select:hover { background-color: #2c2c2e; border-color: #444; }
         .custom-select .arrow { font-size: 0.7rem; }
         
-        /* Lista de opções do Repertório */
         .custom-options {
             position: absolute;
             bottom: calc(100% + 10px);
@@ -208,7 +239,7 @@
         }
         .custom-option:hover { background-color: #3a3a3c; }
 
-        /* Botão Gerar (Estrela Gemini) */
+        /* Botão Gerar */
         .btn-gerar {
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
             color: white;
@@ -237,11 +268,7 @@
         }
         @keyframes spinStar { 100% { transform: rotate(360deg); } }
 
-        /* --- BOTÃO PIX EXTRA --- */
-        .pix-container {
-            margin-top: 30px;
-            text-align: center;
-        }
+        .pix-container { margin-top: 30px; text-align: center; }
         .btn-pix {
             background: transparent;
             color: #888;
@@ -254,24 +281,10 @@
         }
         .btn-pix:hover { color: #32BCAD; border-color: #32BCAD; }
 
-        /* --- TELA FASE BETA (Lista de Espera) --- */
-        .beta-screen {
-            display: none;
-            text-align: center;
-            animation: fadeIn 0.5s ease;
-        }
-        .beta-title {
-            color: #00d2ff;
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        .beta-text {
-            color: #ccc;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+        /* --- TELA FASE BETA --- */
+        .beta-screen { display: none; text-align: center; animation: fadeIn 0.5s ease; }
+        .beta-title { color: #00d2ff; font-size: 1.5rem; margin-top: 0; margin-bottom: 15px; }
+        .beta-text { color: #ccc; font-size: 1rem; line-height: 1.6; margin-bottom: 30px; }
         .urgency-box {
             background: #212124;
             border: 1px solid #ff007f;
@@ -280,21 +293,10 @@
             margin-top: 20px;
             box-shadow: 0 0 20px rgba(255, 0, 127, 0.1);
         }
-        .urgency-text {
-            color: #fff;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .btn-express {
-            width: 100%;
-            justify-content: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 15px 24px;
-        }
+        .urgency-text { color: #fff; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; }
+        .btn-express { width: 100%; justify-content: center; text-transform: uppercase; letter-spacing: 1px; padding: 15px 24px; }
 
-        /* --- LETREIRO DESLIZANTE DE APOIOS (TICKER) --- */
+        /* --- LETREIRO DESLIZANTE --- */
         .supporters-ticker {
             overflow: hidden;
             white-space: nowrap;
@@ -307,11 +309,7 @@
             width: 100%;
             box-sizing: border-box;
         }
-        .ticker-track {
-            display: inline-block;
-            white-space: nowrap;
-            animation: ticker 20s linear infinite;
-        }
+        .ticker-track { display: inline-block; white-space: nowrap; animation: ticker 20s linear infinite; }
         .ticker-item {
             display: inline-block;
             padding: 0 25px;
@@ -324,28 +322,20 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
         }
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
 
-        /* --- RODAPÉ --- */
-        .footer {
-            text-align: center;
-            padding: 10px 0 20px 0;
-            color: #555;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
+        .footer { text-align: center; padding: 10px 0 20px 0; color: #555; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
+
+    <!-- CAIXA DO AVISO INTELIGENTE (TOAST) -->
+    <div id="custom-toast" class="custom-toast">Mensagem de erro aqui</div>
+
     <div class="container">
         
-        <!-- HEADER ESTILO APP -->
+        <!-- HEADER -->
         <div class="top-bar">
             <div class="logo-header">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/logo-mc-estudio-fabrica-de-musica-plinio-fabricio-studio-gerador.jpg" alt="Logo" class="logo">
@@ -356,7 +346,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
 
-            <!-- MENU RECOLHIDO -->
+            <!-- MENU -->
             <div class="menu-panel" id="menu-panel">
                 <h3>Quem Somos</h3>
                 <p>Nós juntamos a velocidade da Inteligência Artificial com a direção musical de 30 anos de experiência em estúdio. Você escreve a ideia, a Maria Clara transforma em música.</p>
@@ -365,22 +355,22 @@
             </div>
         </div>
 
+        <!-- TÍTULO E NOVO SUBTÍTULO -->
         <h1 class="hero-title">Crie com MC Estúdio</h1>
+        <div class="hero-subtitle">Gerador de músicas sob medida</div>
 
-        <!-- O CARD MAGNÉTICO PRINCIPAL -->
+        <!-- CARD PRINCIPAL -->
         <div class="prompt-card">
-            
-            <!-- CAIXA 1: FORMULÁRIO -->
             <div id="form-container">
                 <form id="mc-form">
                     <div class="user-info-row">
-                        <input type="text" id="nome" placeholder="Seu Nome" required>
-                        <input type="tel" id="telefone" placeholder="Seu WhatsApp" required>
+                        <input type="text" id="nome" placeholder="Seu Nome">
+                        <input type="tel" id="telefone" placeholder="Seu WhatsApp">
                     </div>
 
-                    <textarea id="letra" placeholder="Descreva sua ideia, jingle ou cole a letra em estilo livre..." required></textarea>
+                    <textarea id="letra" placeholder="Descreva sua ideia, jingle ou cole a letra em estilo livre..."></textarea>
 
-                    <select id="estilo" required>
+                    <select id="estilo">
                         <option value="" disabled selected>Repertório...</option>
                         <optgroup label="Comércio e Lojas">
                             <option value="Jingle de 30s">Jingles Curtos - 30s</option>
@@ -414,11 +404,9 @@
                 </div>
             </div>
 
-            <!-- CAIXA 2: TELA FASE BETA -->
             <div id="beta-screen" class="beta-screen">
                 <h2 class="beta-title">Sucesso!</h2>
                 <p class="beta-text">Você está cadastrado na nossa Fase Beta. Como estamos refinando nosso sistema automático, você garantiu seu lugar e será um dos primeiros a receber sua música assim que a ferramenta estiver 100% liberada.</p>
-                
                 <div class="urgency-box">
                     <p class="urgency-text">Tem urgência e não quer esperar? Compre um Crédito de Produção Expressa por apenas R$ 5,00! Nossa equipe de estúdio assumirá o seu pedido manualmente e entregaremos a sua música sob medida em até 2 dias.</p>
                     <button type="button" class="btn-gerar btn-express" id="btn-express">
@@ -426,10 +414,8 @@
                     </button>
                 </div>
             </div>
-
         </div>
 
-        <!-- LETREIRO DESLIZANTE DE APOIOS (TICKER) -->
         <div class="supporters-ticker">
             <div class="ticker-track">
                 <span class="ticker-item">Apoios: Google</span>
@@ -441,7 +427,6 @@
                 <span class="ticker-item">Plínio Fabrício</span>
                 <span class="ticker-item">&bull;</span>
                 <span class="ticker-item">Plínio Studio</span>
-                <!-- Duplicado para loop infinito perfeito -->
                 <span class="ticker-item">&bull;</span>
                 <span class="ticker-item">Google</span>
                 <span class="ticker-item">&bull;</span>
@@ -458,26 +443,21 @@
         <div class="footer">
             &copy; Copyright 2026 - Plínio Studio | Todos os direitos reservados
         </div>
-
     </div>
 
-    <!-- MOTOR JAVASCRIPT -->
     <script>
-        // Menu Hambúrguer
+        // Menu
         document.getElementById('menu-toggle').addEventListener('click', function(e) {
             e.stopPropagation();
             document.getElementById('menu-panel').classList.toggle('active');
         });
-        document.addEventListener('click', function() {
-            document.getElementById('menu-panel').classList.remove('active');
-        });
+        document.addEventListener('click', function() { document.getElementById('menu-panel').classList.remove('active'); });
         document.getElementById('menu-panel').addEventListener('click', function(e) { e.stopPropagation(); });
 
-        // Custom Select (Estilo Tools)
+        // Custom Select
         document.addEventListener('DOMContentLoaded', function() {
             const select = document.getElementById('estilo');
             const anchor = document.getElementById('select-anchor');
-            
             const wrapper = document.createElement('div');
             wrapper.className = 'custom-select-wrapper';
             anchor.appendChild(wrapper);
@@ -497,7 +477,6 @@
                     groupTitle.className = 'custom-optgroup';
                     groupTitle.textContent = child.label; 
                     optionsContainer.appendChild(groupTitle);
-
                     Array.from(child.children).forEach(option => { createCustomOption(option, optionsContainer, trigger, select); });
                 } else if (child.tagName === 'OPTION' && child.value !== "") {
                     createCustomOption(child, optionsContainer, trigger, select);
@@ -509,7 +488,6 @@
                 opt.className = 'custom-option';
                 opt.textContent = optionEl.textContent;
                 opt.dataset.value = optionEl.value;
-                
                 opt.addEventListener('click', function(e) {
                     e.stopPropagation();
                     originalSelect.value = this.dataset.value;
@@ -519,14 +497,21 @@
                 container.appendChild(opt);
             }
 
-            trigger.addEventListener('click', function(e) {
-                e.stopPropagation();
-                optionsContainer.classList.toggle('open');
-            });
+            trigger.addEventListener('click', function(e) { e.stopPropagation(); optionsContainer.classList.toggle('open'); });
             document.addEventListener('click', function() { optionsContainer.classList.remove('open'); });
         });
 
-        // Lógica Principal de Disparo (Webhook + Transição de Tela)
+        // Função para mostrar o Alerta Customizado (Toast)
+        function mostrarAlerta(mensagem) {
+            const toast = document.getElementById('custom-toast');
+            toast.innerText = mensagem;
+            toast.classList.add('show');
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 3500); // Fica na tela por 3.5 segundos
+        }
+
+        // Lógica de Disparo
         document.getElementById('btn-whatsapp').addEventListener('click', function(e) {
             e.preventDefault(); 
 
@@ -538,8 +523,21 @@
             const textoBotao = document.getElementById('texto-botao');
             const icone = botao.querySelector('.icon-star');
 
-            if(!nome || !telefone || !letra || !estilo) {
-                alert("Por favor, preencha todos os campos e escolha o repertório!");
+            // Validação Inteligente e Carinhosa
+            if(!nome) {
+                mostrarAlerta("Meu querido, o meu amado, você esqueceu de digitar seu nome!");
+                return;
+            }
+            if(!telefone) {
+                mostrarAlerta("Meu querido, faltou colocar o seu WhatsApp para a gente conversar!");
+                return;
+            }
+            if(!letra) {
+                mostrarAlerta("Meu amado, faltou escrever a ideia para a sua música!");
+                return;
+            }
+            if(!estilo) {
+                mostrarAlerta("Quase lá! Faltou só escolher o repertório sob medida.");
                 return;
             }
 
@@ -563,7 +561,7 @@
                 }, 3000);
             })
             .catch(error => {
-                alert("Falha na conexão. Tente novamente.");
+                mostrarAlerta("Falha na conexão. Tente novamente, meu comandante!");
                 textoBotao.innerText = textoOriginal;
                 botao.style.opacity = "1";
                 icone.style.animationDuration = "4s";
@@ -571,15 +569,12 @@
             });
         });
 
-        // Botões de Pagamento Extra
+        // Pagamentos
         document.getElementById('btn-pix').addEventListener('click', function(e) {
-            e.preventDefault(); 
-            window.location.href = "https://mpago.la/2YyFDas";
+            e.preventDefault(); window.location.href = "https://mpago.la/2YyFDas";
         });
-
         document.getElementById('btn-express').addEventListener('click', function(e) {
-            e.preventDefault(); 
-            window.location.href = "https://mpago.la/2YyFDas";
+            e.preventDefault(); window.location.href = "https://mpago.la/2YyFDas";
         });
     </script>
 </body>
