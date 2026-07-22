@@ -92,25 +92,36 @@
         }
         .menu-link:hover { background: #333; color: #fff; }
 
-        /* --- TÍTULO PRINCIPAL E SUBTÍTULO NEON --- */
+        /* --- TÍTULO E SUBTÍTULO COM ALINHAMENTO MILIMÉTRICO --- */
+        .hero-header-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .hero-header {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            max-width: fit-content;
+        }
         .hero-title {
-            text-align: center;
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 5px; /* Reduzido para aproximar o subtítulo */
+            margin: 0 0 2px 0;
             color: #f1f1f1;
+            white-space: nowrap; /* Impede de quebrar a linha */
         }
         .hero-subtitle {
-            text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.70rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
             font-weight: bold;
+            width: 100%;
+            text-align: justify;
+            text-align-last: justify; /* O Segredo do alinhamento perfeito */
             background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
         }
 
         /* --- ALERTA CUSTOMIZADO (TOAST) --- */
@@ -156,6 +167,7 @@
             border-bottom: 1px solid #2c2c2e;
             padding-bottom: 10px;
         }
+        
         input[type="text"], input[type="tel"] {
             width: 100%;
             background: transparent;
@@ -164,7 +176,26 @@
             font-size: 1rem;
             outline: none;
         }
-        input::placeholder, textarea::placeholder { color: #666; }
+        
+        /* O Efeito Brilhante nos Placeholders de Nome e WhatsApp */
+        input[type="text"]::-webkit-input-placeholder, 
+        input[type="tel"]::-webkit-input-placeholder {
+            background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            opacity: 1;
+        }
+        input[type="text"]::-moz-placeholder, 
+        input[type="tel"]::-moz-placeholder {
+            background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%);
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        textarea::placeholder { color: #666; }
 
         textarea {
             width: 100%;
@@ -355,20 +386,27 @@
             </div>
         </div>
 
-        <!-- TÍTULO E NOVO SUBTÍTULO -->
-        <h1 class="hero-title">Crie com MC Estúdio</h1>
-        <div class="hero-subtitle">Gerador de músicas sob medida</div>
+        <!-- TÍTULO E SUBTÍTULO ALINHADOS PERFEITAMENTE -->
+        <div class="hero-header-wrapper">
+            <div class="hero-header">
+                <h1 class="hero-title">Crie com MC Estúdio</h1>
+                <div class="hero-subtitle">Gerador de músicas sob medida</div>
+            </div>
+        </div>
 
         <!-- CARD PRINCIPAL -->
         <div class="prompt-card">
             <div id="form-container">
                 <form id="mc-form">
+                    
+                    <!-- DADOS DO USUÁRIO (NOME E WHATSAPP BRILHANTES) -->
                     <div class="user-info-row">
                         <input type="text" id="nome" placeholder="Seu Nome">
                         <input type="tel" id="telefone" placeholder="Seu WhatsApp">
                     </div>
 
-                    <textarea id="letra" placeholder="Descreva sua ideia, jingle ou cole a letra em estilo livre..."></textarea>
+                    <!-- TEXTAREA COM O NOVO TEXTO DA MARIA CLARA -->
+                    <textarea id="letra" placeholder="Cole sua ideia ou a letra da sua canção, que a Maria Clara vai fazer a mágica para você..."></textarea>
 
                     <select id="estilo">
                         <option value="" disabled selected>Repertório...</option>
