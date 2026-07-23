@@ -97,13 +97,6 @@
         .hero-search-box button { background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%); color: #FFF; border: none; padding: 0 25px; border-radius: 50px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);}
         .hero-search-box button:hover { opacity: 0.85; }
 
-        /* PERFIL / STATUS */
-        .profile-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; justify-content: center; background: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); }
-        .profile-bar img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-primary); }
-        .profile-info { display: flex; flex-direction: column; text-align: left; }
-        .profile-name { font-size: 1.2rem; font-weight: 800; color: #FFF; }
-        .profile-handle { font-size: 0.85rem; color: var(--accent-primary); font-weight: 600;}
-
         /* MENTORIAS GRID */
         .section-title { font-size: 1.3rem; font-weight: 800; color: #FFF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
         .section-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--accent-primary); border-radius: 2px; }
@@ -220,7 +213,6 @@
 </head>
 <body id="top">
 
-    <!-- SPLASH SCREEN MUNDO DE OZ (CHAVE ANKH) -->
     <div id="splash-screen">
         <div class="ankh-container">
             <svg viewBox="0 0 100 150" style="width: 130px; height: 130px;">
@@ -230,11 +222,8 @@
                         <stop offset="100%" stop-color="#FF007F" />
                     </linearGradient>
                 </defs>
-                <!-- Loop da Chave -->
                 <path d="M50 15 C30 15, 30 45, 50 55 C70 45, 70 15, 50 15 Z" fill="none" stroke="url(#neonGradient)" stroke-width="8" stroke-linejoin="round"/>
-                <!-- Linha Horizontal -->
                 <line x1="20" y1="60" x2="80" y2="60" stroke="url(#neonGradient)" stroke-width="8" stroke-linecap="round"/>
-                <!-- Linha Vertical -->
                 <line x1="50" y1="60" x2="50" y2="135" stroke="url(#neonGradient)" stroke-width="8" stroke-linecap="round"/>
             </svg>
         </div>
@@ -262,7 +251,6 @@
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Quem Somos
             </a>
             
-            <!-- DESTAQUE PARA O MC ESTÚDIO -->
             <a href="mc-estudio.html" class="link-mc-estudio">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg> MC Estúdio (Gerador)
             </a>
@@ -290,7 +278,6 @@
 
     <main class="app-container">
         
-        <!-- HERO SECTION ATUALIZADA (VITRINE DO MC ESTÚDIO) -->
         <div class="hero-section">
             <h1 class="hero-title">Sua jornada no Audiovisual e IA começa aqui.<br><br><span>Conheça o MC Estúdio, o gerador de música.</span></h1>
             <p class="hero-subtitle">Acesso exclusivo aos treinamentos de alta performance, ferramentas premium e a nova fábrica de músicas sob medida do Hub.</p>
@@ -298,14 +285,6 @@
             <div class="hero-search-box">
                 <input type="text" placeholder="Acesse a nossa Fábrica de Músicas..." readonly onclick="window.location.href='mc-estudio.html'">
                 <button onclick="window.location.href='mc-estudio.html'">GERAR</button>
-            </div>
-        </div>
-
-        <div class="profile-bar">
-            <img src="https://yt3.ggpht.com/Dpau1KLU7AiVpNVo1o5nadS3Cbf1vktg1kQ3E6R64tZQMclzUSiciM6YSdpaYvpnSM5rAFPW3w=s176-c-k-c0x00ffffff-no-rj" alt="Plínio Fabrício">
-            <div class="profile-info">
-                <span class="profile-name">Plínio Fabrício</span>
-                <span class="profile-handle">Mentoria Oficial & Hub IA</span>
             </div>
         </div>
 
@@ -349,7 +328,6 @@
             </a>
         </div>
 
-        <!-- MOSTRA INTERNACIONAL DE CINEMA: NECRON -->
         <h2 class="section-title">Mostra Internacional de Cinema</h2>
         
         <div class="netflix-card">
@@ -487,7 +465,6 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
         </div>
     </div>
 
-    <!-- TEXTO QUEM SOMOS EXPANDIDO -->
     <div class="modal-overlay" id="modalQuemSomos">
         <div class="modal-content" style="text-align: left; max-height: 85vh; overflow-y: auto;">
             <span class="close-modal" onclick="document.getElementById('modalQuemSomos').classList.remove('active')">×</span>
