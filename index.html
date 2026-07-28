@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Plínio Studio | Hub Educacional & IA</title>
-    <meta name="theme-color" content="#09090B">
+    <meta name="theme-color" content="#F4F6F9">
     
     <link rel="manifest" href="manifest.json">
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='100' fill='%230B1015'/><circle cx='256' cy='256' r='180' fill='none' stroke='%2300E5FF' stroke-width='20'/><path d='M210 160v192l140-96z' fill='%2300E5FF'/><text x='256' y='460' font-family='sans-serif' font-weight='900' font-size='42' fill='%23FFF' text-anchor='middle' letter-spacing='2'>PS</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='100' fill='%230B1015'/><circle cx='256' cy='256' r='180' fill='none' stroke='%2300E5FF' stroke-width='20'/><path d='M210 160v192l140-96z' fill='%2300E5FF'/><text x='256' y='460' font-family='sans-serif' font-weight='900' font-size='42' fill='%23FFF' text-anchor='middle' letter-spacing='2'>PS</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='100' fill='%23FFFFFF'/><circle cx='256' cy='256' r='180' fill='none' stroke='%233B82F6' stroke-width='20'/><path d='M210 160v192l140-96z' fill='%233B82F6'/><text x='256' y='460' font-family='sans-serif' font-weight='900' font-size='42' fill='%231A202C' text-anchor='middle' letter-spacing='2'>PS</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='100' fill='%23FFFFFF'/><circle cx='256' cy='256' r='180' fill='none' stroke='%233B82F6' stroke-width='20'/><path d='M210 160v192l140-96z' fill='%233B82F6'/><text x='256' y='460' font-family='sans-serif' font-weight='900' font-size='42' fill='%231A202C' text-anchor='middle' letter-spacing='2'>PS</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,18 +18,17 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <style>
-        /* --- TEMA PREMIUM (SaaS / EAD HUB CLEAN) --- */
+        /* --- TEMA PREMIUM (SaaS / EAD HUB CLEAN - ESTILO MC ESTÚDIO) --- */
         :root {
-            --bg-main: #09090B;        
-            --bg-card: #18181B;        
-            --bg-card-hover: #27272A;
-            --text-main: #FAFAFA;
-            --text-muted: #A1A1AA;
-            --accent-primary: #00E5FF; 
-            --accent-kling: #4ADE80;   
-            --accent-secondary: #3B82F6;
-            --border-color: #27272A;
-            --netflix-red: #E50914;
+            --bg-main: #F4F6F9;        
+            --bg-card: #FFFFFF;        
+            --bg-card-hover: #F7FAFC;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --accent-primary: #3B82F6; 
+            --accent-secondary: #FF3366; 
+            --border-color: #E2E8F0;
+            --netflix-red: #E53E3E;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,164 +36,167 @@
         body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Inter', system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; padding-bottom: 90px; }
 
         /* --- TELA DE ABERTURA MUNDO DE OZ (CHAVE ANKH) --- */
-        #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #05080c; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; transition: opacity 0.8s ease-out, visibility 0.8s; }
+        #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFFFFF; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; transition: opacity 0.8s ease-out, visibility 0.8s; }
         
         .ankh-container {
             margin-bottom: 30px;
             animation: pulseAnkh 2.5s infinite ease-in-out;
-            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6)) drop-shadow(0 0 30px rgba(255, 0, 127, 0.4));
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3));
         }
 
         @keyframes pulseAnkh {
-            0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(0,229,255,0.5)); }
-            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(255,0,127,0.8)); }
-            100% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(0,229,255,0.5)); }
+            0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); }
+            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.5)); }
+            100% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); }
         }
 
         .splash-content { position: relative; z-index: 2; text-align: center; padding: 20px; }
-        .splash-text { font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; color: #FFF; text-transform: uppercase; font-family: 'Inter', monospace; text-shadow: 0 0 20px rgba(255, 0, 127, 0.6); min-height: 40px; }
-        .splash-sub { font-size: 0.8rem; color: var(--accent-primary); letter-spacing: 6px; margin-top: 15px; text-transform: uppercase; opacity: 0; animation: fadeInSub 2s forwards 1.5s; font-weight: bold; }
+        .splash-text { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; color: var(--text-main); text-transform: uppercase; font-family: 'Inter', monospace; min-height: 40px; }
+        .splash-sub { font-size: 0.8rem; color: var(--accent-primary); letter-spacing: 4px; margin-top: 15px; text-transform: uppercase; opacity: 0; animation: fadeInSub 2s forwards 1.5s; font-weight: bold; }
         @keyframes fadeInSub { to { opacity: 1; } }
 
         /* --- CABEÇALHO --- */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background-color: rgba(9, 9, 11, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); }
-        .logo-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; color: #FFF; text-transform: uppercase;}
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .logo-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text-main); text-transform: uppercase;}
         .logo-text span { color: var(--accent-primary); }
         .header-icons { display: flex; gap: 16px; align-items: center; }
-        .header-icons svg { width: 28px; height: 28px; fill: none; stroke: var(--accent-primary); stroke-width: 1.5; cursor: pointer; transition: 0.3s; }
-        .header-icons svg:hover { stroke: #FFF; }
+        .header-icons svg { width: 28px; height: 28px; fill: none; stroke: var(--text-muted); stroke-width: 1.5; cursor: pointer; transition: 0.3s; }
+        .header-icons svg:hover { stroke: var(--accent-primary); }
 
         /* --- MENU LATERAL --- */
-        .side-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100%; background: var(--bg-card); z-index: 2000; transition: 0.5s ease-out; border-left: 1px solid var(--border-color); box-shadow: -5px 0 30px rgba(0,0,0,0.8); overflow-y: auto; display: flex; flex-direction: column; }
+        .side-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100%; background: var(--bg-card); z-index: 2000; transition: 0.5s ease-out; border-left: 1px solid var(--border-color); box-shadow: -10px 0 30px rgba(0,0,0,0.05); overflow-y: auto; display: flex; flex-direction: column; }
         .side-menu.active { right: 0; }
         .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 25px 24px 20px 24px; border-bottom: 1px solid var(--border-color); }
         .close-menu { color: var(--text-muted); font-size: 2rem; cursor: pointer; transition: 0.3s; line-height: 1;}
         .close-menu:hover { color: var(--accent-primary); }
         .menu-links { padding: 10px 0; }
-        .menu-links a { display: flex; align-items: center; gap: 14px; padding: 18px 24px; color: #FFFFFF; text-decoration: none; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid var(--border-color); transition: 0.3s; }
-        .menu-links a svg { width: 20px; height: 20px; fill: none; stroke: var(--accent-primary); stroke-width: 1.5; }
+        .menu-links a { display: flex; align-items: center; gap: 14px; padding: 18px 24px; color: var(--text-main); text-decoration: none; font-size: 0.95rem; font-weight: 600; border-bottom: 1px solid var(--border-color); transition: 0.3s; }
+        .menu-links a svg { width: 20px; height: 20px; fill: none; stroke: var(--text-muted); stroke-width: 1.5; }
         .menu-links a:hover { background: var(--bg-card-hover); color: var(--accent-primary); padding-left: 30px; }
+        .menu-links a:hover svg { stroke: var(--accent-primary); }
         
-        /* Link Especial do MC Estúdio no Menu (Sem hífen no nome da classe para evitar conflitos) */
-        .linkmcestudio { background: rgba(255, 0, 127, 0.05); border-left: 3px solid #ff007f; }
-        .linkmcestudio svg { stroke: #ff007f !important; }
-        .linkmcestudio:hover { background: rgba(255, 0, 127, 0.1) !important; color: #ff007f !important; }
+        /* Link Especial do MC Estúdio no Menu */
+        .linkmcestudio { background: rgba(59, 130, 246, 0.05); border-left: 3px solid var(--accent-primary); }
+        .linkmcestudio svg { stroke: var(--accent-primary) !important; }
+        .linkmcestudio:hover { background: rgba(59, 130, 246, 0.1) !important; color: var(--accent-primary) !important; }
 
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; backdrop-filter: blur(4px); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); z-index: 1500; backdrop-filter: blur(4px); }
         .overlay.active { display: block; }
 
         /* --- CONTEÚDO PRINCIPAL --- */
         .app-container { max-width: 800px; margin: 0 auto; padding: 0 24px 40px 24px; }
         
         /* HERO SECTION */
-        .hero-section { margin: 0 -24px 30px -24px; padding: 40px 24px; background: linear-gradient(180deg, rgba(0, 229, 255, 0.08) 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--border-color); text-align: center; }
-        .hero-title { font-size: 1.6rem; font-weight: 800; color: #FFF; margin-bottom: 15px; line-height: 1.3; }
-        .hero-title span { background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-section { margin: 0 -24px 30px -24px; padding: 40px 24px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--border-color); text-align: center; }
+        .hero-title { font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; line-height: 1.3; }
+        .hero-title span { color: var(--accent-primary); }
         .hero-subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto;}
         
-        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 50px; overflow: hidden; max-width: 500px; margin: 0 auto; box-shadow: 0 10px 20px rgba(0,0,0,0.4); padding: 5px; }
-        .hero-search-box input { flex: 1; padding: 15px 20px; background: transparent; border: none; color: #FFF; font-size: 0.95rem; outline: none; cursor: pointer; }
-        .hero-search-box button { background: linear-gradient(90deg, #00d2ff 0%, #ff007f 100%); color: #FFF; border: none; padding: 0 25px; border-radius: 50px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);}
+        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 500px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; }
+        .hero-search-box input { flex: 1; padding: 15px 20px; background: transparent; border: none; color: var(--text-main); font-size: 0.95rem; outline: none; cursor: pointer; }
+        .hero-search-box button { background: var(--accent-primary); color: #FFF; border: none; padding: 0 25px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
         .hero-search-box button:hover { opacity: 0.85; }
 
         /* MENTORIAS GRID */
-        .section-title { font-size: 1.3rem; font-weight: 800; color: #FFF; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+        .section-title { font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
         .section-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--accent-primary); border-radius: 2px; }
         
         .mentorship-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
-        .mentorship-card { background: var(--bg-card); border: 1px solid var(--border-color); color: #FFF; border-radius: 16px; padding: 20px 10px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .mentorship-card { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 12px; padding: 20px 10px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .mentorship-card:hover { border-color: var(--accent-primary); background: var(--bg-card-hover); transform: translateY(-3px); }
-        .mentorship-card svg { width: 28px; height: 28px; fill: none; stroke: var(--accent-primary); stroke-width: 1.5; }
+        .mentorship-card svg { width: 28px; height: 28px; fill: none; stroke: var(--text-muted); stroke-width: 1.5; transition: 0.3s;}
+        .mentorship-card:hover svg { stroke: var(--accent-primary); }
         .mentorship-card span { font-size: 0.8rem; line-height: 1.3; }
 
         /* APP SLOTS */
         .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 40px; }
-        .feature-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-decoration: none; transition: 0.3s; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; position: relative; overflow: hidden; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-decoration: none; transition: 0.3s; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent-primary); opacity: 0; transition: 0.3s; }
         .feature-card:hover { border-color: var(--accent-primary); transform: translateY(-4px); background: var(--bg-card-hover); }
         .feature-card:hover::before { opacity: 1; }
-        .feature-card svg { width: 32px; height: 32px; stroke: var(--accent-primary); fill: none; stroke-width: 1.5; }
+        .feature-card svg { width: 32px; height: 32px; stroke: var(--text-muted); fill: none; stroke-width: 1.5; transition: 0.3s;}
+        .feature-card:hover svg { stroke: var(--accent-primary); }
         .feature-card-small { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .feature-card-bold { font-size: 1.15rem; font-weight: 800; color: #FFF; line-height: 1.1; }
+        .feature-card-bold { font-size: 1.1rem; font-weight: 700; color: var(--text-main); line-height: 1.1; }
 
         /* --- CARD NETFLIX STYLE --- */
-        .netflix-card { background: #141414; border-radius: 12px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); border: 1px solid #27272A; max-width: 100%; margin-left: auto; margin-right: auto; }
-        .netflix-video-wrapper { position: relative; width: 100%; padding-top: 56.25%; /* 16:9 Ratio Cinematográfico */ background: #000; overflow: hidden; border-bottom: 1px solid #333;}
+        .netflix-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border-color); max-width: 100%; margin-left: auto; margin-right: auto; }
+        .netflix-video-wrapper { position: relative; width: 100%; padding-top: 56.25%; /* 16:9 Ratio Cinematográfico */ background: #000; overflow: hidden; border-bottom: 1px solid var(--border-color);}
         .netflix-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .netflix-badge-top { position: absolute; top: 15px; left: 15px; display: flex; align-items: center; gap: 6px; color: var(--netflix-red); font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; z-index: 10; text-shadow: 0 2px 5px rgba(0,0,0,0.9);}
-        .netflix-badge-top span { color: #FFF; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;}
+        .netflix-badge-top { position: absolute; top: 15px; left: 15px; display: flex; align-items: center; gap: 6px; color: var(--netflix-red); font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; z-index: 10; text-shadow: 0 2px 5px rgba(255,255,255,0.9);}
+        .netflix-badge-top span { color: #000; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;}
         
         .netflix-info { padding: 25px; text-align: left; }
-        .netflix-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; font-size: 0.9rem; font-weight: 600; color: #BCBCBC; }
-        .netflix-match { color: #46D369; font-weight: 800; }
-        .netflix-age { border: 1px solid #A1A1AA; padding: 1px 6px; border-radius: 3px; font-size: 0.8rem; color: #FFF;}
-        .netflix-hd { border: 1px solid #A1A1AA; padding: 1px 5px; border-radius: 3px; font-size: 0.7rem; }
+        .netflix-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
+        .netflix-match { color: #38A169; font-weight: 800; }
+        .netflix-age { border: 1px solid var(--text-muted); padding: 1px 6px; border-radius: 3px; font-size: 0.8rem; color: var(--text-main);}
+        .netflix-hd { border: 1px solid var(--text-muted); padding: 1px 5px; border-radius: 3px; font-size: 0.7rem; }
         
         .netflix-buttons { display: flex; gap: 12px; margin-bottom: 25px; }
-        .netflix-btn-play { flex: 1; background: #FFF; color: #000; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 6px; font-weight: 800; font-size: 1rem; text-decoration: none; transition: 0.3s; }
-        .netflix-btn-play:hover { background: #CCC; }
+        .netflix-btn-play { flex: 1; background: var(--text-main); color: #FFF; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: 0.3s; }
+        .netflix-btn-play:hover { background: var(--accent-primary); }
         .netflix-btn-play svg { width: 22px; height: 22px; fill: currentColor; }
-        .netflix-btn-add { background: rgba(109, 109, 110, 0.4); color: #FFF; border: none; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; border: 1px solid rgba(255,255,255,0.3);}
-        .netflix-btn-add:hover { background: rgba(109, 109, 110, 0.8); border-color: #FFF;}
+        .netflix-btn-add { background: var(--bg-main); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;}
+        .netflix-btn-add:hover { background: var(--bg-card-hover); border-color: var(--text-muted);}
         .netflix-btn-add svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
 
         /* DOSSIÊ MODIFICADO PARA O CARD NETFLIX */
-        details.dossie-accordion { background: transparent; border: none; border-top: 1px solid #333; border-radius: 0; margin-bottom: 0; overflow: hidden; transition: all 0.3s ease; }
-        details.dossie-accordion summary { padding: 20px 0; font-weight: 800; color: #FFF; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: transparent; text-transform: uppercase; font-size: 1rem; letter-spacing: 0.5px; user-select: none; }
+        details.dossie-accordion { background: transparent; border: none; border-top: 1px solid var(--border-color); border-radius: 0; margin-bottom: 0; overflow: hidden; transition: all 0.3s ease; }
+        details.dossie-accordion summary { padding: 20px 0; font-weight: 800; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: transparent; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px; user-select: none; }
         details.dossie-accordion summary::-webkit-details-marker { display: none; }
         details.dossie-accordion summary::after { content: '+'; color: var(--netflix-red); font-size: 1.8rem; font-weight: 400; line-height: 1; }
         details.dossie-accordion[open] summary::after { content: '-'; }
         
         .dossie-content { padding: 10px 0 20px 0; border-top: none; }
-        .dossie-content h4 { color: #FFF; margin-bottom: 15px; font-size: 1rem; font-weight: 600; opacity: 0.9;}
-        .dossie-content p { color: #D2D2D2; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
+        .dossie-content h4 { color: var(--text-main); margin-bottom: 15px; font-size: 1rem; font-weight: 700;}
+        .dossie-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
         .dossie-content ul { list-style: none; padding-left: 10px; margin-bottom: 20px; border-left: 2px solid var(--netflix-red); }
-        .dossie-content li { color: #D2D2D2; font-size: 0.9rem; margin-bottom: 12px; padding-left: 12px; line-height: 1.5; }
-        .dossie-content li strong { color: #FFF; }
+        .dossie-content li { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; padding-left: 12px; line-height: 1.5; }
+        .dossie-content li strong { color: var(--text-main); }
         
         /* PROMPTS CARD */
-        .prompt-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
-        .card-img-prompt { position: relative; aspect-ratio: 16/9; background: #000; cursor: pointer; overflow: hidden;}
+        .prompt-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
+        .card-img-prompt { position: relative; aspect-ratio: 16/9; background: #E2E8F0; cursor: pointer; overflow: hidden;}
         .card-img-prompt img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .card-img-prompt:hover img { transform: scale(1.05); }
         .prompt-info-box { padding: 25px; display: flex; flex-direction: column; }
         .card-tag { font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; color: var(--accent-primary); }
         .card-tag svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2;}
-        .prompt-info-box h3 { color: #FFF; font-size: 1.3rem; margin-bottom: 10px; font-weight: 800;}
+        .prompt-info-box h3 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; font-weight: 800;}
         .prompt-info-box p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5;}
         .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .prompt-box { background: var(--bg-main); border: 1px dashed var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-main); font-size: 0.85rem; font-family: monospace; white-space: pre-wrap; }
+        .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; white-space: pre-wrap; }
 
         /* BOTÕES GERAIS */
-        .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: #FFF; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-primary); padding: 16px 20px; border-radius: 8px; transition: 0.3s; width: 100%; cursor: pointer; text-decoration: none; }
+        .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--accent-primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-primary); padding: 14px 20px; border-radius: 8px; transition: 0.3s; width: 100%; cursor: pointer; text-decoration: none; }
         .btn-action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;}
-        .btn-action:hover { background: var(--accent-primary); color: #000; }
+        .btn-action:hover { background: var(--bg-card-hover); }
         
-        .btn-secondary { background: var(--bg-card); color: #FFF; border: 1px solid var(--border-color); }
-        .btn-secondary:hover { border-color: #FFF; background: transparent; color: #FFF; }
+        .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { border-color: var(--text-muted); background: var(--bg-main); }
 
-        .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); margin: 40px 0; }
+        .divider { width: 100%; height: 1px; background: var(--border-color); margin: 40px 0; }
 
         /* --- MODAIS --- */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(9, 9, 11, 0.9); backdrop-filter: blur(12px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-content { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 4px solid var(--accent-primary); border-radius: 20px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 4px solid var(--accent-primary); border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .close-modal { position: absolute; top: 18px; right: 22px; color: var(--text-muted); font-size: 2rem; cursor: pointer; transition: 0.3s; line-height: 1; }
         .close-modal:hover { color: var(--accent-primary); }
-        .modal-content h3 { font-size: 1.5rem; font-weight: 800; color: #FFF; margin-bottom: 10px; letter-spacing: -0.5px;}
-        .modal-input { width: 100%; padding: 18px; margin-bottom: 20px; background: var(--bg-main); color: #FFF; border: 1px solid var(--border-color); border-radius: 10px; text-align: center; font-size: 1.4rem; transition: 0.3s; font-weight: 700; letter-spacing: 4px; }
-        .modal-input:focus { border-color: var(--accent-primary); outline: none; box-shadow: 0 0 15px rgba(0,229,255,0.2);}
-        .modal-btn { background: var(--accent-primary); color: #000; padding: 18px; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1.5px; margin-bottom: 15px; }
-        .modal-btn:hover { background: #FFF; }
+        .modal-content h3 { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px; letter-spacing: -0.5px;}
+        .modal-input { width: 100%; padding: 18px; margin-bottom: 20px; background: var(--bg-main); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 10px; text-align: center; font-size: 1.4rem; transition: 0.3s; font-weight: 700; letter-spacing: 4px; }
+        .modal-input:focus { border-color: var(--accent-primary); outline: none; box-shadow: 0 0 10px rgba(59,130,246,0.1);}
+        .modal-btn { background: var(--accent-primary); color: #FFF; padding: 16px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; margin-bottom: 15px; }
+        .modal-btn:hover { background: #2563EB; }
         
-        .toast-notification { position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%); background: var(--accent-primary); color: #000; padding: 16px 32px; border-radius: 30px; font-weight: 800; font-size: 0.95rem; z-index: 9999; transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); display: flex; align-items: center; gap: 12px; pointer-events: none; box-shadow: 0 10px 30px rgba(0,229,255,0.3);}
+        .toast-notification { position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%); background: var(--text-main); color: #FFF; padding: 16px 32px; border-radius: 30px; font-weight: 700; font-size: 0.95rem; z-index: 9999; transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); display: flex; align-items: center; gap: 12px; pointer-events: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
         .toast-notification.show { bottom: 90px; }
         
-        .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); z-index: 4000; justify-content: center; align-items: center; cursor: zoom-out; opacity: 0; transition: 0.3s ease; }
+        .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 4000; justify-content: center; align-items: center; cursor: zoom-out; opacity: 0; transition: 0.3s ease; }
         .lightbox-overlay.active { display: flex; opacity: 1; }
-        .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); }
+        .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(9, 9, 11, 0.98); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; box-shadow: 0 -4px 20px rgba(0,0,0,0.03); }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-weight: 700; transition: 0.3s; cursor: pointer; }
         .nav-item:hover, .nav-item.active { color: var(--accent-primary); }
         .nav-item svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 1.5; }
@@ -202,7 +204,7 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-main); }
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
         
         .marquee-container { width: 100%; overflow: hidden; background: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 16px 0; display: flex; white-space: nowrap; margin-top: 20px; margin-bottom: 30px; }
         .marquee-content { display: flex; gap: 50px; animation: infiniteScroll 25s linear infinite; align-items: center; }
@@ -218,8 +220,8 @@
             <svg viewBox="0 0 100 150" style="width: 130px; height: 130px;">
                 <defs>
                     <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#00E5FF" />
-                        <stop offset="100%" stop-color="#FF007F" />
+                        <stop offset="0%" stop-color="#3B82F6" />
+                        <stop offset="100%" stop-color="#60A5FA" />
                     </linearGradient>
                 </defs>
                 <path d="M50 15 C30 15, 30 45, 50 55 C70 45, 70 15, 50 15 Z" fill="none" stroke="url(#neonGradient)" stroke-width="8" stroke-linejoin="round"/>
@@ -290,9 +292,9 @@
 
         <h2 class="section-title">Acesso Rápido</h2>
         <div class="mentorship-grid">
-            <div class="mentorship-card" onclick="window.location.href='mcestudio.html'" style="border-color: #ff007f;">
-                <svg viewBox="0 0 24 24" stroke="#ff007f"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
-                <span>MC Estúdio</span>
+            <div class="mentorship-card" onclick="window.location.href='mcestudio.html'" style="border-color: var(--accent-primary); background: rgba(59, 130, 246, 0.05);">
+                <svg viewBox="0 0 24 24" stroke="var(--accent-primary)"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                <span style="color: var(--accent-primary);">MC Estúdio</span>
             </div>
             <div class="mentorship-card" onclick="abrirModal('curso', 'Aulas de IA e Mentoria')">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -357,17 +359,17 @@
                 <details class="dossie-accordion netflix-dossie">
                     <summary>Projeto Necron</summary>
                     <div class="dossie-content">
-                        <h4 style="color: #FFF; margin-bottom: 15px; font-size: 1.1rem;">Protocolo oficial da Mostra Internacional</h4>
+                        <h4 style="color: var(--text-main); margin-bottom: 15px; font-size: 1.1rem;">Protocolo oficial da Mostra Internacional</h4>
                         
-                        <div style="font-size: 0.8rem; color: #A1A1AA; margin-bottom: 20px; font-family: monospace; border-left: 2px solid var(--netflix-red); padding-left: 15px;">
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; font-family: monospace; border-left: 2px solid var(--netflix-red); padding-left: 15px;">
                             <strong>DATA DE EMISSÃO:</strong> 15 de Julho de 2026<br>
                             <strong>DIRETOR E CRIADOR:</strong> Plínio Fabrício, Plínio Studio
                         </div>
 
-                        <p style="color: #FFF; font-weight: 600; margin-bottom: 10px;">PREÂMBULO</p>
+                        <p style="color: var(--text-main); font-weight: 700; margin-bottom: 10px;">PREÂMBULO</p>
                         <p>Este documento formaliza a gênese e a execução do projeto cinematográfico independente "NECRON". A obra une a essência cultural nordestina e brasileira com temas universais de ficção científica e drama. Nascido da necessidade crítica de questionar o controle corporativo e a alienação nas famílias modernas, o filme atua como uma denúncia estética contra o isolamento de um mundo hiperconectado.</p>
 
-                        <p style="color: #FFF; font-weight: 600; margin-top: 25px; margin-bottom: 10px;">CRONOLOGIA DO ARCO NARRATIVO</p>
+                        <p style="color: var(--text-main); font-weight: 700; margin-top: 25px; margin-bottom: 10px;">CRONOLOGIA DO ARCO NARRATIVO</p>
                         <ul>
                             <li><strong>O Exílio:</strong> O arquiteto e criador solitário é impiedosamente banido pelo sistema corporativo opressor denominado "Êxodo".</li>
                             <li><strong>A Descoberta Letal:</strong> Constatação aterradora de que a corporação não é apenas um monopólio de controle de dados, mas a encarnação algorítmica de um mal ancestral que alienou sua própria família.</li>
@@ -375,7 +377,7 @@
                             <li><strong>O Testamento:</strong> Em paralelo à sua luta, ele grava a verdade factual da humanidade como legado para um neto que ele jamais conheceu.</li>
                         </ul>
 
-                        <p style="color: #FFF; font-weight: 600; margin-top: 25px; margin-bottom: 10px;">ESTRUTURA TÉCNICA E ESTÉTICA DE PRODUÇÃO</p>
+                        <p style="color: var(--text-main); font-weight: 700; margin-top: 25px; margin-bottom: 10px;">ESTRUTURA TÉCNICA E ESTÉTICA DE PRODUÇÃO</p>
                         <p>A arquitetura cinematográfica do projeto "NECRON" foi concebida sob rigorosos parâmetros técnicos. A cinematografia simula a textura orgânica da <strong>película 35mm</strong>, utilizando granulação analógica profunda, refrações de lentes anamórficas e um perfil de cor de alta densidade para tangibilizar o peso do mundo distópico, emulando com precisão a luz física das câmeras de cinema clássicas.</p>
                         
                         <p style="margin-bottom: 5px; margin-top: 20px;"><strong style="color: var(--netflix-red);">DUALIDADE VISUAL E ATMOSFÉRICA</strong></p>
@@ -411,7 +413,7 @@ Hair & Grooming: His dark hair is windswept and dynamic.
 Hands & Details: One hand is raised near the chin in a casual, contemplative pose. The hand features detailed black ink tattoos on the fingers and wrist.
 Clothing: He is wearing an oversized black hoodie, matte fabric with soft folds.
 Background & Color: Set the subject against a solid, bold, vibrant grafite background, clean and seamless, creating strong contrast with the black hoodie.</div>
-                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="margin-top: 5px; background: var(--bg-card);">Copiar Prompt</button>
+                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="margin-top: 5px;">Copiar Prompt</button>
                 </div>
             </div>
         </div>
@@ -425,12 +427,12 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     <footer class="footer-section" style="text-align: center; border-top: 1px solid var(--border-color); padding: 0 0 40px 0; background: var(--bg-card);">
         <div class="marquee-container" style="border-top: none;">
             <div class="marquee-content">
-                <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" rx="100" fill="#0B1015"/><circle cx="256" cy="256" r="180" fill="none" stroke="#00E5FF" stroke-width="20"/><path d="M210 160v192l140-96z" fill="#00E5FF"/><text x="256" y="460" font-family="sans-serif" font-weight="900" font-size="42" fill="#FFF" text-anchor="middle" letter-spacing="2">PS</text></svg> Plínio Studio</div>
+                <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" rx="100" fill="#FFFFFF"/><circle cx="256" cy="256" r="180" fill="none" stroke="#3B82F6" stroke-width="20"/><path d="M210 160v192l140-96z" fill="#3B82F6"/><text x="256" y="460" font-family="sans-serif" font-weight="900" font-size="42" fill="#1A202C" text-anchor="middle" letter-spacing="2">PS</text></svg> Plínio Studio</div>
                 <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube Oficial</div>
-                <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Plataforma Educacional HUB</div>
+                <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Plataforma Educacional HUB</div>
             </div>
         </div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 700; padding: 0 15px;">© 2026 HUB Educacional. Fundador e CEO: Plínio Fabrício</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600; padding: 0 15px;">© 2026 HUB Educacional. Fundador e CEO: Plínio Fabrício</p>
     </footer>
 
     <nav class="bottom-nav">
@@ -468,7 +470,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     <div class="modal-overlay" id="modalQuemSomos">
         <div class="modal-content" style="text-align: left; max-height: 85vh; overflow-y: auto;">
             <span class="close-modal" onclick="document.getElementById('modalQuemSomos').classList.remove('active')">×</span>
-            <h3 style="color: #FFF; font-size: 1.5rem; text-align: center;">Hub Plínio Studio</h3>
+            <h3 style="color: var(--text-main); font-size: 1.5rem; text-align: center;">Hub Plínio Studio</h3>
             <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8; text-align: justify; margin-top:20px;">O Plínio Studio é um laboratório audiovisual e Hub Educacional de alta performance estabelecido como uma linha de frente de resistência contra a dopamina barata e a retenção vazia. Liderado pelo fundador e CEO Plínio Fabrício, unimos a estética cinematográfica, inteligência artificial avançada e a profundidade da musicoterapia para criar obras e treinamentos de verdadeiro impacto cognitivo. Não seguimos o algoritmo; nós o decodificamos.</p>
         </div>
     </div>
@@ -476,21 +478,21 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     <div class="modal-overlay" id="modalPagamentosMenu">
         <div class="modal-content" style="text-align: left; width: 95%; max-width: 480px; padding: 40px 25px; max-height: 90vh; overflow-y: auto;">
             <span class="close-modal" onclick="document.getElementById('modalPagamentosMenu').classList.remove('active')">×</span>
-            <h3 style="color: #FFF; text-align: center; margin-bottom: 25px; font-size: 1.6rem;">Planos HUB de Estudo</h3>
+            <h3 style="color: var(--text-main); text-align: center; margin-bottom: 25px; font-size: 1.6rem;">Planos HUB de Estudo</h3>
             
-            <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; margin-bottom: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-                <h4 style="color: #FFF; font-size: 1.2rem;">Plano Aluno VIP</h4>
-                <p style="color: var(--accent-primary); font-size: 2rem; font-weight: 800; margin: 15px 0;">R$ 97,00</p>
+            <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; margin-bottom: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--text-main); font-size: 1.2rem;">Plano Aluno VIP</h4>
+                <p style="color: var(--text-main); font-size: 2rem; font-weight: 800; margin: 15px 0;">R$ 97,00</p>
                 <input type="hidden" id="pixAlunoTxt" value="00020126580014BR.GOV.BCB.PIX013654b1bad6-d2d2-408b-ac91-12af722e6072520400005303986540597.005802BR5925Plinio Fabricio Pinto Sim6009SAO PAULO621405106BGmV82fAW63042C26">
                 <button onclick="copiarPixAreaPagamento('pixAlunoTxt')" class="btn-action">COPIAR CHAVE PIX</button>
             </div>
             
-            <div style="background: var(--bg-main); border: 2px solid var(--accent-primary); border-radius: 16px; padding: 25px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,229,255,0.15);">
-                <div style="position: absolute; top: -12px; right: 20px; background: var(--accent-primary); color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800;">OPÇÃO RECOMENDADA</div>
-                <h4 style="color: #FFF; font-size: 1.2rem;">Franquia Ouro (SaaS)</h4>
-                <p style="color: var(--accent-primary); font-size: 2rem; font-weight: 800; margin: 15px 0;">R$ 497,00</p>
+            <div style="background: var(--bg-card); border: 2px solid var(--accent-primary); border-radius: 12px; padding: 25px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(59,130,246,0.1);">
+                <div style="position: absolute; top: -12px; right: 20px; background: var(--accent-primary); color: #FFF; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">OPÇÃO RECOMENDADA</div>
+                <h4 style="color: var(--text-main); font-size: 1.2rem;">Franquia Ouro (SaaS)</h4>
+                <p style="color: var(--text-main); font-size: 2rem; font-weight: 800; margin: 15px 0;">R$ 497,00</p>
                 <input type="hidden" id="pixFranquiaTxt" value="00020126580014BR.GOV.BCB.PIX013654b1bad6-d2d2-408b-ac91-12af722e60725204000053039865406497.005802BR5925Plinio Fabricio Pinto Sim6009SAO PAULO62140510SYHltEbEzw63041B57">
-                <button onclick="copiarPixAreaPagamento('pixFranquiaTxt')" class="btn-action" style="background: var(--accent-primary); color: #000; border: none;">COPIAR CHAVE PIX</button>
+                <button onclick="copiarPixAreaPagamento('pixFranquiaTxt')" class="btn-action" style="background: var(--accent-primary); color: #FFF; border: none;">COPIAR CHAVE PIX</button>
             </div>
         </div>
     </div>
@@ -498,7 +500,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     <div class="modal-overlay" id="modalAvisoCustomizado" style="z-index: 9999;">
         <div class="modal-content" id="boxAvisoCustomizado" style="max-width: 380px;">
             <div id="iconeAviso" style="margin-bottom: 20px;"></div>
-            <h3 id="tituloAvisoCustomizado" style="color: #FFF; margin-bottom: 12px; font-size: 1.4rem;">Aviso</h3>
+            <h3 id="tituloAvisoCustomizado" style="color: var(--text-main); margin-bottom: 12px; font-size: 1.4rem;">Aviso</h3>
             <p id="textoAvisoCustomizado" style="color: var(--text-muted); margin-bottom: 30px; font-size: 1rem; line-height: 1.5;"></p>
             <button onclick="fecharModalAviso()" id="btnAvisoCustomizado" class="modal-btn">OK</button>
         </div>
@@ -570,11 +572,11 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             
             if (tipo === 'erro') {
                 box.style.borderTopColor = '#EF4444';
-                btn.style.background = 'transparent'; btn.style.border = '2px solid #EF4444'; btn.style.color = '#FFF'; btn.innerText = 'TENTAR NOVAMENTE';
+                btn.style.background = 'transparent'; btn.style.border = '2px solid #EF4444'; btn.style.color = '#EF4444'; btn.innerText = 'TENTAR NOVAMENTE';
                 icone.innerHTML = '<svg viewBox="0 0 24 24" width="56" height="56" stroke="#EF4444" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
             } else {
                 box.style.borderTopColor = 'var(--accent-primary)';
-                btn.style.background = 'transparent'; btn.style.border = '2px solid var(--accent-primary)'; btn.style.color = '#FFF'; btn.innerText = 'ENTENDI';
+                btn.style.background = 'var(--accent-primary)'; btn.style.border = 'none'; btn.style.color = '#FFF'; btn.innerText = 'ENTENDI';
                 icone.innerHTML = '<svg viewBox="0 0 24 24" width="56" height="56" stroke="var(--accent-primary)" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>';
             }
             document.getElementById('modalAvisoCustomizado').classList.add('active');
@@ -603,10 +605,10 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             const janela = window.open('', '_blank');
             let listaHtml = '<div class="dias-grid" style="display:flex; flex-direction:column; gap:15px; margin-bottom:30px;">';
             if(alunoEspecifico) {
-                listaHtml += `<div style="background:#18181B; border:2px solid #00E5FF; padding:30px; border-radius:16px; text-align:center; box-shadow: 0 10px 25px rgba(0,229,255,0.15);"><div style="font-size:1.5rem; color:#FFF; margin-bottom:10px; font-weight:800;">Olá, ${alunoEspecifico.nome}!</div><p style="color:#A1A1AA; margin-bottom:20px; font-size:1rem;">Sua área de treinamento exclusivo está devidamente conectada.</p><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#FFF; border:2px solid #00E5FF; padding:16px 20px; border-radius:8px; font-weight:800; cursor:pointer; width:100%; text-transform:uppercase; letter-spacing:1px; transition:0.3s;">Acessar Módulo Agora</button></div>`;
+                listaHtml += `<div style="background:#FFFFFF; border:1px solid #E2E8F0; padding:30px; border-radius:12px; text-align:center; box-shadow: 0 10px 25px rgba(0,0,0,0.05);"><div style="font-size:1.5rem; color:#2D3748; margin-bottom:10px; font-weight:800;">Olá, ${alunoEspecifico.nome}!</div><p style="color:#718096; margin-bottom:20px; font-size:1rem;">Sua área de treinamento exclusivo está devidamente conectada.</p><button onclick="abrirModalAluno('1316')" style="background:var(--accent-primary, #3B82F6); color:#FFF; border:none; padding:16px 20px; border-radius:8px; font-weight:700; cursor:pointer; width:100%; text-transform:uppercase; letter-spacing:1px; transition:0.3s;">Acessar Módulo Agora</button></div>`;
             } else {
                 listaDeAlunosGlobais.forEach(aluno => {
-                    listaHtml += `<div style="background:#18181B; border:1px solid #27272A; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#FFF; margin-bottom:15px; font-weight:700;">${aluno.nome}</div><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#00E5FF; border:1px solid #00E5FF; padding:12px 20px; border-radius:8px; font-weight:800; cursor:pointer; width:100%;">Acessar Sala</button></div>`;
+                    listaHtml += `<div style="background:#FFFFFF; border:1px solid #E2E8F0; padding:20px; border-radius:12px; text-align:center;"><div style="font-size:1.1rem; color:#2D3748; margin-bottom:15px; font-weight:700;">${aluno.nome}</div><button onclick="abrirModalAluno('1316')" style="background:transparent; color:#3B82F6; border:1px solid #3B82F6; padding:12px 20px; border-radius:8px; font-weight:700; cursor:pointer; width:100%;">Acessar Sala</button></div>`;
                 });
             }
             listaHtml += '</div>';
@@ -615,22 +617,22 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             let nomeAlunoPainel = alunoEspecifico ? alunoEspecifico.nome : 'Administrador Hub';
             
             const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | HUB EAD</title><style>
-            body { background-color: #09090B; color: #FAFAFA; font-family: 'Inter', sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
+            body { background-color: #F4F6F9; color: #2D3748; font-family: 'Inter', sans-serif; padding: 20px; margin: 0; display: flex; flex-direction: column; align-items: center; }
             .ead-container { width: 100%; max-width: 500px; } .video-container { display: none; flex-direction: column; width: 100%; max-width: 800px; align-items:center; }
-            h1 { color: #FFF; border-bottom: 2px solid #00E5FF; padding-bottom: 15px; text-align:center; font-weight:800;}
-            .app-btn { background:#18181B; border:1px solid #27272A; border-radius:8px; padding:14px 8px; text-align:center; color:#00E5FF; text-decoration:none; font-size: 0.8rem; font-weight: 800; transition: 0.3s; display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; text-transform: uppercase; }
-            .app-btn:hover { border-color: #00E5FF; background: rgba(0,229,255,0.05);}
+            h1 { color: #1A202C; border-bottom: 2px solid #E2E8F0; padding-bottom: 15px; text-align:center; font-weight:800;}
+            .app-btn { background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:14px 8px; text-align:center; color:#3B82F6; text-decoration:none; font-size: 0.8rem; font-weight: 700; transition: 0.3s; display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; text-transform: uppercase; }
+            .app-btn:hover { border-color: #3B82F6; background: rgba(59,130,246,0.05);}
             </style></head><body>
             <div class="ead-container" id="listaArea"><h1>${titulo}</h1>${listaHtml}</div>
             <div class="video-container" id="videoArea" style="display:none;">
                 <h1 style="margin-bottom:5px;">Ambiente Virtual de Aprendizagem</h1>
-                <h3 style="color:#A1A1AA; margin-bottom:30px; font-weight:600; font-size:1rem;">Credencial: <span style="color:#00E5FF">${nomeAlunoPainel}</span></h3>
-                <div style="background:#18181B; padding:30px; border-radius:16px; border-left: 5px solid #00E5FF; width:100%; max-width:600px; box-shadow:0 10px 30px rgba(0,0,0,0.5);">
-                    <h2 style="color:#FFF; font-weight:800;">Sala Liberada</h2>
-                    <p style="color:#A1A1AA; margin-bottom:25px; font-size:1rem;">${nomeProf}</p>
-                    <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="display:inline-block; background:var(--accent-primary, #00E5FF); color:#000; border:none; padding:16px 28px; border-radius:8px; text-decoration:none; font-weight:800; text-transform:uppercase; font-size:0.9rem; letter-spacing:1px; transition:0.3s;">Entrar no Módulo de Mentoria</a>
-                    <div style="margin-top: 40px; border-top: 1px solid #27272A; padding-top: 25px;">
-                        <h3 style="color:#FFF; text-align:center; margin-bottom: 20px; font-size: 1.2rem; font-weight:800;">Arsenal Completo HUB (Acessos)</h3>
+                <h3 style="color:#718096; margin-bottom:30px; font-weight:600; font-size:1rem;">Credencial: <span style="color:#3B82F6">${nomeAlunoPainel}</span></h3>
+                <div style="background:#FFFFFF; padding:30px; border-radius:16px; border:1px solid #E2E8F0; width:100%; max-width:600px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+                    <h2 style="color:#2D3748; font-weight:800;">Sala Liberada</h2>
+                    <p style="color:#718096; margin-bottom:25px; font-size:1rem;">${nomeProf}</p>
+                    <a href="https://linktr.ee/PlinioStudio_" target="_blank" style="display:inline-block; background:var(--accent-primary, #3B82F6); color:#FFF; border:none; padding:16px 28px; border-radius:8px; text-decoration:none; font-weight:700; text-transform:uppercase; font-size:0.9rem; letter-spacing:1px; transition:0.3s;">Entrar no Módulo de Mentoria</a>
+                    <div style="margin-top: 40px; border-top: 1px solid #E2E8F0; padding-top: 25px;">
+                        <h3 style="color:#2D3748; text-align:center; margin-bottom: 20px; font-size: 1.2rem; font-weight:800;">Arsenal Completo HUB (Acessos)</h3>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
                             <a href="https://play.google.com/store/search?q=CapCut&c=apps" target="_blank" class="app-btn">CapCut Pro</a>
                             <a href="https://play.google.com/store/search?q=Lightroom+Mobile&c=apps" target="_blank" class="app-btn">Lightroom</a>
@@ -640,13 +642,13 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
                     </div>
                 </div>
             </div>
-            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(9, 9, 11, 0.95); justify-content:center; align-items:center;">
-                <div style="background:#18181B; padding:40px 30px; border-radius:16px; border:1px solid #27272A; text-align:center; max-width:350px; width:90%; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
-                    <h3 style="color:#FFF; margin-bottom:15px; font-weight:800; font-size:1.4rem;">Chave da Sala</h3>
-                    <div id="msgErroInLine" style="color:#EF4444; font-size:0.9rem; margin-bottom:15px; display:none; font-weight:600;">Acesso negado! Senha incorreta.</div>
-                    <input type="password" id="alunoSenha" placeholder="••••" style="width:100%; padding:15px; border-radius:8px; text-align:center; margin-bottom:20px; background: #000; color: #fff; border: 1px solid #27272A; font-size:1.4rem; letter-spacing:5px;"><br>
-                    <button onclick="verificarSenhaAluno()" style="background:#00E5FF; color:#000; border:none; padding:15px; border-radius:8px; font-weight:800; cursor: pointer; width:100%; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Autenticar</button>
-                    <button onclick="document.getElementById('alunoModal').style.display='none'" style="background:transparent; color:#A1A1AA; padding:10px; border:none; cursor:pointer; font-size:0.85rem; width:100%; font-weight:600;">Cancelar</button>
+            <div id="alunoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); justify-content:center; align-items:center;">
+                <div style="background:#FFFFFF; padding:40px 30px; border-radius:16px; border:1px solid #E2E8F0; text-align:center; max-width:350px; width:90%; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
+                    <h3 style="color:#2D3748; margin-bottom:15px; font-weight:800; font-size:1.4rem;">Chave da Sala</h3>
+                    <div id="msgErroInLine" style="color:#E53E3E; font-size:0.9rem; margin-bottom:15px; display:none; font-weight:600;">Acesso negado! Senha incorreta.</div>
+                    <input type="password" id="alunoSenha" placeholder="••••" style="width:100%; padding:15px; border-radius:8px; text-align:center; margin-bottom:20px; background: #F7FAFC; color: #2D3748; border: 1px solid #E2E8F0; font-size:1.4rem; letter-spacing:5px;"><br>
+                    <button onclick="verificarSenhaAluno()" style="background:#3B82F6; color:#FFF; border:none; padding:15px; border-radius:8px; font-weight:700; cursor: pointer; width:100%; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Autenticar</button>
+                    <button onclick="document.getElementById('alunoModal').style.display='none'" style="background:transparent; color:#718096; padding:10px; border:none; cursor:pointer; font-size:0.85rem; width:100%; font-weight:600;">Cancelar</button>
                 </div>
             </div>
             <script>
