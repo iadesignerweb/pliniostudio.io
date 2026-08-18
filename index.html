@@ -86,13 +86,12 @@
         /* --- CONTEÚDO PRINCIPAL --- */
         .app-container { max-width: 800px; margin: 0 auto; padding: 0 24px 40px 24px; }
         
-        /* HERO SECTION */
-        .hero-section { margin: 0 -24px 30px -24px; padding: 40px 24px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--border-color); text-align: center; }
-        .hero-title { font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; line-height: 1.3; }
+        /* HERO SECTION E BIOGRAFIA VÁRZEA BEAT */
+        .hero-section { margin: 0 -24px 30px -24px; padding: 40px 24px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--border-color); text-align: left; }
+        .hero-title { font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; line-height: 1.3; text-align: center; }
         .hero-title span { color: var(--accent-primary); }
-        .hero-subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto;}
         
-        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 500px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; }
+        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 500px; margin: 25px auto 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; }
         .hero-search-box input { flex: 1; padding: 15px 20px; background: transparent; border: none; color: var(--text-main); font-size: 0.95rem; outline: none; cursor: pointer; }
         .hero-search-box button { background: var(--accent-primary); color: #FFF; border: none; padding: 0 25px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
         .hero-search-box button:hover { opacity: 0.85; }
@@ -121,7 +120,7 @@
 
         /* --- CARD NETFLIX STYLE --- */
         .netflix-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border-color); max-width: 100%; margin-left: auto; margin-right: auto; }
-        .netflix-video-wrapper { position: relative; width: 100%; padding-top: 56.25%; /* 16:9 Ratio Cinematográfico */ background: #000; overflow: hidden; border-bottom: 1px solid var(--border-color);}
+        .netflix-video-wrapper { position: relative; width: 100%; padding-top: 56.25%; background: #000; overflow: hidden; border-bottom: 1px solid var(--border-color);}
         .netflix-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .netflix-badge-top { position: absolute; top: 15px; left: 15px; display: flex; align-items: center; gap: 6px; color: var(--netflix-red); font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; z-index: 10; text-shadow: 0 2px 5px rgba(255,255,255,0.9);}
         .netflix-badge-top span { color: #000; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;}
@@ -280,11 +279,41 @@
 
     <main class="app-container">
         
-        <div class="hero-section">
-            <h1 class="hero-title">Sua jornada no Audiovisual e IA começa aqui.<br><br><span>Conheça o MC Estúdio, o gerador de música.</span></h1>
-            <p class="hero-subtitle">Acesso exclusivo aos treinamentos de alta performance, ferramentas premium e a nova fábrica de músicas sob medida do Hub.</p>
+        <!-- HERO SECTION COM A NOVA BIOGRAFIA -->
+        <div class="hero-section" style="padding: 40px 24px; text-align: left;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/plinio-fabricio-produtor-varzeabeat-movimento-genero-musical-criador.png" alt="Plínio Fabrício - Criador do Várzea Beat" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            </div>
             
-            <div class="hero-search-box">
+            <h1 class="hero-title" style="text-align: center; font-size: 1.6rem; text-transform: uppercase;">O CRIADOR DO GÊNERO <br><span style="color: var(--accent-primary);">VÁRZEA BEAT</span></h1>
+            
+            <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; text-align: justify;">
+                <p style="margin-bottom: 15px;"><strong style="color: var(--text-main);">Plínio Fabrício:</strong> Produtor musical e cineasta independente, natural de Custódia, no sertão de Pernambuco. Com uma trajetória forjada por 30 anos de resistência e dedicação absoluta à criação, ele é o fundador do Plínio Studio e o criador do gênero Várzea Beat.</p>
+                
+                <p style="margin-bottom: 15px;">Mais do que um estilo musical, o Várzea Beat é um manifesto estético e audiovisual. A obra de Plínio funde o peso e a densidade das batidas modernas com a poética, a aridez e a ancestralidade do sertão nordestino. Guiado pela filosofia de conceitos antigos como Platão e a filosofia hindu, ele transforma a escassez de recursos em potência narrativa.</p>
+                
+                <p style="margin-bottom: 15px;">Atuando de forma 100% independente, da composição à renderização final, suas obras abordam temas existenciais, crítica social e a quebra das ilusões modernas. Entre os projetos mais recentes e atualizados de sua jornada estão os projetos e álbuns visuais: "Série Dopamina", Trailer disponível no Canal do artista e Filme "NECRON" na mostra internacional da Filmfreeway.com/NECRON. "Carcará" e "O Portal", são as últimas obras publicadas. Hoje, o seu trabalho ultrapassa as barreiras de Pernambuco, alcançando curadorias, como o destaque internacional no Festival de Cinema da Fox Studios, em Los Angeles.</p>
+                
+                <p style="margin-bottom: 20px; font-style: italic; border-left: 3px solid var(--accent-primary); padding-left: 15px;"><strong>Nota de arte:</strong> "O cinema e a música independente têm a força, não precisa de barreiras. Elas têm força suficiente para rompê-las."<br><br><span style="font-weight: bold; font-style: normal; color: var(--text-main);">Plínio Fabrício</span></p>
+            </div>
+
+            <!-- PROMPT PARA OS ALUNOS -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+                <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; text-align: center;">Como forma de gratidão aos 32.100 inscritos no Canal YouTube Plínio Fabrício, para ser gerado no Gemini com sua fotografia.</p>
+                <button onclick="togglePrompt('promptBiografia', this)" class="btn-action">Mostrar Prompt Estruturado</button>
+                <div id="promptBiografia" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPromptBio">A cinematic, ultra-realistic editorial portrait photograph of a man. He has neatly styled hair with individual strands clearly visible, and short facial stubble. He is wearing a premium textured light beige/cream crew-neck sweater. The subject is shown in a tight chest-up portrait, positioned slightly right of center, with his body facing mostly toward the camera while his head is turned subtly toward the right side of the frame. His expression is calm, serious, and slightly contemplative, with his gaze directed off-camera to the right looking towards the horizon, not at the camera. Dramatic low-key cinematic lighting is used. A strong warm golden-orange key light from the left side of the frame illuminates the left side of his face, ear, hair, neck, and sweater, creating rich amber highlights and deep natural shadows. The right side of his face gradually falls into shadow, producing a striking chiaroscuro effect. The background is extremely dark, nearly black, with very shallow depth of field and subtle warm out-of-focus light highlights. The main subject remains the clear visual focus. Shot on an 85mm portrait lens at f/2. Aspect ratio 4:5. Strict instruction: Remove any other person or silhouette from the background. Preserve the subject's exact facial features, identity, and sharp/refined nose completely unaltered.</div>
+                    <button onclick="copiarPrompt('textoPromptBio')" class="btn-action" style="margin-top: 5px;">Copiar Prompt</button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px; padding-bottom: 20px;">
+                <p style="font-weight: 700; color: var(--text-main); font-size: 1rem; margin-bottom: 10px;">"Coloque Deus na frente em tudo o que for realizar. Não te preocupes. Deus é sempre Amor e Justiça."</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Com amor,<br><strong style="color: var(--text-main);">Plínio Fabrício.</strong></p>
+            </div>
+
+            <!-- ACESSO MC ESTÚDIO MANTIDO -->
+            <div class="hero-search-box" style="margin-top: 20px;">
                 <input type="text" placeholder="Acesse a nossa Fábrica de Músicas..." readonly onclick="window.location.href='mcestudio.html'">
                 <button onclick="window.location.href='mcestudio.html'">GERAR</button>
             </div>
