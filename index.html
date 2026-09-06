@@ -35,13 +35,25 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Inter', system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; padding-bottom: 90px; }
 
-        /* --- TELA DE ABERTURA --- */
+        /* --- TELA DE ABERTURA (ESPECTRO DE ÁUDIO) --- */
         #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFFFFF; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; transition: opacity 0.8s ease-out, visibility 0.8s; }
-        .ankh-container { margin-bottom: 30px; animation: pulseAnkh 2.5s infinite ease-in-out; filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3)); }
-        @keyframes pulseAnkh { 0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); } 50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.5)); } 100% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); } }
+        .audio-wave-container { margin-bottom: 30px; display: flex; align-items: center; gap: 6px; height: 60px; }
+        .audio-bar { width: 6px; background: var(--accent-primary); border-radius: 4px; animation: pulseWave 1.2s infinite ease-in-out; }
+        .audio-bar:nth-child(1) { height: 20px; animation-delay: 0.1s; }
+        .audio-bar:nth-child(2) { height: 40px; animation-delay: 0.3s; }
+        .audio-bar:nth-child(3) { height: 60px; animation-delay: 0.2s; }
+        .audio-bar:nth-child(4) { height: 35px; animation-delay: 0.4s; }
+        .audio-bar:nth-child(5) { height: 50px; animation-delay: 0.15s; }
+        .audio-bar:nth-child(6) { height: 25px; animation-delay: 0.35s; }
+
+        @keyframes pulseWave {
+            0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+            50% { transform: scaleY(1.2); opacity: 1; }
+        }
+
         .splash-content { position: relative; z-index: 2; text-align: center; padding: 20px; }
-        .splash-text { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; color: var(--text-main); text-transform: uppercase; font-family: 'Inter', monospace; min-height: 40px; }
-        .splash-sub { font-size: 0.8rem; color: var(--accent-primary); letter-spacing: 4px; margin-top: 15px; text-transform: uppercase; opacity: 0; animation: fadeInSub 2s forwards 1.5s; font-weight: bold; }
+        .splash-text { font-size: 1.1rem; font-weight: 800; letter-spacing: 2px; color: var(--text-main); text-transform: uppercase; font-family: 'Inter', monospace; min-height: 40px; }
+        .splash-sub { font-size: 0.75rem; color: var(--accent-primary); letter-spacing: 4px; margin-top: 15px; text-transform: uppercase; opacity: 0; animation: fadeInSub 2s forwards 1.5s; font-weight: bold; }
         @keyframes fadeInSub { to { opacity: 1; } }
 
         /* --- CABEÇALHO --- */
@@ -66,7 +78,6 @@
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); z-index: 1500; backdrop-filter: blur(4px); }
         .overlay.active { display: block; }
 
-        /* Link Especial do MC Estúdio no Menu */
         .linkmcestudio { background: rgba(59, 130, 246, 0.05); border-left: 3px solid var(--accent-primary); }
         .linkmcestudio svg { stroke: var(--accent-primary) !important; }
         .linkmcestudio:hover { background: rgba(59, 130, 246, 0.1) !important; color: var(--accent-primary) !important; }
@@ -79,9 +90,10 @@
         .hero-title { font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; line-height: 1.3; text-align: center; }
         .hero-title span { color: var(--accent-primary); }
         
-        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 500px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; }
-        .hero-search-box input { flex: 1; padding: 15px 20px; background: transparent; border: none; color: var(--text-main); font-size: 0.95rem; outline: none; cursor: pointer; }
-        .hero-search-box button { background: var(--accent-primary); color: #FFF; border: none; padding: 0 25px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
+        /* CORREÇÃO DO CAMPO MC ESTÚDIO (BOTÃO NÃO CORTADO) */
+        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 100%; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; align-items: center; }
+        .hero-search-box input { flex: 1; padding: 12px 15px; background: transparent; border: none; color: var(--text-main); font-size: 0.9rem; outline: none; cursor: pointer; min-width: 0; }
+        .hero-search-box button { background: var(--accent-primary); color: #FFF; border: none; padding: 12px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; transition: opacity 0.3s; white-space: nowrap; flex-shrink: 0; }
         .hero-search-box button:hover { opacity: 0.85; }
 
         /* MENTORIAS E FERRAMENTAS */
@@ -197,15 +209,15 @@
 </head>
 <body id="top">
 
-    <!-- TELA DE ABERTURA CORRIGIDA -->
+    <!-- TELA DE ABERTURA (ESPECTRO DE ÁUDIO) -->
     <div id="splash-screen">
-        <div class="ankh-container">
-            <!-- Ícone Simplificado para não dar erro em mobile -->
-            <svg viewBox="0 0 100 150" style="width: 130px; height: 130px; stroke: #3B82F6; fill: none; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round;">
-                <path d="M50 15 C30 15, 30 45, 50 55 C70 45, 70 15, 50 15 Z" />
-                <line x1="20" y1="60" x2="80" y2="60" />
-                <line x1="50" y1="60" x2="50" y2="135" />
-            </svg>
+        <div class="audio-wave-container">
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
         </div>
         <div class="splash-content">
             <div class="splash-text" id="splashTypewriter"></div>
@@ -270,16 +282,16 @@
             <h1 class="hero-title" style="text-align: center; font-size: 1.6rem; text-transform: uppercase;">O CRIADOR DO GÊNERO <br><span style="color: var(--accent-primary);">VÁRZEA BEAT</span></h1>
             
             <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; text-align: justify;">
-                <p style="margin-bottom: 15px;"><strong style="color: var(--text-main);">Plínio Fabrício:</strong> Produtor musical e cineasta independente, natural de Custódia, no sertão de Pernambuco. Com uma trajetória forjada por 30 anos de resistência e dedicação absoluta à criação, ele é o fundador do Plínio Studio e o criador do gênero Várzea Beat.</p>
-                <p style="margin-bottom: 15px;">Mais do que um estilo musical, o Várzea Beat é um manifesto estético e audiovisual. A obra de Plínio funde o peso e a densidade das batidas modernas com a poética, a aridez e a ancestralidade do sertão nordestino. Guiado pela filosofia de conceitos antigos como Platão e a filosofia hindu, ele transforma a escassez de recursos em potência narrativa.</p>
-                <p style="margin-bottom: 15px;">Atuando de forma 100% independente, da composição à renderização final, suas obras abordam temas existenciais, crítica social e a quebra das ilusões modernas. Entre os projetos mais recentes e atualizados de sua jornada estão os projetos e álbuns visuais: "Série Dopamina", Trailer disponível no Canal do artista e Filme "NECRON" na mostra internacional da Filmfreeway.com/NECRON. "Carcará" e "O Portal", são as últimas obras publicadas. Hoje, o seu trabalho ultrapassa as barreiras de Pernambuco, alcançando curadorias, como o destaque internacional no Festival de Cinema da Fox Studios, em Los Angeles.</p>
+                <p style="margin-bottom: 15px;"><strong style="color: var(--text-main);">Plínio Fabrício:</strong> Produtor musical e cineasta independente, natural de Custódia, no sertão de Pernambuco[span_0](start_span)[span_0](end_span). Com uma trajetória forjada por 30 anos de resistência e dedicação absoluta à criação, ele é o fundador do Plínio Studio e o criador do gênero Várzea Beat[span_1](start_span)[span_1](end_span).</p>
+                <p style="margin-bottom: 15px;">Mais do que um estilo musical, o Várzea Beat é um manifesto estético e audiovisual[span_2](start_span)[span_2](end_span). A obra de Plínio funde o peso e a densidade das batidas modernas com a poética, a aridez e a ancestralidade do sertão nordestino[span_3](start_span)[span_3](end_span). Guiado pela filosofia de conceitos antigos como Platão e a filosofia hindu, ele transforma a escassez de recursos em potência narrativa[span_4](start_span)[span_4](end_span).</p>
+                <p style="margin-bottom: 15px;">Atuando de forma 100% independente, da composição à renderização final, suas obras abordam temas existenciais, crítica social e a quebra das ilusões modernas[span_5](start_span)[span_5](end_span). Entre os projetos mais recentes e atualizados de sua jornada estão os projetos e álbuns visuais: "Série Dopamina", Trailer disponível no Canal do artista e Filme "NECRON" na mostra internacional da Filmfreeway.com/NECRON[span_6](start_span)[span_6](end_span). "Carcará" e "O Portal", são as últimas obras publicadas. Hoje, o seu trabalho ultrapassa as barreiras de Pernambuco, alcançando curadorias, como o destaque internacional no Festival de Cinema da Fox Studios, em Los Angeles[span_7](start_span)[span_7](end_span).</p>
                 
-                <p style="margin-bottom: 20px; font-style: italic; border-left: 3px solid var(--accent-primary); padding-left: 15px;"><strong>Nota de arte:</strong> "O cinema e a música independente têm a força, não precisa de barreiras. Elas têm força suficiente para rompê-las."<br><br><span style="font-weight: bold; font-style: normal; color: var(--text-main);">Plínio Fabrício</span></p>
+                <p style="margin-bottom: 20px; font-style: italic; border-left: 3px solid var(--accent-primary); padding-left: 15px;"><strong>Nota de arte:</strong> "O cinema e a música independente têm a força, não precisa de barreiras. Elas têm força suficiente para rompê-las.[span_8](start_span)"[span_8](end_span)<br><br><span style="font-weight: bold; font-style: normal; color: var(--text-main);">Plínio Fabrício</span></p>
             </div>
 
             <!-- PROMPT PARA OS ALUNOS -->
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
-                <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; text-align: center;">Como forma de gratidão aos 32.100 inscritos no Canal YouTube, para ser gerado no Gemini com sua fotografia.</p>
+                <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; text-align: center;">Como forma de gratidão aos 32.100 inscritos no Canal YouTube[span_9](start_span)[span_9](end_span), para ser gerado no Gemini com sua fotografia.</p>
                 <button onclick="togglePrompt('promptBiografia', this)" class="btn-action">Mostrar Prompt Estruturado</button>
                 <div id="promptBiografia" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptBio">A cinematic, ultra-realistic editorial portrait photograph of a man. He has neatly styled hair with individual strands clearly visible, and short facial stubble. He is wearing a premium textured light beige/cream crew-neck sweater. The subject is shown in a tight chest-up portrait, positioned slightly right of center, with his body facing mostly toward the camera while his head is turned subtly toward the right side of the frame. His expression is calm, serious, and slightly contemplative, with his gaze directed off-camera to the right looking towards the horizon, not at the camera. Dramatic low-key cinematic lighting is used. A strong warm golden-orange key light from the left side of the frame illuminates the left side of his face, ear, hair, neck, and sweater, creating rich amber highlights and deep natural shadows. The right side of his face gradually falls into shadow, producing a striking chiaroscuro effect. The background is extremely dark, nearly black, with very shallow depth of field and subtle warm out-of-focus light highlights. The main subject remains the clear visual focus. Shot on an 85mm portrait lens at f/2. Aspect ratio 4:5. Strict instruction: Remove any other person or silhouette from the background. Preserve the subject's exact facial features, identity, and sharp/refined nose completely unaltered.</div>
@@ -288,8 +300,8 @@
             </div>
             
             <div style="text-align: center; margin-top: 30px; padding-bottom: 10px;">
-                <p style="font-weight: 700; color: var(--text-main); font-size: 1rem; margin-bottom: 10px;">"Coloque Deus na frente em tudo o que for realizar. Não te preocupes. Deus é sempre Amor e Justiça."</p>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Com amor,<br><strong style="color: var(--text-main);">Plínio Fabrício.</strong></p>
+                <p style="font-weight: 700; color: var(--text-main); font-size: 1rem; margin-bottom: 10px;">"Coloque Deus na frente em tudo o que for realizar. Não te preocupes. Deus é sempre Amor e Justiça.[span_10](start_span)"[span_10](end_span)</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Com amor,<br><strong style="color: var(--text-main);">Plínio Fabrício[span_11](start_span)[span_11](end_span).</strong></p>
             </div>
         </div>
 
@@ -362,7 +374,7 @@
                         
                         <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; font-family: monospace; border-left: 2px solid var(--netflix-red); padding-left: 15px;">
                             <strong>DATA DE EMISSÃO:</strong> 15 de Julho de 2026<br>
-                            <strong>DIRETOR E CRIADOR:</strong> Plínio Fabrício, Plínio Studio
+                            <strong>DIRETOR E CRIADOR:</strong> Plínio Fabrício, Plínio Studio[span_12](start_span)[span_12](end_span)
                         </div>
 
                         <p style="color: var(--text-main); font-weight: 700; margin-bottom: 10px;">PREÂMBULO</p>
@@ -382,8 +394,8 @@
 
         <div class="divider"></div>
 
-        <!-- NOVA SEÇÃO: ESTUDOS DE CASO (DOSSIÊ EMPÍRICO) -->
-        <h2 class="section-title" id="estudos-de-caso">Estudos de Caso</h2>
+        <!-- SEÇÃO ESTUDOS DE CASO (TÍTULO CORRIGIDO) -->
+        <h2 class="section-title" id="estudos-de-caso">Estudo de Caso</h2>
         
         <div class="netflix-card" style="margin-bottom: 40px; border-color: var(--accent-primary);">
             
@@ -398,47 +410,47 @@
             <div class="netflix-info">
                 <div class="card-tag" style="margin-bottom:15px; color:var(--accent-primary);">
                     <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> 
-                    DOCUMENTO ACADÊMICO E FILOSÓFICO
+                    ESTUDO DE CASO EMPÍRICO
                 </div>
                 
                 <h3 style="font-size: 1.35rem; font-weight:800; color:var(--text-main); margin-bottom:15px; line-height:1.4;">Dossiê Empírico: A Intersecção Analógica entre Frequências, Percepção e Consciência (1988-2001)</h3>
                 
-                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:20px; text-align: justify;">O estudo documenta o desenvolvimento cognitivo e as observações empíricas em um cenário de conectividade escassa. A percepção das ondas sonoras não era mediada por algoritmos, mas vivenciada em seu estado bruto no laboratório do rádio AM/FM e do vinil.</p>
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:20px; text-align: justify;">O estudo documenta o desenvolvimento cognitivo e as observações empíricas em um cenário de conectividade escassa. A percepção das ondas sonoras não era mediada por algoritmos, mas vivenciada em seu estado bruto no laboratório do rádio AM/FM e do vinil[span_13](start_span)[span_13](end_span).</p>
                 
                 <details class="dossie-accordion">
-                    <summary>Ler Manifesto Completo</summary>
+                    <summary>Ler Estudo Completo</summary>
                     <div class="dossie-content" style="padding-top:10px;">
                         
                         <h4>I. O Contexto Temporal e o Isolamento Conectivo</h4>
-                        <p>O presente estudo documenta o desenvolvimento cognitivo e as observações empíricas de um indivíduo durante o período compreendido entre o final da década de 1980 e a virada do milênio (1988-2001). O caso ganha relevância analítica por ocorrer em um cenário de conectividade escassa, caracterizado pela internet discada e pelo acesso limitado ao fluxo de informação global. Nesse vácuo digital, o indivíduo estruturou hipóteses profundas sobre física, acústica e percepção através da observação direta, da experimentação prática e da busca por literaturas filosóficas fora do escopo convencional.</p>
+                        <p>O presente estudo documenta o desenvolvimento cognitivo e as observações empíricas de um indivíduo durante o período compreendido entre o final da década de 1980 e a virada do milênio (1988-2001)[span_14](start_span)[span_14](end_span). O caso ganha relevância analítica por ocorrer em um cenário de conectividade escassa, caracterizado pela internet discada e pelo acesso limitado ao fluxo de informação global[span_15](start_span)[span_15](end_span). Nesse vácuo digital, o indivíduo estruturou hipóteses profundas sobre física, acústica e percepção através da observação direta, da experimentação prática e da busca por literaturas filosóficas fora do escopo convencional[span_16](start_span)[span_16](end_span).</p>
 
                         <h4>II. O Contraste Analógico vs. Digital: A Escola da Frequência Pura</h4>
-                        <p>A aquisição desse entendimento estrutural precedeu a era da computação de alta velocidade e da inteligência de dados. A partir de 1988, a percepção das ondas sonoras não era mediada por algoritmos, mas vivenciada em seu estado bruto. A interação física com discos de vinil e a sintonização tátil de sinais de rádio AM/FM serviram como um laboratório empírico. Nessas mídias analógicas, a frequência, o ruído, a ressonância e a vibração não eram representações gráficas em uma tela, mas grandezas físicas tangíveis. Esse lastro temporal analógico permitiu ao autor observar a energia orgânica antes de ser emulada por processadores, desenvolvendo a capacidade rara de separar a verdadeira filosofia e biologia humana daquilo que a tecnologia contemporânea apenas tenta simular.</p>
+                        <p>A aquisição desse entendimento estrutural precedeu a era da computação de alta velocidade e da inteligência de dados[span_17](start_span)[span_17](end_span). A partir de 1988, a percepção das ondas sonoras não era mediada por algoritmos, mas vivenciada em seu estado bruto[span_18](start_span)[span_18](end_span). A interação física com discos de vinil e a sintonização tátil de sinais de rádio AM/FM serviram como um laboratório empírico[span_19](start_span)[span_19](end_span). Nessas mídias analógicas, a frequência, o ruído, a ressonância e a vibração não eram representações gráficas em uma tela, mas grandezas físicas tangíveis[span_20](start_span)[span_20](end_span). Esse lastro temporal analógico permitiu ao autor observar a energia orgânica antes de ser emulada por processadores, desenvolvendo a capacidade rara de separar a verdadeira filosofia e biologia humana daquilo que a tecnologia contemporânea apenas tenta simular[span_21](start_span)[span_21](end_span).</p>
 
                         <h4>III. A Premissa Vibracional e a Observação do Áudio</h4>
-                        <p>Sem a influência das arquiteturas lógicas modernas, o autor do estudo mapeou o comportamento da energia puramente através da experimentação empírica com o som:</p>
+                        <p>Sem a influência das arquiteturas lógicas modernas, o autor do estudo mapeou o comportamento da energia puramente através da experimentação empírica com o som[span_22](start_span)[span_22](end_span):</p>
                         <ul>
-                            <li><strong>Frequências e Estados Mentais:</strong> O indivíduo documentou correlações sensoriais entre a exposição a frequências sonoras específicas, como ondas Delta, Theta e Beta, e a indução de estados alterados de consciência e foco.</li>
-                            <li><strong>A Ponte com o Conhecimento Ancestral:</strong> Em suas reflexões, estruturou-se a hipótese teórica de que o domínio dessas vibrações não era uma descoberta científica recente, mas um resgate. O estudo propõe uma analogia onde civilizações antigas possivelmente já utilizavam os princípios da acústica e da ressonância como mecanismos de expansão da mente.</li>
+                            <li><strong>Frequências e Estados Mentais:</strong> O indivíduo documentou correlações sensoriais entre a exposição a frequências sonoras específicas, como ondas Delta, Theta e Beta, e a indução de estados alterados de consciência e foco[span_23](start_span)[span_23](end_span).</li>
+                            <li><strong>A Ponte com o Conhecimento Ancestral:</strong> Em suas reflexões, estruturou-se a hipótese teórica de que o domínio dessas vibrações não era uma descoberta científica recente, mas um resgate[span_24](start_span)[span_24](end_span). O estudo propõe uma analogia onde civilizações antigas possivelmente já utilizavam os princípios da acústica e da ressonância como mecanismos de expansão da mente[span_25](start_span)[span_25](end_span).</li>
                         </ul>
 
                         <h4>IV. O Véu da Realidade e a Metáfora Visual</h4>
-                        <p>O cerne das reflexões deste período concentra-se na desconstrução da percepção sobre a matéria física. Para ilustrar essa percepção, o indivíduo fundamentou-se em duas vertentes principais:</p>
+                        <p>O cerne das reflexões deste período concentra-se na desconstrução da percepção sobre a matéria física[span_26](start_span)[span_26](end_span). Para ilustrar essa percepção, o indivíduo fundamentou-se em duas vertentes principais[span_27](start_span)[span_27](end_span):</p>
                         <ul>
-                            <li><strong>A Filosofia Clássica:</strong> O Mito da Caverna de Platão e o conceito do Véu de Maya do hinduísmo foram adotados como metáforas primárias. A hipótese levanta a ideia de que a mente humana processa apenas projeções de uma realidade vibracional mais complexa. Obras da cultura pop contemporânea à época, como o filme Matrix (1999), serviram como um espelho cultural.</li>
-                            <li><strong>O Experimento da Distorção Geométrica:</strong> O estudo registra exercícios práticos de fixação visual prolongada em objetos geométricos estáticos. Ao observar a distorção da forma, o indivíduo utilizou a experiência como uma forte analogia existencial, sugerindo que a energia, a observação e o estado mental interagem ativamente com a estrutura da realidade física, revelando sua natureza maleável.</li>
+                            <li><strong>A Filosofia Clássica:</strong> O Mito da Caverna de Platão e o conceito do Véu de Maya do hinduísmo foram adotados como metáforas primárias[span_28](start_span)[span_28](end_span). A hipótese levanta a ideia de que a mente humana processa apenas projeções de uma realidade vibracional mais complexa[span_29](start_span)[span_29](end_span). Obras da cultura pop contemporânea à época, como o filme Matrix (1999), serviram como um espelho cultural[span_30](start_span)[span_30](end_span).</li>
+                            <li><strong>O Experimento da Distorção Geométrica:</strong> O estudo registra exercícios práticos de fixação visual prolongada em objetos geométricos estáticos[span_31](start_span)[span_31](end_span). Ao observar a distorção da forma, o indivíduo utilizou a experiência como uma forte analogia existencial, sugerindo que a energia, a observação e o estado mental interagem ativamente com a estrutura da realidade física, revelando sua natureza maleável[span_32](start_span)[span_32](end_span).</li>
                         </ul>
 
                         <h4>V. Desdobramentos Contemporâneos e Validações Técnicas</h4>
-                        <p>Os estudos de caso modernos confirmaram diversas premissas levantadas pelo indivíduo:</p>
+                        <p>Os estudos de caso modernos confirmaram diversas premissas levantadas pelo indivíduo[span_33](start_span)[span_33](end_span):</p>
                         <ul>
-                            <li><strong>Validação em Psicoacústica e Neurociência:</strong> O mapeamento cerebral avançado comprovou clinicamente que estímulos sonoros binaurais alteram de fato a plasticidade cerebral, manipulando estados cognitivos e emocionais.</li>
-                            <li><strong>O Paradoxo da Inteligência Artificial:</strong> A tecnologia moderna ratificou a separação conceitual levantada na tese: simular a linguagem ou a arte não equivale a possuir a consciência biológica moldada pela dor e pelo ciclo vital, corroborando a separação entre a "ilusão manipulável" e a "essência humana".</li>
-                            <li><strong>Física da Informação e o Paradigma da Simulação:</strong> A hipótese filosófica encontrou ecos contemporâneos na Teoria da Informação Quântica, debatendo a possibilidade de o universo ser, fundamentalmente, uma estrutura matemática vibracional.</li>
+                            <li><strong>Validação em Psicoacústica e Neurociência:</strong> O mapeamento cerebral avançado comprovou clinicamente que estímulos sonoros binaurais alteram de fato a plasticidade cerebral, manipulando estados cognitivos e emocionais[span_34](start_span)[span_34](end_span).</li>
+                            <li><strong>O Paradoxo da Inteligência Artificial:</strong> A tecnologia moderna ratificou a separação conceitual levantada na tese: simular a linguagem ou a arte não equivale a possuir a consciência biológica moldada pela dor e pelo ciclo vital, corroborando a separação entre a "ilusão manipulável" e a "essência humana[span_35](start_span)"[span_35](end_span).</li>
+                            <li><strong>Física da Informação e o Paradigma da Simulação:</strong> A hipótese filosófica encontrou ecos contemporâneos na Teoria da Informação Quântica, debatendo a possibilidade de o universo ser, fundamentalmente, uma estrutura matemática vibracional[span_36](start_span)[span_36](end_span).</li>
                         </ul>
 
                         <h4>VI. A Síntese Existencial</h4>
-                        <p>A conclusão postula que a verdadeira jornada do conhecimento sobre a realidade é inseparável da experiência biológica. O entendimento empírico sobre a fluidez da realidade e o poder da frequência já havia sido estruturado na mente do autor de forma autônoma e analógica, sustentado pela vivência humana e pela percepção do próprio ciclo natural da vida.</p>
+                        <p>A conclusão postula que a verdadeira jornada do conhecimento sobre a realidade é inseparável da experiência biológica[span_37](start_span)[span_37](end_span). O entendimento empírico sobre a fluidez da realidade e o poder da frequência já havia sido estruturado na mente do autor de forma autônoma e analógica, sustentado pela vivência humana e pela percepção do próprio ciclo natural da vida[span_38](start_span)[span_38](end_span).</p>
 
                     </div>
                 </details>
@@ -446,12 +458,12 @@
                 <!-- PAINEL DE CONTATO / WHATSAPP -->
                 <div style="background:var(--bg-main); border:1px solid var(--border-color); border-radius:12px; padding:30px 20px; text-align:center; margin-top:30px;">
                     <div style="display:inline-block; background:var(--bg-card); border:1px solid var(--accent-primary); padding:8px 16px; border-radius:20px; font-size:0.75rem; font-weight:800; color:var(--accent-primary); margin-bottom:15px; letter-spacing: 1px;">VERSÃO OFICIAL PDF</div>
-                    <h4 style="color:var(--text-main); font-size:1.2rem; font-weight:800; margin-bottom:10px;">Adquirir Dossiê Completo</h4>
-                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px; line-height: 1.5;">Entre em contato diretamente comigo para adquirir o PDF de 13 páginas e conversar sobre as percepções documentadas neste estudo empírico.</p>
+                    <h4 style="color:var(--text-main); font-size:1.2rem; font-weight:800; margin-bottom:10px;">Adquirir Estudo de Caso Completo</h4>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px; line-height: 1.5;">Entre em contato diretamente comigo para adquirir o PDF de 13 páginas e conversar sobre as percepções documentadas neste estudo empírico[span_39](start_span)[span_39](end_span).</p>
                     
                     <div style="font-size: 2.2rem; font-weight: 900; color: var(--text-main); margin-bottom: 25px;">R$ 49,90</div>
                     
-                    <a href="https://wa.me/5587996029765?text=Ol%C3%A1%2C%20Comandante%21%20Gostaria%20de%20adquirir%20o%20Dossi%C3%AA%20Emp%C3%ADrico%20e%20entender%20mais%20sobre%20suas%20percep%C3%A7%C3%B5es." target="_blank" class="btn-action" style="background:var(--accent-primary); color:#FFF; border:none; padding:18px; font-size:0.95rem;">
+                    <a href="https://wa.me/5587996029765?text=Ol%C3%A1%2C%20Comandante%21%20Gostaria%20de%20adquirir%20o%20Estudo%20de%20Caso%20Emp%C3%ADrico%20e%20entender%20mais%20sobre%20suas%20percep%C3%A7%C3%B5es." target="_blank" class="btn-action" style="background:var(--accent-primary); color:#FFF; border:none; padding:18px; font-size:0.95rem;">
                         <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                         SOLICITAR VIA WHATSAPP
                     </a>
@@ -469,7 +481,7 @@
             <div class="prompt-info-box">
                 <span class="card-tag"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Exemplo de Engenharia</span>
                 <h3>Realismo IA Avançado</h3>
-                <p>Estudo cinematográfico de continuity temporal e iluminação dramática gerado diretamente de nosso laboratório de testes.</p>
+                <p>Estudo cinematográfico de continuidade temporal e iluminação dramática gerado diretamente de nosso laboratório de testes.</p>
                 <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action">Mostrar Prompt Estruturado</button>
                 <div id="prompt4Geracoes" class="prompt-collapse">
                     <div class="prompt-box" id="textoPrompt4Geracoes">Create a hyper-realistic, high-detail portrait illustration using the uploaded image as the absolute facial reference. The subject’s face must remain 100% identical to the reference photo.
@@ -487,11 +499,11 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             Acessar Galeria Completa de Engenharia
         </a>
 
-        <!-- NOVO POSICIONAMENTO DO MC ESTÚDIO NO FINAL -->
+        <!-- FÁBRICA DE MÚSICAS -->
         <h2 class="section-title">Fábrica de Músicas</h2>
         <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:30px 20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.02); margin-bottom: 20px;">
             <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:20px; font-weight: 600;">Gere trilhas e batidas originais exclusivas utilizando nossa arquitetura de Inteligência Artificial para o seu audiovisual.</p>
-            <div class="hero-search-box" style="margin: 0 auto; box-shadow: none; border: 1px solid var(--accent-primary);">
+            <div class="hero-search-box">
                 <input type="text" placeholder="Acesse o MC Estúdio (Gerador)..." readonly onclick="window.location.href='mcestudio.html'">
                 <button onclick="window.location.href='mcestudio.html'">GERAR ÁUDIO</button>
             </div>
@@ -502,12 +514,12 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     <footer class="footer-section" style="text-align: center; border-top: 1px solid var(--border-color); padding: 0 0 40px 0; background: var(--bg-card);">
         <div class="marquee-container" style="border-top: none;">
             <div class="marquee-content">
-                <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" rx="100" fill="#FFFFFF"/><circle cx="256" cy="256" r="180" fill="none" stroke="#3B82F6" stroke-width="20"/><path d="M210 160v192l140-96z" fill="#3B82F6"/><text x="256" y="460" font-family="sans-serif" font-weight="900" font-size="42" fill="#1A202C" text-anchor="middle" letter-spacing="2">PS</text></svg> Plínio Studio</div>
+                <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" rx="100" fill="#FFFFFF"/><circle cx="256" cy="256" r="180" fill="none" stroke="#3B82F6" stroke-width="20"/><path d="M210 160v192l140-96z" fill="#3B82F6"/><text x="256" y="460" font-family="sans-serif" font-weight="900" font-size="42" fill="#1A202C" text-anchor="middle" letter-spacing="2">PS</text></svg> Plínio Studio[span_40](start_span)[span_40](end_span)</div>
                 <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> YouTube Oficial</div>
                 <div class="marquee-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"></path></svg> Plataforma Educacional HUB</div>
             </div>
         </div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600; padding: 0 15px;">© 2026 HUB Educacional. Fundador e CEO: Plínio Fabrício</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600; padding: 0 15px;">© 2026 HUB Educacional. Fundador e CEO: Plínio Fabrício[span_41](start_span)[span_41](end_span)</p>
     </footer>
 
     <nav class="bottom-nav">
@@ -545,8 +557,8 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     <div class="modal-overlay" id="modalQuemSomos">
         <div class="modal-content" style="text-align: left; max-height: 85vh; overflow-y: auto;">
             <span class="close-modal" onclick="document.getElementById('modalQuemSomos').classList.remove('active')">×</span>
-            <h3 style="color: var(--text-main); font-size: 1.5rem; text-align: center;">Hub Plínio Studio</h3>
-            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8; text-align: justify; margin-top:20px;">O Plínio Studio é um laboratório audiovisual e Hub Educacional de alta performance estabelecido como uma linha de frente de resistência contra a dopamina barata e a retenção vazia. Liderado pelo fundador e CEO Plínio Fabrício, unimos a estética cinematográfica, inteligência artificial avançada e a profundidade da musicoterapia para criar obras e treinamentos de verdadeiro impacto cognitivo. Não seguimos o algoritmo; nós o decodificamos.</p>
+            <h3 style="color: var(--text-main); font-size: 1.5rem; text-align: center;">Hub Plínio Studio[span_42](start_span)[span_42](end_span)</h3>
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8; text-align: justify; margin-top:20px;">O Plínio Studio[span_43](start_span)[span_43](end_span) é um laboratório audiovisual e Hub Educacional de alta performance estabelecido como uma linha de frente de resistência contra a dopamina barata e a retenção vazia[span_44](start_span)[span_44](end_span). Liderado pelo fundador e CEO Plínio Fabrício[span_45](start_span)[span_45](end_span), unimos a estética cinematográfica, inteligência artificial avançada e a profundidade da musicoterapia para criar obras e treinamentos de verdadeiro impacto cognitivo[span_46](start_span)[span_46](end_span). Não seguimos o algoritmo; nós o decodificamos[span_47](start_span)[span_47](end_span).</p>
         </div>
     </div>
 
@@ -582,7 +594,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     </div>
 
     <script>
-        // 1. TELA DE CARREGAMENTO MUNDO DE OZ (CORRIGIDA)
+        // TELA DE CARREGAMENTO (ESPECTRO DE FREQUÊNCIA)
         const splashText = "BEM-VINDO AO UNIVERSO DE FREQUÊNCIAS..."; 
         let textIndex = 0;
         
@@ -595,7 +607,6 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             }
         }
 
-        // Execução direta (Garante que a tela saia mesmo se houver lentidão)
         setTimeout(escreverTextoSplash, 400);
         setTimeout(() => {
             const splash = document.getElementById('splash-screen');
@@ -605,7 +616,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             }
         }, 3500);
 
-        // 2. FUNÇÕES DE UI E MODAIS DO HUB
+        // FUNÇÕES DE UI E MODAIS DO HUB
         function toggleMenu() {
             const menu = document.getElementById('sideMenu');
             const overlay = document.getElementById('menuOverlay');
@@ -664,7 +675,6 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
         }
         function fecharModalAviso() { document.getElementById('modalAvisoCustomizado').classList.remove('active'); }
 
-        // 3. BASE DE DADOS DE ALUNOS
         const listaDeAlunosGlobais = [
             { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
             { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
@@ -674,7 +684,6 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             { nome: "Rock Bone", senha: "7711" }, { nome: "Ederaldo Lemos", senha: "7722" }, { nome: "Luciene Simões", senha: "7733" }, { nome: "Potira", senha: "7744" }, { nome: "Diana Amiga", senha: "7745" }
         ];
 
-        // 4. LÓGICA DE LOGIN E ÁREA DO ALUNO EAD
         const modal = document.getElementById('customModal'); const modalInput = document.getElementById('modalInput'); const btnSubmit = document.getElementById('modalSubmit');
         let currentType = '', currentTitle = '';
         
@@ -694,7 +703,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             }
             listaHtml += '</div>';
             
-            let nomeProf = titulo.toLowerCase().includes('mentoria') ? 'Mentora: Maria Freitas' : 'Professor: Plínio Fabrício';
+            let nomeProf = titulo.toLowerCase().includes('mentoria') ? 'Mentora: Maria Freitas' : 'Professor: Plínio Fabrício[span_48](start_span)[span_48](end_span)';
             let nomeAlunoPainel = alunoEspecifico ? alunoEspecifico.nome : 'Administrador Hub';
             
             const htmlFinal = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${titulo} | HUB EAD</title><style>
