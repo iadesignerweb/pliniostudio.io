@@ -18,7 +18,7 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <style>
-        /* --- TEMA PREMIUM (SaaS / EAD HUB CLEAN - ESTILO MC ESTÚDIO) --- */
+        /* --- TEMA PREMIUM (SaaS / EAD HUB CLEAN) --- */
         :root {
             --bg-main: #F4F6F9;        
             --bg-card: #FFFFFF;        
@@ -35,21 +35,10 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Inter', system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; padding-bottom: 90px; }
 
-        /* --- TELA DE ABERTURA MUNDO DE OZ (CHAVE ANKH) --- */
+        /* --- TELA DE ABERTURA --- */
         #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFFFFF; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; transition: opacity 0.8s ease-out, visibility 0.8s; }
-        
-        .ankh-container {
-            margin-bottom: 30px;
-            animation: pulseAnkh 2.5s infinite ease-in-out;
-            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3));
-        }
-
-        @keyframes pulseAnkh {
-            0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); }
-            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.5)); }
-            100% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); }
-        }
-
+        .ankh-container { margin-bottom: 30px; animation: pulseAnkh 2.5s infinite ease-in-out; filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3)); }
+        @keyframes pulseAnkh { 0% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); } 50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.5)); } 100% { transform: scale(0.95); opacity: 0.8; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.2)); } }
         .splash-content { position: relative; z-index: 2; text-align: center; padding: 20px; }
         .splash-text { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; color: var(--text-main); text-transform: uppercase; font-family: 'Inter', monospace; min-height: 40px; }
         .splash-sub { font-size: 0.8rem; color: var(--accent-primary); letter-spacing: 4px; margin-top: 15px; text-transform: uppercase; opacity: 0; animation: fadeInSub 2s forwards 1.5s; font-weight: bold; }
@@ -63,7 +52,7 @@
         .header-icons svg { width: 28px; height: 28px; fill: none; stroke: var(--text-muted); stroke-width: 1.5; cursor: pointer; transition: 0.3s; }
         .header-icons svg:hover { stroke: var(--accent-primary); }
 
-        /* --- MENU LATERAL --- */
+        /* --- MENU LATERAL REORGANIZADO --- */
         .side-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100%; background: var(--bg-card); z-index: 2000; transition: 0.5s ease-out; border-left: 1px solid var(--border-color); box-shadow: -10px 0 30px rgba(0,0,0,0.05); overflow-y: auto; display: flex; flex-direction: column; }
         .side-menu.active { right: 0; }
         .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 25px 24px 20px 24px; border-bottom: 1px solid var(--border-color); }
@@ -74,29 +63,28 @@
         .menu-links a svg { width: 20px; height: 20px; fill: none; stroke: var(--text-muted); stroke-width: 1.5; }
         .menu-links a:hover { background: var(--bg-card-hover); color: var(--accent-primary); padding-left: 30px; }
         .menu-links a:hover svg { stroke: var(--accent-primary); }
-        
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); z-index: 1500; backdrop-filter: blur(4px); }
+        .overlay.active { display: block; }
+
         /* Link Especial do MC Estúdio no Menu */
         .linkmcestudio { background: rgba(59, 130, 246, 0.05); border-left: 3px solid var(--accent-primary); }
         .linkmcestudio svg { stroke: var(--accent-primary) !important; }
         .linkmcestudio:hover { background: rgba(59, 130, 246, 0.1) !important; color: var(--accent-primary) !important; }
 
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); z-index: 1500; backdrop-filter: blur(4px); }
-        .overlay.active { display: block; }
-
         /* --- CONTEÚDO PRINCIPAL --- */
         .app-container { max-width: 800px; margin: 0 auto; padding: 0 24px 40px 24px; }
         
-        /* HERO SECTION E BIOGRAFIA VÁRZEA BEAT */
+        /* HERO SECTION */
         .hero-section { margin: 0 -24px 30px -24px; padding: 40px 24px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--border-color); text-align: left; }
         .hero-title { font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; line-height: 1.3; text-align: center; }
         .hero-title span { color: var(--accent-primary); }
         
-        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 500px; margin: 25px auto 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; }
+        .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 500px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; }
         .hero-search-box input { flex: 1; padding: 15px 20px; background: transparent; border: none; color: var(--text-main); font-size: 0.95rem; outline: none; cursor: pointer; }
         .hero-search-box button { background: var(--accent-primary); color: #FFF; border: none; padding: 0 25px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.3s; }
         .hero-search-box button:hover { opacity: 0.85; }
 
-        /* MENTORIAS GRID */
+        /* MENTORIAS E FERRAMENTAS */
         .section-title { font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
         .section-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--accent-primary); border-radius: 2px; }
         
@@ -107,7 +95,6 @@
         .mentorship-card:hover svg { stroke: var(--accent-primary); }
         .mentorship-card span { font-size: 0.8rem; line-height: 1.3; }
 
-        /* APP SLOTS */
         .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 40px; }
         .feature-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-decoration: none; transition: 0.3s; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent-primary); opacity: 0; transition: 0.3s; }
@@ -118,10 +105,10 @@
         .feature-card-small { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
         .feature-card-bold { font-size: 1.1rem; font-weight: 700; color: var(--text-main); line-height: 1.1; }
 
-        /* --- CARD NETFLIX STYLE --- */
+        /* --- CARDS (NETFLIX & DOSSIÊ) --- */
         .netflix-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--border-color); max-width: 100%; margin-left: auto; margin-right: auto; }
         .netflix-video-wrapper { position: relative; width: 100%; padding-top: 56.25%; background: #000; overflow: hidden; border-bottom: 1px solid var(--border-color);}
-        .netflix-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .netflix-video-wrapper iframe, .netflix-video-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; object-fit: cover; }
         .netflix-badge-top { position: absolute; top: 15px; left: 15px; display: flex; align-items: center; gap: 6px; color: var(--netflix-red); font-weight: 900; font-size: 0.85rem; letter-spacing: 1px; z-index: 10; text-shadow: 0 2px 5px rgba(255,255,255,0.9);}
         .netflix-badge-top span { color: #000; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;}
         
@@ -135,22 +122,19 @@
         .netflix-btn-play { flex: 1; background: var(--text-main); color: #FFF; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: 0.3s; }
         .netflix-btn-play:hover { background: var(--accent-primary); }
         .netflix-btn-play svg { width: 22px; height: 22px; fill: currentColor; }
-        .netflix-btn-add { background: var(--bg-main); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;}
-        .netflix-btn-add:hover { background: var(--bg-card-hover); border-color: var(--text-muted);}
-        .netflix-btn-add svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
-
-        /* DOSSIÊ MODIFICADO PARA O CARD NETFLIX */
+        
+        /* DOSSIÊ TYPOGRAPHY */
         details.dossie-accordion { background: transparent; border: none; border-top: 1px solid var(--border-color); border-radius: 0; margin-bottom: 0; overflow: hidden; transition: all 0.3s ease; }
-        details.dossie-accordion summary { padding: 20px 0; font-weight: 800; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: transparent; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px; user-select: none; }
+        details.dossie-accordion summary { padding: 20px 0; font-weight: 800; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px; user-select: none; }
         details.dossie-accordion summary::-webkit-details-marker { display: none; }
-        details.dossie-accordion summary::after { content: '+'; color: var(--netflix-red); font-size: 1.8rem; font-weight: 400; line-height: 1; }
+        details.dossie-accordion summary::after { content: '+'; color: var(--accent-primary); font-size: 1.8rem; font-weight: 400; line-height: 1; }
         details.dossie-accordion[open] summary::after { content: '-'; }
         
         .dossie-content { padding: 10px 0 20px 0; border-top: none; }
-        .dossie-content h4 { color: var(--text-main); margin-bottom: 15px; font-size: 1rem; font-weight: 700;}
-        .dossie-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.6; text-align: justify; }
-        .dossie-content ul { list-style: none; padding-left: 10px; margin-bottom: 20px; border-left: 2px solid var(--netflix-red); }
-        .dossie-content li { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; padding-left: 12px; line-height: 1.5; }
+        .dossie-content h4 { color: var(--text-main); margin-top: 25px; margin-bottom: 12px; font-size: 1.05rem; font-weight: 800;}
+        .dossie-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; line-height: 1.7; text-align: justify; }
+        .dossie-content ul { list-style: none; padding-left: 15px; margin-bottom: 20px; border-left: 2px solid var(--accent-primary); }
+        .dossie-content li { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px; padding-left: 12px; line-height: 1.6; }
         .dossie-content li strong { color: var(--text-main); }
         
         /* PROMPTS CARD */
@@ -166,17 +150,15 @@
         .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
         .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; white-space: pre-wrap; }
 
-        /* BOTÕES GERAIS */
+        /* BOTÕES */
         .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--accent-primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-primary); padding: 14px 20px; border-radius: 8px; transition: 0.3s; width: 100%; cursor: pointer; text-decoration: none; }
         .btn-action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;}
         .btn-action:hover { background: var(--bg-card-hover); }
-        
         .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); }
         .btn-secondary:hover { border-color: var(--text-muted); background: var(--bg-main); }
-
         .divider { width: 100%; height: 1px; background: var(--border-color); margin: 40px 0; }
 
-        /* --- MODAIS --- */
+        /* --- MODAIS E TOASTS --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { background: var(--bg-card); border: 1px solid var(--border-color); border-top: 4px solid var(--accent-primary); border-radius: 16px; padding: 40px 30px; width: 90%; max-width: 420px; text-align: center; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
@@ -195,6 +177,7 @@
         .lightbox-overlay.active { display: flex; opacity: 1; }
         .lightbox-overlay img { max-width: 90%; max-height: 90vh; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         
+        /* BOTTOM NAV & FOOTER */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 12px 0 20px 0; z-index: 1000; box-shadow: 0 -4px 20px rgba(0,0,0,0.03); }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-weight: 700; transition: 0.3s; cursor: pointer; }
         .nav-item:hover, .nav-item.active { color: var(--accent-primary); }
@@ -242,6 +225,8 @@
     </header>
 
     <div class="overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    
+    <!-- MENU LATERAL REORGANIZADO -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <div class="logo-text" style="font-size: 1.1rem;">Navegação</div>
@@ -251,22 +236,23 @@
             <a href="#" onclick="abrirModalQuemSomos(); toggleMenu();">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Quem Somos
             </a>
-            
-            <a href="mcestudio.html" class="linkmcestudio">
-                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg> MC Estúdio (Gerador)
-            </a>
-
             <a href="#" onclick="abrirPeloMenu('curso', 'Aulas de IA e Mentoria'); toggleMenu();">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Aulas de IA e Mentoria
             </a>
             <a href="#" onclick="abrirPeloMenu('mentoria', 'Mentoria de Educação Midiática'); toggleMenu();">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Educação Midiática
             </a>
-            <a href="#" onclick="abrirModalPagamentos(); toggleMenu();">
-                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Adquirir Franquias (SaaS)
+            <a href="#estudos-de-caso" onclick="toggleMenu();">
+                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Estudos de Caso (Tese)
+            </a>
+            <a href="mcestudio.html" class="linkmcestudio">
+                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg> MC Estúdio (Gerador)
             </a>
             <a href="https://iadesignerweb.github.io/prompts">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> Galeria de Prompts
+            </a>
+            <a href="#" onclick="abrirModalPagamentos(); toggleMenu();">
+                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Adquirir Franquias (SaaS)
             </a>
             <a href="#" onclick="abrirPeloMenu('ebook', 'Baixar E-books'); toggleMenu();">
                 <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Biblioteca de E-books
@@ -279,7 +265,7 @@
 
     <main class="app-container">
         
-        <!-- HERO SECTION COM A NOVA BIOGRAFIA -->
+        <!-- HERO SECTION -->
         <div class="hero-section" style="padding: 40px 24px; text-align: left;">
             <div style="text-align: center; margin-bottom: 25px;">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/foto-perfil-plinio-fabricio-oficial.png" alt="Plínio Fabrício - Criador do Várzea Beat" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
@@ -289,9 +275,7 @@
             
             <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; text-align: justify;">
                 <p style="margin-bottom: 15px;"><strong style="color: var(--text-main);">Plínio Fabrício:</strong> Produtor musical e cineasta independente, natural de Custódia, no sertão de Pernambuco. Com uma trajetória forjada por 30 anos de resistência e dedicação absoluta à criação, ele é o fundador do Plínio Studio e o criador do gênero Várzea Beat.</p>
-                
                 <p style="margin-bottom: 15px;">Mais do que um estilo musical, o Várzea Beat é um manifesto estético e audiovisual. A obra de Plínio funde o peso e a densidade das batidas modernas com a poética, a aridez e a ancestralidade do sertão nordestino. Guiado pela filosofia de conceitos antigos como Platão e a filosofia hindu, ele transforma a escassez de recursos em potência narrativa.</p>
-                
                 <p style="margin-bottom: 15px;">Atuando de forma 100% independente, da composição à renderização final, suas obras abordam temas existenciais, crítica social e a quebra das ilusões modernas. Entre os projetos mais recentes e atualizados de sua jornada estão os projetos e álbuns visuais: "Série Dopamina", Trailer disponível no Canal do artista e Filme "NECRON" na mostra internacional da Filmfreeway.com/NECRON. "Carcará" e "O Portal", são as últimas obras publicadas. Hoje, o seu trabalho ultrapassa as barreiras de Pernambuco, alcançando curadorias, como o destaque internacional no Festival de Cinema da Fox Studios, em Los Angeles.</p>
                 
                 <p style="margin-bottom: 20px; font-style: italic; border-left: 3px solid var(--accent-primary); padding-left: 15px;"><strong>Nota de arte:</strong> "O cinema e a música independente têm a força, não precisa de barreiras. Elas têm força suficiente para rompê-las."<br><br><span style="font-weight: bold; font-style: normal; color: var(--text-main);">Plínio Fabrício</span></p>
@@ -299,7 +283,7 @@
 
             <!-- PROMPT PARA OS ALUNOS -->
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
-                <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; text-align: center;">Como forma de gratidão aos 32.100 inscritos no Canal YouTube Plínio Fabrício, para ser gerado no Gemini com sua fotografia.</p>
+                <p style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; text-align: center;">Como forma de gratidão aos 32.100 inscritos no Canal YouTube, para ser gerado no Gemini com sua fotografia.</p>
                 <button onclick="togglePrompt('promptBiografia', this)" class="btn-action">Mostrar Prompt Estruturado</button>
                 <div id="promptBiografia" class="prompt-collapse">
                     <div class="prompt-box" id="textoPromptBio">A cinematic, ultra-realistic editorial portrait photograph of a man. He has neatly styled hair with individual strands clearly visible, and short facial stubble. He is wearing a premium textured light beige/cream crew-neck sweater. The subject is shown in a tight chest-up portrait, positioned slightly right of center, with his body facing mostly toward the camera while his head is turned subtly toward the right side of the frame. His expression is calm, serious, and slightly contemplative, with his gaze directed off-camera to the right looking towards the horizon, not at the camera. Dramatic low-key cinematic lighting is used. A strong warm golden-orange key light from the left side of the frame illuminates the left side of his face, ear, hair, neck, and sweater, creating rich amber highlights and deep natural shadows. The right side of his face gradually falls into shadow, producing a striking chiaroscuro effect. The background is extremely dark, nearly black, with very shallow depth of field and subtle warm out-of-focus light highlights. The main subject remains the clear visual focus. Shot on an 85mm portrait lens at f/2. Aspect ratio 4:5. Strict instruction: Remove any other person or silhouette from the background. Preserve the subject's exact facial features, identity, and sharp/refined nose completely unaltered.</div>
@@ -307,15 +291,9 @@
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 30px; padding-bottom: 20px;">
+            <div style="text-align: center; margin-top: 30px; padding-bottom: 10px;">
                 <p style="font-weight: 700; color: var(--text-main); font-size: 1rem; margin-bottom: 10px;">"Coloque Deus na frente em tudo o que for realizar. Não te preocupes. Deus é sempre Amor e Justiça."</p>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Com amor,<br><strong style="color: var(--text-main);">Plínio Fabrício.</strong></p>
-            </div>
-
-            <!-- ACESSO MC ESTÚDIO MANTIDO -->
-            <div class="hero-search-box" style="margin-top: 20px;">
-                <input type="text" placeholder="Acesse a nossa Fábrica de Músicas..." readonly onclick="window.location.href='mcestudio.html'">
-                <button onclick="window.location.href='mcestudio.html'">GERAR</button>
             </div>
         </div>
 
@@ -360,7 +338,6 @@
         </div>
 
         <h2 class="section-title">Mostra Internacional de Cinema</h2>
-        
         <div class="netflix-card">
             <div class="netflix-video-wrapper">
                 <div class="netflix-badge-top"><span style="font-family: sans-serif;">N</span> FILME ORIGINAL</div>
@@ -378,17 +355,14 @@
                 
                 <div class="netflix-buttons">
                     <a href="https://www.youtube.com/watch?v=RrNDFGoORMo" target="_blank" class="netflix-btn-play">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Assistir
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Assistir no YouTube
                     </a>
-                    <button class="netflix-btn-add">
-                        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-                    </button>
                 </div>
                 
-                <details class="dossie-accordion netflix-dossie">
+                <details class="dossie-accordion">
                     <summary>Projeto Necron</summary>
                     <div class="dossie-content">
-                        <h4 style="color: var(--text-main); margin-bottom: 15px; font-size: 1.1rem;">Protocolo oficial da Mostra Internacional</h4>
+                        <h4 style="color: var(--text-main); margin-bottom: 15px; font-size: 1.1rem; margin-top:0;">Protocolo oficial da Mostra Internacional</h4>
                         
                         <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; font-family: monospace; border-left: 2px solid var(--netflix-red); padding-left: 15px;">
                             <strong>DATA DE EMISSÃO:</strong> 15 de Julho de 2026<br>
@@ -405,21 +379,88 @@
                             <li><strong>O Resgate Cognitivo:</strong> O protagonista inicia uma resistência tática para invadir a estrutura corporativa e salvar a mente de seu filho do abismo digital.</li>
                             <li><strong>O Testamento:</strong> Em paralelo à sua luta, ele grava a verdade factual da humanidade como legado para um neto que ele jamais conheceu.</li>
                         </ul>
-
-                        <p style="color: var(--text-main); font-weight: 700; margin-top: 25px; margin-bottom: 10px;">ESTRUTURA TÉCNICA E ESTÉTICA DE PRODUÇÃO</p>
-                        <p>A arquitetura cinematográfica do projeto "NECRON" foi concebida sob rigorosos parâmetros técnicos. A cinematografia simula a textura orgânica da <strong>película 35mm</strong>, utilizando granulação analógica profunda, refrações de lentes anamórficas e um perfil de cor de alta densidade para tangibilizar o peso do mundo distópico, emulando com precisão a luz física das câmeras de cinema clássicas.</p>
-                        
-                        <p style="margin-bottom: 5px; margin-top: 20px;"><strong style="color: var(--netflix-red);">DUALIDADE VISUAL E ATMOSFÉRICA</strong></p>
-                        <ul>
-                            <li>A filmagem permitiu a captura intencional do contraste absoluto: a atmosfera crua, texturizada e sufocante do "Lado de Fora" contra a natureza fria, simétrica, mecânica e asséptica da infraestrutura corporativa "Êxodo".</li>
-                        </ul>
-                        
-                        <p style="margin-bottom: 5px; margin-top: 20px;"><strong style="color: var(--netflix-red);">METODOLOGIA DE GUERRILHA DIGITAL</strong></p>
-                        <ul>
-                            <li>A execução exigiu a fusão de ferramentas digitais avançadas de inteligência artificial com táticas viscerais do cinema de guerrilha, garantindo a profundidade e inserção competitiva da obra.</li>
-                        </ul>
                     </div>
                 </details>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- NOVA SEÇÃO: ESTUDOS DE CASO (DOSSIÊ EMPÍRICO) -->
+        <h2 class="section-title" id="estudos-de-caso">Estudos de Caso</h2>
+        
+        <div class="netflix-card" style="margin-bottom: 40px; border-color: var(--accent-primary);">
+            
+            <!-- Banner da Tese -->
+            <div class="netflix-video-wrapper" style="cursor:pointer;" onclick="window.open('#', '_blank')" title="Assistir Vídeo Complementar (Em Breve)">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/plinio-fabricio-studio-plinio-studio-plataformade-sass-hub-ia-estudo.png" alt="Laboratório Empírico - Plínio Studio">
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.5); border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition: 0.3s;" onmouseover="this.style.background='rgba(59,130,246,0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">
+                    <svg viewBox="0 0 24 24" style="width:30px; height:30px; fill:#FFF; margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
+            
+            <div class="netflix-info">
+                <div class="card-tag" style="margin-bottom:15px; color:var(--accent-primary);">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg> 
+                    DOCUMENTO ACADÊMICO E FILOSÓFICO
+                </div>
+                
+                <h3 style="font-size: 1.35rem; font-weight:800; color:var(--text-main); margin-bottom:15px; line-height:1.4;">Dossiê Empírico: A Intersecção Analógica entre Frequências, Percepção e Consciência (1988-2001)</h3>
+                
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:20px; text-align: justify;">O estudo documenta o desenvolvimento cognitivo e as observações empíricas em um cenário de conectividade escassa. A percepção das ondas sonoras não era mediada por algoritmos, mas vivenciada em seu estado bruto no laboratório do rádio AM/FM e do vinil.</p>
+                
+                <details class="dossie-accordion">
+                    <summary>Ler Manifesto Completo</summary>
+                    <div class="dossie-content" style="padding-top:10px;">
+                        
+                        <h4>I. O Contexto Temporal e o Isolamento Conectivo</h4>
+                        <p>O presente estudo documenta o desenvolvimento cognitivo e as observações empíricas de um indivíduo durante o período compreendido entre o final da década de 1980 e a virada do milênio (1988-2001). O caso ganha relevância analítica por ocorrer em um cenário de conectividade escassa, caracterizado pela internet discada e pelo acesso limitado ao fluxo de informação global. Nesse vácuo digital, o indivíduo estruturou hipóteses profundas sobre física, acústica e percepção através da observação direta, da experimentação prática e da busca por literaturas filosóficas fora do escopo convencional.</p>
+
+                        <h4>II. O Contraste Analógico vs. Digital: A Escola da Frequência Pura</h4>
+                        <p>A aquisição desse entendimento estrutural precedeu a era da computação de alta velocidade e da inteligência de dados. A partir de 1988, a percepção das ondas sonoras não era mediada por algoritmos, mas vivenciada em seu estado bruto. A interação física com discos de vinil e a sintonização tátil de sinais de rádio AM/FM serviram como um laboratório empírico. Nessas mídias analógicas, a frequência, o ruído, a ressonância e a vibração não eram representações gráficas em uma tela, mas grandezas físicas tangíveis. Esse lastro temporal analógico permitiu ao autor observar a energia orgânica antes de ser emulada por processadores, desenvolvendo a capacidade rara de separar a verdadeira filosofia e biologia humana daquilo que a tecnologia contemporânea apenas tenta simular.</p>
+
+                        <h4>III. A Premissa Vibracional e a Observação do Áudio</h4>
+                        <p>Sem a influência das arquiteturas lógicas modernas, o autor do estudo mapeou o comportamento da energia puramente através da experimentação empírica com o som:</p>
+                        <ul>
+                            <li><strong>Frequências e Estados Mentais:</strong> O indivíduo documentou correlações sensoriais entre a exposição a frequências sonoras específicas, como ondas Delta, Theta e Beta, e a indução de estados alterados de consciência e foco.</li>
+                            <li><strong>A Ponte com o Conhecimento Ancestral:</strong> Em suas reflexões, estruturou-se a hipótese teórica de que o domínio dessas vibrações não era uma descoberta científica recente, mas um resgate. O estudo propõe uma analogia onde civilizações antigas possivelmente já utilizavam os princípios da acústica e da ressonância como mecanismos de expansão da mente.</li>
+                        </ul>
+
+                        <h4>IV. O Véu da Realidade e a Metáfora Visual</h4>
+                        <p>O cerne das reflexões deste período concentra-se na desconstrução da percepção sobre a matéria física. Para ilustrar essa percepção, o indivíduo fundamentou-se em duas vertentes principais:</p>
+                        <ul>
+                            <li><strong>A Filosofia Clássica:</strong> O Mito da Caverna de Platão e o conceito do Véu de Maya do hinduísmo foram adotados como metáforas primárias. A hipótese levanta a ideia de que a mente humana processa apenas projeções de uma realidade vibracional mais complexa. Obras da cultura pop contemporânea à época, como o filme Matrix (1999), serviram como um espelho cultural.</li>
+                            <li><strong>O Experimento da Distorção Geométrica:</strong> O estudo registra exercícios práticos de fixação visual prolongada em objetos geométricos estáticos. Ao observar a distorção da forma, o indivíduo utilizou a experiência como uma forte analogia existencial, sugerindo que a energia, a observação e o estado mental interagem ativamente com a estrutura da realidade física, revelando sua natureza maleável.</li>
+                        </ul>
+
+                        <h4>V. Desdobramentos Contemporâneos e Validações Técnicas</h4>
+                        <p>Os estudos de caso modernos confirmaram diversas premissas levantadas pelo indivíduo:</p>
+                        <ul>
+                            <li><strong>Validação em Psicoacústica e Neurociência:</strong> O mapeamento cerebral avançado comprovou clinicamente que estímulos sonoros binaurais alteram de fato a plasticidade cerebral, manipulando estados cognitivos e emocionais.</li>
+                            <li><strong>O Paradoxo da Inteligência Artificial:</strong> A tecnologia moderna ratificou a separação conceitual levantada na tese: simular a linguagem ou a arte não equivale a possuir a consciência biológica moldada pela dor e pelo ciclo vital, corroborando a separação entre a "ilusão manipulável" e a "essência humana".</li>
+                            <li><strong>Física da Informação e o Paradigma da Simulação:</strong> A hipótese filosófica encontrou ecos contemporâneos na Teoria da Informação Quântica, debatendo a possibilidade de o universo ser, fundamentalmente, uma estrutura matemática vibracional.</li>
+                        </ul>
+
+                        <h4>VI. A Síntese Existencial</h4>
+                        <p>A conclusão postula que a verdadeira jornada do conhecimento sobre a realidade é inseparável da experiência biológica. O entendimento empírico sobre a fluidez da realidade e o poder da frequência já havia sido estruturado na mente do autor de forma autônoma e analógica, sustentado pela vivência humana e pela percepção do próprio ciclo natural da vida.</p>
+
+                    </div>
+                </details>
+
+                <!-- PAINEL DE PAGAMENTO / WEBHOOK -->
+                <div style="background:var(--bg-main); border:1px solid var(--border-color); border-radius:12px; padding:30px 20px; text-align:center; margin-top:30px;">
+                    <div style="display:inline-block; background:var(--bg-card); border:1px solid var(--accent-primary); padding:8px 16px; border-radius:20px; font-size:0.75rem; font-weight:800; color:var(--accent-primary); margin-bottom:15px; letter-spacing: 1px;">VERSÃO OFICIAL PDF</div>
+                    <h4 style="color:var(--text-main); font-size:1.2rem; font-weight:800; margin-bottom:10px;">Baixar Dossiê Completo</h4>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px; line-height: 1.5;">Adquira o PDF Oficial de 13 páginas contendo todos os laudos completos e o Guia de Debate Psicanalítico na íntegra.</p>
+                    
+                    <div style="font-size: 2.2rem; font-weight: 900; color: var(--text-main); margin-bottom: 25px;">R$ 49,90</div>
+                    
+                    <a href="#" onclick="alert('Iniciando Checkout seguro do Mercado Pago. O PDF de 13 páginas será liberado via Webhook imediatamente após a confirmação do pagamento.')" class="btn-action" style="background:var(--accent-primary); color:#FFF; border:none; padding:18px; font-size:0.95rem;">
+                        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        COMPRAR E BAIXAR ARQUIVO
+                    </a>
+                </div>
+
             </div>
         </div>
 
@@ -447,9 +488,19 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             </div>
         </div>
 
-        <a href="https://iadesignerweb.github.io/prompts" class="btn-action btn-secondary" style="margin-bottom: 20px; text-decoration: none; text-align: center;">
+        <a href="https://iadesignerweb.github.io/prompts" class="btn-action btn-secondary" style="margin-bottom: 40px; text-decoration: none; text-align: center;">
             Acessar Galeria Completa de Engenharia
         </a>
+
+        <!-- NOVO POSICIONAMENTO DO MC ESTÚDIO NO FINAL -->
+        <h2 class="section-title">Fábrica de Músicas</h2>
+        <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:30px 20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.02); margin-bottom: 20px;">
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:20px; font-weight: 600;">Gere trilhas e batidas originais exclusivas utilizando nossa arquitetura de Inteligência Artificial para o seu audiovisual.</p>
+            <div class="hero-search-box" style="margin: 0 auto; box-shadow: none; border: 1px solid var(--accent-primary);">
+                <input type="text" placeholder="Acesse o MC Estúdio (Gerador)..." readonly onclick="window.location.href='mcestudio.html'">
+                <button onclick="window.location.href='mcestudio.html'">GERAR ÁUDIO</button>
+            </div>
+        </div>
 
     </main>
 
@@ -486,6 +537,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="fecharLightbox()"><img id="lightboxImg" src="" alt="Visualização"></div>
 
+    <!-- MODAIS E JAVASCRIPT INTACTOS CONFORME O ORIGINAL -->
     <div class="modal-overlay" id="customModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModalFunc()">×</span>
@@ -536,7 +588,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
     </div>
 
     <script>
-        // 1. TELA DE CARREGAMENTO MUNDO DE OZ (ANKH)
+        // TELA DE CARREGAMENTO MUNDO DE OZ (ANKH)
         const splashText = "BEM-VINDO AO MUNDO MÁGICO DE OZ..."; let textIndex = 0;
         function escreverTextoSplash() {
             if (textIndex < splashText.length) {
@@ -553,7 +605,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             }, 3500);
         });
 
-        // 2. FUNÇÕES DE UI E MODAIS DO HUB
+        // FUNÇÕES DE UI E MODAIS DO HUB
         function toggleMenu() {
             const menu = document.getElementById('sideMenu');
             const overlay = document.getElementById('menuOverlay');
@@ -612,7 +664,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
         }
         function fecharModalAviso() { document.getElementById('modalAvisoCustomizado').classList.remove('active'); }
 
-        // 3. BASE DE DADOS DE ALUNOS (MANTIDA)
+        // BASE DE DADOS DE ALUNOS
         const listaDeAlunosGlobais = [
             { nome: "Alexandra", senha: "1045" }, { nome: "Alexandre", senha: "2901" }, { nome: "Deo Garcez", senha: "3378" },
             { nome: "Eli mãe de Gael", senha: "4192" }, { nome: "Henrique Seixas", senha: "5820" }, { nome: "Izabel e Sophia", senha: "6451" },
@@ -622,7 +674,7 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             { nome: "Rock Bone", senha: "7711" }, { nome: "Ederaldo Lemos", senha: "7722" }, { nome: "Luciene Simões", senha: "7733" }, { nome: "Potira", senha: "7744" }, { nome: "Diana Amiga", senha: "7745" }
         ];
 
-        // 4. LÓGICA DE LOGIN E ÁREA DO ALUNO EAD
+        // LÓGICA DE LOGIN E ÁREA DO ALUNO EAD
         const modal = document.getElementById('customModal'); const modalInput = document.getElementById('modalInput'); const btnSubmit = document.getElementById('modalSubmit');
         let currentType = '', currentTitle = '';
         
@@ -691,7 +743,6 @@ Background & Color: Set the subject against a solid, bold, vibrant grafite backg
             const pw = modalInput.value.trim().toLowerCase(); 
             const alunoEncontrado = listaDeAlunosGlobais.find(aluno => aluno.senha === pw);
 
-            // NOVA SENHA MESTRA PARA O MUNDO DE OZ
             if (pw === 'mundodeoz') {
                 if (currentType === 'ebook') { window.open('https://www.mediafire.com/file/4z0cbvz582s3kzi/O_Manual_Pericial_da_IA.pdf/file', '_blank'); } 
                 else { abrirPlataformaDireta(currentTitle, null); }
