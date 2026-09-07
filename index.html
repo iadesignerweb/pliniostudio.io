@@ -83,12 +83,11 @@
         .linkmcestudio:hover { background: rgba(59, 130, 246, 0.1) !important; color: var(--accent-primary) !important; }
 
         /* --- CONTEÚDO PRINCIPAL --- */
-        .app-container { max-width: 800px; margin: 0 auto; padding: 0 24px 40px 24px; }
+        .app-container { max-width: 800px; margin: 0 auto; padding: 0 24px 40px 24px; overflow: hidden; }
         
-        /* HERO SECTION (AGÊNCIA NEUROACÚSTICA E FERRAMENTAS) */
+        /* HERO SECTION (AGÊNCIA DE INTELIGÊNCIA ARTIFICIAL E NEUROACÚSTICA) */
         .hero-section { margin: 0 -24px 30px -24px; padding: 40px 24px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--border-color); text-align: center; }
-        .hero-title { font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; line-height: 1.3; text-align: center; }
-        .hero-title span { color: var(--accent-primary); }
+        .hero-title { font-size: 2.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px; line-height: 1.1; text-align: center; }
         .hero-subtitle { font-size: 1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
         
         .hero-search-box { display: flex; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; max-width: 100%; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 5px; align-items: center; }
@@ -160,7 +159,7 @@
         .prompt-info-box h3 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; font-weight: 800;}
         .prompt-info-box p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5;}
         .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; white-space: pre-wrap; }
+        .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; word-break: break-word; max-width: 100%; box-sizing: border-box; }
 
         /* BOTÕES */
         .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--accent-primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-primary); padding: 14px 20px; border-radius: 8px; transition: 0.3s; width: 100%; cursor: pointer; text-decoration: none; }
@@ -274,10 +273,14 @@
     <main class="app-container">
         
         <!-- HERO SECTION (AGÊNCIA DE INTELIGÊNCIA ARTIFICIAL E NEUROACÚSTICA) -->
-        <div class="hero-section" style="padding: 40px 24px; text-align: center;">
-            <h1 class="hero-title" style="text-align: center; font-size: 1.8rem; text-transform: uppercase;">
-                PLÍNIO STUDIO<br><span style="color: var(--accent-primary); font-size: 1.2rem;">Agência de Inteligência Artificial e Neuroacústica</span>
+        <div class="hero-section" style="padding: 40px 24px 20px; text-align: center;">
+            <h1 class="hero-title" style="text-align: center; font-size: 2.3rem; text-transform: uppercase; margin-bottom: 2px;">
+                PLÍNIO STUDIO
             </h1>
+            <h2 style="color: var(--accent-primary); font-size: 1.1rem; text-transform: uppercase; margin-bottom: 20px; font-weight: 800; letter-spacing: 0.5px;">
+                Plataforma Hub<br>
+                <span style="font-size: 0.85rem; font-weight: 600;">De Inteligência Artificial e Neuroacústica</span>
+            </h2>
             <p class="hero-subtitle">Decodificando a percepção humana através da frequência, estética e tecnologia avançada.</p>
         </div>
 
@@ -377,7 +380,7 @@
         <div class="netflix-card" style="margin-bottom: 25px; border-color: var(--accent-primary);">
             
             <div class="netflix-video-wrapper" style="cursor:pointer;" onclick="window.open('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/gosto-de-giz-mc-estudio-plinio-studio-plinio-fabricio-plataforma-hub-sass-ia-musicoterapia.mp3', '_blank')" title="Ouvir Prévia do Áudio">
-                <img src="LINK_DA_SUA_THUMBNAIL_AQUI" alt="Laboratório Empírico - Plínio Studio">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/plinio-fabricio-plinio-studio-musicoterapia-frequencias-vitais-fisica-quantica-estudo-de-caso.png" alt="Laboratório Empírico - Plínio Studio">
                 <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.5); border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition: 0.3s;" onmouseover="this.style.background='rgba(59,130,246,0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">
                     <svg viewBox="0 0 24 24" style="width:30px; height:30px; fill:#FFF; margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
                 </div>
@@ -497,20 +500,20 @@
 
         <div class="divider"></div>
 
-        <!-- PROMPT MOVIDO PARA A AMOSTRA DO MÉTODO PRÁTICO -->
+        <!-- PROMPTS TRADUZIDOS -->
         <h2 class="section-title">Amostra do Método Prático</h2>
         <div class="prompt-card">
-            <div class="card-img-prompt" oncontextmenu="return false;" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/foto-perfil-plinio-fabricio-oficial.png')">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/foto-perfil-plinio-fabricio-oficial.png" alt="Retrato Editorial Plínio Fabrício">
+            <div class="card-img-prompt" oncontextmenu="return false;" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/modelo-realismo-plinio-studio.jpg')">
+                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/modelo-realismo-plinio-studio.jpg" alt="Retrato Gerado por Inteligência Artificial">
             </div>
             <div class="prompt-info-box">
                 <span class="card-tag"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Exemplo de Engenharia</span>
-                <h3>Retrato Editorial IA</h3>
-                <p>Engenharia de prompt para geração de retrato cinematográfico com preservação absoluta de identidade e traços faciais originais.</p>
-                <button onclick="togglePrompt('promptBiografia', this)" class="btn-action">Mostrar Prompt Estruturado</button>
-                <div id="promptBiografia" class="prompt-collapse">
-                    <div class="prompt-box" id="textoPromptBio">Fotografia de retrato editorial de um homem, cinematográfica e ultrarrealista. Ele tem cabelos com aspecto natural e levemente desgrenhado, com fios individuais claramente visíveis, e barba rala e curta. Ele está vestindo um suéter premium de gola careca bege claro/creme texturizado. O sujeito é mostrado em um retrato fechado do peito para cima, posicionado ligeiramente à direita do centro, com o corpo voltado principalmente para a câmera enquanto a cabeça está levemente virada para o lado direito do quadro. Sua expressão é calma, séria e levemente contemplativa, com o olhar direcionado para fora da câmera à direita, olhando em direção ao horizonte. É utilizada uma iluminação cinematográfica dramática de baixo contraste. Uma forte luz principal quente, laranja-dourada, vinda do lado esquerdo do quadro, ilumina o lado esquerdo de seu rosto, orelha, cabelo, pescoço e suéter, criando ricos reflexos âmbar e sombras naturais profundas. O lado direito de seu rosto cai gradualmente na sombra, produzindo um impressionante efeito de claro-escuro. O fundo é extremamente escuro, quase preto, com profundidade de campo muito rasa e sutis pontos de luz quentes desfocados. O sujeito principal continua sendo o foco visual claro. Fotografado com uma lente de retrato de 85 mm em f/2. Proporção de tela 4:5. Instrução estrita: Remova qualquer outra pessoa ou silhueta do fundo. Preserve exatamente as feições faciais do sujeito, a identidade e o nariz afilado/refinado completamente inalterados.</div>
-                    <button onclick="copiarPrompt('textoPromptBio')" class="btn-action" style="margin-top: 5px;">Copiar Prompt</button>
+                <h3>Realismo IA Avançado</h3>
+                <p>Estudo cinematográfico de continuidade temporal e iluminação dramática gerado diretamente de nosso laboratório de testes.</p>
+                <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action">Mostrar Prompt Estruturado</button>
+                <div id="prompt4Geracoes" class="prompt-collapse">
+                    <div class="prompt-box" id="textoPrompt4Geracoes">Crie uma ilustração de retrato hiper-realista e com alto nível de detalhes, usando a imagem enviada como referência facial absoluta. O rosto do sujeito deve permanecer 100% idêntico à foto de referência. A obra apresenta um retrato de meio corpo de um homem jovem com uma aparência rústica, porém refinada, capturada em um enquadramento dramático em close-up com uma perspectiva ligeiramente de baixo para cima. Sua expressão é intensa, pensativa e carregada de emoção. Cabelo e Estilo: Seu cabelo escuro é esvoaçante e dinâmico. Mãos e Detalhes: Uma das mãos está levantada perto do queixo em uma pose casual e contemplativa. A mão apresenta tatuagens detalhadas em tinta preta nos dedos e no pulso. Roupas: Ele está vestindo um moletom preto com capuz folgado, de tecido fosco e com dobras suaves. Fundo e Cor: Posicione o sujeito contra um fundo grafite sólido, ousado e vibrante, limpo e sem emendas, criando um forte contraste com o moletom preto.</div>
+                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="margin-top: 5px;">Copiar Prompt</button>
                 </div>
             </div>
         </div>
@@ -522,7 +525,17 @@
         <!-- FÁBRICA DE MÚSICAS -->
         <h2 class="section-title">Fábrica de Músicas</h2>
         <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:30px 20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.02); margin-bottom: 40px;">
-            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:20px; font-weight: 600;">Gere trilhas e batidas originais exclusivas utilizando nossa arquitetura de Inteligência Artificial para o seu audiovisual.</p>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:15px; font-weight: 600;">Gere trilhas e batidas originais exclusivas utilizando nossa arquitetura de Inteligência Artificial para o seu audiovisual.</p>
+            
+            <!-- PLAYER DE ÁUDIO INTEGRADO -->
+            <div style="margin-bottom: 20px; background: var(--bg-main); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <p style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 10px; text-transform: uppercase;">Amostra: Várzeabeat (Gosto de Giz)</p>
+                <audio controls style="width: 100%; height: 40px; outline: none;">
+                    <source src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/gosto-de-giz-mc-estudio-plinio-studio-plinio-fabricio-plataforma-hub-sass-ia-musicoterapia.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o player de áudio.
+                </audio>
+            </div>
+
             <div class="hero-search-box">
                 <input type="text" placeholder="Acesse o MC Estúdio (Gerador)..." readonly onclick="window.location.href='mcestudio.html'">
                 <button onclick="window.location.href='mcestudio.html'">GERAR ÁUDIO</button>
@@ -663,7 +676,7 @@
                 splash.style.opacity = '0';
                 setTimeout(() => { splash.style.display = 'none'; }, 800);
             }
-        }, 5000); // <-- TEMPO AUMENTADO PARA 5 SEGUNDOS (5000ms)
+        }, 5000); 
 
         // FUNÇÃO DE COMPARTILHAMENTO DA SEÇÃO DE ESTUDOS
         function compartilharEstudo() {
