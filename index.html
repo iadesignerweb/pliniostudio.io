@@ -85,7 +85,7 @@
         /* --- CONTEÚDO PRINCIPAL --- */
         .app-container { max-width: 800px; margin: 0 auto; padding: 0 24px 40px 24px; overflow: hidden; }
         
-        /* HERO SECTION (AGÊNCIA DE INTELIGÊNCIA ARTIFICIAL E NEUROACÚSTICA) */
+        /* HERO SECTION */
         .hero-section { margin: 0 -24px 30px -24px; padding: 40px 24px; background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--border-color); text-align: center; }
         .hero-title { font-size: 2.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px; line-height: 1.1; text-align: center; }
         .hero-subtitle { font-size: 1rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
@@ -148,19 +148,6 @@
         .dossie-content li { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px; padding-left: 12px; line-height: 1.6; }
         .dossie-content li strong { color: var(--text-main); }
         
-        /* PROMPTS CARD */
-        .prompt-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
-        .card-img-prompt { position: relative; aspect-ratio: 16/9; background: #E2E8F0; cursor: pointer; overflow: hidden;}
-        .card-img-prompt img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .card-img-prompt:hover img { transform: scale(1.05); }
-        .prompt-info-box { padding: 25px; display: flex; flex-direction: column; }
-        .card-tag { font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; color: var(--accent-primary); }
-        .card-tag svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2;}
-        .prompt-info-box h3 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 10px; font-weight: 800;}
-        .prompt-info-box p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5;}
-        .prompt-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .prompt-box { background: var(--bg-main); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; word-break: break-word; max-width: 100%; box-sizing: border-box; }
-
         /* BOTÕES */
         .btn-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--accent-primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-primary); padding: 14px 20px; border-radius: 8px; transition: 0.3s; width: 100%; cursor: pointer; text-decoration: none; }
         .btn-action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;}
@@ -272,7 +259,7 @@
 
     <main class="app-container">
         
-        <!-- HERO SECTION (AGÊNCIA DE INTELIGÊNCIA ARTIFICIAL E NEUROACÚSTICA) -->
+        <!-- HERO SECTION -->
         <div class="hero-section" style="padding: 40px 24px 20px; text-align: center;">
             <h1 class="hero-title" style="text-align: center; font-size: 2.3rem; text-transform: uppercase; margin-bottom: 2px;">
                 PLÍNIO STUDIO
@@ -324,6 +311,26 @@
             </a>
         </div>
 
+        <!-- FÁBRICA DE MÚSICAS (MC ESTÚDIO) MOVIDO PARA LOGO ABAIXO DO ARSENAL -->
+        <h2 class="section-title">Fábrica de Músicas</h2>
+        <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:30px 20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.02); margin-bottom: 40px;">
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:15px; font-weight: 600;">Gere trilhas e batidas originais exclusivas utilizando nossa arquitetura de Inteligência Artificial para o seu audiovisual.</p>
+            
+            <!-- PLAYER DE ÁUDIO INTEGRADO -->
+            <div style="margin-bottom: 20px; background: var(--bg-main); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <p style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 10px; text-transform: uppercase;">Amostra: Várzeabeat (Gosto de Giz)</p>
+                <audio controls style="width: 100%; height: 40px; outline: none;">
+                    <source src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/gosto-de-giz-mc-estudio-plinio-studio-plinio-fabricio-plataforma-hub-sass-ia-musicoterapia.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o player de áudio.
+                </audio>
+            </div>
+
+            <div class="hero-search-box">
+                <input type="text" placeholder="Acesse o MC Estúdio (Gerador)..." readonly onclick="window.location.href='mcestudio.html'">
+                <button onclick="window.location.href='mcestudio.html'">GERAR ÁUDIO</button>
+            </div>
+        </div>
+
         <div class="divider"></div>
 
         <h2 class="section-title">Mostra Internacional de Cinema</h2>
@@ -373,17 +380,14 @@
 
         <div class="divider"></div>
 
-        <!-- SEÇÃO ESTUDOS DE CASO (MÓDULO DUPLO & COMPARTILHÁVEL) -->
+        <!-- SEÇÃO ESTUDOS DE CASO (THUMBNAIL LIMPA SEM O PLAY SOBREPOSTO) -->
         <h2 class="section-title" id="estudos-de-caso">Estudo de Caso</h2>
         
         <!-- CARD 1: DOSSIÊ EMPÍRICO -->
         <div class="netflix-card" style="margin-bottom: 25px; border-color: var(--accent-primary);">
             
-            <div class="netflix-video-wrapper" style="cursor:pointer;" onclick="window.open('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/gosto-de-giz-mc-estudio-plinio-studio-plinio-fabricio-plataforma-hub-sass-ia-musicoterapia.mp3', '_blank')" title="Ouvir Prévia do Áudio">
+            <div class="netflix-video-wrapper" style="cursor:default;">
                 <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/plinio-fabricio-plinio-studio-musicoterapia-frequencias-vitais-fisica-quantica-estudo-de-caso.png" alt="Laboratório Empírico - Plínio Studio">
-                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.5); border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition: 0.3s;" onmouseover="this.style.background='rgba(59,130,246,0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">
-                    <svg viewBox="0 0 24 24" style="width:30px; height:30px; fill:#FFF; margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
-                </div>
             </div>
             
             <div class="netflix-info">
@@ -496,50 +500,6 @@
                 <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2;"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
                 COMPARTILHAR ESTUDO DE CASO
             </button>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- PROMPTS TRADUZIDOS -->
-        <h2 class="section-title">Amostra do Método Prático</h2>
-        <div class="prompt-card">
-            <div class="card-img-prompt" oncontextmenu="return false;" onclick="abrirLightbox('https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/modelo-realismo-plinio-studio.jpg')">
-                <img src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/modelo-realismo-plinio-studio.jpg" alt="Retrato Gerado por Inteligência Artificial">
-            </div>
-            <div class="prompt-info-box">
-                <span class="card-tag"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 3l14 0 3 6 -10 12 -10 -12 3 -6z"/></svg> Exemplo de Engenharia</span>
-                <h3>Realismo IA Avançado</h3>
-                <p>Estudo cinematográfico de continuidade temporal e iluminação dramática gerado diretamente de nosso laboratório de testes.</p>
-                <button onclick="togglePrompt('prompt4Geracoes', this)" class="btn-action">Mostrar Prompt Estruturado</button>
-                <div id="prompt4Geracoes" class="prompt-collapse">
-                    <div class="prompt-box" id="textoPrompt4Geracoes">Crie uma ilustração de retrato hiper-realista e com alto nível de detalhes, usando a imagem enviada como referência facial absoluta. O rosto do sujeito deve permanecer 100% idêntico à foto de referência. A obra apresenta um retrato de meio corpo de um homem jovem com uma aparência rústica, porém refinada, capturada em um enquadramento dramático em close-up com uma perspectiva ligeiramente de baixo para cima. Sua expressão é intensa, pensativa e carregada de emoção. Cabelo e Estilo: Seu cabelo escuro é esvoaçante e dinâmico. Mãos e Detalhes: Uma das mãos está levantada perto do queixo em uma pose casual e contemplativa. A mão apresenta tatuagens detalhadas em tinta preta nos dedos e no pulso. Roupas: Ele está vestindo um moletom preto com capuz folgado, de tecido fosco e com dobras suaves. Fundo e Cor: Posicione o sujeito contra um fundo grafite sólido, ousado e vibrante, limpo e sem emendas, criando um forte contraste com o moletom preto.</div>
-                    <button onclick="copiarPrompt('textoPrompt4Geracoes')" class="btn-action" style="margin-top: 5px;">Copiar Prompt</button>
-                </div>
-            </div>
-        </div>
-
-        <a href="https://iadesignerweb.github.io/prompts" class="btn-action btn-secondary" style="margin-bottom: 40px; text-decoration: none; text-align: center;">
-            Acessar Galeria Completa de Engenharia
-        </a>
-
-        <!-- FÁBRICA DE MÚSICAS -->
-        <h2 class="section-title">Fábrica de Músicas</h2>
-        <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:30px 20px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.02); margin-bottom: 40px;">
-            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:15px; font-weight: 600;">Gere trilhas e batidas originais exclusivas utilizando nossa arquitetura de Inteligência Artificial para o seu audiovisual.</p>
-            
-            <!-- PLAYER DE ÁUDIO INTEGRADO -->
-            <div style="margin-bottom: 20px; background: var(--bg-main); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
-                <p style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 10px; text-transform: uppercase;">Amostra: Várzeabeat (Gosto de Giz)</p>
-                <audio controls style="width: 100%; height: 40px; outline: none;">
-                    <source src="https://raw.githubusercontent.com/iadesignerweb/pliniostudio.io/refs/heads/main/gosto-de-giz-mc-estudio-plinio-studio-plinio-fabricio-plataforma-hub-sass-ia-musicoterapia.mp3" type="audio/mpeg">
-                    Seu navegador não suporta o player de áudio.
-                </audio>
-            </div>
-
-            <div class="hero-search-box">
-                <input type="text" placeholder="Acesse o MC Estúdio (Gerador)..." readonly onclick="window.location.href='mcestudio.html'">
-                <button onclick="window.location.href='mcestudio.html'">GERAR ÁUDIO</button>
-            </div>
         </div>
 
         <div class="divider"></div>
@@ -719,22 +679,6 @@
                 toast.classList.add('show');
                 setTimeout(() => { toast.classList.remove('show'); }, 3000); 
             });
-        }
-        function togglePrompt(id, btnElement) { 
-            const content = document.getElementById(id); 
-            if (content.style.maxHeight && content.style.maxHeight !== '0px') { 
-                content.style.maxHeight = '0px'; btnElement.innerHTML = "Mostrar Prompt Estruturado"; 
-            } else { 
-                content.style.maxHeight = content.scrollHeight + "px"; btnElement.innerHTML = "Ocultar Prompt"; 
-            } 
-        }
-        function copiarPrompt(textId) { 
-            const textToCopy = document.getElementById(textId).innerText; 
-            navigator.clipboard.writeText(textToCopy).then(() => { 
-                const toast = document.getElementById('toastNotification');
-                document.getElementById('toastMessage').innerText = "Engenharia Copiada com Sucesso!";
-                toast.classList.add('show'); setTimeout(() => { toast.classList.remove('show'); }, 3000); 
-            }); 
         }
 
         function mostrarAviso(mensagem, tipo = 'erro', titulo = 'Acesso Restrito') {
